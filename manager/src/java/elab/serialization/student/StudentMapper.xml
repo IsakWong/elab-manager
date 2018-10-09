@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="elab.serialization.student.StudentMapper">
+    <insert id="addStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+        insert into student(name) values(#{name})
+    </insert>
+    <select id="selectStudent" resultType="Student" parameterType="_int">
+        select id, name from student where id = #{id}
+    </select>
+</mapper>

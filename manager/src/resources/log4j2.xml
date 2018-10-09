@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="debug"/>
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+        <File name="log" fileName="test1.log" append="true">
+            <ThresholdFilter level="error"/>
+            <PatternLayout pattern="%d-%m%n"/>
+        </File>
+    </appenders>
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="Console">
+
+            </appender-ref>
+            <appender-ref ref="log">
+
+            </appender-ref>
+        </root>
+    </loggers>
+</Configuration>

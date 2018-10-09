@@ -1,0 +1,12 @@
+{
+  "module_name": "学生管理",
+  "functions": [{
+    "function_name": "添加学生",
+    "function_fxml": "/add_user_page.fxml"
+  },
+    {
+      "function_name": "添加学生",
+      "function_fxml": "/add_user_page.fxml"
+    }
+  ]
+}
