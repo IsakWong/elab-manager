@@ -1,0 +1,38 @@
+[
+  {
+    "module_name": "成员管理",
+    "functions": [{
+      "function_name": "添加学生",
+      "function_fxml": "/add_user_page.fxml"
+    },
+      {
+        "function_name": "添加学生",
+        "function_fxml": "/add_user_page.fxml"
+      }
+    ]
+  },
+  {
+    "module_name": "助课管理",
+    "functions": [{
+      "function_name": "添加学生",
+      "function_fxml": "/add_user_page.fxml"
+    },
+      {
+        "function_name": "添加学生",
+        "function_fxml": "/add_user_page.fxml"
+      }
+    ]
+  },
+  {
+    "module_name": "学生管理",
+    "functions": [{
+      "function_name": "添加学生",
+      "function_fxml": "/add_user_page.fxml"
+    },
+      {
+        "function_name": "添加学生",
+        "function_fxml": "/add_user_page.fxml"
+      }
+    ]
+  }
+]

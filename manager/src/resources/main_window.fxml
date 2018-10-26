@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXTabPane?>
-
-
-<?import javafx.scene.image.ImageView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
    <children>
        <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #303F9F;">
            <children>
-               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="mainMenuMinBtn" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@min.png" />
                    </image>
@@ -23,7 +19,7 @@
                        <Insets bottom="10.0" left="16.0" right="16.0" top="16.0" />
                    </HBox.margin>
                </ImageView>
-               <ImageView fx:id="closeBtn" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="mainMenuCloseBtn" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@close.png" />
                    </image>
