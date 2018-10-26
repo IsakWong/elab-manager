@@ -1,6 +1,7 @@
 package elab.business.module_tab;
 
 import com.jfoenix.controls.JFXButton;
+import elab.application.BaseViewController;
 import elab.serialization.module.Module;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,7 +15,7 @@ import org.apache.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModuleTabController implements Initializable {
+public class ModuleTabController extends BaseViewController {
 
     public final Logger logger = Logger.getLogger(ModuleTabController.class);
 
@@ -27,17 +28,7 @@ public class ModuleTabController implements Initializable {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        addUser.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/add_user_page.fxml"));
-                    contentPage.setContent(root);
-                } catch (Exception exception) {
-                    logger.error(exception);
-                }
-            }
-        });
+    public void initializeController() {
+
     }
 }

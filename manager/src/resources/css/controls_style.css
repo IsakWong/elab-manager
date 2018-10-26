@@ -3,6 +3,19 @@
     src: "/resources/roboto/Roboto-Regular.ttf";
 }
 
+
+.elab-text-body{
+    -fx-font-size: 13px;
+    -fx-text-fill: #212121;
+}
+.elab-text-caption{
+    -fx-font-size: 12px;
+    -fx-text-fill: #727272;
+}
+.elab-text-title{
+    -fx-font-size: 14px;
+}
+
 .jfx-tab-pane .tab-header-background {
     -fx-background-color: #303F9F;
 }
@@ -289,9 +302,7 @@
 }
 
 .jfx-snackbar-content {
-    -fx-background-color: #323232;
-    -fx-padding: 5;
-    -fx-spacing: 5;
+    -fx-background-color: #505050;
 }
 
 .jfx-snackbar-toast {

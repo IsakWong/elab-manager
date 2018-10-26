@@ -1,5 +1,7 @@
 package elab.application;
 
+import elab.business.log_in_window.LoginWindowController;
+import elab.serialization.module.Module;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,15 +11,17 @@ import javafx.stage.StageStyle;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class ElabManagerApplication extends Application {
 
 
     public final Logger logger = Logger.getLogger(ElabManagerApplication.class);
-    ;
+
     public static Properties properties;
     public static Stage primaryStage;
+    public static ArrayList<Module> modulesArrayList;
 
 
     @Override
@@ -35,7 +39,12 @@ public class ElabManagerApplication extends Application {
         */
 
         ElabManagerApplication.primaryStage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/login_window.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login_window.fxml"));
+        Parent root = loader.load();
+        LoginWindowController controller = loader.getController();
+        controller.initializeController();
+
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -59,6 +68,7 @@ public class ElabManagerApplication extends Application {
         properties = new Properties();
         properties.load(stream);
         String strWidth = properties.getProperty("WINDOW_WIDTH");
+        String strHeight = properties.getProperty("WINDOW_HEIGHT");
 
     }
 
