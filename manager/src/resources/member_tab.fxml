@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.ModuleTabController">
+<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.MemberTabController">
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: #3F51B5;" stylesheets="@css/controls_style.css">
          <children>
@@ -35,6 +35,22 @@
                </padding>
             </JFXButton>
             <JFXButton fx:id="queryInformation" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="查询成员信息" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets bottom="16.0" top="16.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="userInformation" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="个人信息管理" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets bottom="16.0" top="16.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="freeTimeCollect" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="空闲时间统计" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>

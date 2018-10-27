@@ -2,7 +2,7 @@ package elab.business.main_window;
 
 import com.jfoenix.controls.JFXTabPane;
 import elab.application.BaseViewController;
-import elab.business.module_tab.ModuleTabController;
+import elab.business.module_tab.MemberTabController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,28 +74,30 @@ public class MainWindowController extends BaseViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/member_tab.fxml"));
             Parent root = loader.load();
             userTab.setContent(root);
-            ModuleTabController controller = loader.getController();
+            MemberTabController controller = loader.getController();
 
             //controller.TabModule = module;
             tabPane.getTabs().add(userTab);
 
             Tab assistTab = new Tab();
             assistTab.setText("助课管理");
-            Parent root2 = FXMLLoader.load(getClass().getResource("/member_tab.fxml"));
+            Parent root2 = FXMLLoader.load(getClass().getResource("/assist_teaching_tab.fxml"));
             assistTab.setContent(root2);
             tabPane.getTabs().add(assistTab);
 
             Tab registerTab = new Tab();
             registerTab.setText("签到与值班");
-            Parent root3 = FXMLLoader.load(getClass().getResource("/member_tab.fxml"));
+            Parent root3 = FXMLLoader.load(getClass().getResource("/register_tab.fxml"));
             registerTab.setContent(root3);
             tabPane.getTabs().add(registerTab);
 
             Tab systemControlTab = new Tab();
             systemControlTab.setText("系统控制");
-            Parent root4 = FXMLLoader.load(getClass().getResource("/member_tab.fxml"));
+            Parent root4 = FXMLLoader.load(getClass().getResource("/system_ctrl_tab.fxml"));
             systemControlTab.setContent(root4);
             tabPane.getTabs().add(systemControlTab);
+
+
 
         } catch (Exception exp) {
             System.out.print(exp.toString());
