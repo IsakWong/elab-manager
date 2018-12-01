@@ -1,0 +1,1114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.FreeTimeCollectPageController">
+   <children>
+      <TextArea layoutX="96.0" layoutY="606.0" prefHeight="69.0" prefWidth="619.0" promptText="时间不确定或有其他问题，可在此留言" />
+      <JFXButton fx:id="save" layoutX="760.0" layoutY="610.0" prefHeight="35.0" prefWidth="92.0" text="保存" />
+      <Label layoutX="96.0" layoutY="574.0" />
+      <ScrollPane layoutX="95.0" layoutY="138.0" prefHeight="448.0" prefWidth="824.0" style="-fx-border-color: #ffffff;" stylesheets="@css/controls_style.css">
+         <content>
+            <HBox alignment="CENTER" prefHeight="1121.0" prefWidth="798.0">
+               <children>
+                  <VBox prefHeight="820.0" prefWidth="145.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第1周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第2周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第3周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第4周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第5周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第6周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第7周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第8周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第9周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第10周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第11周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第12周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="第13周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="81.0" prefWidth="245.0" style="-fx-border-color: #000000; -fx-background-color: #4863ff;" text="第14周" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="820.0" prefWidth="742.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week1A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week1M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week1N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W1SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W1SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week2A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week2M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week2N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W2SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W2SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week3A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week3M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week3N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W3SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W3SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week4A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week4M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week4N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W4SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W4SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week5A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week5M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week5N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W5SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W5SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week6A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week6M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week6N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W6SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W6SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week7A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week7M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week7N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W7SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W7SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week8A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week8M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week8N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W8SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W8SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week9A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week9M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week9N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W9SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W9SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week10A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week10M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week10N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W10SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W10SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week11A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week11M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week11N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W11SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W11SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week12A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week12M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week12N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W12SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W12SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week13A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week13M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" textOverrun="CLIP" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week13N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: #70c1ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W13SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W13SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="76.0" prefWidth="712.0">
+                           <children>
+                              <AnchorPane prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+                                 <children>
+                                    <JFXCheckBox fx:id="week14A" checkedColor="#303f9f" layoutX="2.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week14M" checkedColor="#303f9f" layoutX="2.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="week14N" checkedColor="#303f9f" layoutX="2.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="80.0" prefWidth="86.0" style="-fx-border-color: #000000; -fx-background-color: #fcffea;">
+                                 <children>
+                                    <JFXCheckBox fx:id="W14SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="28.0" prefHeight="20.0" prefWidth="57.0" text="下午" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="2.0" prefHeight="20.0" prefWidth="57.0" text="早上" unCheckedColor="BLACK" />
+                                    <JFXCheckBox fx:id="W14SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="54.0" prefHeight="20.0" prefWidth="57.0" text="晚上" unCheckedColor="BLACK" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+      <Label layoutX="95.0" layoutY="18.0" prefHeight="113.0" prefWidth="180.0" text="选中时间即为空闲时间，最左的选项可选择一行相对应的选项，最上的选项可选择一列相对应的选项。" wrapText="true" />
+      <HBox layoutX="289.0" layoutY="16.0" prefHeight="113.0" prefWidth="602.0">
+         <children>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周一" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="MonM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="MonA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="MonN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children></AnchorPane>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周二" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="TueM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="TueA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="TueN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周三" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="WedM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="WedA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="WedN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周四" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="ThurM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="ThurA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="ThurN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周五" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="FriM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="FriA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="FriN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周六" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="SatM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="SatA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="SatN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #4863ff; -fx-border-color: #000000;" text="周日" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <JFXCheckBox fx:id="SunM" checkedColor="#303f9f" layoutX="3.0" layoutY="41.0" prefHeight="20.0" prefWidth="57.0" text="早上" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="SunA" checkedColor="#303f9f" layoutX="3.0" layoutY="67.0" prefHeight="20.0" prefWidth="57.0" text="下午" textFill="WHITE" unCheckedColor="BLACK" />
+                  <JFXCheckBox fx:id="SunN" checkedColor="#303f9f" layoutX="3.0" layoutY="91.0" prefHeight="20.0" prefWidth="57.0" text="晚上" textFill="WHITE" unCheckedColor="BLACK" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

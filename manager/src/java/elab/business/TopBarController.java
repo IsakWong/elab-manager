@@ -33,12 +33,7 @@ public class TopBarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        closeBtn.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                ElabManagerApplication.primaryStage.close();
-            }
-        });
+        closeBtn.setOnMousePressed(event -> ElabManagerApplication.primaryStage.close());
 
 
         logButton.setOnAction(new EventHandler<ActionEvent>() {

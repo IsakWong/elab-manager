@@ -29,7 +29,6 @@
                </ImageView>
            </children>
        </HBox>
-
       <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
    </children>
 </VBox>

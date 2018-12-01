@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_page_controllers.MemberInformationPageController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="489.0" prefWidth="998.0" text="member information page">
+         <font>
+            <Font size="72.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

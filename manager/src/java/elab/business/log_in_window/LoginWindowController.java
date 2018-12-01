@@ -31,7 +31,6 @@ import java.util.ArrayList;
 
 public class LoginWindowController extends BaseViewController {
 
-
     @FXML
     private HBox topBar;
     @FXML
@@ -53,7 +52,7 @@ public class LoginWindowController extends BaseViewController {
     private double y_stage;
 
 
-    public void loadModuleSettings(String toLoadModulesName) throws Exception {
+    public void loadModuleSettings(String toLoadModulesName) {
         Gson gson = new Gson();
         String strJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/" + toLoadModulesName));
         Type typeList = new TypeToken<ArrayList<Module>>() {
@@ -94,67 +93,44 @@ public class LoginWindowController extends BaseViewController {
 
     @Override
     public void initializeController() {
-        userInputField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER)
-                    pwdInputField.requestFocus();
-            }
+        userInputField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER)
+                pwdInputField.requestFocus();
         });
 
-        pwdInputField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER)
-                    if (isUserValidated()) {
-                        showMainWindow();
-                    }
-            }
-        });
-
-        logButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        pwdInputField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER)
                 if (isUserValidated()) {
-                    ElabManagerApplication.primaryStage.close();
                     showMainWindow();
                 }
-            }
         });
 
-        closeBtn.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+        logButton.setOnAction(event -> {
+            if (isUserValidated()) {
                 ElabManagerApplication.primaryStage.close();
+                showMainWindow();
             }
         });
 
-        minBtn.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Stage stage = (Stage) minBtn.getScene().getWindow();
-                stage.setIconified(true);
-            }
+        closeBtn.setOnMousePressed(event -> ElabManagerApplication.primaryStage.close());
+
+        minBtn.setOnMousePressed(event -> {
+            Stage stage = (Stage) minBtn.getScene().getWindow();
+            stage.setIconified(true);
         });
 
         //Drag Event
-        topBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent m) {
-                ElabManagerApplication.primaryStage.setX(x_stage + m.getScreenX() - x1);
-                ElabManagerApplication.primaryStage.setY(y_stage + m.getScreenY() - y1);
-            }
+        topBar.setOnMouseDragged(m -> {
+            ElabManagerApplication.primaryStage.setX(x_stage + m.getScreenX() - x1);
+            ElabManagerApplication.primaryStage.setY(y_stage + m.getScreenY() - y1);
         });
 
-        topBar.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent m) {
-                //按下鼠标后，记录当前鼠标的坐标
-                x1 = m.getScreenX();
-                y1 = m.getScreenY();
-                x_stage = ElabManagerApplication.primaryStage.getX();
-                y_stage = ElabManagerApplication.primaryStage.getY();
-            }
+        topBar.setOnMousePressed(m -> {
+            //按下鼠标后，记录当前鼠标的坐标
+            x1 = m.getScreenX();
+            y1 = m.getScreenY();
+            x_stage = ElabManagerApplication.primaryStage.getX();
+            y_stage = ElabManagerApplication.primaryStage.getY();
         });
 
     }
