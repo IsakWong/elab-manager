@@ -7,11 +7,15 @@ import elab.business.member_tab_function_controllers.FreeTimeCollectPageControll
 import elab.business.member_tab_function_controllers.PersonalInformationPageController;
 import elab.business.member_tab_function_controllers.UserManagementPageController;
 import elab.serialization.module.Module;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import org.apache.log4j.Logger;
+
+import java.io.IOException;
 
 public class MemberTabController extends BaseViewController {
 
@@ -26,6 +30,7 @@ public class MemberTabController extends BaseViewController {
     @FXML
     private ScrollPane contentPage;
 
+<<<<<<< HEAD
     public final Logger logger = Logger.getLogger(MemberTabController.class);
 
     public Module TabModule;
@@ -34,9 +39,46 @@ public class MemberTabController extends BaseViewController {
     private Parent addMemberRoot;
     private Parent personalInformationRoot;
     private Parent freeTimeRoot;
+=======
+    Parent addMemberPage;
+    Parent modifyMemberPage;
 
+    EventHandler<MouseEvent> addMemberHandler =   new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/add_member_page.fxml"));
+                addMemberPage = loader.load();
+                contentPage.setContent(addMemberPage);
+            }
+            catch (IOException exp)
+            {
+
+            }
+
+        }
+    };
+
+
+    EventHandler<MouseEvent> modifyHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/modify_member_page.fxml"));
+                addMemberPage = loader.load();
+                contentPage.setContent(addMemberPage);
+            }
+            catch (IOException exp)
+            {
+>>>>>>> da729542ebc1cbbfe3f0a03368f50cc7af316911
+
+            }
+        }
+    };
     @Override
     public void initializeController() {
+        addUser.setOnMouseClicked(addMemberHandler);
+        modifyInformation.setOnMouseClicked(modifyHandler);
 
         try {
 

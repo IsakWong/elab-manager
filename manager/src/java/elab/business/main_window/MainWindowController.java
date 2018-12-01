@@ -31,6 +31,24 @@ public class MainWindowController extends BaseViewController {
     private double x_stage;
     private double y_stage;
 
+    EventHandler<MouseEvent> dragHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            Stage stage = (Stage) topBar.getScene().getWindow();
+            stage.setX(x_stage + event.getScreenX() - x1);
+            stage.setY(y_stage + event.getScreenY() - y1);
+        }
+    };
+    EventHandler<MouseEvent> pressHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            Stage stage = (Stage) topBar.getScene().getWindow();
+            x1 = event.getScreenX();
+            y1 = event.getScreenY();
+            x_stage = stage.getX();
+            y_stage = stage.getY();
+        }
+    };
     public void initializeController() {
         try {
 
@@ -44,6 +62,7 @@ public class MainWindowController extends BaseViewController {
                     stage.setIconified(true);
             });
 
+<<<<<<< HEAD
             topBar.setOnMouseDragged(event -> {
                     Stage stage = (Stage) topBar.getScene().getWindow();
                     stage.setX(x_stage + event.getScreenX() - x1);
@@ -57,14 +76,25 @@ public class MainWindowController extends BaseViewController {
                 x_stage = stage.getX();
                 y_stage = stage.getY();
             });
+=======
+            tabPane.setOnMouseDragged(dragHandler);
+            tabPane.setOnMousePressed(pressHandler);
+            topBar.setOnMouseDragged(dragHandler);
+            topBar.setOnMousePressed(pressHandler);
+>>>>>>> da729542ebc1cbbfe3f0a03368f50cc7af316911
 
             Tab userTab = new Tab();
             userTab.setText("助课管理");
             FXMLLoader assistLoader = new FXMLLoader(getClass().getResource("/assist_teaching_tab.fxml"));
             Parent root = assistLoader.load();
             userTab.setContent(root);
+<<<<<<< HEAD
             AssistTeachingTabController assistController = assistLoader.getController();
             assistController.initializeController();
+=======
+            BaseViewController controller = loader.getController();
+            controller.initializeController();
+>>>>>>> da729542ebc1cbbfe3f0a03368f50cc7af316911
 
             //controller.TabModule = module;
             tabPane.getTabs().add(userTab);
@@ -77,6 +107,8 @@ public class MainWindowController extends BaseViewController {
             MemberTabController memberController = memberLoader.getController();
             memberController.initializeController();
             tabPane.getTabs().add(assistTab);
+            controller = loader.getController();
+            controller.initializeController();
 
             Tab registerTab = new Tab();
             registerTab.setText("签到与值班");
@@ -86,6 +118,8 @@ public class MainWindowController extends BaseViewController {
             RegisterTabController registerController = registerLoader.getController();
             registerController.initializeController();
             tabPane.getTabs().add(registerTab);
+            controller = loader.getController();
+            controller.initializeController();
 
             Tab systemControlTab = new Tab();
             systemControlTab.setText("系统控制");
@@ -95,6 +129,8 @@ public class MainWindowController extends BaseViewController {
             SystemControlTabController sysCtrlController = sysCtrlLoader.getController();
             sysCtrlController.initializeController();
             tabPane.getTabs().add(systemControlTab);
+            controller = loader.getController();
+            controller.initializeController();
 
         } catch (Exception exp) {
             System.out.print(exp.toString());

@@ -6,18 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/TopBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/TopBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_tab/AssistTeachingTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_tab/AssistTeachingTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_tab/MemberTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_tab/MemberTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_tab/RegisterTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_tab/RegisterTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_tab/SystemControlTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_tab/SystemControlTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/add_member_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/add_member_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/member_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_tab.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -193,7 +182,7 @@
     <session id="-1480918350">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.17" value="1" />
@@ -483,7 +472,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="952" />
     <option name="width" value="975" />
     <option name="height" value="1048" />
@@ -806,7 +795,7 @@
     <option name="totallyTimeSpent" value="5600000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1461126" />
@@ -818,7 +807,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.12624113" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.12624113" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3035461" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
