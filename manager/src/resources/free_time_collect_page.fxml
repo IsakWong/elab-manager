@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.FreeTimeCollectPageController">
    <children>
-      <TextArea layoutX="96.0" layoutY="606.0" prefHeight="69.0" prefWidth="619.0" promptText="时间不确定或有其他问题，可在此留言" />
+      <TextArea fx:id="questionBoard" layoutX="96.0" layoutY="606.0" prefHeight="69.0" prefWidth="619.0" promptText="时间不确定或有其他问题，可在此留言" />
       <JFXButton fx:id="save" layoutX="760.0" layoutY="610.0" prefHeight="35.0" prefWidth="92.0" text="保存" />
-      <Label layoutX="96.0" layoutY="574.0" />
       <ScrollPane layoutX="95.0" layoutY="138.0" prefHeight="448.0" prefWidth="824.0" style="-fx-border-color: #ffffff;" stylesheets="@css/controls_style.css">
          <content>
             <HBox alignment="CENTER" prefHeight="1121.0" prefWidth="798.0">
@@ -1029,7 +1025,6 @@
             </HBox>
          </content>
       </ScrollPane>
-      <Label layoutX="95.0" layoutY="18.0" prefHeight="113.0" prefWidth="180.0" text="选中时间即为空闲时间，最左的选项可选择一行相对应的选项，最上的选项可选择一列相对应的选项。" wrapText="true" />
       <HBox layoutX="289.0" layoutY="16.0" prefHeight="113.0" prefWidth="602.0">
          <children>
             <AnchorPane minWidth="-Infinity" prefHeight="100.0" prefWidth="86.0" style="-fx-background-color: #f79004; -fx-border-color: #000000;">
@@ -1110,5 +1105,10 @@
             </AnchorPane>
          </children>
       </HBox>
+      <Label layoutX="107.0" layoutY="30.0" prefHeight="85.0" prefWidth="161.0" text="选中的时间即为空闲时间，最左的选项可选择一行相对应的选项，最上的选项可选择一列相对应的选项。" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
