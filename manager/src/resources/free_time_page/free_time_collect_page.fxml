@@ -14,7 +14,7 @@
    <children>
       <TextArea fx:id="questionBoard" layoutX="96.0" layoutY="606.0" prefHeight="69.0" prefWidth="619.0" promptText="时间不确定或有其他问题，可在此留言" />
       <JFXButton fx:id="save" layoutX="760.0" layoutY="610.0" prefHeight="35.0" prefWidth="92.0" text="保存" />
-      <ScrollPane layoutX="95.0" layoutY="138.0" prefHeight="448.0" prefWidth="824.0" stylesheets="@css/controls_style.css">
+      <ScrollPane layoutX="95.0" layoutY="138.0" prefHeight="448.0" prefWidth="824.0" stylesheets="@../css/controls_style.css">
          <content>
             <VBox fx:id="container" />
          </content>
