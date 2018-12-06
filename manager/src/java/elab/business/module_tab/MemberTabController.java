@@ -37,7 +37,6 @@ public class MemberTabController extends BaseViewController {
 
     @Override
     public void initializeController() {
-
         try {
 
             //加载文件
