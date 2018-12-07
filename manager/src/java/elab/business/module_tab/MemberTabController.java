@@ -49,7 +49,7 @@ public class MemberTabController extends BaseViewController {
             FXMLLoader addMemberLoader = new FXMLLoader(getClass().getResource("/add_member_page.fxml"));
             this.addMemberRoot = addMemberLoader.load();
             AddMemberPageController addMemberPageController = addMemberLoader.getController();
-            //addMemberPageController.initializeController();
+            addMemberPageController.initializeController();
 
             FXMLLoader personalInformationLoader = new FXMLLoader(getClass().getResource("/personal_information_page.fxml"));
             this.personalInformationRoot = personalInformationLoader.load();

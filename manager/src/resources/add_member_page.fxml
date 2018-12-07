@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.AddMemberPageController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.AddMemberPageController">
    <children>
       <VBox alignment="CENTER_LEFT" layoutX="366.0" prefHeight="700.0" prefWidth="634.0" stylesheets="@css/controls_style.css">
          <children>
@@ -38,16 +40,32 @@
                   <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
             </HBox>
-            <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="200.0">
                <VBox.margin>
                   <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
-            </JFXPasswordField>
-            <JFXPasswordField fx:id="twicePwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+               <children>
+                  <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+                  <ImageView fx:id="pwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@ok16X16.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="200.0">
+               <children>
+                  <JFXPasswordField fx:id="twicePwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+                  <ImageView fx:id="twicePwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@ok16X16.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
                <VBox.margin>
                   <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
-            </JFXPasswordField>
+            </HBox>
             <JFXComboBox fx:id="collegeChooseBox" prefHeight="23.0" prefWidth="300.0">
                <VBox.margin>
                   <Insets bottom="16.0" top="16.0" />

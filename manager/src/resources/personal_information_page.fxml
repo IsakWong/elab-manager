@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -38,24 +39,30 @@
                   <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
             </HBox>
-            <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
-            </JFXPasswordField>
-            <JFXPasswordField fx:id="twicePwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+               <children>
+                  <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
-            </JFXPasswordField>
-            <JFXComboBox fx:id="collegeChooseBox" prefHeight="23.0" prefWidth="300.0">
+               <children>
+                  <JFXPasswordField fx:id="twicePwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+               </children>
+            </HBox>
+            <JFXComboBox fx:id="collegeChooseBox" prefHeight="25.0" prefWidth="300.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="groupChooseBox" prefHeight="23.0" prefWidth="300.0">
+            <JFXComboBox fx:id="groupChooseBox" prefHeight="25.0" prefWidth="300.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </JFXComboBox>
             <JFXTextField fx:id="telInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefWidth="300.0">
