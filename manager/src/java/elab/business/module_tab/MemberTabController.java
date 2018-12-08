@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 import org.apache.log4j.Logger;
 
 public class MemberTabController extends BaseViewController {
@@ -67,20 +68,28 @@ public class MemberTabController extends BaseViewController {
 
             //按钮事件
 
-            userManagement.setOnMousePressed(event -> {
-                contentPage.setContent(userManagementRoot);
+            userManagement.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(userManagementRoot);
+                }
             });
 
-            addMember.setOnMousePressed(event -> {
-                contentPage.setContent(addMemberRoot);
+            addMember.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(addMemberRoot);
+                }
             });
 
-            personalInformation.setOnMousePressed(event -> {
-                contentPage.setContent(personalInformationRoot);
+            personalInformation.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(personalInformationRoot);
+                }
             });
 
-            freeTimeCollect.setOnMousePressed(event -> {
-                contentPage.setContent(freeTimeRoot);
+            freeTimeCollect.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(freeTimeRoot);
+                }
             });
 
         } catch(Exception exp) {

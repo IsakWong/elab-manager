@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -112,25 +113,34 @@ public class LoginWindowController extends BaseViewController {
             }
         });
 
-        closeBtn.setOnMousePressed(event -> ElabManagerApplication.primaryStage.close());
+        closeBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY)
+                ElabManagerApplication.primaryStage.close();
+        });
 
-        minBtn.setOnMousePressed(event -> {
-            Stage stage = (Stage) minBtn.getScene().getWindow();
-            stage.setIconified(true);
+        minBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                Stage stage = (Stage) minBtn.getScene().getWindow();
+                stage.setIconified(true);
+            }
         });
 
         //Drag Event
-        topBar.setOnMouseDragged(m -> {
-            ElabManagerApplication.primaryStage.setX(x_stage + m.getScreenX() - x1);
-            ElabManagerApplication.primaryStage.setY(y_stage + m.getScreenY() - y1);
+        topBar.setOnMouseDragged(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                ElabManagerApplication.primaryStage.setX(x_stage + event.getScreenX() - x1);
+                ElabManagerApplication.primaryStage.setY(y_stage + event.getScreenY() - y1);
+            }
         });
 
-        topBar.setOnMousePressed(m -> {
+        topBar.setOnMousePressed(event -> {
             //按下鼠标后，记录当前鼠标的坐标
-            x1 = m.getScreenX();
-            y1 = m.getScreenY();
-            x_stage = ElabManagerApplication.primaryStage.getX();
-            y_stage = ElabManagerApplication.primaryStage.getY();
+            if(event.getButton() == MouseButton.PRIMARY) {
+                x1 = event.getScreenX();
+                y1 = event.getScreenY();
+                x_stage = ElabManagerApplication.primaryStage.getX();
+                y_stage = ElabManagerApplication.primaryStage.getY();
+            }
         });
 
     }

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -34,28 +35,36 @@ public class MainWindowController extends BaseViewController {
     public void initializeController() {
         try {
 
-            mainMenuCloseBtn.setOnMousePressed(event ->{
+            mainMenuCloseBtn.setOnMouseClicked(event ->{
+                if(event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
                     stage.close();
+                }
             });
 
-            mainMenuMinBtn.setOnMousePressed(event -> {
+            mainMenuMinBtn.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) mainMenuMinBtn.getScene().getWindow();
                     stage.setIconified(true);
+                }
             });
 
             topBar.setOnMouseDragged(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) topBar.getScene().getWindow();
                     stage.setX(x_stage + event.getScreenX() - x1);
                     stage.setY(y_stage + event.getScreenY() - y1);
+                }
             });
 
             topBar.setOnMousePressed(event -> {
-                Stage stage = (Stage) topBar.getScene().getWindow();
-                x1 = event.getScreenX();
-                y1 = event.getScreenY();
-                x_stage = stage.getX();
-                y_stage = stage.getY();
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    Stage stage = (Stage) topBar.getScene().getWindow();
+                    x1 = event.getScreenX();
+                    y1 = event.getScreenY();
+                    x_stage = stage.getX();
+                    y_stage = stage.getY();
+                }
             });
 
             Tab userTab = new Tab();

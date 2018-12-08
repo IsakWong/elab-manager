@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 
 public class RegisterTabController extends BaseViewController {
 
@@ -42,20 +43,28 @@ public class RegisterTabController extends BaseViewController {
             FXMLLoader dutyFormLoader = new FXMLLoader(getClass().getResource(""));
             this.dutyFormRoot = dutyFormLoader.load();
 */ /*
-            viewOnLine.setOnMousePressed(event -> {
-                contentPage.setContent(viewRoot);
+            viewOnLine.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(viewRoot);
+                }
             });
 
-            totalAttendanceTime.setOnMousePressed(event -> {
-                contentPage.setContent(totalRoot);
+            totalAttendanceTime.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(totalRoot);
+                }
             });
 
-            onDuty.setOnMousePressed(event -> {
-                contentPage.setContent(onDutyRoot);
+            onDuty.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(onDutyRoot);
+                }
             });
 
-            dutyForm.setOnMousePressed(event -> {
-                contentPage.setContent(dutyFormRoot);
+            dutyForm.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(dutyFormRoot);
+                }
             });
 */
         } catch (Exception exp) {

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseButton;
 import javafx.scene.text.Text;
 
 public class UserManagementPageController extends BaseViewController {
@@ -78,10 +79,12 @@ public class UserManagementPageController extends BaseViewController {
             searchResult.setContent(searchResultRoot);
             tabPane.getTabs().add(searchResult);
 
-            searchBtn.setOnMousePressed(event -> {
-                tabPane.getSelectionModel().select(searchResult);
-                name.setText("");
-                number.setText("");
+            searchBtn.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    tabPane.getSelectionModel().select(searchResult);
+                    name.setText("");
+                    number.setText("");
+                }
             });
 
         } catch (Exception exp) {

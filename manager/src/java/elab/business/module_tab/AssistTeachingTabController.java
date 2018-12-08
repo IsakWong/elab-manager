@@ -2,10 +2,12 @@ package elab.business.module_tab;
 
 import com.jfoenix.controls.JFXButton;
 import elab.application.BaseViewController;
+import elab.business.assist_teaching_function_controllers.ViewSelectCoursesInformationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 
 public class AssistTeachingTabController extends BaseViewController {
 
@@ -36,8 +38,10 @@ public class AssistTeachingTabController extends BaseViewController {
 
         try {
 
-            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource("/view_select_courses_information_page.fxml"));
+            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource("/view_select_courses_information_page/view_select_courses_information_page.fxml"));
             viewRoot = viewLoader.load();
+            ViewSelectCoursesInformationController viewSelectCoursesInformationController = viewLoader.getController();
+            viewSelectCoursesInformationController.initializeController();
 /*
             FXMLLoader inputLoader = new FXMLLoader(getClass().getResource(""));
             inputRoot = inputLoader.load();
@@ -56,28 +60,40 @@ public class AssistTeachingTabController extends BaseViewController {
 */
             contentPage.setContent(viewRoot);
 
-            viewSelectCoursesInformation.setOnMousePressed(event -> {
-                contentPage.setContent(viewRoot);
+            viewSelectCoursesInformation.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(viewRoot);
+                }
             });
 /*
-            inputGrade.setOnMousePressed(event -> {
-                contentPage.setContent(inputRoot);
+            inputGrade.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(inputRoot);
+                }
             });
 
-            attendanceRecord.setOnMousePressed(event -> {
-                contentPage.setContent(attendanceRecordRoot);
+            attendanceRecord.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(attendanceRecordRoot);
+                }
             });
 
-            dataProcessing.setOnMousePressed(event -> {
-                contentPage.setContent(dataRoot);
+            dataProcessing.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(dataRoot);
+                }
             });
 
-            attendanceInTheoryClass.setOnMousePressed(event -> {
-                contentPage.setContent(attendanceInTheoryClassRoot);
+            attendanceInTheoryClass.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(attendanceInTheoryClassRoot);
+                }
             });
 
-            autoFill.setOnMousePressed(event -> {
-                contentPage.setContent(autoRoot);
+            autoFill.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(autoRoot);
+                }
             });
 */
         } catch (Exception exp) {

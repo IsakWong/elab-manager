@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 
 public class SystemControlTabController extends BaseViewController {
 
@@ -48,24 +49,34 @@ public class SystemControlTabController extends BaseViewController {
             FXMLLoader importLoader = new FXMLLoader(getClass().getResource(""));
             this.importRoot = importLoader.load();
 */ /*
-            logInformation.setOnMousePressed(event -> {
-                contentPage.setContent(logRoot);
+            logInformation.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(logRoot);
+                }
             });
 
-            timeOfNoCourses.setOnMousePressed(event -> {
-                contentPage.setContent(timeRoot);
+            timeOfNoCourses.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(timeRoot);
+                }
             });
 
-            reviseAdmin.setOnMousePressed(event -> {
-                contentPage.setContent(reviseRoot);
+            reviseAdmin.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(reviseRoot);
+                }
             });
 
-            remoteControlOfTheLAN.setOnMousePressed(event -> {
-                contentPage.setContent(remoteRoot);
+            remoteControlOfTheLAN.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(remoteRoot);
+                }
             });
 
-            importInformation.setOnMousePressed(event -> {
-                contentPage.setContent(importRoot);
+            importInformation.setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY) {
+                    contentPage.setContent(importRoot);
+                }
             });
 */
         } catch (Exception exp) {

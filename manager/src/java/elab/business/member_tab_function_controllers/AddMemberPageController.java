@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -144,75 +145,86 @@ public class AddMemberPageController extends BaseViewController {
             }
         });
 
-        returnButton.setOnMousePressed(event -> {
-            numberInputField.setText("");
-            numberInputField.setUnFocusColor(unFocusColor);
-            userInputField.setText("");
-            userInputField.setUnFocusColor(unFocusColor);
-            nameInputField.setText("");
-            nameInputField.setUnFocusColor(unFocusColor);
-            sexChoose_man.setSelected(true);
-            sexChoose_woman.setSelected(false);
-            pwdInputField.setText("");
-            pwdInputField.setUnFocusColor(unFocusColor);
-            pwdOK.setVisible(false);
-            twicePwdInputField.setText("");
-            twicePwdInputField.setUnFocusColor(unFocusColor);
-            twicePwdOK.setVisible(false);
-            collegeChooseBox.setValue(label);
-            groupChooseBox.setValue(elabel);
-            telInputField.setText("");
-            telInputField.setUnFocusColor(unFocusColor);
+        returnButton.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                numberInputField.setText("");
+                numberInputField.setUnFocusColor(unFocusColor);
+                userInputField.setText("");
+                userInputField.setUnFocusColor(unFocusColor);
+                nameInputField.setText("");
+                nameInputField.setUnFocusColor(unFocusColor);
+                sexChoose_man.setSelected(true);
+                sexChoose_woman.setSelected(false);
+                pwdInputField.setText("");
+                pwdInputField.setUnFocusColor(unFocusColor);
+                pwdOK.setVisible(false);
+                twicePwdInputField.setText("");
+                twicePwdInputField.setUnFocusColor(unFocusColor);
+                twicePwdOK.setVisible(false);
+                collegeChooseBox.setValue(label);
+                groupChooseBox.setValue(elabel);
+                telInputField.setText("");
+                telInputField.setUnFocusColor(unFocusColor);
+            }
         });
 
-        logButton.setOnMousePressed(event -> {
-            boolean allMessageCkecked = true;
-            if (numberInputField.getText().equals("")) {
-                allMessageCkecked = false;
-                numberInputField.setUnFocusColor(Color.RED);
+        logButton.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                boolean allMessageCkecked = true;
+                if (numberInputField.getText().equals("")) {
+                    allMessageCkecked = false;
+                    numberInputField.setUnFocusColor(Color.RED);
+                }
+                if (userInputField.getText().equals("")) {
+                    allMessageCkecked = false;
+                    userInputField.setUnFocusColor(Color.RED);
+                }
+                if (nameInputField.getText().equals("")) {
+                    allMessageCkecked = false;
+                    nameInputField.setUnFocusColor(Color.RED);
+                }
+                if (pwdInputField.getText().equals("")) {
+                    allMessageCkecked = false;
+                    pwdInputField.setUnFocusColor(Color.RED);
+                }
+                if (twicePwdInputField.getText().equals("")) {
+                    allMessageCkecked = false;
+                    twicePwdInputField.setUnFocusColor(Color.RED);
+                }
+                if (telInputField.getText().equals("")) {
+                    allMessageCkecked = false;
+                    telInputField.setUnFocusColor(Color.RED);
+                }
+                if (!allMessageCkecked) {
+                    popMessage("请查看信息填写是否完整");
+                } else {
+                    System.out.println("Successfully add a new member!");
+                }
             }
-            if (userInputField.getText().equals("")) {
-                allMessageCkecked = false;
-                userInputField.setUnFocusColor(Color.RED);
-            }
-            if (nameInputField.getText().equals("")) {
-                allMessageCkecked = false;
-                nameInputField.setUnFocusColor(Color.RED);
-            }
-            if (pwdInputField.getText().equals("")) {
-                allMessageCkecked = false;
-                pwdInputField.setUnFocusColor(Color.RED);
-            }
-            if (twicePwdInputField.getText().equals("")) {
-                allMessageCkecked = false;
-                twicePwdInputField.setUnFocusColor(Color.RED);
-            }
-            if (telInputField.getText().equals("")) {
-                allMessageCkecked = false;
-                telInputField.setUnFocusColor(Color.RED);
-            }
-            if(!allMessageCkecked) {
-                popMessage("请查看信息填写是否完整");
-            }
-            else {
-                System.out.println("Successfully add a new member!");
-            }
+        });
 
-            numberInputField.setOnMousePressed(event1 -> {
+        numberInputField.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
                 numberInputField.setUnFocusColor(unFocusColor);
-            });
+            }
+        });
 
-            userInputField.setOnMousePressed(event1 -> {
+        userInputField.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
                 userInputField.setUnFocusColor(unFocusColor);
-            });
+            }
+        });
 
-            nameInputField.setOnMousePressed(event1 -> {
+        nameInputField.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
                 nameInputField.setUnFocusColor(unFocusColor);
-            });
+            }
+        });
 
-            telInputField.setOnMousePressed(event1 -> {
+        telInputField.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
                 telInputField.setUnFocusColor(unFocusColor);
-            });
+            }
         });
     }
 }
