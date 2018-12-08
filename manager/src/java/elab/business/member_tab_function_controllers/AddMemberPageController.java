@@ -8,7 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
+import javafx.scene.paint.Paint;
 
 public class AddMemberPageController extends BaseViewController {
 
@@ -43,10 +43,10 @@ public class AddMemberPageController extends BaseViewController {
     @FXML
     private AnchorPane container;
 
-    Border redBorder = new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
-
     Label label = new Label("电子信息与电气工程学部");
     Label elabel = new Label("电子组");
+
+    Paint unFocusColor;
 
     public void popMessage(String message) {
         JFXSnackbar bar = new JFXSnackbar(container);
@@ -56,6 +56,8 @@ public class AddMemberPageController extends BaseViewController {
 
     @Override
     public void initializeController() {
+
+        unFocusColor = pwdInputField.getUnFocusColor();
 
         sexChoose_man.setOnAction(event -> {
             sexChoose_woman.setSelected(!sexChoose_man.isSelected());
@@ -88,13 +90,13 @@ public class AddMemberPageController extends BaseViewController {
         pwdInputField.focusedProperty().addListener(event -> {
             if(!pwdInputField.isFocused()) {
                 if(pwdInputField.getText().equals("")) {
-                    pwdInputField.setBorder(redBorder);
+                    pwdInputField.setUnFocusColor(Color.RED);
                     popMessage("密码不能为空");
                     pwdOK.setVisible(false);
                 }
                 else if(!twicePwdInputField.getText().equals("")) {
                     if(!twicePwdInputField.getText().equals(pwdInputField.getText())) {
-                        twicePwdInputField.setBorder(redBorder);
+                        twicePwdInputField.setUnFocusColor(Color.RED);
                         pwdOK.setVisible(true);
                         twicePwdOK.setVisible(false);
                         popMessage("两次输入的密码不一致");
@@ -102,7 +104,7 @@ public class AddMemberPageController extends BaseViewController {
                     else {
                         pwdOK.setVisible(true);
                         twicePwdOK.setVisible(true);
-                        twicePwdInputField.setBorder(null);
+                        twicePwdInputField.setUnFocusColor(unFocusColor);
                     }
                 }
                 else {
@@ -110,20 +112,20 @@ public class AddMemberPageController extends BaseViewController {
                 }
             }
             else {
-                pwdInputField.setBorder(null);
+                pwdInputField.setUnFocusColor(unFocusColor);
             }
         });
 
         twicePwdInputField.focusedProperty().addListener(event -> {
             if(!twicePwdInputField.isFocused()) {
                 if(pwdInputField.getText().equals("")) {
-                    pwdInputField.setBorder(redBorder);
+                    pwdInputField.setUnFocusColor(Color.RED);
                     popMessage("密码不能为空");
                     pwdOK.setVisible(false);
                     twicePwdOK.setVisible(false);
                 }
                 else if(twicePwdInputField.getText().equals("")) {
-                    twicePwdInputField.setBorder(redBorder);
+                    twicePwdInputField.setUnFocusColor(Color.RED);
                     twicePwdOK.setVisible(false);
                     popMessage("请再次输入密码");
                 }
@@ -132,62 +134,62 @@ public class AddMemberPageController extends BaseViewController {
                     twicePwdOK.setVisible(true);
                 }
                 else {
-                    twicePwdInputField.setBorder(redBorder);
+                    twicePwdInputField.setUnFocusColor(Color.RED);
                     twicePwdOK.setVisible(false);
                     popMessage("两次输入的密码不一致");
                 }
             }
             else {
-                twicePwdInputField.setBorder(null);
+                twicePwdInputField.setUnFocusColor(unFocusColor);
             }
         });
 
         returnButton.setOnMousePressed(event -> {
             numberInputField.setText("");
-            numberInputField.setBorder(null);
+            numberInputField.setUnFocusColor(unFocusColor);
             userInputField.setText("");
-            userInputField.setBorder(null);
+            userInputField.setUnFocusColor(unFocusColor);
             nameInputField.setText("");
-            nameInputField.setBorder(null);
+            nameInputField.setUnFocusColor(unFocusColor);
             sexChoose_man.setSelected(true);
             sexChoose_woman.setSelected(false);
             pwdInputField.setText("");
-            pwdInputField.setBorder(null);
+            pwdInputField.setUnFocusColor(unFocusColor);
             pwdOK.setVisible(false);
             twicePwdInputField.setText("");
-            twicePwdInputField.setBorder(null);
+            twicePwdInputField.setUnFocusColor(unFocusColor);
             twicePwdOK.setVisible(false);
             collegeChooseBox.setValue(label);
             groupChooseBox.setValue(elabel);
             telInputField.setText("");
-            telInputField.setBorder(null);
+            telInputField.setUnFocusColor(unFocusColor);
         });
 
         logButton.setOnMousePressed(event -> {
             boolean allMessageCkecked = true;
             if (numberInputField.getText().equals("")) {
                 allMessageCkecked = false;
-                numberInputField.setBorder(redBorder);
+                numberInputField.setUnFocusColor(Color.RED);
             }
             if (userInputField.getText().equals("")) {
                 allMessageCkecked = false;
-                userInputField.setBorder(redBorder);
+                userInputField.setUnFocusColor(Color.RED);
             }
             if (nameInputField.getText().equals("")) {
                 allMessageCkecked = false;
-                nameInputField.setBorder(redBorder);
+                nameInputField.setUnFocusColor(Color.RED);
             }
             if (pwdInputField.getText().equals("")) {
                 allMessageCkecked = false;
-                pwdInputField.setBorder(redBorder);
+                pwdInputField.setUnFocusColor(Color.RED);
             }
             if (twicePwdInputField.getText().equals("")) {
                 allMessageCkecked = false;
-                twicePwdInputField.setBorder(redBorder);
+                twicePwdInputField.setUnFocusColor(Color.RED);
             }
             if (telInputField.getText().equals("")) {
                 allMessageCkecked = false;
-                telInputField.setBorder(redBorder);
+                telInputField.setUnFocusColor(Color.RED);
             }
             if(!allMessageCkecked) {
                 popMessage("请查看信息填写是否完整");
@@ -197,19 +199,19 @@ public class AddMemberPageController extends BaseViewController {
             }
 
             numberInputField.setOnMousePressed(event1 -> {
-                numberInputField.setBorder(null);
+                numberInputField.setUnFocusColor(unFocusColor);
             });
 
             userInputField.setOnMousePressed(event1 -> {
-                userInputField.setBorder(null);
+                userInputField.setUnFocusColor(unFocusColor);
             });
 
             nameInputField.setOnMousePressed(event1 -> {
-                nameInputField.setBorder(null);
+                nameInputField.setUnFocusColor(unFocusColor);
             });
 
             telInputField.setOnMousePressed(event1 -> {
-                telInputField.setBorder(null);
+                telInputField.setUnFocusColor(unFocusColor);
             });
         });
     }
