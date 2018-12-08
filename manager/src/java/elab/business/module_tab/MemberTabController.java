@@ -42,24 +42,28 @@ public class MemberTabController extends BaseViewController {
             //加载文件
 
             FXMLLoader userManagementLoader = new FXMLLoader(getClass().getResource("/user_management_page.fxml"));
-            this.userManagementRoot = userManagementLoader.load();
+            userManagementRoot = userManagementLoader.load();
             UserManagementPageController userManagementPageController = userManagementLoader.getController();
             userManagementPageController.initializeController();
 
             FXMLLoader addMemberLoader = new FXMLLoader(getClass().getResource("/add_member_page.fxml"));
-            this.addMemberRoot = addMemberLoader.load();
+            addMemberRoot = addMemberLoader.load();
             AddMemberPageController addMemberPageController = addMemberLoader.getController();
             addMemberPageController.initializeController();
 
             FXMLLoader personalInformationLoader = new FXMLLoader(getClass().getResource("/personal_information_page.fxml"));
-            this.personalInformationRoot = personalInformationLoader.load();
+            personalInformationRoot = personalInformationLoader.load();
             PersonalInformationPageController personalInformationPageController = personalInformationLoader.getController();
             //personalInformationPageController.initializeController();
 
             FXMLLoader freeTimeLoader = new FXMLLoader(getClass().getResource("/free_time_page/free_time_collect_page.fxml"));
-            this.freeTimeRoot = freeTimeLoader.load();
+            freeTimeRoot = freeTimeLoader.load();
             FreeTimeCollectPageController freeTimeCollectPageController = freeTimeLoader.getController();
             freeTimeCollectPageController.initializeController();
+
+            //设置初始页面
+
+            contentPage.setContent(userManagementRoot);
 
             //按钮事件
 

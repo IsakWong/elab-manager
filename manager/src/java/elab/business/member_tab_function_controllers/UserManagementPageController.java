@@ -28,10 +28,38 @@ public class UserManagementPageController extends BaseViewController {
     @FXML
     private JFXTabPane tabPane;
 
+    Label label = new Label("电子信息与电气工程学部");
+
+    Tab searchResult = new Tab("搜索结果");
+
     @Override
     public void initializeController() {
 
         try {
+
+            member.setOnAction(event -> {
+                student.setSelected(!member.isSelected());
+            });
+            member.setSelected(true);
+
+            student.setOnAction(event -> {
+                member.setSelected(!student.isSelected());
+            });
+
+            college.getItems().addAll(
+                    label,
+                    new Label("化学与环境生命学部"),
+                    new Label("建设工程学部"),
+                    new Label("运载工程与力学学部"),
+                    new Label("机械工程与材料能源学部"),
+                    new Label("管理与经济学部"),
+                    new Label("人文与社会科学学部"),
+                    new Label("建筑与艺术学院"),
+                    new Label("外国语学院"),
+                    new Label("物理学院"),
+                    new Label("数学科学学院")
+            );
+            college.setValue(label);
 
             Tab memberTab = new Tab("科中成员");
             FXMLLoader memberInformationLoader = new FXMLLoader(getClass().getResource("/member_tab_page_fxml_files/member_information_page.fxml"));
@@ -45,11 +73,16 @@ public class UserManagementPageController extends BaseViewController {
             studentTab.setContent(studentInformationRoot);
             tabPane.getTabs().add(studentTab);
 
-            Tab searchResult = new Tab("搜索结果");
             FXMLLoader searchResultLoader = new FXMLLoader(getClass().getResource("/member_tab_page_fxml_files/search_result_page.fxml"));
             Parent searchResultRoot = searchResultLoader.load();
             searchResult.setContent(searchResultRoot);
             tabPane.getTabs().add(searchResult);
+
+            searchBtn.setOnMousePressed(event -> {
+                tabPane.getSelectionModel().select(searchResult);
+                name.setText("");
+                number.setText("");
+            });
 
         } catch (Exception exp) {
             System.out.println(exp.toString());

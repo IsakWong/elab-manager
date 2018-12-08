@@ -35,29 +35,31 @@ public class AssistTeachingTabController extends BaseViewController {
     public void initializeController() {
 
         try {
-/*
-            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource(""));
-            this.viewRoot = viewLoader.load();
 
+            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource("/view_select_courses_information_page.fxml"));
+            viewRoot = viewLoader.load();
+/*
             FXMLLoader inputLoader = new FXMLLoader(getClass().getResource(""));
-            this.inputRoot = inputLoader.load();
+            inputRoot = inputLoader.load();
 
             FXMLLoader attendanceRecordLoader = new FXMLLoader(getClass().getResource(""));
-            this.attendanceRecordRoot = attendanceRecordLoader.load();
+            attendanceRecordRoot = attendanceRecordLoader.load();
 
             FXMLLoader dataLoader = new FXMLLoader(getClass().getResource(""));
-            this.dataRoot = dataLoader.load();
+            dataRoot = dataLoader.load();
 
             FXMLLoader attendanceInTheoryClassLoader = new FXMLLoader(getClass().getResource(""));
-            this.attendanceInTheoryClassRoot = attendanceInTheoryClassLoader.load();
+            attendanceInTheoryClassRoot = attendanceInTheoryClassLoader.load();
 
             FXMLLoader autoLoader = new FXMLLoader(getClass().getResource(""));
-            this.autoRoot = autoLoader.load();
-*/ /*
+            autoRoot = autoLoader.load();
+*/
+            contentPage.setContent(viewRoot);
+
             viewSelectCoursesInformation.setOnMousePressed(event -> {
                 contentPage.setContent(viewRoot);
             });
-
+/*
             inputGrade.setOnMousePressed(event -> {
                 contentPage.setContent(inputRoot);
             });

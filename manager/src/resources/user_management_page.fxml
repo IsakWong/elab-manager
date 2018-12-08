@@ -10,7 +10,7 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="560.0">
          <children>
-            <AnchorPane prefHeight="100.0" prefWidth="110.0" />
+            <AnchorPane prefHeight="151.0" prefWidth="112.0" />
             <VBox alignment="CENTER_RIGHT" prefHeight="151.0" prefWidth="36.0">
                <children>
                   <Label prefHeight="23.0" text="学号">
@@ -25,7 +25,7 @@
                   </Label>
                   <Label prefHeight="23.0" text="院系">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets bottom="5.0" top="10.0" />
                      </VBox.margin>
                   </Label>
                </children>
@@ -33,22 +33,22 @@
                   <Insets right="4.0" />
                </padding>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="198.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="151.0" prefWidth="233.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <children>
-                  <JFXTextField fx:id="number">
+                  <JFXTextField fx:id="number" maxWidth="-Infinity" prefWidth="200.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="7.0" />
                      </VBox.margin></JFXTextField>
-                  <JFXTextField fx:id="name">
+                  <JFXTextField fx:id="name" maxWidth="-Infinity" prefWidth="200.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="10.0" top="7.0" />
                      </VBox.margin></JFXTextField>
-                  <JFXComboBox fx:id="college" prefHeight="23.0" prefWidth="200.0">
+                  <JFXComboBox fx:id="college" prefHeight="30.0" prefWidth="230.0" stylesheets="@css/controls_style.css">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="3.0" />
                      </VBox.margin>
                   </JFXComboBox>
                </children>
