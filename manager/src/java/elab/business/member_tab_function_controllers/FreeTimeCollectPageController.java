@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -186,9 +187,10 @@ public class FreeTimeCollectPageController extends BaseViewController {
             });
         }
 
-        save.setOnMousePressed(event -> {
-            System.out.println(questionBoard.getText());
-
+        save.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                System.out.println(questionBoard.getText());
+            }
         });
     }
 }
