@@ -21,7 +21,9 @@ public class DatabaseOperations {
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
             //创建Session实例
             session = sqlSessionFactory.openSession();
-        } catch (IOException e) {
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
