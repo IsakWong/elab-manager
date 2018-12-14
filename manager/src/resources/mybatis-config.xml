@@ -8,14 +8,14 @@
         <environment id="mysql_developer">
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://yespace.xyz:3306"/>
-                <property name="username" value="$elab"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://yespace.xyz:3306/student"/>
+                <property name="username" value="elab"/>
                 <property name="password" value="elab123456"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="sqlmap/User.xml"/>
+        <mapper resource="elab/serialization/sqlmap/member.xml"/>
     </mappers>
 </configuration>

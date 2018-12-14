@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
+import elab.database.DatabaseOperations;
 import elab.serialization.module.Module;
 import elab.utility.Utilities;
 import javafx.event.ActionEvent;
@@ -142,6 +143,9 @@ public class LoginWindowController extends BaseViewController {
                 y_stage = ElabManagerApplication.primaryStage.getY();
             }
         });
+
+        DatabaseOperations databaseOperations = new DatabaseOperations();
+        databaseOperations.build();
 
     }
 

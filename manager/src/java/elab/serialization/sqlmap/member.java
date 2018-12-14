@@ -1,6 +1,6 @@
 package elab.serialization.sqlmap;
 
-public class User {
+public class member {
     private int id;
     private String username;
     private String name;
@@ -58,7 +58,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", usermane=" + username + ", name=" + name + ", " +
+        return "member [id=" + id + ", usermane=" + username + ", name=" + name + ", " +
                 "sex=" + sex + ", password=" + password + ", tel=" + tel + "]";
     }
 }
