@@ -20,6 +20,6 @@
 
     </environments>
     <mappers>
-        <mapper resource="elab/serialization/student/StudentMapper.xml "/>
+        <mapper resource="elab/serialization/member/member.xml "/>
     </mappers>
 </configuration>

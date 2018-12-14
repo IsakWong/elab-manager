@@ -1,6 +1,7 @@
 package elab.database;
 
-import elab.serialization.sqlmap.member;
+import elab.serialization.member.LoginMessage;
+import elab.serialization.member.Member;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -9,29 +10,43 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.Reader;
 
 public class DatabaseOperations {
-    private SqlSessionFactory sqlSessionFactory;
 
-    private SqlSession session;
+    private static SqlSessionFactory sqlSessionFactory = null;
 
     public void build() {
         try {
             //读取mybatis-config.xml文件
-            Reader resourceAsStream = Resources.getResourceAsReader("mybatis-config.xml");
+            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             //初始化mybatis,创建SqlSessionFactory类的实例
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
-            //创建Session实例
-            session = sqlSessionFactory.openSession();
-
-            member member = session.selectOne("member.findAllByNumber", 201782019);
-
-            System.out.println(member);
-
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
         }
+    }
+
+    public SqlSession getSession() {
+        return sqlSessionFactory.openSession();
+    }
+
+    public void selectNumber(int number) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", number);
+            System.out.println(loginMessage);
+        } finally {
+            session.close();
+        }
+    }
+
+    public void insertMember(Member member) {
+
+    }
+
+    public void update() {
+
+    }
+
+    public void delete(){
+
     }
 }

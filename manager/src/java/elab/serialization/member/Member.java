@@ -1,6 +1,7 @@
-package elab.serialization.sqlmap;
+package elab.serialization.member;
 
-public class member {
+public class Member {
+
     private int number;
     private String username;
     private String name;
@@ -131,5 +132,8 @@ public class member {
     @Override
     public String toString() {
         return number + " " + username + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistTeachingAmount + " " + freeTimeRemark;
+    }
+
+    public Member() {
     }
 }

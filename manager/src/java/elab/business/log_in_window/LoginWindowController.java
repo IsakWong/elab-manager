@@ -9,8 +9,11 @@ import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
+import elab.serialization.member.LoginMessage;
 import elab.serialization.module.Module;
 import elab.utility.Utilities;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.ibatis.session.SqlSession;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -52,7 +56,6 @@ public class LoginWindowController extends BaseViewController {
     private double y1;
     private double x_stage;
     private double y_stage;
-
 
     public void loadModuleSettings(String toLoadModulesName) {
         Gson gson = new Gson();
@@ -95,11 +98,23 @@ public class LoginWindowController extends BaseViewController {
 
     @Override
     public void initializeController() {
+
+        DatabaseOperations databaseOperations = new DatabaseOperations();
+        databaseOperations.build();
+
         userInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
                 pwdInputField.requestFocus();
         });
-
+/*
+        userInputField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                LoginMessageSelectThread loginMessageSelectThread = new LoginMessageSelectThread();
+                loginMessageSelectThread.run();
+            }
+        });
+*/
         pwdInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
                 if (isUserValidated()) {
@@ -108,6 +123,11 @@ public class LoginWindowController extends BaseViewController {
         });
 
         logButton.setOnAction(event -> {
+            DatabaseOperations operation = new DatabaseOperations();
+            SqlSession session = operation.getSession();
+            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
+            System.out.println(loginMessage);
+            session.close();
             if (isUserValidated()) {
                 ElabManagerApplication.primaryStage.close();
                 showMainWindow();
@@ -115,12 +135,12 @@ public class LoginWindowController extends BaseViewController {
         });
 
         closeBtn.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY)
                 ElabManagerApplication.primaryStage.close();
         });
 
         minBtn.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 Stage stage = (Stage) minBtn.getScene().getWindow();
                 stage.setIconified(true);
             }
@@ -128,7 +148,7 @@ public class LoginWindowController extends BaseViewController {
 
         //Drag Event
         topBar.setOnMouseDragged(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 ElabManagerApplication.primaryStage.setX(x_stage + event.getScreenX() - x1);
                 ElabManagerApplication.primaryStage.setY(y_stage + event.getScreenY() - y1);
             }
@@ -136,17 +156,23 @@ public class LoginWindowController extends BaseViewController {
 
         topBar.setOnMousePressed(event -> {
             //按下鼠标后，记录当前鼠标的坐标
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 x1 = event.getScreenX();
                 y1 = event.getScreenY();
                 x_stage = ElabManagerApplication.primaryStage.getX();
                 y_stage = ElabManagerApplication.primaryStage.getY();
             }
         });
-
-        DatabaseOperations databaseOperations = new DatabaseOperations();
-        databaseOperations.build();
-
     }
+/*
+    class LoginMessageSelectThread extends Thread {
 
+        public void run() {
+            DatabaseOperations databaseOperations = new DatabaseOperations();
+            SqlSession session = databaseOperations.getSession();
+            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
+            System.out.println(loginMessage);
+            session.close();
+        }
+    }*/
 }

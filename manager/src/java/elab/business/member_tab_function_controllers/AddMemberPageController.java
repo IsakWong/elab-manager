@@ -198,7 +198,7 @@ public class AddMemberPageController extends BaseViewController {
                 if (!allMessageCkecked) {
                     popMessage("请查看信息填写是否完整");
                 } else {
-                    System.out.println("Successfully add a new member!");
+                    System.out.println("Successfully add a new Member!");
                 }
             }
         });

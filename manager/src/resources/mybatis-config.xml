@@ -16,6 +16,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="elab/serialization/sqlmap/member.xml"/>
+        <mapper resource="elab/serialization/member/member.xml"/>
     </mappers>
 </configuration>
