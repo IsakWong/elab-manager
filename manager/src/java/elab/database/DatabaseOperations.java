@@ -22,7 +22,7 @@ public class DatabaseOperations {
             //创建Session实例
             session = sqlSessionFactory.openSession();
 
-            member member = session.selectOne("test.findMemberByUserName", "asd");
+            member member = session.selectOne("member.findAllByNumber", 201782019);
 
             System.out.println(member);
 

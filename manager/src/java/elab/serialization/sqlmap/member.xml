@@ -2,8 +2,30 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="test">
-    <select id="findMemberByUserName" parameterType="string" resultType="elab.serialization.sqlmap.member">
+<mapper namespace="member">
+    <select id="findAllByNumber" parameterType="int" resultType="elab.serialization.sqlmap.member">
+        select
+            学号 as "number",
+            USERNAME as "username",
+            姓名 as "name",
+            性别 as "sex",
+            院系 as "college",
+            组别 as "group",
+            电话 as "tel",
+            职务 as "duty",
+            年级 as "grade",
+            座右铭 as "motto",
+            密码 as "password",
+            主讲 as "teachingAmount",
+            助课 as "assistTeachingAmount",
+            备注 as "freeTimeRemark"
+        from member
+        where 学号 = #{id}
+    </select>
+    <select id="findUserName" parameterType="string" resultType="elab.serialization.sqlmap.member">
         select * from member where USERNAME = #{id}
+    </select>
+    <select id="findNumber" parameterType="int" resultType="elab.serialization.sqlmap.member">
+        select * from member where 学号 = #{id}
     </select>
 </mapper>

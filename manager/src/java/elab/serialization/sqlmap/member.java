@@ -1,19 +1,27 @@
 package elab.serialization.sqlmap;
 
 public class member {
-    private int id;
+    private int number;
     private String username;
     private String name;
     private String sex;
+    private String college;
+    private String group;
+    private String tel;
+    private String duty;
+    private String grade;
+    private String motto;
     private String password;
-    private int tel;
+    private int teachingAmount;
+    private int assistTeachingAmount;
+    private String freeTimeRemark;
 
     public int getId() {
-        return id;
+        return number;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int number) {
+        this.number = number;
     }
 
     public String getUsername() {
@@ -40,6 +48,54 @@ public class member {
         this.sex = sex;
     }
 
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getDuty() {
+        return duty;
+    }
+
+    public void setDuty(String duty) {
+        this.duty = duty;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getMotto() {
+        return motto;
+    }
+
+    public void setMotto(String motto) {
+        this.motto = motto;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -48,17 +104,32 @@ public class member {
         this.password = password;
     }
 
-    public int getTel() {
-        return tel;
+    public int getTeachingAmount() {
+        return teachingAmount;
     }
 
-    public void setTel(int tel) {
-        this.tel = tel;
+    public void setTeachingAmount(int teachingAmount) {
+        this.teachingAmount = teachingAmount;
+    }
+
+    public int getAssistTeachingAmount() {
+        return assistTeachingAmount;
+    }
+
+    public void setAssistTeachingAmount(int assistTeachingAmount) {
+        this.assistTeachingAmount = assistTeachingAmount;
+    }
+
+    public String getFreeTimeRemark() {
+        return freeTimeRemark;
+    }
+
+    public void setFreeTimeRemark(String freeTimeRemark) {
+        this.freeTimeRemark = freeTimeRemark;
     }
 
     @Override
     public String toString() {
-        return "member [id=" + id + ", usermane=" + username + ", name=" + name + ", " +
-                "sex=" + sex + ", password=" + password + ", tel=" + tel + "]";
+        return number + " " + username + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistTeachingAmount + " " + freeTimeRemark;
     }
 }
