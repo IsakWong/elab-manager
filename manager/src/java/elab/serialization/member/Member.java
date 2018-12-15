@@ -1,6 +1,10 @@
 package elab.serialization.member;
 
+import java.util.ArrayList;
+
 public class Member {
+
+    private static ArrayList<Member> members;
 
     private int number;
     private String username;

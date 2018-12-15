@@ -4,13 +4,10 @@ import com.jfoenix.controls.*;
 import elab.application.BaseViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
-import javafx.scene.text.Text;
 
 public class UserManagementPageController extends BaseViewController {
 

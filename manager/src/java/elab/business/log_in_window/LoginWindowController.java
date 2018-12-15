@@ -10,12 +10,10 @@ import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
 import elab.serialization.member.LoginMessage;
+import elab.serialization.member.Member;
 import elab.serialization.module.Module;
+import elab.util.Encryptioner;
 import elab.utility.Utilities;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,19 +21,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.apache.ibatis.session.SqlSession;
+import sun.nio.cs.ArrayEncoder;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class LoginWindowController extends BaseViewController {
+
+    private Encryptioner encryptioner = new Encryptioner();
 
     @FXML
     private HBox topBar;
@@ -82,15 +81,33 @@ public class LoginWindowController extends BaseViewController {
 
     }
 
+    public boolean isPwdValidated(int number, String password) {
+        DatabaseOperations operation = new DatabaseOperations();
+        SqlSession session = operation.getSession();
+        LoginMessage loginMessage;
+        loginMessage = session.selectOne("member.findLoginMessage", number);
+        if(loginMessage == null) {
+            session.close();
+            return false;
+        } else if(!encryptioner.encrypt(password).equals(loginMessage.getPassword())) {
+            session.close();
+            return false;
+        }
+        return true;
+    }
+
     public void popMessage(String message) {
         JFXSnackbar bar = new JFXSnackbar(container);
         JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
         bar.enqueue(event);
     }
 
-    public boolean isUserValidated() {
+    public boolean isUserValidated(int number, String password) {
         if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
             popMessage("用户名和密码不能为空");
+            return false;
+        } else if(isPwdValidated(number, password)) {
+            popMessage("用户名或密码错误");
             return false;
         } else
             return true;
@@ -106,30 +123,16 @@ public class LoginWindowController extends BaseViewController {
             if (event.getCode() == KeyCode.ENTER)
                 pwdInputField.requestFocus();
         });
-/*
-        userInputField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                LoginMessageSelectThread loginMessageSelectThread = new LoginMessageSelectThread();
-                loginMessageSelectThread.run();
-            }
-        });
-*/
+
         pwdInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
-                if (isUserValidated()) {
+                if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
                     showMainWindow();
                 }
         });
 
         logButton.setOnAction(event -> {
-            DatabaseOperations operation = new DatabaseOperations();
-            SqlSession session = operation.getSession();
-            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
-            System.out.println(loginMessage);
-            session.close();
-            if (isUserValidated()) {
-                ElabManagerApplication.primaryStage.close();
+            if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
                 showMainWindow();
             }
         });
@@ -171,6 +174,7 @@ public class LoginWindowController extends BaseViewController {
             DatabaseOperations databaseOperations = new DatabaseOperations();
             SqlSession session = databaseOperations.getSession();
             LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
+            ArrayList<Member> members = new ArrayList<>();
             System.out.println(loginMessage);
             session.close();
         }
