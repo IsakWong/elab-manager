@@ -1,10 +1,11 @@
 package elab.serialization.member;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.ArrayList;
 
+@Alias("member")
 public class Member {
-
-    private static ArrayList<Member> members;
 
     private int number;
     private String username;
@@ -18,22 +19,22 @@ public class Member {
     private String motto;
     private String password;
     private int teachingAmount;
-    private int assistTeachingAmount;
+    private int assistAmount;
     private String freeTimeRemark;
 
-    public int getId() {
+    public int getNumber() {
         return number;
     }
 
-    public void setId(int number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUserName(String username) {
         this.username = username;
     }
 
@@ -118,11 +119,11 @@ public class Member {
     }
 
     public int getAssistTeachingAmount() {
-        return assistTeachingAmount;
+        return assistAmount;
     }
 
     public void setAssistTeachingAmount(int assistTeachingAmount) {
-        this.assistTeachingAmount = assistTeachingAmount;
+        this.assistAmount = assistTeachingAmount;
     }
 
     public String getFreeTimeRemark() {
@@ -133,9 +134,12 @@ public class Member {
         this.freeTimeRemark = freeTimeRemark;
     }
 
+    //insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课,备注)
+    //values (number,username,name,sex,college,group,tel,duty,grade,motto,password,teachingAmount,assistAmount,freeTimeRemark)
+
     @Override
     public String toString() {
-        return number + " " + username + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistTeachingAmount + " " + freeTimeRemark;
+        return number + " " + username + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistAmount + " " + freeTimeRemark;
     }
 
     public Member() {

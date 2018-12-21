@@ -34,7 +34,10 @@ import java.util.ArrayList;
 
 public class LoginWindowController extends BaseViewController {
 
+    private DatabaseOperations operations = new DatabaseOperations();
     private Encryptioner encryptioner = new Encryptioner();
+
+    private LoginMessage loginMessage;
 
     @FXML
     private HBox topBar;
@@ -64,6 +67,12 @@ public class LoginWindowController extends BaseViewController {
         ElabManagerApplication.modulesArrayList = gson.fromJson(strJson, typeList);
     }
 
+    public void popMessage(String message) {
+        JFXSnackbar bar = new JFXSnackbar(container);
+        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
+        bar.enqueue(event);
+    }
+
     public void showMainWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_window.fxml"));
@@ -82,31 +91,20 @@ public class LoginWindowController extends BaseViewController {
     }
 
     public boolean isPwdValidated(int number, String password) {
-        DatabaseOperations operation = new DatabaseOperations();
-        SqlSession session = operation.getSession();
-        LoginMessage loginMessage;
-        loginMessage = session.selectOne("member.findLoginMessage", number);
+        loginMessage = operations.selectLoginMessage(number);
         if(loginMessage == null) {
-            session.close();
             return false;
         } else if(!encryptioner.encrypt(password).equals(loginMessage.getPassword())) {
-            session.close();
             return false;
         }
         return true;
-    }
-
-    public void popMessage(String message) {
-        JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
     }
 
     public boolean isUserValidated(int number, String password) {
         if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
             popMessage("用户名和密码不能为空");
             return false;
-        } else if(isPwdValidated(number, password)) {
+        } else if(!isPwdValidated(number, password)) {
             popMessage("用户名或密码错误");
             return false;
         } else
@@ -115,6 +113,10 @@ public class LoginWindowController extends BaseViewController {
 
     @Override
     public void initializeController() {
+
+        /**
+         * 加载数据库配置文件
+         */
 
         DatabaseOperations databaseOperations = new DatabaseOperations();
         databaseOperations.build();

@@ -1,16 +1,19 @@
 package elab.serialization.member;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("loginMessage")
 public class LoginMessage {
 
-    private int number;
-    private String password;
+    private static int number;
+    private static String password;
 
     public int getNumber() {
         return number;
     }
 
     public void setNumber(int number) {
-        this.number = number;
+        LoginMessage.number = number;
     }
 
     public String getPassword() {
@@ -18,7 +21,7 @@ public class LoginMessage {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        LoginMessage.password = password;
     }
 
     public String toString() {

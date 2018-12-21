@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <typeAliases>
+        <typeAlias alias="member" type="elab.serialization.member.Member"/>
+        <typeAlias alias="loginMessage" type="elab.serialization.member.LoginMessage"/>
+    </typeAliases>
     <environments default="mysql_developer">
         <environment id="mysql_developer">
             <transactionManager type="jdbc"/>
@@ -16,6 +20,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="elab/serialization/member/member.xml"/>
+        <mapper resource="database_mappers/member.xml"/>
     </mappers>
 </configuration>

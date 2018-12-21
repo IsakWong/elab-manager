@@ -2,6 +2,8 @@ package elab.business.member_tab_function_controllers;
 
 import com.jfoenix.controls.*;
 import elab.application.BaseViewController;
+import elab.database.DatabaseOperations;
+import elab.serialization.member.Member;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -53,6 +55,21 @@ public class AddMemberPageController extends BaseViewController {
         JFXSnackbar bar = new JFXSnackbar(container);
         JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
         bar.enqueue(event);
+    }
+
+    public void cleanMessage() {
+        numberInputField.setText("");
+        userInputField.setText("");
+        nameInputField.setText("");
+        sexChoose_man.setSelected(true);
+        sexChoose_woman.setSelected(false);
+        pwdInputField.setText("");
+        pwdOK.setVisible(false);
+        twicePwdInputField.setText("");
+        twicePwdOK.setVisible(false);
+        collegeChooseBox.setValue(label);
+        groupChooseBox.setValue(elabel);
+        telInputField.setText("");
     }
 
     @Override
@@ -147,23 +164,12 @@ public class AddMemberPageController extends BaseViewController {
 
         returnButton.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY) {
-                numberInputField.setText("");
+                cleanMessage();
                 numberInputField.setUnFocusColor(unFocusColor);
-                userInputField.setText("");
                 userInputField.setUnFocusColor(unFocusColor);
-                nameInputField.setText("");
                 nameInputField.setUnFocusColor(unFocusColor);
-                sexChoose_man.setSelected(true);
-                sexChoose_woman.setSelected(false);
-                pwdInputField.setText("");
                 pwdInputField.setUnFocusColor(unFocusColor);
-                pwdOK.setVisible(false);
-                twicePwdInputField.setText("");
                 twicePwdInputField.setUnFocusColor(unFocusColor);
-                twicePwdOK.setVisible(false);
-                collegeChooseBox.setValue(label);
-                groupChooseBox.setValue(elabel);
-                telInputField.setText("");
                 telInputField.setUnFocusColor(unFocusColor);
             }
         });
@@ -198,7 +204,24 @@ public class AddMemberPageController extends BaseViewController {
                 if (!allMessageCkecked) {
                     popMessage("请查看信息填写是否完整");
                 } else {
-                    System.out.println("Successfully add a new Member!");
+                    Member newMember = new Member();
+                    newMember.setNumber(Integer.parseInt(numberInputField.getText()));
+                    newMember.setUserName(userInputField.getText());
+                    newMember.setName(nameInputField.getText());
+                    if(sexChoose_man.isSelected())
+                        newMember.setSex("男");
+                    else
+                        newMember.setSex("女");
+                    newMember.setPassword(pwdInputField.getText());
+                    Label selectedLabel = (Label) collegeChooseBox.getValue();
+                    newMember.setCollege(selectedLabel.getText());
+                    selectedLabel = (Label) groupChooseBox.getValue();
+                    newMember.setGroup(selectedLabel.getText());
+                    newMember.setTel(telInputField.getText());
+                    DatabaseOperations operations = new DatabaseOperations();
+                    operations.insertMember(newMember);
+                    popMessage("新增成员成功!");
+                    cleanMessage();
                 }
             }
         });

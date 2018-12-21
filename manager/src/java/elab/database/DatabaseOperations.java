@@ -28,25 +28,52 @@ public class DatabaseOperations {
         return sqlSessionFactory.openSession();
     }
 
-    public void selectNumber(int number) {
+    public LoginMessage selectLoginMessage(int number) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             LoginMessage loginMessage = session.selectOne("member.findLoginMessage", number);
-            System.out.println(loginMessage);
+            return loginMessage;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Member selectMember(int number) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            Member member = session.selectOne("member.findMember", number);
+            System.out.println(member);
+            return member;
         } finally {
             session.close();
         }
     }
 
     public void insertMember(Member member) {
-
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            session.insert("member.insertMember", member);
+            session.commit();
+        } finally {
+            session.close();
+        }
     }
 
     public void update() {
-
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            session.commit();
+        } finally {
+            session.close();
+        }
     }
 
     public void delete(){
-
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            session.commit();
+        } finally {
+            session.close();
+        }
     }
 }
