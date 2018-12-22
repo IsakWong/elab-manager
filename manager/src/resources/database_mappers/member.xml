@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+    <select id="findMember" parameterType="int" resultType="member">
+        select
+            学号 as "number",
+            USERNAME as "username",
+            姓名 as "name",
+            性别 as "sex",
+            院系 as "college",
+            组别 as "group",
+            电话 as "tel",
+            职务 as "duty",
+            年级 as "grade",
+            座右铭 as "motto",
+            密码 as "password",
+            主讲 as "teachingAmount",
+            助课 as "assistAmount",
+            备注 as "freeTimeRemark"
+        from member
+        where 学号 = #{id}
+    </select>
+    <select id="findLoginMessage" parameterType="int" resultType="loginMessage">
+        select
+            学号 as "number",
+            密码 as "password"
+        from member
+        where 学号 = #{id}
+    </select>
+    <insert id="insertMember" parameterType="member">
+        insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课,备注)
+        values (#{number},#{username},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount},#{freeTimeRemark})
+    </insert>
+</mapper>

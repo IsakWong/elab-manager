@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.AddMemberPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.PersonalInformationPageController">
    <children>
       <VBox alignment="CENTER_LEFT" layoutX="366.0" prefHeight="700.0" prefWidth="634.0" stylesheets="@css/controls_style.css">
          <children>
@@ -39,40 +39,30 @@
                   <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
                <children>
                   <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
-                  <ImageView fx:id="pwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@ok16X16.jpg" />
-                     </image>
-                  </ImageView>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="200.0">
+            <HBox prefHeight="25.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
                <children>
                   <JFXPasswordField fx:id="twicePwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
-                  <ImageView fx:id="twicePwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@ok16X16.jpg" />
-                     </image>
-                  </ImageView>
                </children>
-               <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
-               </VBox.margin>
             </HBox>
-            <JFXComboBox fx:id="collegeChooseBox" prefHeight="23.0" prefWidth="300.0">
+            <JFXComboBox fx:id="collegeChooseBox" prefHeight="25.0" prefWidth="300.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="groupChooseBox" prefHeight="23.0" prefWidth="300.0">
+            <JFXComboBox fx:id="groupChooseBox" prefHeight="25.0" prefWidth="300.0">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </JFXComboBox>
             <JFXTextField fx:id="telInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefWidth="300.0">
@@ -80,9 +70,9 @@
                   <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
             </JFXTextField>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="266.0">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="342.0">
                <children>
-                  <JFXButton fx:id="logButton" text="录入">
+                  <JFXButton fx:id="returnButton" text="重置">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -90,15 +80,15 @@
                         <Insets bottom="8.0" left="32.0" right="32.0" top="8.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets left="10.0" right="56.0" />
+                        <Insets left="66.0" right="66.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="returnButton" text="重置">
+                  <JFXButton fx:id="PwdReturnButton" alignment="CENTER" prefWidth="92.0" text="密码重置">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <padding>
-                        <Insets bottom="8.0" left="32.0" right="32.0" top="8.0" />
+                        <Insets bottom="8.0" top="8.0" />
                      </padding>
                   </JFXButton>
                </children>
@@ -118,7 +108,7 @@
          <children>
             <Label alignment="CENTER" prefHeight="23.0" text="学号：">
                <VBox.margin>
-                  <Insets bottom="16.0" top="16.0" />
+                  <Insets bottom="16.0" top="38.0" />
                </VBox.margin>
             </Label>
             <Label alignment="CENTER" prefHeight="23.0" text="用户名：">
@@ -158,9 +148,20 @@
             </Label>
             <Label alignment="CENTER" prefHeight="23.0" text="联系电话：">
                <VBox.margin>
-                  <Insets bottom="38.0" top="16.0" />
+                  <Insets bottom="16.0" top="16.0" />
                </VBox.margin>
             </Label>
+            <JFXButton fx:id="logButton" text="更新">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets bottom="8.0" left="32.0" right="32.0" top="8.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="9.0" />
+               </VBox.margin>
+            </JFXButton>
          </children>
       </VBox>
    </children>

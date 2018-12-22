@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
@@ -7,18 +13,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.ModuleTabController">
+<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.MemberTabController">
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: #3F51B5;" stylesheets="@css/controls_style.css">
          <children>
-            <JFXButton fx:id="addUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="新加成员" textFill="WHITE">
+            <JFXButton fx:id="userManagement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="用户信息管理" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets bottom="16.0" top="16.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="addMember" layoutX="10.0" layoutY="61.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="新加成员" textFill="WHITE">
                <padding>
                   <Insets bottom="16.0" top="16.0" />
                </padding>
                <font>
                   <Font size="30.0" />
                </font></JFXButton>
-            <JFXButton fx:id="modifyInformation" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="修改成员信息" textFill="WHITE">
+            <JFXButton fx:id="personalInformation" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="个人信息管理" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
@@ -26,15 +40,7 @@
                   <Insets bottom="16.0" top="16.0" />
                </padding>
             </JFXButton>
-            <JFXButton fx:id="deleteUser" layoutX="10.0" layoutY="61.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="删除成员" textFill="WHITE">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <padding>
-                  <Insets bottom="16.0" top="16.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton fx:id="queryInformation" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="查询成员信息" textFill="WHITE">
+            <JFXButton fx:id="freeTimeCollect" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="空闲时间统计" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
@@ -44,6 +50,10 @@
             </JFXButton>
          </children>
       </VBox>
-      <ScrollPane fx:id="contentPage" hbarPolicy="NEVER" prefHeight="700.0" prefWidth="1000.0" vbarPolicy="NEVER" />
+      <ScrollPane fx:id="contentPage" prefHeight="700.0" prefWidth="1000.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
    </children>
 </HBox>

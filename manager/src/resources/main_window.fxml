@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
@@ -7,10 +14,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
+<VBox stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
    <children>
-       <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #303F9F;">
+       <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="1149.0" style="-fx-background-color: #303F9F;">
            <children>
+            <Label prefHeight="53.0" prefWidth="100.0" text="ELAB" textFill="WHITE">
+               <font>
+                  <Font size="41.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="1000.0" />
+               </HBox.margin>
+            </Label>
                <ImageView fx:id="mainMenuMinBtn" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@min.png" />
@@ -29,7 +44,6 @@
                </ImageView>
            </children>
        </HBox>
-
       <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
    </children>
 </VBox>

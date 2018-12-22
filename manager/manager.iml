@@ -17,5 +17,14 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="gson-2.8.5" level="project" />
     <orderEntry type="library" name="rxjava-2.2.2" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://F:/MyBatis/mybatis-3.4.6/mybatis-3.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

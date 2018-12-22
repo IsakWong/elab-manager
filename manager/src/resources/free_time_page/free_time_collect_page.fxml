@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.FreeTimeCollectPageController">
+   <children>
+      <TextArea fx:id="questionBoard" layoutX="96.0" layoutY="606.0" prefHeight="69.0" prefWidth="619.0" promptText="时间不确定或有其他问题，可在此留言" />
+      <JFXButton fx:id="save" layoutX="760.0" layoutY="610.0" prefHeight="35.0" prefWidth="92.0" text="保存" />
+      <ScrollPane layoutX="95.0" layoutY="80.0" prefHeight="506.0" prefWidth="824.0" stylesheets="@../css/controls_style.css">
+         <content>
+            <VBox fx:id="container" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="107.0" layoutY="9.0" prefHeight="61.0" prefWidth="232.0" text="选中的时间即为空闲时间，最左的选项可选择一行相对应的选项，最上的选项可选择一列相对应的选项。" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -8,10 +8,12 @@ import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
+import elab.database.DatabaseOperations;
+import elab.serialization.member.LoginMessage;
+import elab.serialization.member.Member;
 import elab.serialization.module.Module;
+import elab.util.Encryptioner;
 import elab.utility.Utilities;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,18 +21,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.ibatis.session.SqlSession;
+import sun.nio.cs.ArrayEncoder;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class LoginWindowController extends BaseViewController {
 
+    private DatabaseOperations operations = new DatabaseOperations();
+    private Encryptioner encryptioner = new Encryptioner();
+
+    private LoginMessage loginMessage;
 
     @FXML
     private HBox topBar;
@@ -52,13 +59,18 @@ public class LoginWindowController extends BaseViewController {
     private double x_stage;
     private double y_stage;
 
-
-    public void loadModuleSettings(String toLoadModulesName) throws Exception {
+    public void loadModuleSettings(String toLoadModulesName) {
         Gson gson = new Gson();
         String strJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/" + toLoadModulesName));
         Type typeList = new TypeToken<ArrayList<Module>>() {
         }.getType();
         ElabManagerApplication.modulesArrayList = gson.fromJson(strJson, typeList);
+    }
+
+    public void popMessage(String message) {
+        JFXSnackbar bar = new JFXSnackbar(container);
+        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
+        bar.enqueue(event);
     }
 
     public void showMainWindow() {
@@ -78,15 +90,22 @@ public class LoginWindowController extends BaseViewController {
 
     }
 
-    public void popMessage(String message) {
-        JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
+    public boolean isPwdValidated(int number, String password) {
+        loginMessage = operations.selectLoginMessage(number);
+        if(loginMessage == null) {
+            return false;
+        } else if(!encryptioner.encrypt(password).equals(loginMessage.getPassword())) {
+            return false;
+        }
+        return true;
     }
 
-    public boolean isUserValidated() {
+    public boolean isUserValidated(int number, String password) {
         if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
             popMessage("用户名和密码不能为空");
+            return false;
+        } else if(!isPwdValidated(number, password)) {
+            popMessage("用户名或密码错误");
             return false;
         } else
             return true;
@@ -94,69 +113,72 @@ public class LoginWindowController extends BaseViewController {
 
     @Override
     public void initializeController() {
-        userInputField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER)
-                    pwdInputField.requestFocus();
-            }
+
+        /**
+         * 加载数据库配置文件
+         */
+
+        DatabaseOperations databaseOperations = new DatabaseOperations();
+        databaseOperations.build();
+
+        userInputField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER)
+                pwdInputField.requestFocus();
         });
 
-        pwdInputField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER)
-                    if (isUserValidated()) {
-                        showMainWindow();
-                    }
-            }
-        });
-
-        logButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (isUserValidated()) {
-                    ElabManagerApplication.primaryStage.close();
+        pwdInputField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER)
+                if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
                     showMainWindow();
                 }
+        });
+
+        logButton.setOnAction(event -> {
+            if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+                showMainWindow();
             }
         });
 
-        closeBtn.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+        closeBtn.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY)
                 ElabManagerApplication.primaryStage.close();
-            }
         });
 
-        minBtn.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+        minBtn.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 Stage stage = (Stage) minBtn.getScene().getWindow();
                 stage.setIconified(true);
             }
         });
 
         //Drag Event
-        topBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent m) {
-                ElabManagerApplication.primaryStage.setX(x_stage + m.getScreenX() - x1);
-                ElabManagerApplication.primaryStage.setY(y_stage + m.getScreenY() - y1);
+        topBar.setOnMouseDragged(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                ElabManagerApplication.primaryStage.setX(x_stage + event.getScreenX() - x1);
+                ElabManagerApplication.primaryStage.setY(y_stage + event.getScreenY() - y1);
             }
         });
 
-        topBar.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent m) {
-                //按下鼠标后，记录当前鼠标的坐标
-                x1 = m.getScreenX();
-                y1 = m.getScreenY();
+        topBar.setOnMousePressed(event -> {
+            //按下鼠标后，记录当前鼠标的坐标
+            if (event.getButton() == MouseButton.PRIMARY) {
+                x1 = event.getScreenX();
+                y1 = event.getScreenY();
                 x_stage = ElabManagerApplication.primaryStage.getX();
                 y_stage = ElabManagerApplication.primaryStage.getY();
             }
         });
-
     }
+/*
+    class LoginMessageSelectThread extends Thread {
 
+        public void run() {
+            DatabaseOperations databaseOperations = new DatabaseOperations();
+            SqlSession session = databaseOperations.getSession();
+            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
+            ArrayList<Member> members = new ArrayList<>();
+            System.out.println(loginMessage);
+            session.close();
+        }
+    }*/
 }
