@@ -13,12 +13,18 @@ public class DatabaseOperations {
 
     private static SqlSessionFactory sqlSessionFactory = null;
 
-    public void build() {
+    private static DatabaseOperations instance = null;
+
+    public static DatabaseOperations getInstance() {
+        return instance == null ? instance = new DatabaseOperations() : instance;
+    }
+
+    protected DatabaseOperations() {
         try {
-            //读取mybatis-config.xml文件
-            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
-            //初始化mybatis,创建SqlSessionFactory类的实例
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+                //读取mybatis-config.xml文件
+                Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+                //初始化mybatis,创建SqlSessionFactory类的实例
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,9 +65,20 @@ public class DatabaseOperations {
         }
     }
 
-    public void update() {
+    public void updateMember(LoginMessage loginMessage) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
+            session.update("member.updateMember", loginMessage);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateRemark(LoginMessage loginMessage) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            session.update("member.updateRemark", loginMessage);
             session.commit();
         } finally {
             session.close();

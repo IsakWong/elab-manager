@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.PersonalInformationPageController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.PersonalInformationPageController">
    <children>
       <VBox alignment="CENTER_LEFT" layoutX="366.0" prefHeight="700.0" prefWidth="634.0" stylesheets="@css/controls_style.css">
          <children>
@@ -45,14 +46,24 @@
                </VBox.margin>
                <children>
                   <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+                  <ImageView fx:id="pwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@ok16X16.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </HBox>
             <HBox prefHeight="25.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets bottom="15.0" top="15.0" />
+                  <Insets bottom="14.0" top="16.0" />
                </VBox.margin>
                <children>
                   <JFXPasswordField fx:id="twicePwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
+                  <ImageView fx:id="twicePwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@ok16X16.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </HBox>
             <JFXComboBox fx:id="collegeChooseBox" prefHeight="25.0" prefWidth="300.0">

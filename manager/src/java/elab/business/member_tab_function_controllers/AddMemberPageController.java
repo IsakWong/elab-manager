@@ -4,8 +4,8 @@ import com.jfoenix.controls.*;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.member.Member;
+import elab.util.Utilities;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -28,9 +28,9 @@ public class AddMemberPageController extends BaseViewController {
     @FXML
     private JFXPasswordField twicePwdInputField;
     @FXML
-    private JFXComboBox collegeChooseBox;
+    private JFXComboBox<String> collegeChooseBox;
     @FXML
-    private JFXComboBox groupChooseBox;
+    private JFXComboBox<String> groupChooseBox;
     @FXML
     private JFXButton logButton;
     @FXML
@@ -46,16 +46,7 @@ public class AddMemberPageController extends BaseViewController {
     @FXML
     private AnchorPane container;
 
-    Label label = new Label("电子信息与电气工程学部");
-    Label elabel = new Label("电子组");
-
-    Paint unFocusColor;
-
-    public void popMessage(String message) {
-        JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
-    }
+    private Paint unFocusColor;
 
     public void cleanMessage() {
         numberInputField.setText("");
@@ -67,8 +58,8 @@ public class AddMemberPageController extends BaseViewController {
         pwdOK.setVisible(false);
         twicePwdInputField.setText("");
         twicePwdOK.setVisible(false);
-        collegeChooseBox.setValue(label);
-        groupChooseBox.setValue(elabel);
+        collegeChooseBox.setValue("电子信息与电气工程学部");
+        groupChooseBox.setValue("电子组");
         telInputField.setText("");
     }
 
@@ -87,29 +78,29 @@ public class AddMemberPageController extends BaseViewController {
         });
 
         collegeChooseBox.getItems().addAll(
-                label,
-                new Label("化学与环境生命学部"),
-                new Label("建设工程学部"),
-                new Label("运载工程与力学学部"),
-                new Label("机械工程与材料能源学部"),
-                new Label("管理与经济学部"),
-                new Label("人文与社会科学学部"),
-                new Label("建筑与艺术学院"),
-                new Label("外国语学院")
+                "电子信息与电气工程学部",
+                "化学与环境生命学部",
+                "建设工程学部",
+                "运载工程与力学学部",
+                "机械工程与材料能源学部",
+                "管理与经济学部",
+                "人文与社会科学学部",
+                "建筑与艺术学院",
+                "外国语学院"
         );
-        collegeChooseBox.setValue(label);
+        collegeChooseBox.setValue("电子信息与电气工程学部");
 
         groupChooseBox.getItems().addAll(
-                elabel,
-                new Label("软件组")
+                "电子组",
+                "软件组"
         );
-        groupChooseBox.setValue(elabel);
+        groupChooseBox.setValue("电子组");
 
         pwdInputField.focusedProperty().addListener(event -> {
             if(!pwdInputField.isFocused()) {
                 if(pwdInputField.getText().equals("")) {
                     pwdInputField.setUnFocusColor(Color.RED);
-                    popMessage("密码不能为空");
+                    Utilities.popMessage("密码不能为空", container);
                     pwdOK.setVisible(false);
                 }
                 else if(!twicePwdInputField.getText().equals("")) {
@@ -117,7 +108,7 @@ public class AddMemberPageController extends BaseViewController {
                         twicePwdInputField.setUnFocusColor(Color.RED);
                         pwdOK.setVisible(true);
                         twicePwdOK.setVisible(false);
-                        popMessage("两次输入的密码不一致");
+                        Utilities.popMessage("两次输入的密码不一致", container);
                     }
                     else {
                         pwdOK.setVisible(true);
@@ -138,14 +129,14 @@ public class AddMemberPageController extends BaseViewController {
             if(!twicePwdInputField.isFocused()) {
                 if(pwdInputField.getText().equals("")) {
                     pwdInputField.setUnFocusColor(Color.RED);
-                    popMessage("密码不能为空");
+                    Utilities.popMessage("密码不能为空", container);
                     pwdOK.setVisible(false);
                     twicePwdOK.setVisible(false);
                 }
                 else if(twicePwdInputField.getText().equals("")) {
                     twicePwdInputField.setUnFocusColor(Color.RED);
                     twicePwdOK.setVisible(false);
-                    popMessage("请再次输入密码");
+                    Utilities.popMessage("请再次输入密码", container);
                 }
                 else if(twicePwdInputField.getText().equals(pwdInputField.getText())) {
                     pwdOK.setVisible(true);
@@ -154,7 +145,7 @@ public class AddMemberPageController extends BaseViewController {
                 else {
                     twicePwdInputField.setUnFocusColor(Color.RED);
                     twicePwdOK.setVisible(false);
-                    popMessage("两次输入的密码不一致");
+                    Utilities.popMessage("两次输入的密码不一致", container);
                 }
             }
             else {
@@ -202,7 +193,7 @@ public class AddMemberPageController extends BaseViewController {
                     telInputField.setUnFocusColor(Color.RED);
                 }
                 if (!allMessageCkecked) {
-                    popMessage("请查看信息填写是否完整");
+                    Utilities.popMessage("请查看信息填写是否完整", container);
                 } else {
                     Member newMember = new Member();
                     newMember.setNumber(Integer.parseInt(numberInputField.getText()));
@@ -212,15 +203,12 @@ public class AddMemberPageController extends BaseViewController {
                         newMember.setSex("男");
                     else
                         newMember.setSex("女");
-                    newMember.setPassword(pwdInputField.getText());
-                    Label selectedLabel = (Label) collegeChooseBox.getValue();
-                    newMember.setCollege(selectedLabel.getText());
-                    selectedLabel = (Label) groupChooseBox.getValue();
-                    newMember.setGroup(selectedLabel.getText());
+                    newMember.setPassword(Utilities.encrypt(pwdInputField.getText()));
+                    newMember.setCollege(collegeChooseBox.getValue());
+                    newMember.setGroup(groupChooseBox.getValue());
                     newMember.setTel(telInputField.getText());
-                    DatabaseOperations operations = new DatabaseOperations();
-                    operations.insertMember(newMember);
-                    popMessage("新增成员成功!");
+                    DatabaseOperations.getInstance().insertMember(newMember);
+                    Utilities.popMessage("新增成员成功!", container);
                     cleanMessage();
                 }
             }

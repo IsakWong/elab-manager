@@ -3,17 +3,14 @@ package elab.business.log_in_window;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
 import elab.serialization.member.LoginMessage;
-import elab.serialization.member.Member;
 import elab.serialization.module.Module;
-import elab.util.Encryptioner;
-import elab.utility.Utilities;
+import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,16 +23,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.apache.ibatis.session.SqlSession;
-import sun.nio.cs.ArrayEncoder;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class LoginWindowController extends BaseViewController {
-
-    private DatabaseOperations operations = new DatabaseOperations();
-    private Encryptioner encryptioner = new Encryptioner();
 
     private LoginMessage loginMessage;
 
@@ -67,12 +59,6 @@ public class LoginWindowController extends BaseViewController {
         ElabManagerApplication.modulesArrayList = gson.fromJson(strJson, typeList);
     }
 
-    public void popMessage(String message) {
-        JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
-    }
-
     public void showMainWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_window.fxml"));
@@ -91,10 +77,10 @@ public class LoginWindowController extends BaseViewController {
     }
 
     public boolean isPwdValidated(int number, String password) {
-        loginMessage = operations.selectLoginMessage(number);
+        loginMessage = DatabaseOperations.getInstance().selectLoginMessage(number);
         if(loginMessage == null) {
             return false;
-        } else if(!encryptioner.encrypt(password).equals(loginMessage.getPassword())) {
+        } else if(!Utilities.encrypt(password).equals(loginMessage.getPassword())) {
             return false;
         }
         return true;
@@ -102,10 +88,10 @@ public class LoginWindowController extends BaseViewController {
 
     public boolean isUserValidated(int number, String password) {
         if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
-            popMessage("用户名和密码不能为空");
+            Utilities.popMessage("用户名和密码不能为空", container);
             return false;
         } else if(!isPwdValidated(number, password)) {
-            popMessage("用户名或密码错误");
+            Utilities.popMessage("用户名或密码错误", container);
             return false;
         } else
             return true;
@@ -113,13 +99,6 @@ public class LoginWindowController extends BaseViewController {
 
     @Override
     public void initializeController() {
-
-        /**
-         * 加载数据库配置文件
-         */
-
-        DatabaseOperations databaseOperations = new DatabaseOperations();
-        databaseOperations.build();
 
         userInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
@@ -129,12 +108,14 @@ public class LoginWindowController extends BaseViewController {
         pwdInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
                 if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+                    loginMessage.setOldNumber(loginMessage.getNumber());
                     showMainWindow();
                 }
         });
 
         logButton.setOnAction(event -> {
             if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+                loginMessage.setOldNumber(loginMessage.getNumber());
                 showMainWindow();
             }
         });
@@ -169,16 +150,4 @@ public class LoginWindowController extends BaseViewController {
             }
         });
     }
-/*
-    class LoginMessageSelectThread extends Thread {
-
-        public void run() {
-            DatabaseOperations databaseOperations = new DatabaseOperations();
-            SqlSession session = databaseOperations.getSession();
-            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
-            ArrayList<Member> members = new ArrayList<>();
-            System.out.println(loginMessage);
-            session.close();
-        }
-    }*/
 }

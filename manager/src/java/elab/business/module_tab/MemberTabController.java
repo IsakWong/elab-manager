@@ -55,7 +55,7 @@ public class MemberTabController extends BaseViewController {
             FXMLLoader personalInformationLoader = new FXMLLoader(getClass().getResource("/personal_information_page.fxml"));
             personalInformationRoot = personalInformationLoader.load();
             PersonalInformationPageController personalInformationPageController = personalInformationLoader.getController();
-            //personalInformationPageController.initializeController();
+            personalInformationPageController.initializeController();
 
             FXMLLoader freeTimeLoader = new FXMLLoader(getClass().getResource("/free_time_page/free_time_collect_page.fxml"));
             freeTimeRoot = freeTimeLoader.load();

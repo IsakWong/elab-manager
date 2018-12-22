@@ -3,6 +3,9 @@ package elab.business.member_tab_function_controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import elab.application.BaseViewController;
+import elab.database.DatabaseOperations;
+import elab.serialization.member.LoginMessage;
+import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -21,6 +25,8 @@ public class FreeTimeCollectPageController extends BaseViewController {
     private JFXButton save;
     @FXML
     private TextArea questionBoard;
+    @FXML
+    private AnchorPane pageContainer;
 
     String[] DayString = {" ","周一","周二","周三","周四","周五","周六","周日"};
     String[] WeekString = {"所有周","第一周","第二周","第三周","第四周","第五周","第六周","第七周","第八周","第九周","第十周","第十一周","第十二周","第十三周","第十四周"};
@@ -189,7 +195,8 @@ public class FreeTimeCollectPageController extends BaseViewController {
 
         save.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY) {
-                System.out.println(questionBoard.getText());
+
+                Utilities.popMessage("信息保存成功!", pageContainer);
             }
         });
     }

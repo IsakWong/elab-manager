@@ -18,19 +18,42 @@
             密码 as "password",
             主讲 as "teachingAmount",
             助课 as "assistAmount",
-            备注 as "freeTimeRemark"
         from member
         where 学号 = #{id}
     </select>
     <select id="findLoginMessage" parameterType="int" resultType="loginMessage">
         select
             学号 as "number",
+            USERNAME as "username",
+            姓名 as "name",
+            性别 as "sex",
+            院系 as "college",
+            组别 as "group",
+            电话 as "tel",
+            职务 as "duty",
+            年级 as "grade",
+            座右铭 as "motto",
             密码 as "password"
         from member
         where 学号 = #{id}
     </select>
     <insert id="insertMember" parameterType="member">
-        insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课,备注)
-        values (#{number},#{username},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount},#{freeTimeRemark})
+        insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课)
+        values (#{number},#{username},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount})
     </insert>
+    <update id="updateMember" parameterType="loginMessage">
+        update member set
+            学号 = #{number},
+            USERNAME = #{username},
+            姓名 = #{name},
+            性别 = #{sex},
+            院系 = #{college},
+            组别 = #{group},
+            电话 = #{tel},
+            职务 = #{duty},
+            年级 = #{grade},
+            座右铭 = #{motto},
+            密码 = #{password}
+        where 学号 = #{oldNumber}
+    </update>
 </mapper>
