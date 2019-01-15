@@ -87,10 +87,7 @@ public class LoginWindowController extends BaseViewController {
     }
 
     public boolean isUserValidated(int number, String password) {
-        if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
-            Utilities.popMessage("用户名和密码不能为空", container);
-            return false;
-        } else if(!isPwdValidated(number, password)) {
+        if(!isPwdValidated(number, password)) {
             Utilities.popMessage("用户名或密码错误", container);
             return false;
         } else
@@ -100,21 +97,28 @@ public class LoginWindowController extends BaseViewController {
     @Override
     public void initializeController() {
 
+        System.out.println(DatabaseOperations.getInstance().selectAllMembers());
+
         userInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
                 pwdInputField.requestFocus();
         });
 
         pwdInputField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER)
-                if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+            if (event.getCode() == KeyCode.ENTER) {
+                if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                    Utilities.popMessage("用户名和密码不能为空", container);
+                else if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
                     loginMessage.setOldNumber(loginMessage.getNumber());
                     showMainWindow();
                 }
+            }
         });
 
         logButton.setOnAction(event -> {
-            if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+            if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                Utilities.popMessage("用户名和密码不能为空", container);
+            else if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
                 loginMessage.setOldNumber(loginMessage.getNumber());
                 showMainWindow();
             }

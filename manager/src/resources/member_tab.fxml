@@ -50,10 +50,19 @@
             </JFXButton>
          </children>
       </VBox>
-      <ScrollPane fx:id="contentPage" prefHeight="700.0" prefWidth="1000.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
-      </ScrollPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ScrollPane fx:id="contentPageA" prefHeight="700.0" prefWidth="1000.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="contentPageB" prefHeight="700.0" prefWidth="1000.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </HBox>

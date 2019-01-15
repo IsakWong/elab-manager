@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseOperations {
 
@@ -37,7 +39,7 @@ public class DatabaseOperations {
     public LoginMessage selectLoginMessage(int number) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", number);
+            LoginMessage loginMessage = session.selectOne("member.selectLoginMessage", number);
             return loginMessage;
         } finally {
             session.close();
@@ -47,9 +49,19 @@ public class DatabaseOperations {
     public Member selectMember(int number) {
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            Member member = session.selectOne("member.findMember", number);
+            Member member = session.selectOne("member.selectMember", number);
             System.out.println(member);
             return member;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectAllMembers() {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            List members = session.selectList("member.selectAllMembers");
+            return members;
         } finally {
             session.close();
         }

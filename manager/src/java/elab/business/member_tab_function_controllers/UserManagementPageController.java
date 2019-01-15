@@ -5,7 +5,6 @@ import elab.application.BaseViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseButton;
 
@@ -26,8 +25,6 @@ public class UserManagementPageController extends BaseViewController {
     @FXML
     private JFXTabPane tabPane;
 
-    Label label = new Label("电子信息与电气工程学部");
-
     Tab searchResult = new Tab("搜索结果");
 
     @Override
@@ -45,19 +42,18 @@ public class UserManagementPageController extends BaseViewController {
             });
 
             college.getItems().addAll(
-                    label,
-                    new Label("化学与环境生命学部"),
-                    new Label("建设工程学部"),
-                    new Label("运载工程与力学学部"),
-                    new Label("机械工程与材料能源学部"),
-                    new Label("管理与经济学部"),
-                    new Label("人文与社会科学学部"),
-                    new Label("建筑与艺术学院"),
-                    new Label("外国语学院"),
-                    new Label("物理学院"),
-                    new Label("数学科学学院")
+                    "电子信息与电气工程学部",
+                    "化学与环境生命学部",
+                    "建设工程学部",
+                    "运载工程与力学学部",
+                    "机械工程与材料能源学部",
+                    "管理与经济学部",
+                    "人文与社会科学学部",
+                    "建筑与艺术学院",
+                    "外国语学院",
+                    "物理学院",
+                    "数学科学学院"
             );
-            college.setValue(label);
 
             Tab memberTab = new Tab("科中成员");
             FXMLLoader memberInformationLoader = new FXMLLoader(getClass().getResource("/member_tab_page_fxml_files/member_information_page.fxml"));

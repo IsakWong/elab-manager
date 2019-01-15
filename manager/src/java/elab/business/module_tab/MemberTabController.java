@@ -25,7 +25,9 @@ public class MemberTabController extends BaseViewController {
     @FXML
     private JFXButton freeTimeCollect;
     @FXML
-    private ScrollPane contentPage;
+    private ScrollPane contentPageA;
+    @FXML
+    private ScrollPane contentPageB;
 
     public final Logger logger = Logger.getLogger(MemberTabController.class);
 
@@ -64,31 +66,46 @@ public class MemberTabController extends BaseViewController {
 
             //设置初始页面
 
-            contentPage.setContent(userManagementRoot);
+            contentPageA.setContent(userManagementRoot);
+            contentPageB.setContent(freeTimeRoot);
+            contentPageB.setVisible(false);
 
             //按钮事件
 
             userManagement.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(userManagementRoot);
+                    contentPageA.setContent(userManagementRoot);
+                    if(contentPageB.isVisible()) {
+                        contentPageB.setVisible(false);
+                        contentPageA.setVisible(true);
+                    }
                 }
             });
 
             addMember.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(addMemberRoot);
+                    contentPageA.setContent(addMemberRoot);
+                    if(contentPageB.isVisible()) {
+                        contentPageB.setVisible(false);
+                        contentPageA.setVisible(true);
+                    }
                 }
             });
 
             personalInformation.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(personalInformationRoot);
+                    contentPageA.setContent(personalInformationRoot);
+                    if(contentPageB.isVisible()) {
+                        contentPageB.setVisible(false);
+                        contentPageA.setVisible(true);
+                    }
                 }
             });
 
             freeTimeCollect.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(freeTimeRoot);
+                    contentPageA.setVisible(false);
+                    contentPageB.setVisible(true);
                 }
             });
 

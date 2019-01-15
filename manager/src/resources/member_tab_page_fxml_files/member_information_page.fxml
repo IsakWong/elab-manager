@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_page_controllers.MemberInformationPageController">
-   <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="489.0" prefWidth="998.0" text="member information page">
-         <font>
-            <Font size="72.0" />
-         </font></Label>
-   </children>
-</AnchorPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="998.0" stylesheets="@../css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_page_controllers.MemberInformationPageController">
+   <content>
+      <TableView layoutX="10.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="489.0" prefWidth="1118.0" stylesheets="@../css/controls_style.css">
+         <columns>
+            <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
+            <TableColumn fx:id="username" prefWidth="130.0" text="登陆用户名" />
+            <TableColumn fx:id="name" text="姓名" />
+            <TableColumn fx:id="sex" prefWidth="50.0" text="性别" />
+            <TableColumn fx:id="teachingAmount" minWidth="0.0" prefWidth="75.0" text="主讲次数" />
+            <TableColumn fx:id="assistAmount" prefWidth="75.0" text="助教次数" />
+            <TableColumn fx:id="college" prefWidth="310.0" text="院系" />
+            <TableColumn fx:id="grade" prefWidth="50.0" text="年级" />
+            <TableColumn fx:id="tel" prefWidth="120.0" text="电话" />
+            <TableColumn fx:id="duty" prefWidth="50.0" text="职务" />
+            <TableColumn fx:id="group" text="组别" />
+         </columns>
+      </TableView>
+   </content>
+</ScrollPane>
