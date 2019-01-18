@@ -2,6 +2,9 @@ package elab.business.member_tab_function_controllers;
 
 import com.jfoenix.controls.*;
 import elab.application.BaseViewController;
+import elab.business.member_tab_page_controllers.MemberInformationPageController;
+import elab.business.member_tab_page_controllers.SearchResultPageController;
+import elab.business.member_tab_page_controllers.StudentInformationPageController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -79,6 +82,15 @@ public class UserManagementPageController extends BaseViewController {
                     number.setText("");
                 }
             });
+
+            MemberInformationPageController memberInformationPageController = memberInformationLoader.getController();
+            memberInformationPageController.initializeController();
+
+            //StudentInformationPageController studentInformationPageController = studentInformationLoader.getController();
+            //studentInformationPageController.initializeController();
+
+            //SearchResultPageController searchResultPageController = searchResultLoader.getController();
+            //searchResultPageController.initializeController();
 
         } catch (Exception exp) {
             System.out.println(exp.toString());

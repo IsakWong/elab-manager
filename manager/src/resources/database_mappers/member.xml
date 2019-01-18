@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
-    <select id="selectMember" parameterType="int" resultType="member">
+    <select id="selectMember" parameterType="string" resultType="member">
         select
             学号 as "number",
             USERNAME as "username",
@@ -21,7 +21,7 @@
         from member
         where 学号 = #{id}
     </select>
-    <resultMap id="memberTypeChange" type="member">
+    <resultMap id="memberResultMap" type="member">
         <result property="number" column="学号"/>
         <result property="username" column="USERNAME"/>
         <result property="name" column="姓名"/>
@@ -31,14 +31,15 @@
         <result property="tel" column="电话"/>
         <result property="duty" column="职务"/>
         <result property="grade" column="年级"/>
+        <result property="motto" column="座右铭"/>
         <result property="password" column="密码"/>
         <result property="teachingAmount" column="主讲"/>
         <result property="assistAmount" column="助课"/>
     </resultMap>
-    <select id="selectAllMembers" resultMap="memberTypeChange">
+    <select id="selectAllMembers" resultMap="memberResultMap">
         select * from member
     </select>
-    <select id="selectLoginMessage" parameterType="int" resultType="loginMessage">
+    <select id="selectLoginMessage" parameterType="string" resultType="loginMessage">
         select
             学号 as "number",
             USERNAME as "username",

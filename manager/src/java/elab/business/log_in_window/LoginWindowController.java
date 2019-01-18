@@ -76,7 +76,7 @@ public class LoginWindowController extends BaseViewController {
 
     }
 
-    public boolean isPwdValidated(int number, String password) {
+    public boolean isPwdValidated(String number, String password) {
         loginMessage = DatabaseOperations.getInstance().selectLoginMessage(number);
         if(loginMessage == null) {
             return false;
@@ -86,7 +86,7 @@ public class LoginWindowController extends BaseViewController {
         return true;
     }
 
-    public boolean isUserValidated(int number, String password) {
+    public boolean isUserValidated(String number, String password) {
         if(!isPwdValidated(number, password)) {
             Utilities.popMessage("用户名或密码错误", container);
             return false;
@@ -97,8 +97,6 @@ public class LoginWindowController extends BaseViewController {
     @Override
     public void initializeController() {
 
-        System.out.println(DatabaseOperations.getInstance().selectAllMembers());
-
         userInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
                 pwdInputField.requestFocus();
@@ -108,7 +106,7 @@ public class LoginWindowController extends BaseViewController {
             if (event.getCode() == KeyCode.ENTER) {
                 if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                     Utilities.popMessage("用户名和密码不能为空", container);
-                else if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+                else if (isUserValidated(userInputField.getText(), pwdInputField.getText())) {
                     loginMessage.setOldNumber(loginMessage.getNumber());
                     showMainWindow();
                 }
@@ -118,7 +116,7 @@ public class LoginWindowController extends BaseViewController {
         logButton.setOnAction(event -> {
             if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                 Utilities.popMessage("用户名和密码不能为空", container);
-            else if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
+            else if (isUserValidated(userInputField.getText(), pwdInputField.getText())) {
                 loginMessage.setOldNumber(loginMessage.getNumber());
                 showMainWindow();
             }

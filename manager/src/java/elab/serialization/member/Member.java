@@ -7,7 +7,7 @@ import java.util.ArrayList;
 @Alias("member")
 public class Member {
 
-    private int number;
+    private String number;
     private String username;
     private String name;
     private String sex;
@@ -21,11 +21,11 @@ public class Member {
     private int teachingAmount;
     private int assistAmount;
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

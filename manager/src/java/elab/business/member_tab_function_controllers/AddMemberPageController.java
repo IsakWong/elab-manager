@@ -196,7 +196,7 @@ public class AddMemberPageController extends BaseViewController {
                     Utilities.popMessage("请查看信息填写是否完整", container);
                 } else {
                     Member newMember = new Member();
-                    newMember.setNumber(Integer.parseInt(numberInputField.getText()));
+                    newMember.setNumber(numberInputField.getText());
                     newMember.setUserName(userInputField.getText());
                     newMember.setName(nameInputField.getText());
                     if(sexChoose_man.isSelected())
