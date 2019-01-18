@@ -7,9 +7,10 @@
     <typeAliases>
         <typeAlias alias="member" type="elab.serialization.member.Member"/>
         <typeAlias alias="loginMessage" type="elab.serialization.member.LoginMessage"/>
+        <typeAlias alias="student" type="elab.serialization.student.Student"/>
     </typeAliases>
-    <environments default="mysql_developer">
-        <environment id="mysql_developer">
+    <environments default="student">
+        <environment id="student">
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
@@ -18,8 +19,18 @@
                 <property name="password" value="elab123456"/>
             </dataSource>
         </environment>
+        <environment id="class">
+            <transactionManager type="jdbc"/>
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://yespace.xyz:3306/class?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="elab"/>
+                <property name="password" value="elab123456"/>
+            </dataSource>
+        </environment>
     </environments>
     <mappers>
         <mapper resource="database_mappers/member.xml"/>
+        <mapper resource="database_mappers/student.xml"/>
     </mappers>
 </configuration>

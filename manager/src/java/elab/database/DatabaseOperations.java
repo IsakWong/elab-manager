@@ -12,7 +12,8 @@ import java.util.List;
 
 public class DatabaseOperations {
 
-    private static SqlSessionFactory sqlSessionFactory = null;
+    private static SqlSessionFactory studentSqlSessionFactory = null;
+    private static SqlSessionFactory classSqlSessionFactory = null;
 
     private static DatabaseOperations instance = null;
 
@@ -23,20 +24,22 @@ public class DatabaseOperations {
     protected DatabaseOperations() {
         try {
                 //读取mybatis-config.xml文件
-                Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+                Reader studentReader = Resources.getResourceAsReader("mybatis-config.xml");
                 //初始化mybatis,创建SqlSessionFactory类的实例
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+                studentSqlSessionFactory = new SqlSessionFactoryBuilder().build(studentReader, "student");
+                Reader classReader = Resources.getResourceAsReader("mybatis-config.xml");
+                classSqlSessionFactory = new SqlSessionFactoryBuilder().build(classReader, "class");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public SqlSession getSession() {
-        return sqlSessionFactory.openSession();
+        return studentSqlSessionFactory.openSession();
     }
 
     public LoginMessage selectLoginMessage(String number) {
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             LoginMessage loginMessage = session.selectOne("member.selectLoginMessage", number);
             return loginMessage;
@@ -46,10 +49,9 @@ public class DatabaseOperations {
     }
 
     public Member selectMember(String number) {
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             Member member = session.selectOne("member.selectMember", number);
-            System.out.println(member);
             return member;
         } finally {
             session.close();
@@ -57,7 +59,7 @@ public class DatabaseOperations {
     }
 
     public List selectAllMembers() {
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             List members = session.selectList("member.selectAllMembers");
             return members;
@@ -67,7 +69,7 @@ public class DatabaseOperations {
     }
 
     public void insertMember(Member member) {
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.insert("member.insertMember", member);
             session.commit();
@@ -77,7 +79,7 @@ public class DatabaseOperations {
     }
 
     public void updateMember(LoginMessage loginMessage) {
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.updateMember", loginMessage);
             session.commit();
@@ -86,20 +88,20 @@ public class DatabaseOperations {
         }
     }
 
-    public void updateRemark(LoginMessage loginMessage) {
-        SqlSession session = sqlSessionFactory.openSession();
+    public void deleteMember(){
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            session.update("member.updateRemark", loginMessage);
             session.commit();
         } finally {
             session.close();
         }
     }
 
-    public void delete(){
-        SqlSession session = sqlSessionFactory.openSession();
+    public List selectAllStudents() {
+        SqlSession session = classSqlSessionFactory.openSession();
         try {
-            session.commit();
+            List students = session.selectList("student.selectAllStudents");
+            return students;
         } finally {
             session.close();
         }

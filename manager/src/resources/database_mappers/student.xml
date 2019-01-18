@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student">
+    <resultMap id="studentResultMap" type="student">
+        <result property="number" column="学号"/>
+        <result property="name" column="姓名"/>
+        <result property="college" column="院系"/>
+        <result property="theoryClass" column="理论课"/>
+        <result property="hardTime" column="硬件时间"/>
+        <result property="softTime" column="软件时间"/>
+        <result property="hardScore" column="硬件成绩"/>
+        <result property="softScore" column="软件成绩"/>
+        <result property="paperScore" column="试卷成绩"/>
+        <result property="email" column="邮箱"/>
+        <result property="tel" column="联系电话"/>
+        <result property="pwd" column="密码"/>
+        <result property="makeUpLessons" column="补课"/>
+        <result property="courseSelectionTime" column="选课时间"/>
+        <result property="remark" column="备注"/>
+    </resultMap>
+    <select id="selectAllStudents" resultMap="studentResultMap">
+        select * from 2018秋_计算机安装与调试技术
+    </select>
+</mapper>

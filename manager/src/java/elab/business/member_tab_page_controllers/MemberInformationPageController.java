@@ -38,11 +38,10 @@ public class MemberInformationPageController extends BaseViewController {
     @FXML
     private TableColumn<Member, String> group;
 
-    private static ObservableList<Member> members = FXCollections.<Member>observableArrayList();
+    private ObservableList<Member> members = FXCollections.<Member>observableArrayList();
 
     @Override
     public void initializeController() {
-        try {
             members.addAll(DatabaseOperations.getInstance().selectAllMembers());
             System.out.println(members);
             number.setCellValueFactory(new PropertyValueFactory<Member, String>("number"));
@@ -57,8 +56,5 @@ public class MemberInformationPageController extends BaseViewController {
             duty.setCellValueFactory(new PropertyValueFactory<Member, String>("duty"));
             group.setCellValueFactory(new PropertyValueFactory<Member, String>("group"));
             tableView.setItems(members);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

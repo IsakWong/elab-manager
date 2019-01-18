@@ -86,8 +86,8 @@ public class UserManagementPageController extends BaseViewController {
             MemberInformationPageController memberInformationPageController = memberInformationLoader.getController();
             memberInformationPageController.initializeController();
 
-            //StudentInformationPageController studentInformationPageController = studentInformationLoader.getController();
-            //studentInformationPageController.initializeController();
+            StudentInformationPageController studentInformationPageController = studentInformationLoader.getController();
+            studentInformationPageController.initializeController();
 
             //SearchResultPageController searchResultPageController = searchResultLoader.getController();
             //searchResultPageController.initializeController();
