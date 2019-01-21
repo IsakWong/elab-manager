@@ -2,13 +2,11 @@ package elab.serialization.member;
 
 import org.apache.ibatis.type.Alias;
 
-import java.util.ArrayList;
-
 @Alias("member")
 public class Member {
 
     private String number;
-    private String username;
+    private String userName;
     private String name;
     private String sex;
     private String college;
@@ -30,11 +28,11 @@ public class Member {
     }
 
     public String getUserName() {
-        return username;
+        return userName;
     }
 
-    public void setUserName(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {
@@ -117,17 +115,17 @@ public class Member {
         this.teachingAmount = teachingAmount;
     }
 
-    public int getAssistTeachingAmount() {
+    public int getAssistAmount() {
         return assistAmount;
     }
 
-    public void setAssistTeachingAmount(int assistTeachingAmount) {
-        this.assistAmount = assistTeachingAmount;
+    public void setAssistAmount(int assistAmount) {
+        this.assistAmount = assistAmount;
     }
 
     @Override
     public String toString() {
-        return number + " " + username + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistAmount;
+        return number + " " + userName + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistAmount;
     }
 
     public Member() {

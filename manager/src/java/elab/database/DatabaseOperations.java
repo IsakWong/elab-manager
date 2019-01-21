@@ -48,10 +48,30 @@ public class DatabaseOperations {
         }
     }
 
-    public Member selectMember(String number) {
+    public List selectMemberByName(String name) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            Member member = session.selectOne("member.selectMember", number);
+            List member = session.selectList("member.selectMemberByName", name);
+            return member;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectMemberByNumber(String number) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            List member = session.selectList("member.selectMemberByNumber", number);
+            return member;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectMemberByCollege(String college) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            List member = session.selectList("member.selectMemberByCollege", college);
             return member;
         } finally {
             session.close();
@@ -92,6 +112,36 @@ public class DatabaseOperations {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectStudentByName(String name) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        try {
+            List student = session.selectList("student.selectStudentByName", name);
+            return student;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectStudentByNumber(String number) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        try {
+            List student = session.selectList("student.selectStudentByNumber", number);
+            return student;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectStudentByCollege(String college) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        try {
+            List student = session.selectList("student.selectStudentByCollege", college);
+            return student;
         } finally {
             session.close();
         }

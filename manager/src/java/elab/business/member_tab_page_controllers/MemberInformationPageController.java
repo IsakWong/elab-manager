@@ -14,11 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class MemberInformationPageController extends BaseViewController {
 
     @FXML
-    private TableView tableView;
+    private TableView<Member> tableView;
     @FXML
     private TableColumn<Member, String> number;
     @FXML
-    private TableColumn<Member, String> username;
+    private TableColumn<Member, String> userName;
     @FXML
     private TableColumn<Member, String> name;
     @FXML
@@ -38,14 +38,13 @@ public class MemberInformationPageController extends BaseViewController {
     @FXML
     private TableColumn<Member, String> group;
 
-    private ObservableList<Member> members = FXCollections.<Member>observableArrayList();
+    private static ObservableList<Member> members = FXCollections.<Member>observableArrayList();
 
     @Override
     public void initializeController() {
             members.addAll(DatabaseOperations.getInstance().selectAllMembers());
-            System.out.println(members);
             number.setCellValueFactory(new PropertyValueFactory<Member, String>("number"));
-            username.setCellValueFactory(new PropertyValueFactory<Member, String>("username"));
+            userName.setCellValueFactory(new PropertyValueFactory<Member, String>("userName"));
             name.setCellValueFactory(new PropertyValueFactory<Member, String>("name"));
             sex.setCellValueFactory(new PropertyValueFactory<Member, String>("sex"));
             teachingAmount.setCellValueFactory(new PropertyValueFactory<Member, Integer>("teachingAmount"));

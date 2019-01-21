@@ -7,7 +7,7 @@ public class LoginMessage {
 
     private static int oldNumber;
     private static int number;
-    private static String username;
+    private static String userName;
     private static String name;
     private static String sex;
     private static String college;
@@ -35,11 +35,11 @@ public class LoginMessage {
     }
 
     public String getUserName() {
-        return username;
+        return userName;
     }
 
     public void setUserName(String username) {
-        LoginMessage.username = username;
+        LoginMessage.userName = username;
     }
 
     public String getName() {
@@ -116,6 +116,6 @@ public class LoginMessage {
 
     @Override
     public String toString() {
-        return number + " " + username + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password;
+        return number + " " + userName + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password;
     }
 }

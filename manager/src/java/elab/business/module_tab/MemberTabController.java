@@ -28,6 +28,8 @@ public class MemberTabController extends BaseViewController {
     private ScrollPane contentPageA;
     @FXML
     private ScrollPane contentPageB;
+    @FXML
+    private ScrollPane contentPageC;
 
     public final Logger logger = Logger.getLogger(MemberTabController.class);
 
@@ -67,16 +69,17 @@ public class MemberTabController extends BaseViewController {
             //设置初始页面
 
             contentPageA.setContent(userManagementRoot);
-            contentPageB.setContent(freeTimeRoot);
+            contentPageC.setContent(freeTimeRoot);
             contentPageB.setVisible(false);
+            contentPageC.setVisible(false);
 
             //按钮事件
 
             userManagement.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPageA.setContent(userManagementRoot);
-                    if(contentPageB.isVisible()) {
+                    if(!contentPageA.isVisible()) {
                         contentPageB.setVisible(false);
+                        contentPageC.setVisible(false);
                         contentPageA.setVisible(true);
                     }
                 }
@@ -84,28 +87,33 @@ public class MemberTabController extends BaseViewController {
 
             addMember.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPageA.setContent(addMemberRoot);
-                    if(contentPageB.isVisible()) {
-                        contentPageB.setVisible(false);
-                        contentPageA.setVisible(true);
+                    if(!contentPageB.isVisible()) {
+                        contentPageB.setContent(addMemberRoot);
+                        contentPageA.setVisible(false);
+                        contentPageC.setVisible(false);
+                        contentPageB.setVisible(true);
                     }
                 }
             });
 
             personalInformation.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPageA.setContent(personalInformationRoot);
-                    if(contentPageB.isVisible()) {
-                        contentPageB.setVisible(false);
-                        contentPageA.setVisible(true);
+                    if(!contentPageB.isVisible()) {
+                        contentPageB.setContent(personalInformationRoot);
+                        contentPageA.setVisible(false);
+                        contentPageC.setVisible(false);
+                        contentPageB.setVisible(true);
                     }
                 }
             });
 
             freeTimeCollect.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPageA.setVisible(false);
-                    contentPageB.setVisible(true);
+                    if(!contentPageC.isVisible()) {
+                        contentPageA.setVisible(false);
+                        contentPageB.setVisible(false);
+                        contentPageC.setVisible(true);
+                    }
                 }
             });
 

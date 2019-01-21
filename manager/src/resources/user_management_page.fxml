@@ -8,32 +8,31 @@
 
 <VBox alignment="BOTTOM_CENTER" prefHeight="700.0" prefWidth="1000.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_function_controllers.UserManagementPageController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="560.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="694.0">
          <children>
-            <AnchorPane prefHeight="151.0" prefWidth="112.0" />
-            <VBox alignment="CENTER_RIGHT" prefHeight="151.0" prefWidth="36.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="148.0" prefWidth="142.0">
                <children>
-                  <Label prefHeight="23.0" text="学号">
+                  <Label prefHeight="23.0" prefWidth="50.0" text="学号：">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="23.0" text="姓名">
+                  <Label prefHeight="23.0" prefWidth="73.0" text="姓名：">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="23.0" text="院系">
+                  <Label prefHeight="23.0" text="院系：">
                      <VBox.margin>
                         <Insets bottom="5.0" top="10.0" />
                      </VBox.margin>
                   </Label>
                </children>
                <padding>
-                  <Insets right="4.0" />
+                  <Insets left="100.0" right="4.0" />
                </padding>
             </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="151.0" prefWidth="233.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="236.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -53,7 +52,7 @@
                   </JFXComboBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="170.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="148.0" prefWidth="104.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -74,9 +73,14 @@
                      </VBox.margin></JFXButton>
                </children>
             </VBox>
+            <AnchorPane prefHeight="148.0" prefWidth="155.0">
+               <children>
+                  <JFXButton fx:id="returnBtn" layoutX="39.0" layoutY="105.0" prefHeight="29.0" prefWidth="76.0" text="信息清除" />
+               </children>
+            </AnchorPane>
          </children>
          <VBox.margin>
-            <Insets left="220.0" right="220.0" />
+            <Insets left="220.0" right="150.0" />
          </VBox.margin>
       </HBox>
       <JFXTabPane fx:id="tabPane" prefHeight="553.0" prefWidth="1000.0" stylesheets="@css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />

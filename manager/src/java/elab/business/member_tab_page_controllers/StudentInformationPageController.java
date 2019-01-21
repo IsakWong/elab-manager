@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class StudentInformationPageController extends BaseViewController {
 
     @FXML
-    private TableView tableView;
+    private TableView<Student> tableView;
     @FXML
     private TableColumn<Student, String> number;
     @FXML
@@ -33,12 +33,11 @@ public class StudentInformationPageController extends BaseViewController {
     @FXML
     private TableColumn<Student, String> tel;
 
-    private ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+    private static ObservableList<Student> students = FXCollections.<Student>observableArrayList();
 
     @Override
     public void initializeController() {
         students.addAll(DatabaseOperations.getInstance().selectAllStudents());
-        System.out.println(students);
         number.setCellValueFactory(new PropertyValueFactory<Student, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
         college.setCellValueFactory(new PropertyValueFactory<Student, String>("college"));
