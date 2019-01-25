@@ -2,6 +2,7 @@ package elab.business.module_tab;
 
 import com.jfoenix.controls.JFXButton;
 import elab.application.BaseViewController;
+import elab.business.assist_teaching_function_controllers.EnterScorePageController;
 import elab.business.assist_teaching_function_controllers.ViewSelectCoursesInformationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ public class AssistTeachingTabController extends BaseViewController {
     private ScrollPane contentPage;
 
     private Parent viewRoot;
-    private Parent inputRoot;
+    private Parent enterScoreRoot;
     private Parent attendanceRecordRoot;
     private Parent dataRoot;
     private Parent attendanceInTheoryClassRoot;
@@ -42,10 +43,12 @@ public class AssistTeachingTabController extends BaseViewController {
             viewRoot = viewLoader.load();
             ViewSelectCoursesInformationController viewSelectCoursesInformationController = viewLoader.getController();
             viewSelectCoursesInformationController.initializeController();
-/*
-            FXMLLoader inputLoader = new FXMLLoader(getClass().getResource(""));
-            inputRoot = inputLoader.load();
 
+            FXMLLoader enterScoreLoader = new FXMLLoader(getClass().getResource("/enter_score_page.fxml"));
+            enterScoreRoot = enterScoreLoader.load();
+            EnterScorePageController enterScorePageController = enterScoreLoader.getController();
+            enterScorePageController.initializeController();
+/*
             FXMLLoader attendanceRecordLoader = new FXMLLoader(getClass().getResource(""));
             attendanceRecordRoot = attendanceRecordLoader.load();
 
@@ -65,13 +68,13 @@ public class AssistTeachingTabController extends BaseViewController {
                     contentPage.setContent(viewRoot);
                 }
             });
-/*
+
             inputGrade.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(inputRoot);
+                    contentPage.setContent(enterScoreRoot);
                 }
             });
-
+/*
             attendanceRecord.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
                     contentPage.setContent(attendanceRecordRoot);

@@ -2,6 +2,7 @@ package elab.database;
 
 import elab.serialization.member.LoginMessage;
 import elab.serialization.member.Member;
+import elab.serialization.student.Student;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -152,6 +153,16 @@ public class DatabaseOperations {
         try {
             List students = session.selectList("student.selectAllStudents");
             return students;
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateScore(Student student) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        try {
+            session.update("student.updateScore", student);
+            session.commit();
         } finally {
             session.close();
         }

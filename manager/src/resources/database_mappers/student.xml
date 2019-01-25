@@ -32,4 +32,11 @@
     <select id="selectAllStudents" resultMap="studentResultMap">
         select * from 2018秋_计算机安装与调试技术
     </select>
+    <update id="updateScore" parameterType="student">
+        update 2018秋_计算机安装与调试技术 set
+            硬件成绩 = #{hardScore},
+            软件成绩 = #{softScore},
+            试卷成绩 = #{paperScore}
+        where 学号 = #{number}
+    </update>
 </mapper>

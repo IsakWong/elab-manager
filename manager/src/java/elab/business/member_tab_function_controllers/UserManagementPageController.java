@@ -33,8 +33,8 @@ public class UserManagementPageController extends BaseViewController {
     @FXML
     private JFXTabPane tabPane;
 
-    Tab searchResult = new Tab("搜索结果");
-    SearchResultPageController searchResultPageController;
+    private Tab searchResult = new Tab("搜索结果");
+    private SearchResultPageController searchResultPageController;
 
     private List filterListElement(List list, String filteringString, int equalInformationIndex) {
         for(int i = 0; i < list.size(); ++i) {
@@ -80,7 +80,7 @@ public class UserManagementPageController extends BaseViewController {
             FXMLLoader memberInformationLoader = new FXMLLoader(getClass().getResource("/member_tab_page_fxml_files/member_information_page.fxml"));
             Parent memberInformationRoot = memberInformationLoader.load();
             MemberInformationPageController memberInformationPageController = memberInformationLoader.getController();
-            memberInformationPageController.initializeController();
+            //memberInformationPageController.initializeController();
             memberTab.setContent(memberInformationRoot);
             tabPane.getTabs().add(memberTab);
 
@@ -88,7 +88,7 @@ public class UserManagementPageController extends BaseViewController {
             FXMLLoader studentInformationLoader = new FXMLLoader(getClass().getResource("/member_tab_page_fxml_files/student_information_page.fxml"));
             Parent studentInformationRoot = studentInformationLoader.load();
             StudentInformationPageController studentInformationPageController = studentInformationLoader.getController();
-            studentInformationPageController.initializeController();
+            //studentInformationPageController.initializeController();
             studentTab.setContent(studentInformationRoot);
             tabPane.getTabs().add(studentTab);
 

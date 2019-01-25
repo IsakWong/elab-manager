@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane prefHeight="632.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.assist_teaching_page_controllers.StudentInformationPageController">
+   <content>
+      <TableView fx:id="tableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="630.0" prefWidth="782.0">
+         <columns>
+            <TableColumn fx:id="number" prefWidth="99.0" text="学号" />
+            <TableColumn fx:id="name" prefWidth="74.0" text="姓名" />
+            <TableColumn fx:id="college" prefWidth="250.0" text="院系" />
+            <TableColumn fx:id="hardScore" prefWidth="75.0" text="硬件成绩" />
+            <TableColumn fx:id="softScore" prefWidth="75.0" text="软件成绩" />
+            <TableColumn fx:id="paperScore" prefWidth="75.0" text="试卷成绩" />
+            <TableColumn fx:id="tel" prefWidth="135.0" text="联系电话" />
+         </columns>
+      </TableView>
+   </content>
+</ScrollPane>

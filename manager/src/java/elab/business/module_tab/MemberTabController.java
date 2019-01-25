@@ -87,7 +87,10 @@ public class MemberTabController extends BaseViewController {
 
             addMember.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    if(!contentPageB.isVisible()) {
+                    if(contentPageB.isVisible()) {
+                        contentPageB.setContent(addMemberRoot);
+                    }
+                    else {
                         contentPageB.setContent(addMemberRoot);
                         contentPageA.setVisible(false);
                         contentPageC.setVisible(false);
@@ -98,8 +101,9 @@ public class MemberTabController extends BaseViewController {
 
             personalInformation.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    if(!contentPageB.isVisible()) {
+                    if (contentPageB.isVisible()) {
                         contentPageB.setContent(personalInformationRoot);
+                    } else {
                         contentPageA.setVisible(false);
                         contentPageC.setVisible(false);
                         contentPageB.setVisible(true);

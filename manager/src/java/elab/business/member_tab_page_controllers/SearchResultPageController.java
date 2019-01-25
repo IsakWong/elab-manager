@@ -6,6 +6,7 @@ import elab.serialization.student.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -116,5 +117,8 @@ public class SearchResultPageController extends BaseViewController {
         softScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("softScore"));
         paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
         tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
+
+        memberTableView.setPlaceholder(new Label("未搜索到成员信息"));
+        studentTableView.setPlaceholder(new Label("未搜索到学生信息"));
     }
 }

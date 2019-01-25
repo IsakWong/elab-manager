@@ -38,22 +38,21 @@ public class MemberInformationPageController extends BaseViewController {
     @FXML
     private TableColumn<Member, String> group;
 
-    private static ObservableList<Member> members = FXCollections.<Member>observableArrayList();
-
     @Override
     public void initializeController() {
-            members.addAll(DatabaseOperations.getInstance().selectAllMembers());
-            number.setCellValueFactory(new PropertyValueFactory<Member, String>("number"));
-            userName.setCellValueFactory(new PropertyValueFactory<Member, String>("userName"));
-            name.setCellValueFactory(new PropertyValueFactory<Member, String>("name"));
-            sex.setCellValueFactory(new PropertyValueFactory<Member, String>("sex"));
-            teachingAmount.setCellValueFactory(new PropertyValueFactory<Member, Integer>("teachingAmount"));
-            assistAmount.setCellValueFactory(new PropertyValueFactory<Member, Integer>("assistAmount"));
-            college.setCellValueFactory(new PropertyValueFactory<Member, String>("college"));
-            grade.setCellValueFactory(new PropertyValueFactory<Member, String>("grade"));
-            tel.setCellValueFactory(new PropertyValueFactory<Member, String>("tel"));
-            duty.setCellValueFactory(new PropertyValueFactory<Member, String>("duty"));
-            group.setCellValueFactory(new PropertyValueFactory<Member, String>("group"));
-            tableView.setItems(members);
+        ObservableList<Member> members = FXCollections.<Member>observableArrayList();
+        members.addAll(DatabaseOperations.getInstance().selectAllMembers());
+        number.setCellValueFactory(new PropertyValueFactory<Member, String>("number"));
+        userName.setCellValueFactory(new PropertyValueFactory<Member, String>("userName"));
+        name.setCellValueFactory(new PropertyValueFactory<Member, String>("name"));
+        sex.setCellValueFactory(new PropertyValueFactory<Member, String>("sex"));
+        teachingAmount.setCellValueFactory(new PropertyValueFactory<Member, Integer>("teachingAmount"));
+        assistAmount.setCellValueFactory(new PropertyValueFactory<Member, Integer>("assistAmount"));
+        college.setCellValueFactory(new PropertyValueFactory<Member, String>("college"));
+        grade.setCellValueFactory(new PropertyValueFactory<Member, String>("grade"));
+        tel.setCellValueFactory(new PropertyValueFactory<Member, String>("tel"));
+        duty.setCellValueFactory(new PropertyValueFactory<Member, String>("duty"));
+        group.setCellValueFactory(new PropertyValueFactory<Member, String>("group"));
+        tableView.setItems(members);
     }
 }

@@ -4,7 +4,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="998.0" stylesheets="@../css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.member_tab_page_controllers.MemberInformationPageController">
    <content>
-      <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="489.0" prefWidth="1118.0" stylesheets="@../css/controls_style.css">
+      <TableView fx:id="tableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="489.0" prefWidth="1118.0" stylesheets="@../css/controls_style.css">
          <columns>
             <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
             <TableColumn fx:id="userName" prefWidth="130.0" text="登陆用户名" />
