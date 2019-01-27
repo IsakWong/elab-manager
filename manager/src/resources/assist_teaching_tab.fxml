@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.AssistTeachingTabController">
     <children>
@@ -61,7 +66,11 @@
                 </JFXButton>
             </children>
         </VBox>
-        <ScrollPane fx:id="contentPage" hbarPolicy="NEVER" prefHeight="700.0" prefWidth="1000.0" vbarPolicy="NEVER" />
+      <AnchorPane prefHeight="700.0" prefWidth="1000.0">
+         <children>
+            <ScrollPane fx:id="commonContentPage" hbarPolicy="NEVER" prefHeight="700.0" prefWidth="1000.0" vbarPolicy="NEVER" />
+            <ScrollPane fx:id="contentPageA" hbarPolicy="NEVER" prefHeight="700.0" prefWidth="1000.0" vbarPolicy="NEVER" visible="false" />
+         </children>
+      </AnchorPane>
     </children>
 </HBox>
-

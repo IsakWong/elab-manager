@@ -8,6 +8,7 @@
         <typeAlias alias="member" type="elab.serialization.member.Member"/>
         <typeAlias alias="loginMessage" type="elab.serialization.member.LoginMessage"/>
         <typeAlias alias="student" type="elab.serialization.student.Student"/>
+        <typeAlias alias="schoolOpen" type="elab.serialization.school_opening_information.SchoolOpeningInformation"/>
     </typeAliases>
     <environments default="student">
         <environment id="student">

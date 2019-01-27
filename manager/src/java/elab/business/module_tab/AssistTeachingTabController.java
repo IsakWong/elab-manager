@@ -25,7 +25,9 @@ public class AssistTeachingTabController extends BaseViewController {
     @FXML
     private JFXButton autoFill;
     @FXML
-    private ScrollPane contentPage;
+    private ScrollPane commonContentPage;
+    @FXML
+    private ScrollPane contentPageA;
 
     private Parent viewRoot;
     private Parent enterScoreRoot;
@@ -61,17 +63,27 @@ public class AssistTeachingTabController extends BaseViewController {
             FXMLLoader autoLoader = new FXMLLoader(getClass().getResource(""));
             autoRoot = autoLoader.load();
 */
-            contentPage.setContent(viewRoot);
+            commonContentPage.setContent(viewRoot);
+            contentPageA.setContent(enterScoreRoot);
 
             viewSelectCoursesInformation.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(viewRoot);
+                    if(commonContentPage.isVisible())
+                        commonContentPage.setContent(viewRoot);
+                    else {
+                        commonContentPage.setContent(viewRoot);
+                        contentPageA.setVisible(false);
+                        commonContentPage.setVisible(true);
+                    }
                 }
             });
 
             inputGrade.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(enterScoreRoot);
+                    if(!contentPageA.isVisible()) {
+                        commonContentPage.setVisible(false);
+                        contentPageA.setVisible(true);
+                    }
                 }
             });
 /*

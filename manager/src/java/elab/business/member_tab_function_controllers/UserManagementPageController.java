@@ -6,6 +6,7 @@ import elab.business.member_tab_page_controllers.MemberInformationPageController
 import elab.business.member_tab_page_controllers.SearchResultPageController;
 import elab.business.member_tab_page_controllers.StudentInformationPageController;
 import elab.database.DatabaseOperations;
+import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,17 +36,6 @@ public class UserManagementPageController extends BaseViewController {
 
     private Tab searchResult = new Tab("搜索结果");
     private SearchResultPageController searchResultPageController;
-
-    private List filterListElement(List list, String filteringString, int equalInformationIndex) {
-        for(int i = 0; i < list.size(); ++i) {
-            String[] properties = list.get(i).toString().split(" ");
-            if(!properties[equalInformationIndex].equals(filteringString)) {
-                list.remove(i);
-                --i;
-            }
-        }
-        return list;
-    }
 
     @Override
     public void initializeController() {
@@ -109,15 +99,15 @@ public class UserManagementPageController extends BaseViewController {
                         if(member.isSelected()) {
                             List result = DatabaseOperations.getInstance().selectMemberByName(name.getText());
                             if(!number.getText().equals("")) {
-                                result = filterListElement(result, number.getText(), 0);
+                                result = Utilities.filter(result, number.getText(), 0);
                                 if(!college.getValue().equals("")) {
-                                    result = filterListElement(result, college.getValue().toString(), 4);
+                                    result = Utilities.filter(result, college.getValue().toString(), 4);
                                     searchResultPageController.showMemberResult(result);
                                 }
                                 else searchResultPageController.showMemberResult(result);
                             }
                             else if(!college.getValue().equals("")) {
-                                result = filterListElement(result, college.getValue().toString(), 4);
+                                result = Utilities.filter(result, college.getValue().toString(), 4);
                                 searchResultPageController.showMemberResult(result);
                             }
                             else searchResultPageController.showMemberResult(result);
@@ -125,15 +115,15 @@ public class UserManagementPageController extends BaseViewController {
                         else {
                             List result = DatabaseOperations.getInstance().selectStudentByName(name.getText());
                             if(!number.getText().equals("")) {
-                                result = filterListElement(result, number.getText(), 0);
+                                result = Utilities.filter(result, number.getText(), 0);
                                 if(!college.getValue().equals("")) {
-                                    result = filterListElement(result, college.getValue().toString(), 2);
+                                    result = Utilities.filter(result, college.getValue().toString(), 2);
                                     searchResultPageController.showStudentResult(result);
                                 }
                                 else searchResultPageController.showStudentResult(result);
                             }
                             else if(!college.getValue().equals("")) {
-                                result = filterListElement(result, college.getValue().toString(), 2);
+                                result = Utilities.filter(result, college.getValue().toString(), 2);
                                 searchResultPageController.showStudentResult(result);
                             }
                             else searchResultPageController.showStudentResult(result);
@@ -143,7 +133,7 @@ public class UserManagementPageController extends BaseViewController {
                         if(member.isSelected()) {
                             List result = DatabaseOperations.getInstance().selectMemberByNumber(number.getText());
                             if(!college.getValue().equals("")) {
-                                result = filterListElement(result, college.getValue().toString(), 4);
+                                result = Utilities.filter(result, college.getValue().toString(), 4);
                                 searchResultPageController.showMemberResult(result);
                             }
                             else searchResultPageController.showMemberResult(result);
@@ -151,7 +141,7 @@ public class UserManagementPageController extends BaseViewController {
                         else {
                             List result = DatabaseOperations.getInstance().selectStudentByNumber(number.getText());
                             if(!college.getValue().equals("")) {
-                                result = filterListElement(result, college.getValue().toString(), 2);
+                                result = Utilities.filter(result, college.getValue().toString(), 2);
                                 searchResultPageController.showStudentResult(result);
                             }
                             else searchResultPageController.showStudentResult(result);

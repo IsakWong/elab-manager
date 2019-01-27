@@ -32,6 +32,21 @@
     <select id="selectAllStudents" resultMap="studentResultMap">
         select * from 2018秋_计算机安装与调试技术
     </select>
+    <select id="selectSchoolOpeningDate" resultType="schoolOpen">
+        select
+            开学日期 as "schoolOpeningDate",
+            学期 as "term",
+            硬件理论 as "hardTheory",
+            软件理论 as "softTheory",
+            维护理论 as "maintenanceTheory",
+            硬件周次 as "hardWeeks",
+            软件周次 as "softWeeks",
+            维护周次 as "maintenanceWeeks",
+            关闭选课 as "closeChooseClasses",
+            值班形式 as "onDutyForm",
+            课容量 as "classCapacity"
+        from 开学日期
+    </select>
     <update id="updateScore" parameterType="student">
         update 2018秋_计算机安装与调试技术 set
             硬件成绩 = #{hardScore},

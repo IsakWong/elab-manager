@@ -31,9 +31,16 @@ public class SearchResultPageController extends BaseViewController {
     @FXML
     private TableColumn<Student, String> tel;
 
+    private ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+
     public void showResult(List student) {
-        ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+        if(students != null) students.remove(0, students.size());
         students.addAll(student);
+        tableView.setItems(students);
+    }
+
+    public void showResult() {
+        if(students != null) students.remove(0, students.size());
         tableView.setItems(students);
     }
 
@@ -47,10 +54,6 @@ public class SearchResultPageController extends BaseViewController {
         softScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("softScore"));
         paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
         tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
-        //ObservableList<Student> students = FXCollections.<Student>observableArrayList();
-        //students.addAll(DatabaseOperations.getInstance().selectAllStudents());
-        //tableView.setItems(students);
         tableView.setPlaceholder(new Label("未搜索到学生信息"));
-
     }
 }

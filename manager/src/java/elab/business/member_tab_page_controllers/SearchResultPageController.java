@@ -73,7 +73,7 @@ public class SearchResultPageController extends BaseViewController {
     }
 
     public void showMemberResult() {
-        memberResult.remove(0, memberResult.size());
+        if(memberResult != null) memberResult.remove(0, memberResult.size());
         memberTableView.setItems(memberResult);
         studentTableView.setVisible(false);
         memberTableView.setVisible(true);
@@ -88,7 +88,7 @@ public class SearchResultPageController extends BaseViewController {
     }
 
     public void showStudentResult() {
-        studentResult.remove(0, studentResult.size());
+        if(studentResult != null) studentResult.remove(0, studentResult.size());
         studentTableView.setItems(studentResult);
         memberTableView.setVisible(false);
         studentTableView.setVisible(true);

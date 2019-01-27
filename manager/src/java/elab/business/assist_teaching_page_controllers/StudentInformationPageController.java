@@ -37,10 +37,9 @@ public class StudentInformationPageController extends BaseViewController {
     private Label numberLabel;
     private Label nameLabel;
 
-    public void setLabel(Label numberLabel, Label nameLabel) {
-        this.numberLabel = numberLabel;
-        this.nameLabel = nameLabel;
-    }
+    private int studentAmount;
+
+    public String getStudentAmount() {return Integer.toString(studentAmount);}
 
     public Student getStudent() {
         return student;
@@ -48,6 +47,11 @@ public class StudentInformationPageController extends BaseViewController {
 
     public TableView getTableView() {
         return tableView;
+    }
+
+    public void setLabel(Label numberLabel, Label nameLabel) {
+        this.numberLabel = numberLabel;
+        this.nameLabel = nameLabel;
     }
 
     @Override
@@ -62,6 +66,7 @@ public class StudentInformationPageController extends BaseViewController {
         tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
         ObservableList<Student> students = FXCollections.<Student>observableArrayList();
         students.addAll(DatabaseOperations.getInstance().selectAllStudents());
+        studentAmount = students.size();
         tableView.setItems(students);
         tableView.setPlaceholder(new Label("当天无上课同学"));
 

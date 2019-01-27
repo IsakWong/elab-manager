@@ -62,7 +62,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="contentPageC" prefHeight="700.0" prefWidth="1000.0">
+            <ScrollPane fx:id="commonContentPage" prefHeight="700.0" prefWidth="1000.0">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
                </content>

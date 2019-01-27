@@ -2,6 +2,7 @@ package elab.database;
 
 import elab.serialization.member.LoginMessage;
 import elab.serialization.member.Member;
+import elab.serialization.school_opening_information.SchoolOpeningInformation;
 import elab.serialization.student.Student;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -163,6 +164,16 @@ public class DatabaseOperations {
         try {
             session.update("student.updateScore", student);
             session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public SchoolOpeningInformation selectSchoolOpeningDateInformation() {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            SchoolOpeningInformation schoolOpeningInformation = session.selectOne("student.selectSchoolOpeningDate");
+            return schoolOpeningInformation;
         } finally {
             session.close();
         }

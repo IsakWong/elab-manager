@@ -10,17 +10,15 @@ import elab.serialization.student.Student;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class EnterScorePageController extends BaseViewController {
 
@@ -82,7 +80,16 @@ public class EnterScorePageController extends BaseViewController {
 
             selectBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
-                    //////////////////////////////////////////////////////////////////////////////////////////////
+                    if(!numberInput.getText().equals("")) {
+                        List list = DatabaseOperations.getInstance().selectStudentByNumber(numberInput.getText());
+                        if(!nameInput.getText().equals("")) {
+                            Utilities.filter(list, nameInput.getText(), 1);
+                            searchResultPageController.showResult(list);
+                        }
+                        else searchResultPageController.showResult(list);
+                    }
+                    else if(!nameInput.getText().equals("")) searchResultPageController.showResult(DatabaseOperations.getInstance().selectStudentByName(nameInput.getText()));
+                    else searchResultPageController.showResult();
                     tabPane.getSelectionModel().select(searchResult);
                 }
             });
@@ -122,6 +129,9 @@ public class EnterScorePageController extends BaseViewController {
                     }
             );
 
+            schoolDate.setText("第" + Integer.toString(Utilities.getSchoolCalendarWeek()) + "周 " + Utilities.getSystemWeek());
+            course.setText(Utilities.getCourseSort());
+            peopleAmount.setText("共" + studentInformationPageController.getStudentAmount() + "人");
         } catch (Exception e) {
             e.printStackTrace();
         }
