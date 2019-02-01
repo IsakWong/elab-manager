@@ -70,7 +70,8 @@
                   <JFXButton fx:id="searchBtn" prefWidth="76.0" text="查询">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></JFXButton>
+                     </VBox.margin>
+                  </JFXButton>
                </children>
             </VBox>
             <AnchorPane prefHeight="148.0" prefWidth="155.0">

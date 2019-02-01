@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
@@ -19,6 +25,14 @@
                         <Font size="30.0" />
                     </font>
                 </JFXButton>
+                <JFXButton fx:id="dutyForm" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="值班表" textFill="WHITE">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="16.0" top="16.0" />
+                    </padding>
+                </JFXButton>
                 <JFXButton fx:id="totalAttendanceTime" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="签到时间统计" textFill="WHITE">
                     <font>
                         <Font size="30.0" />
@@ -28,14 +42,6 @@
                     </padding>
                 </JFXButton>
                 <JFXButton fx:id="onDuty" layoutX="10.0" layoutY="61.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="值班" textFill="WHITE">
-                    <font>
-                        <Font size="30.0" />
-                    </font>
-                    <padding>
-                        <Insets bottom="16.0" top="16.0" />
-                    </padding>
-                </JFXButton>
-                <JFXButton fx:id="dutyForm" layoutX="10.0" layoutY="111.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="值班表" textFill="WHITE">
                     <font>
                         <Font size="30.0" />
                     </font>

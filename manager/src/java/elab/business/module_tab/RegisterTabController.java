@@ -30,18 +30,18 @@ public class RegisterTabController extends BaseViewController {
     public void initializeController() {
 
         try {
-/*
-            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource(""));
-            this.viewRoot = viewLoader.load();
 
+            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource("/view_loader_page.fxml"));
+            viewRoot = viewLoader.load();
+/*
             FXMLLoader totalLoader = new FXMLLoader(getClass().getResource(""));
-            this.totalRoot = totalLoader.load();
+            totalRoot = totalLoader.load();
 
             FXMLLoader onDutyLoader = new FXMLLoader(getClass().getResource(""));
-            this.onDutyRoot = onDutyLoader.load();
+            onDutyRoot = onDutyLoader.load();
 
             FXMLLoader dutyFormLoader = new FXMLLoader(getClass().getResource(""));
-            this.dutyFormRoot = dutyFormLoader.load();
+            dutyFormRoot = dutyFormLoader.load();
 */ /*
             viewOnLine.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {

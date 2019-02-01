@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.assist_teaching_function_controllers.ViewSelectCoursesInformationController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.assist_teaching_tab_function_controllers.ViewSelectCoursesInformationController">
    <children>
       <Label alignment="CENTER" layoutX="78.0" layoutY="26.0" prefHeight="47.0" prefWidth="127.0" text="课程信息">
          <font>

@@ -8,6 +8,7 @@ public class Member {
     private String number;
     private String userName;
     private String name;
+    private String namePinYin;
     private String sex;
     private String college;
     private String group;
@@ -42,6 +43,15 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getNamePinYin() {
+        return namePinYin;
+    }
+
+    public void setNamePinYin(String namePinYin) {
+        this.namePinYin = namePinYin;
+    }
+
 
     public String getSex() {
         return sex;
@@ -125,7 +135,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return number + " " + userName + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistAmount;
+        return number + " " + userName + " " + name + " " + namePinYin + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password + " " + teachingAmount + " " + assistAmount;
     }
 
     public Member() {

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox fx:id="container" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.assist_teaching_function_controllers.EnterScorePageController">
+<HBox fx:id="container" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.assist_teaching_tab_function_controllers.EnterScorePageController">
    <children>
       <VBox prefHeight="700.0" prefWidth="873.0">
          <children>

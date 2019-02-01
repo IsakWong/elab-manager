@@ -1,4 +1,4 @@
-package elab.business.assist_teaching_function_controllers;
+package elab.business.assist_teaching_tab_function_controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;

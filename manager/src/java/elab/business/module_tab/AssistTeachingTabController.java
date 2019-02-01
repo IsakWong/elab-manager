@@ -2,8 +2,9 @@ package elab.business.module_tab;
 
 import com.jfoenix.controls.JFXButton;
 import elab.application.BaseViewController;
-import elab.business.assist_teaching_function_controllers.EnterScorePageController;
-import elab.business.assist_teaching_function_controllers.ViewSelectCoursesInformationController;
+import elab.business.assist_teaching_tab_function_controllers.AttendanceRecordPageController;
+import elab.business.assist_teaching_tab_function_controllers.EnterScorePageController;
+import elab.business.assist_teaching_tab_function_controllers.ViewSelectCoursesInformationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,11 +50,13 @@ public class AssistTeachingTabController extends BaseViewController {
             FXMLLoader enterScoreLoader = new FXMLLoader(getClass().getResource("/enter_score_page.fxml"));
             enterScoreRoot = enterScoreLoader.load();
             EnterScorePageController enterScorePageController = enterScoreLoader.getController();
-            enterScorePageController.initializeController();
-/*
-            FXMLLoader attendanceRecordLoader = new FXMLLoader(getClass().getResource(""));
-            attendanceRecordRoot = attendanceRecordLoader.load();
+            //enterScorePageController.initializeController();
 
+            FXMLLoader attendanceRecordLoader = new FXMLLoader(getClass().getResource("/attendance_record_page.fxml"));
+            attendanceRecordRoot = attendanceRecordLoader.load();
+            AttendanceRecordPageController attendanceRecordPageController = attendanceRecordLoader.getController();
+            attendanceRecordPageController.initializeController();
+/*
             FXMLLoader dataLoader = new FXMLLoader(getClass().getResource(""));
             dataRoot = dataLoader.load();
 
@@ -86,13 +89,13 @@ public class AssistTeachingTabController extends BaseViewController {
                     }
                 }
             });
-/*
+
             attendanceRecord.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
-                    contentPage.setContent(attendanceRecordRoot);
+                    commonContentPage.setContent(attendanceRecordRoot);
                 }
             });
-
+/*
             dataProcessing.setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY) {
                     contentPage.setContent(dataRoot);
