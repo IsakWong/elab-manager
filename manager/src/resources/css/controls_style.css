@@ -1,6 +1,6 @@
 .root {
-    -fx-font-family: Roboto;
-    src: "/resources/roboto/Roboto-Regular.ttf";
+    -fx-font-family: "微软雅黑";
+    -fx-font-size: 12px;
 }
 
 .elab-text-body{
@@ -90,7 +90,7 @@
     -fx-text-alignment: center;
     -fx-text-fill: rgb(255,255,255);
     -fx-font-size: 1.25em;
-    -fx-padding: 12px;
+    -fx-padding: 16px;
 }
 /* Input Demo */
 /* Burgers Demo */

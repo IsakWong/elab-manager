@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.AssistTeachingTabController">
+<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_tab.AssistTeachingTabController">
     <children>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: #3F51B5;" stylesheets="@css/controls_style.css">
             <children>
-                <JFXButton fx:id="viewSelectCoursesInformation" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="查看选课情况" textFill="WHITE">
+                <JFXButton fx:id="viewSelectCoursesInformation" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="left-panel-button" text="查看选课情况" textFill="WHITE">
                     <padding>
                         <Insets bottom="16.0" top="16.0" />
-                    </padding>
-                    <font>
-                        <Font size="30.0" />
-                    </font></JFXButton>
+                    </padding></JFXButton>
                 <JFXButton fx:id="inputGrade" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="成绩录入" textFill="WHITE">
                     <font>
                         <Font size="30.0" />

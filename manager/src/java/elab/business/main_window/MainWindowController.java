@@ -1,19 +1,35 @@
 package elab.business.main_window;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import elab.application.BaseViewController;
+import elab.application.ElabManagerApplication;
+import elab.business.ModulePageController;
 import elab.business.module_tab.AssistTeachingTabController;
 import elab.business.module_tab.MemberTabController;
 import elab.business.module_tab.RegisterTabController;
 import elab.business.module_tab.SystemControlTabController;
+import elab.serialization.module.Function;
+import elab.serialization.module.Module;
+import elab.utility.Utilities;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import static java.lang.Double.MAX_VALUE;
 
 
 public class MainWindowController extends BaseViewController {
@@ -67,17 +83,87 @@ public class MainWindowController extends BaseViewController {
                 }
             });
 
-            Tab userTab = new Tab();
-            userTab.setText("助课管理");
-            FXMLLoader assistLoader = new FXMLLoader(getClass().getResource("/assist_teaching_tab.fxml"));
-            Parent root = assistLoader.load();
-            userTab.setContent(root);
-            AssistTeachingTabController assistController = assistLoader.getController();
-            assistController.initializeController();
+
+            Gson gson = new Gson();
+            String moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/manager_modules.json"));
+            Type typeList = new TypeToken<ArrayList<Module>>() {
+            }.getType();
+            ArrayList<Module> moduleList = gson.fromJson(moduleJson, typeList);
+            for (Module module : moduleList) {
+                FXMLLoader assistLoader = new FXMLLoader(getClass().getResource("/module_page.fxml"));
+                Parent root = assistLoader.load();
+                Tab userTab = new Tab();
+                module.Root = root;
+                userTab.setText(module.ModuleName);
+                ModulePageController assistController = assistLoader.getController();
+                assistController.initializeController();
+
+                for (final Function func: module.Functions) {
+                    JFXButton funcBtn = new JFXButton();
+                    func.ParentModule = module;
+                    funcBtn.getStyleClass().add("left-panel-button");
+                    funcBtn.setText(func.FunctionName);
+                    funcBtn.setMaxWidth(MAX_VALUE);
+                    funcBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            if(!func.IsInit)
+                            {
+                                try {
+                                    FXMLLoader assistLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
+                                    Parent root = assistLoader.load();
+                                    ScrollPane scrollPane = (ScrollPane)func.ParentModule.Root.lookup("#contentPage");
+                                    scrollPane.setContent(root);
+                                    func.Root  = root;
+                                    func.IsInit = true;
+                                }
+                                catch (Exception excep)
+                                {
+
+                                }
+                            }else{
+                                System.out.println("无重复加载");
+                            }
+                        }
+                    });
+                    assistController.leftPanel.getChildren().add(funcBtn);
+                }
+                userTab.setContent(root);
+                tabPane.getTabs().add(userTab);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //controller.TabModule = module;
-            tabPane.getTabs().add(userTab);
-
+/*
             Tab assistTab = new Tab();
             assistTab.setText("成员管理");
             FXMLLoader memberLoader = new FXMLLoader(getClass().getResource("/member_tab.fxml"));
@@ -104,6 +190,8 @@ public class MainWindowController extends BaseViewController {
             SystemControlTabController sysCtrlController = sysCtrlLoader.getController();
             sysCtrlController.initializeController();
             tabPane.getTabs().add(systemControlTab);
+
+       */
 
         } catch (Exception exp) {
             System.out.print(exp.toString());

@@ -9,4 +9,7 @@ public class Module {
     @SerializedName("module_name")
     public String ModuleName;
     @SerializedName("functions")
-    public Function[] Functions;}
+    public Function[] Functions;
+
+    public transient Parent Root = null;
+}

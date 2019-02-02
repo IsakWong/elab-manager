@@ -1,12 +1,93 @@
-{
-  "module_name": "学生管理",
-  "functions": [{
-    "function_name": "添加学生",
-    "function_fxml": "/add_user_page.fxml"
-  },
+[
+  {
+  "module_name": "助课管理",
+  "functions":
+  [
     {
-      "function_name": "添加学生",
+      "function_name": "查看选课情况",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "成绩录入",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "助教出勤统计",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "数据处理",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "理论课签到情况",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "自动填表",
       "function_fxml": "/add_user_page.fxml"
     }
   ]
-}
+  },
+  {
+  "module_name": "助课管理",
+  "functions":
+  [
+    {
+      "function_name": "查看选课情况",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "成绩录入",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "助教出勤统计",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "数据处理",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "理论课签到情况",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "自动填表",
+      "function_fxml": "/add_user_page.fxml"
+    }
+  ]
+  },
+  {
+    "module_name": "助课管理",
+    "functions":
+    [
+      {
+        "function_name": "查看选课情况",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "成绩录入",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "助教出勤统计",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "数据处理",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "理论课签到情况",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "自动填表",
+        "function_fxml": "/add_user_page.fxml"
+      }
+    ]
+  }
+
+]

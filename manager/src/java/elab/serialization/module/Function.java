@@ -10,6 +10,7 @@ public class Function {
     @SerializedName("function_fxml")
     public String FunctionFXML;
 
+    public transient Module ParentModule;
     public transient Parent Root = null;
     public transient boolean IsInit = false;
 
