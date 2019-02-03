@@ -11,6 +11,17 @@ import elab.database.DatabaseOperations;
 import elab.serialization.member.LoginMessage;
 import elab.serialization.module.Module;
 import elab.util.Utilities;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.rxjavafx.observables.JavaFxObservable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +37,9 @@ import javafx.stage.StageStyle;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+
+import static java.lang.Thread.sleep;
 
 public class LoginWindowController extends BaseViewController {
 
@@ -46,6 +60,8 @@ public class LoginWindowController extends BaseViewController {
     @FXML
     private VBox container;
 
+
+    boolean isLogging = false;
     private double x1;
     private double y1;
     private double x_stage;
@@ -67,14 +83,15 @@ public class LoginWindowController extends BaseViewController {
             Stage mainStage = new Stage();
             mainStage.initStyle(StageStyle.UNDECORATED);
             mainStage.setScene(new Scene(root, 1200, 800));
-            controller.initializeController();
+            //controller.initializeController();
             mainStage.show();
             ElabManagerApplication.primaryStage.close();
         } catch (Exception exp) {
-
+            System.out.println(exp);
         }
 
     }
+
 
     public boolean isPwdValidated(String number, String password) {
         loginMessage = DatabaseOperations.getInstance().selectLoginMessage(number);
@@ -114,12 +131,51 @@ public class LoginWindowController extends BaseViewController {
         });
 
         logButton.setOnAction(event -> {
-            if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
-                Utilities.popMessage("用户名和密码不能为空", container);
-            else if (isUserValidated(userInputField.getText(), pwdInputField.getText())) {
-                loginMessage.setOldNumber(loginMessage.getNumber());
-                showMainWindow();
+            if(!isLogging)
+            {
+                isLogging = true;
+                Utilities.popMessage("正在登录中",container);
+                ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
+
+                    @Override
+                    public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
+                        observableEmitter.onNext(isUserValidated(userInputField.getText(), pwdInputField.getText()));
+                        isLogging = false;
+                    }
+                };
+                Observable.create(ob)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(JavaFxScheduler.platform())
+                        .subscribe(new Observer<Boolean>() {
+                                       @Override
+                                       public void onSubscribe(Disposable disposable) {
+
+                                       }
+
+                                       @Override
+                                       public void onNext(Boolean s) {
+                                           if (s.booleanValue())
+                                               showMainWindow();
+                                           else
+                                               Utilities.popMessage("密码错误",container);
+                                       }
+
+                                       @Override
+                                       public void onError(Throwable throwable) {
+
+                                       }
+
+                                       @Override
+                                       public void onComplete() {
+
+                                       }
+                                   }
+                        );
+            }else
+            {
+                Utilities.popMessage("正在登录中",container);
             }
+
         });
 
         closeBtn.setOnMouseClicked(event -> {
