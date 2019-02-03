@@ -14,7 +14,19 @@
     {
       "function_name": "助教出勤统计",
       "function_fxml": "/attendance_record_page.fxml"
-    }
+    }/*,
+    {
+      "function_name": "数据处理",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "理论课签到情况",
+      "function_fxml": "/add_user_page.fxml"
+    },
+    {
+      "function_name": "自动填表",
+      "function_fxml": "/add_user_page.fxml"
+    }*/
   ]
   },
   {
@@ -42,18 +54,49 @@
   {
     "module_name": "签到与值班",
     "functions":
-    [
+    [/*
       {
         "function_name": "查看在线",
         "function_fxml": "/view_loader_page.fxml"
-      }
+      },
+      {
+        "function_name": "值班表",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "签到时间统计",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "值班",
+        "function_fxml": "/add_user_page.fxml"
+      }*/
     ]
   },
   {
     "module_name": "系统控制",
     "functions":
-    [
-
+    [/*
+      {
+        "function_name": "Log信息查看",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "选择非选课时间",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "修改管理员列表",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "局域网远程控制",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "重要通知",
+        "function_fxml": "/add_user_page.fxml"
+      }*/
     ]
   }
 

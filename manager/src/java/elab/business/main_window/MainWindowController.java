@@ -8,7 +8,7 @@ import elab.application.BaseViewController;
 import elab.business.ModulePageController;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
-import elab.utility.Utilities;
+import elab.util.Utilities;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +18,13 @@ import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Double.MAX_VALUE;
 
@@ -84,13 +86,13 @@ public class MainWindowController extends BaseViewController {
             }.getType();
             ArrayList<Module> moduleList = gson.fromJson(moduleJson, typeList);
             for (Module module : moduleList) {
-                FXMLLoader assistLoader = new FXMLLoader(getClass().getResource("/module_page.fxml"));
-                Parent root = assistLoader.load();
+                FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/module_page.fxml"));
+                Parent root = moduleLoader.load();
                 Tab userTab = new Tab();
                 module.Root = root;
                 userTab.setText(module.ModuleName);
-                ModulePageController assistController = assistLoader.getController();
-                assistController.initializeController();
+                ModulePageController modulePageController = moduleLoader.getController();
+                modulePageController.initializeController();
 
                 for (final Function func : module.Functions) {
                     JFXButton funcBtn = new JFXButton();
@@ -100,18 +102,27 @@ public class MainWindowController extends BaseViewController {
                     funcBtn.setMaxWidth(MAX_VALUE);
                     FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
                     Parent functionRoot = functionLoader.load();
-                    ScrollPane scrollPane = (ScrollPane) func.ParentModule.Root.lookup("#contentPage");
+                    ArrayList<ScrollPane> scrollPanes = func.ParentModule.scrollPanes;
+                    ScrollPane functionScrollPane = new ScrollPane();
+                    functionScrollPane.setContent(functionRoot);
+                    functionScrollPane.setVisible(false);
+                    scrollPanes.add(functionScrollPane);
                     BaseViewController baseViewController = functionLoader.getController();
                     baseViewController.initializeController();
                     func.Root = functionRoot;
                     func.IsInit = true;
                     funcBtn.setOnMouseClicked(event -> {
                         if(event.getButton() == MouseButton.PRIMARY) {
-                            scrollPane.setContent(functionRoot);
+                            for(int i = 0; i < scrollPanes.size(); ++i)
+                                if(scrollPanes.get(i).isVisible())
+                                    scrollPanes.get(i).setVisible(false);
+                            functionScrollPane.setVisible(true);
                         }
                     });
-                    assistController.leftPanel.getChildren().add(funcBtn);
+                    modulePageController.leftPanel.getChildren().add(funcBtn);
                 }
+                AnchorPane container = (AnchorPane) module.Root.lookup("#container");
+                container.getChildren().addAll(module.scrollPanes);
                 userTab.setContent(root);
                 tabPane.getTabs().add(userTab);
             }
