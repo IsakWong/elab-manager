@@ -40,7 +40,7 @@ public class ElabManagerApplication extends Application {
 
         ElabManagerApplication.primaryStage = primaryStage;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login_window.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/login_window.fxml"));
         Parent root = loader.load();
         LoginWindowController controller = loader.getController();
         controller.initializeController();

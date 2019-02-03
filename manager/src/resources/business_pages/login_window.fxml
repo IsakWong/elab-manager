@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="container" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.log_in_window.LoginWindowController">
+   <children>
+      <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3F51B5;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="400.0" prefHeight="400.0" prefWidth="500.0" text="科中管理系统" textAlignment="CENTER" textFill="WHITE">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="minBtn" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/min.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="16.0" right="16.0" top="16.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="closeBtn" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/close.png" />
+                </image>
+               <HBox.margin>
+                  <Insets right="16.0" top="16.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <JFXTextField fx:id="userInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefWidth="300.0" promptText="用户名:" styleClass="elab-text-body">
+         <VBox.margin>
+            <Insets top="32.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="密码:" styleClass="elab-text-body">
+         <VBox.margin>
+            <Insets bottom="8.0" top="32.0" />
+         </VBox.margin>
+      </JFXPasswordField>
+      <JFXButton fx:id="logButton" styleClass="elab-text-body" text="登录" textFill="#212121">
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="8.0" left="32.0" right="32.0" top="8.0" />
+         </padding>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="284.0" layoutY="166.0" styleClass="elab-text-caption" text="Copyright @ 2018 ELAB. All rights reserved" textAlignment="CENTER" textFill="#727272">
+         <font>
+            <Font name="Microsoft YaHei" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+   <opaqueInsets>
+      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+   </opaqueInsets>
+</VBox>

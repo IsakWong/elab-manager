@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="700.0" prefWidth="1200.0" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.ModulePageController">
+   <children>
+      <VBox fx:id="leftPanel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: #3F51B5;" stylesheets="@../style/css/controls_style.css" />
+      <AnchorPane fx:id="container" prefHeight="700.0" prefWidth="1000.0" />
+   </children>
+</HBox>

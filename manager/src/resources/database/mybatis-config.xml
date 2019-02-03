@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias alias="member" type="elab.serialization.beans.member.Member"/>
+        <typeAlias alias="loginMessage" type="elab.serialization.beans.member.LoginMessage"/>
+        <typeAlias alias="student" type="elab.serialization.beans.student.Student"/>
+        <typeAlias alias="schoolOpen" type="elab.serialization.beans.school_opening_information.SchoolOpeningInformation"/>
+    </typeAliases>
+    <environments default="student">
+        <environment id="student">
+            <transactionManager type="jdbc"/>
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/student?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="elabtemp"/>
+                <property name="password" value="elab123456"/>
+            </dataSource>
+        </environment>
+        <environment id="class">
+            <transactionManager type="jdbc"/>
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/class?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="elabtemp"/>
+                <property name="password" value="elab123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="database_mappers/member.xml"/>
+        <mapper resource="database_mappers/student.xml"/>
+    </mappers>
+</configuration>

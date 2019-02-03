@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="BOTTOM_CENTER" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.UserManagementPageController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="694.0">
+         <children>
+            <VBox alignment="CENTER_RIGHT" prefHeight="148.0" prefWidth="142.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="50.0" text="学号：">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="23.0" prefWidth="73.0" text="姓名：">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="23.0" text="院系：">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="4.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="236.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                  <JFXTextField fx:id="number" maxWidth="-Infinity" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="7.0" />
+                     </VBox.margin></JFXTextField>
+                  <JFXTextField fx:id="name" maxWidth="-Infinity" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="7.0" />
+                     </VBox.margin></JFXTextField>
+                  <JFXComboBox fx:id="college" prefHeight="30.0" prefWidth="230.0" stylesheets="@../../../../style/css/controls_style.css">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" prefHeight="148.0" prefWidth="104.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                  <JFXRadioButton fx:id="member" selectedColor="#303F9F" text="科中成员">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="24.0" />
+                     </VBox.margin>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="student" selectedColor="#303F9F" text="上课同学">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXRadioButton>
+                  <JFXButton fx:id="searchBtn" prefWidth="76.0" text="查询">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="148.0" prefWidth="155.0">
+               <children>
+                  <JFXButton fx:id="returnBtn" layoutX="39.0" layoutY="105.0" prefHeight="29.0" prefWidth="76.0" text="信息清除" />
+               </children>
+            </AnchorPane>
+         </children>
+         <VBox.margin>
+            <Insets left="220.0" right="150.0" />
+         </VBox.margin>
+      </HBox>
+      <JFXTabPane fx:id="tabPane" prefHeight="553.0" prefWidth="1000.0" stylesheets="@../../../../style/css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
+   </children>
+</VBox>

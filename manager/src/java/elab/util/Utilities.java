@@ -2,7 +2,7 @@ package elab.util;
 
 import com.jfoenix.controls.JFXSnackbar;
 import elab.database.DatabaseOperations;
-import elab.serialization.school_opening_information.SchoolOpeningInformation;
+import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;

@@ -8,7 +8,7 @@ import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
-import elab.serialization.member.LoginMessage;
+import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.module.Module;
 import elab.util.Utilities;
 import io.reactivex.Observable;
@@ -16,12 +16,8 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.rxjavafx.observables.JavaFxObservable;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,7 +33,6 @@ import javafx.stage.StageStyle;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
 
 import static java.lang.Thread.sleep;
 
@@ -77,7 +72,7 @@ public class LoginWindowController extends BaseViewController {
 
     public void showMainWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_window.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/main_window.fxml"));
             Parent root = loader.load();
             MainWindowController controller = loader.getController();
             Stage mainStage = new Stage();

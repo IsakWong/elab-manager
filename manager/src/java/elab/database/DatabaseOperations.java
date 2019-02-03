@@ -1,9 +1,9 @@
 package elab.database;
 
-import elab.serialization.member.LoginMessage;
-import elab.serialization.member.Member;
-import elab.serialization.school_opening_information.SchoolOpeningInformation;
-import elab.serialization.student.Student;
+import elab.serialization.beans.member.LoginMessage;
+import elab.serialization.beans.member.Member;
+import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
+import elab.serialization.beans.student.Student;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,10 +26,10 @@ public class DatabaseOperations {
     protected DatabaseOperations() {
         try {
                 //读取mybatis-config.xml文件
-                Reader studentReader = Resources.getResourceAsReader("mybatis-config.xml");
+                Reader studentReader = Resources.getResourceAsReader("database/mybatis-config.xml");
                 //初始化mybatis,创建SqlSessionFactory类的实例
                 studentSqlSessionFactory = new SqlSessionFactoryBuilder().build(studentReader, "student");
-                Reader classReader = Resources.getResourceAsReader("mybatis-config.xml");
+                Reader classReader = Resources.getResourceAsReader("database/mybatis-config.xml");
                 classSqlSessionFactory = new SqlSessionFactoryBuilder().build(classReader, "class");
         } catch (Exception e) {
             e.printStackTrace();

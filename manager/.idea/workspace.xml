@@ -7,11 +7,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/manager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/ModulePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/ModulePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/TopBarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_page_controllers/SearchResultPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/SearchResultPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_page_controllers/StudentInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/StudentInformationPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/AttendanceRecordPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/EnterScorePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/ViewSelectCoursesInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/ViewSelectCoursesInformationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/AddMemberPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/UserManagementPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/MemberInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/SearchResultPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/SearchResultPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/StudentInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/register_tab_function_controllers/ViewLoaderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/member/LoginMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/LoginMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/school_opening_information/SchoolOpeningInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/school_opening_information/SchoolOpeningInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/student/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/student/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/util/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/util/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/utility/Utilities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/add_member_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/add_member_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/add_user_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/add_user_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/attendance_record_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/attendance_record_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/bg1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/bg1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/bg4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/bg4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/css/controls_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/css/controls_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/css/jfoenix-components.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/css/jfoenix-components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/css/jfoenix-main-demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/css/jfoenix-main-demo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/database_mappers/member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/database_mappers/member.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/database_mappers/student.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/database_mappers/student.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/enter_score_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/enter_score_page/search_result_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/enter_score_pages/search_result_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/enter_score_page/student_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/enter_score_pages/student_information_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fonts/icomoon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/fonts/icomoon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/free_time_page/free_time_checkbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/free_time_pages/free_time_checkbox.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/free_time_page/free_time_collect_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/free_time_pages/free_time_collect_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/free_time_page/free_time_row.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/free_time_pages/free_time_row.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/lbpcascade_frontalface.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/face_recognition/lbpcascade_frontalface.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/login_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/login_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/member_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/member_information_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/search_result_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/search_result_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/student_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/student_information_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/min.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/min.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/module_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/module_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/ok.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/ok16X16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/ok16X16.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/personal_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/personal_information_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/user_management_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/user_management_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/view_loader_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/register_module_function_pages/view_loader_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/view_select_courses_information_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_column.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_column.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_information_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_label.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_label.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_row.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_row.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -219,7 +274,7 @@
         <counts>
           <entry key="class" value="1" />
           <entry key="fxml" value="62" />
-          <entry key="java" value="281" />
+          <entry key="java" value="295" />
           <entry key="json" value="5" />
           <entry key="xml" value="47" />
         </counts>
@@ -227,7 +282,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="281" />
+          <entry key="JAVA" value="295" />
           <entry key="JSON" value="5" />
           <entry key="XML" value="109" />
         </counts>
@@ -290,94 +345,82 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/ViewSelectCoursesInformationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="121" column="68" selection-start-line="121" selection-start-column="68" selection-end-line="121" selection-end-column="68" />
+            <state relative-caret-position="72">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/SearchResultPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="85" column="14" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/io/reactivex/rxjavafx/observables/JavaFxObservable.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2074">
-              <caret line="161" column="35" selection-start-line="161" selection-start-column="35" selection-end-line="161" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/io/reactivex/rxjavafx/observers/JavaFxObserver.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/io/reactivex/rxjavafx/schedulers/JavaFxScheduler.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="110" selection-start-line="110" selection-end-line="110" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/internal/operators/observable/ObservableObserveOn.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3536">
-              <caret line="226" selection-start-line="226" selection-end-line="226" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3893">
-              <caret line="293" selection-start-line="293" selection-end-line="293" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/com/sun/javafx/event/EventHandlerManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4046">
-              <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/event/EventHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
+            <state relative-caret-position="342">
+              <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -415,9 +458,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/search_result_page.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/member_tab.fxml" />
-        <option value="$PROJECT_DIR$/src/java/elab/business/assist_teaching_function_controllers/ViewSelectCoursesInformationController.java" />
         <option value="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/member_information_page.fxml" />
         <option value="$PROJECT_DIR$/src/java/elab/business/assist_teaching_function_controllers/EnterScorePage.java" />
         <option value="$PROJECT_DIR$/src/resources/enter_score_page.fxml" />
@@ -466,6 +506,9 @@
         <option value="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java" />
       </list>
     </option>
   </component>
@@ -476,7 +519,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="646" />
     <option name="y" value="14" />
     <option name="width" value="561" />
@@ -508,7 +551,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -524,37 +566,6 @@
             <path>
               <item name="manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="reactive-streams-1.0.2.jar" type="ab9368bb:PsiFileNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="reactive-streams-1.0.2.jar" type="ab9368bb:PsiFileNode" />
-              <item name="reactivestreams" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="rxjavafx-2.2.0.jar" type="ab9368bb:PsiFileNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="rxjavafx-2.2.0.jar" type="ab9368bb:PsiFileNode" />
-              <item name="rxjavafx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -569,6 +580,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="elab" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manager" type="b2602c69:ProjectViewProjectNode" />
@@ -577,24 +596,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="elab" type="462c0819:PsiDirectoryNode" />
               <item name="business" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="elab" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="assist_teaching_page_controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="elab" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="assist_teaching_tab_function_controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manager" type="b2602c69:ProjectViewProjectNode" />
@@ -621,7 +622,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="elab" type="462c0819:PsiDirectoryNode" />
               <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="member_tab_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="module_function_controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manager" type="b2602c69:ProjectViewProjectNode" />
@@ -630,7 +631,8 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="elab" type="462c0819:PsiDirectoryNode" />
               <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="member_tab_page_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="assist_teaching_module_function_controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manager" type="b2602c69:ProjectViewProjectNode" />
@@ -639,12 +641,140 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="elab" type="462c0819:PsiDirectoryNode" />
               <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="register_tab_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="assist_teaching_module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="enter_score_page_controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="member_module_function_controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="member_module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="user_management_page_controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="module_function_controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="register_module_function_controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="face_recognition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+              <item name="member" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+              <item name="school_opening_information" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="elab" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -658,7 +788,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/gitlib/manager/src/java/elab/serialization/member/member.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549196846813" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549200948961" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -668,20 +798,20 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\elab-manager.git\manager\src\resources" />
-      <recent name="D:\wyfsvn\manager\src\resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\gitlib\manager\src\resources\assist_teaching_module_function_pages" />
+      <recent name="E:\gitlib\manager\src\resources\view_select_courses_information_pages" />
+      <recent name="E:\gitlib\manager\src\resources\enter_score_pages" />
+      <recent name="E:\gitlib\manager\src\resources\database" />
+      <recent name="E:\gitlib\manager\src\resources\face_recognition" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="elab.business.user_manager" />
       <recent name="elab.application" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\gitlib\manager\src\resources\database_mappers" />
-      <recent name="E:\gitlib\manager\src\java\elab\serialization\sqlmap" />
-      <recent name="E:\gitlib\manager\src\resources\database" />
-      <recent name="E:\gitlib\manager\src\resources" />
-      <recent name="E:\gitlib\manager\src\resources\view_select_courses_information_page" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\elab-manager.git\manager\src\resources" />
+      <recent name="D:\wyfsvn\manager\src\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -842,9 +972,9 @@
     <option name="totallyTimeSpent" value="5600000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23987207" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.24355301" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -901,31 +1031,31 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/AttendanceRecordPageController.java</url>
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java</url>
           <line>52</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/AttendanceRecordPageController.java</url>
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java</url>
           <line>53</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/AttendanceRecordPageController.java</url>
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java</url>
           <line>54</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java</url>
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java</url>
           <line>195</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java</url>
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java</url>
           <line>121</line>
           <properties />
           <option name="timeStamp" value="29" />
@@ -938,67 +1068,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/elab/serialization/member/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="137" column="70" selection-start-line="137" selection-start-column="70" selection-end-line="137" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_page_controllers/SearchResultPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/util/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/resources/mybatis-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_page_controllers/StudentInformationPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/user_management_page.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="58" column="25" lean-forward="true" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/attendance_record_page.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="64" column="90" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/event/Event.java" />
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/scene/Scene.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/AttendanceRecordPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="164" column="61" lean-forward="true" selection-start-line="164" selection-start-column="61" selection-end-line="164" selection-end-column="61" />
-          <folding>
-            <element signature="e#1385#1393#0" expanded="true" />
-            <element signature="e#1465#1473#0" expanded="true" />
-            <element signature="e#1465#1473#0" expanded="true" />
-            <element signature="e#1564#1572#0" expanded="true" />
-            <element signature="e#1482#1490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/module.fxml" />
     <entry file="file://$PROJECT_DIR$/src/java/elab/util/Utilities.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1014,9 +1084,13 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/add_member_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/add_member_page.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/serialization/module/Module.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1042,13 +1116,6 @@
     <entry file="file://$PROJECT_DIR$/src/java/elab/application/Module.java" />
     <entry file="file://$PROJECT_DIR$/src/resources/modules_settings/normal_member_modules.json" />
     <entry file="file://$PROJECT_DIR$/src/resources/modules_settings/manager_member_modules.json" />
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/EnterScorePageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/serialization/module/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1071,64 +1138,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/student_information_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/student_information_page.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/member_information_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/member_information_page.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/search_result_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/search_result_page.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/beans/value/WritableObjectValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/control/ScrollPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="203" column="27" selection-start-line="203" selection-start-column="27" selection-end-line="203" selection-end-column="27" />
-          <folding>
-            <element signature="e#6857#6858#0" expanded="true" />
-            <element signature="e#6901#6902#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/UserManagementPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/AddMemberPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="121" column="10" selection-start-line="121" selection-start-column="10" selection-end-line="121" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/concurrent/Executor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="127" column="17" selection-start-line="127" selection-start-column="17" selection-end-line="127" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/beans/value/WritableObjectValue.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/control/ScrollPane.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/concurrent/Executor.java" />
     <entry file="file://$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1138,74 +1162,147 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/io/reactivex/rxjavafx/observables/JavaFxObservable.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
+        <state relative-caret-position="2196">
           <caret line="161" column="35" selection-start-line="161" selection-start-column="35" selection-end-line="161" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/io/reactivex/rxjavafx/observers/JavaFxObserver.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="126">
           <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/io/reactivex/rxjavafx/schedulers/JavaFxScheduler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
+        <state relative-caret-position="1620">
           <caret line="110" selection-start-line="110" selection-end-line="110" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/internal/operators/observable/ObservableObserveOn.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
+        <state relative-caret-position="3744">
           <caret line="226" selection-start-line="226" selection-end-line="226" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3893">
-          <caret line="293" selection-start-line="293" selection-end-line="293" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/com/sun/javafx/event/EventHandlerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/com/sun/javafx/event/EventHandlerManager.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/event/EventHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
+        <state relative-caret-position="1710">
           <caret line="121" column="68" selection-start-line="121" selection-start-column="68" selection-end-line="121" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="85" column="14" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
+        <state relative-caret-position="816">
+          <caret line="148" column="42" selection-start-line="148" selection-start-column="42" selection-end-line="148" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/SearchResultPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/StudentInformationPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/ViewSelectCoursesInformationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/SearchResultPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/utility/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
         </state>
       </provider>
     </entry>

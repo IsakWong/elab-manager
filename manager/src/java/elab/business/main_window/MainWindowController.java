@@ -9,7 +9,6 @@ import elab.business.ModulePageController;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
 import elab.util.Utilities;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,14 +16,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.Double.MAX_VALUE;
 
@@ -86,7 +83,7 @@ public class MainWindowController extends BaseViewController {
             }.getType();
             ArrayList<Module> moduleList = gson.fromJson(moduleJson, typeList);
             for (Module module : moduleList) {
-                FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/module_page.fxml"));
+                FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/business_pages/module_page.fxml"));
                 Parent root = moduleLoader.load();
                 Tab userTab = new Tab();
                 module.Root = root;
