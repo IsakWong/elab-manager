@@ -5,12 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import elab.application.BaseViewController;
-import elab.application.ElabManagerApplication;
 import elab.business.ModulePageController;
-import elab.business.module_tab.AssistTeachingTabController;
-import elab.business.module_tab.MemberTabController;
-import elab.business.module_tab.RegisterTabController;
-import elab.business.module_tab.SystemControlTabController;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
 import elab.utility.Utilities;
@@ -51,22 +46,22 @@ public class MainWindowController extends BaseViewController {
     public void initializeController() {
         try {
 
-            mainMenuCloseBtn.setOnMouseClicked(event ->{
-                if(event.getButton() == MouseButton.PRIMARY) {
+            mainMenuCloseBtn.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
                     stage.close();
                 }
             });
 
             mainMenuMinBtn.setOnMouseClicked(event -> {
-                if(event.getButton() == MouseButton.PRIMARY) {
+                if (event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) mainMenuMinBtn.getScene().getWindow();
                     stage.setIconified(true);
                 }
             });
 
             topBar.setOnMouseDragged(event -> {
-                if(event.getButton() == MouseButton.PRIMARY) {
+                if (event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) topBar.getScene().getWindow();
                     stage.setX(x_stage + event.getScreenX() - x1);
                     stage.setY(y_stage + event.getScreenY() - y1);
@@ -74,7 +69,7 @@ public class MainWindowController extends BaseViewController {
             });
 
             topBar.setOnMousePressed(event -> {
-                if(event.getButton() == MouseButton.PRIMARY) {
+                if (event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) topBar.getScene().getWindow();
                     x1 = event.getScreenX();
                     y1 = event.getScreenY();
@@ -82,7 +77,6 @@ public class MainWindowController extends BaseViewController {
                     y_stage = stage.getY();
                 }
             });
-
 
             Gson gson = new Gson();
             String moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/manager_modules.json"));
@@ -98,32 +92,22 @@ public class MainWindowController extends BaseViewController {
                 ModulePageController assistController = assistLoader.getController();
                 assistController.initializeController();
 
-                for (final Function func: module.Functions) {
+                for (final Function func : module.Functions) {
                     JFXButton funcBtn = new JFXButton();
                     func.ParentModule = module;
                     funcBtn.getStyleClass().add("left-panel-button");
                     funcBtn.setText(func.FunctionName);
                     funcBtn.setMaxWidth(MAX_VALUE);
-                    funcBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            if(!func.IsInit)
-                            {
-                                try {
-                                    FXMLLoader assistLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
-                                    Parent root = assistLoader.load();
-                                    ScrollPane scrollPane = (ScrollPane)func.ParentModule.Root.lookup("#contentPage");
-                                    scrollPane.setContent(root);
-                                    func.Root  = root;
-                                    func.IsInit = true;
-                                }
-                                catch (Exception excep)
-                                {
-
-                                }
-                            }else{
-                                System.out.println("无重复加载");
-                            }
+                    FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
+                    Parent functionRoot = functionLoader.load();
+                    ScrollPane scrollPane = (ScrollPane) func.ParentModule.Root.lookup("#contentPage");
+                    BaseViewController baseViewController = functionLoader.getController();
+                    baseViewController.initializeController();
+                    func.Root = functionRoot;
+                    func.IsInit = true;
+                    funcBtn.setOnMouseClicked(event -> {
+                        if(event.getButton() == MouseButton.PRIMARY) {
+                            scrollPane.setContent(functionRoot);
                         }
                     });
                     assistController.leftPanel.getChildren().add(funcBtn);
@@ -131,70 +115,8 @@ public class MainWindowController extends BaseViewController {
                 userTab.setContent(root);
                 tabPane.getTabs().add(userTab);
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //controller.TabModule = module;
-/*
-            Tab assistTab = new Tab();
-            assistTab.setText("成员管理");
-            FXMLLoader memberLoader = new FXMLLoader(getClass().getResource("/member_tab.fxml"));
-            Parent memberRoot  = memberLoader.load();
-            assistTab.setContent(memberRoot);
-            MemberTabController memberController = memberLoader.getController();
-            memberController.initializeController();
-            tabPane.getTabs().add(assistTab);
-
-            Tab registerTab = new Tab();
-            registerTab.setText("签到与值班");
-            FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("/register_tab.fxml"));
-            Parent registerRoot = registerLoader.load();
-            registerTab.setContent(registerRoot);
-            RegisterTabController registerController = registerLoader.getController();
-            registerController.initializeController();
-            tabPane.getTabs().add(registerTab);
-
-            Tab systemControlTab = new Tab();
-            systemControlTab.setText("系统控制");
-            FXMLLoader sysCtrlLoader = new FXMLLoader(getClass().getResource("/system_ctrl_tab.fxml"));
-            Parent sysCtrlRoot = sysCtrlLoader.load();
-            systemControlTab.setContent(sysCtrlRoot);
-            SystemControlTabController sysCtrlController = sysCtrlLoader.getController();
-            sysCtrlController.initializeController();
-            tabPane.getTabs().add(systemControlTab);
-
-       */
-
         } catch (Exception exp) {
-            System.out.print(exp.toString());
+            exp.printStackTrace();
         }
     }
 }

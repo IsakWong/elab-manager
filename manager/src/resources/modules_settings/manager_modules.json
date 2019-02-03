@@ -5,88 +5,55 @@
   [
     {
       "function_name": "查看选课情况",
-      "function_fxml": "/add_user_page.fxml"
+      "function_fxml": "/view_select_courses_information_page/view_select_courses_information_page.fxml"
     },
     {
       "function_name": "成绩录入",
-      "function_fxml": "/add_user_page.fxml"
+      "function_fxml": "/enter_score_page.fxml"
     },
     {
       "function_name": "助教出勤统计",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "数据处理",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "理论课签到情况",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "自动填表",
-      "function_fxml": "/add_user_page.fxml"
+      "function_fxml": "/attendance_record_page.fxml"
     }
   ]
   },
   {
-  "module_name": "助课管理",
+  "module_name": "成员管理",
   "functions":
   [
     {
-      "function_name": "查看选课情况",
-      "function_fxml": "/add_user_page.fxml"
+      "function_name": "用户信息管理",
+      "function_fxml": "/user_management_page.fxml"
     },
     {
-      "function_name": "成绩录入",
-      "function_fxml": "/add_user_page.fxml"
+      "function_name": "新加成员",
+      "function_fxml": "/add_member_page.fxml"
     },
     {
-      "function_name": "助教出勤统计",
-      "function_fxml": "/add_user_page.fxml"
+      "function_name": "个人信息管理",
+      "function_fxml": "/personal_information_page.fxml"
     },
     {
-      "function_name": "数据处理",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "理论课签到情况",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "自动填表",
-      "function_fxml": "/add_user_page.fxml"
+      "function_name": "空闲时间统计",
+      "function_fxml": "/free_time_page/free_time_collect_page.fxml"
     }
   ]
   },
   {
-    "module_name": "助课管理",
+    "module_name": "签到与值班",
     "functions":
     [
       {
-        "function_name": "查看选课情况",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "成绩录入",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "助教出勤统计",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "数据处理",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "理论课签到情况",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "自动填表",
-        "function_fxml": "/add_user_page.fxml"
+        "function_name": "查看在线",
+        "function_fxml": "/view_loader_page.fxml"
       }
+    ]
+  },
+  {
+    "module_name": "系统控制",
+    "functions":
+    [
+
     ]
   }
 

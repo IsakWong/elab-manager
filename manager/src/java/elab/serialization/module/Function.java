@@ -2,6 +2,7 @@ package elab.serialization.module;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import elab.application.BaseViewController;
 import javafx.scene.Parent;
 
 public class Function {
@@ -13,5 +14,5 @@ public class Function {
     public transient Module ParentModule;
     public transient Parent Root = null;
     public transient boolean IsInit = false;
-
+    public transient BaseViewController controller = null;
 }
