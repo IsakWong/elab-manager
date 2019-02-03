@@ -7,66 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/ModulePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/ModulePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/TopBarController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_page_controllers/SearchResultPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/SearchResultPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_page_controllers/StudentInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/StudentInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/AttendanceRecordPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/EnterScorePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/assist_teaching_tab_function_controllers/ViewSelectCoursesInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/ViewSelectCoursesInformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/AddMemberPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/UserManagementPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/MemberInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/SearchResultPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/SearchResultPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/StudentInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/register_tab_function_controllers/ViewLoaderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/member/LoginMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/LoginMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/school_opening_information/SchoolOpeningInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/school_opening_information/SchoolOpeningInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/student/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/student/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/util/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/util/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/utility/Utilities.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/add_member_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/add_member_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/add_user_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/add_user_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/attendance_record_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/attendance_record_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/bg1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/bg1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/bg4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/bg4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/close.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/css/controls_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/css/controls_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/css/jfoenix-components.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/css/jfoenix-components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/css/jfoenix-main-demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/css/jfoenix-main-demo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/database_mappers/member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/database_mappers/member.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/database_mappers/student.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/database_mappers/student.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/enter_score_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/enter_score_page/search_result_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/enter_score_pages/search_result_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/enter_score_page/student_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/enter_score_pages/student_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fonts/icomoon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style/fonts/icomoon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/free_time_page/free_time_checkbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/free_time_pages/free_time_checkbox.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/free_time_page/free_time_collect_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/free_time_pages/free_time_collect_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/free_time_page/free_time_row.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/free_time_pages/free_time_row.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/lbpcascade_frontalface.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/face_recognition/lbpcascade_frontalface.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/login_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/login_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/member_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/member_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/search_result_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/search_result_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/student_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/student_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/min.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/min.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/module_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/module_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/ok.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/ok16X16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/pictures/ok16X16.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/personal_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/personal_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/user_management_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/user_management_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/view_loader_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/register_module_function_pages/view_loader_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/view_select_courses_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_column.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_column.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_label.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_label.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/view_select_courses_information_page/view_select_courses_row.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_row.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/database/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -275,16 +217,16 @@
           <entry key="class" value="1" />
           <entry key="fxml" value="62" />
           <entry key="java" value="295" />
-          <entry key="json" value="5" />
-          <entry key="xml" value="47" />
+          <entry key="json" value="6" />
+          <entry key="xml" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="295" />
-          <entry key="JSON" value="5" />
-          <entry key="XML" value="109" />
+          <entry key="JSON" value="6" />
+          <entry key="XML" value="110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -293,7 +235,7 @@
           <entry key="fxml" value="609" />
           <entry key="java" value="28046" />
           <entry key="json" value="140" />
-          <entry key="xml" value="3690" />
+          <entry key="xml" value="3703" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -301,7 +243,7 @@
           <entry key="JAVA" value="28046" />
           <entry key="JSON" value="140" />
           <entry key="PLAIN_TEXT" value="26" />
-          <entry key="XML" value="4299" />
+          <entry key="XML" value="4312" />
         </counts>
       </usages-collector>
     </session>
@@ -344,15 +286,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/ViewSelectCoursesInformationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -416,11 +349,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+              <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1836">
+              <caret line="102" column="1" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/resources/database/mybatis-config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -458,7 +409,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/resources/member_tab_page_fxml_files/member_information_page.fxml" />
         <option value="$PROJECT_DIR$/src/java/elab/business/assist_teaching_function_controllers/EnterScorePage.java" />
         <option value="$PROJECT_DIR$/src/resources/enter_score_page.fxml" />
         <option value="$PROJECT_DIR$/src/java/elab/business/member_tab_page_controllers/StudentInformationPageController.java" />
@@ -501,7 +451,6 @@
         <option value="$PROJECT_DIR$/src/resources/modules_settings/manager_member_modules.json" />
         <option value="$PROJECT_DIR$/src/java/elab/business/ModulePageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/serialization/module/Function.java" />
-        <option value="$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json" />
         <option value="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/FreeTimeCollectPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/member_tab_function_controllers/PersonalInformationPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java" />
@@ -509,6 +458,8 @@
         <option value="$PROJECT_DIR$/src/java/elab/business/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java" />
+        <option value="$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json" />
+        <option value="$PROJECT_DIR$/src/resources/database/mybatis-config.xml" />
       </list>
     </option>
   </component>
@@ -770,6 +721,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="modules_settings" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -788,7 +753,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/gitlib/manager/src/java/elab/serialization/member/member.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549200948961" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549201189355" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/rxjavafx-2.2.0.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -799,11 +764,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\gitlib\manager\src\resources\assist_teaching_module_function_pages" />
-      <recent name="E:\gitlib\manager\src\resources\view_select_courses_information_pages" />
-      <recent name="E:\gitlib\manager\src\resources\enter_score_pages" />
-      <recent name="E:\gitlib\manager\src\resources\database" />
-      <recent name="E:\gitlib\manager\src\resources\face_recognition" />
+      <recent name="E:\gitlib\manager\src\resources\business_pages" />
+      <recent name="E:\gitlib\manager\src\resources\module_function_pages" />
+      <recent name="E:\gitlib\manager\src\resources\register_module_function_pages" />
+      <recent name="E:\gitlib\manager\src\resources\member_module_function_pages" />
+      <recent name="E:\gitlib\manager\src\resources\user_management_pages" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="elab.business.user_manager" />
@@ -973,6 +938,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.24355301" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -983,7 +949,7 @@
       <window_info id="Favorites" order="6" weight="0.32934132" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32790446" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2204126" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21997301" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31921825" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1068,7 +1034,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/scene/Scene.java" />
     <entry file="file://$PROJECT_DIR$/src/resources/module.fxml" />
     <entry file="file://$PROJECT_DIR$/src/java/elab/util/Utilities.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1084,7 +1049,7 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/add_member_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -1131,22 +1096,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/system_ctrl_tab.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="3" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/student_information_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/student_information_page.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/member_information_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/member_information_page.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/member_module_function_pages/user_management_pages/search_result_page.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/search_result_page.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
     </entry>
@@ -1302,7 +1260,21 @@
     <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="102" column="1" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/database/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
         </state>
       </provider>
     </entry>

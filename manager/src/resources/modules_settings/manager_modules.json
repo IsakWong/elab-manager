@@ -1,20 +1,20 @@
 [
   {
-  "module_name": "助课管理",
-  "functions":
-  [
-    {
-      "function_name": "查看选课情况",
-      "function_fxml": "/view_select_courses_information_page/view_select_courses_information_page.fxml"
-    },
-    {
-      "function_name": "成绩录入",
-      "function_fxml": "/enter_score_page.fxml"
-    },
-    {
-      "function_name": "助教出勤统计",
-      "function_fxml": "/attendance_record_page.fxml"
-    }/*,
+    "module_name": "助课管理",
+    "functions":
+    [
+      {
+        "function_name": "查看选课情况",
+        "function_fxml": "/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_information_page.fxml"
+      },
+      {
+        "function_name": "成绩录入",
+        "function_fxml": "/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml"
+      },
+      {
+        "function_name": "助教出勤统计",
+        "function_fxml": "/business_pages/module_function_pages/assist_teaching_module_function_pages/attendance_record_page.fxml"
+      }/*,
     {
       "function_name": "数据处理",
       "function_fxml": "/add_user_page.fxml"
@@ -27,29 +27,29 @@
       "function_name": "自动填表",
       "function_fxml": "/add_user_page.fxml"
     }*/
-  ]
+    ]
   },
   {
-  "module_name": "成员管理",
-  "functions":
-  [
-    {
-      "function_name": "用户信息管理",
-      "function_fxml": "/user_management_page.fxml"
-    },
-    {
-      "function_name": "新加成员",
-      "function_fxml": "/add_member_page.fxml"
-    },
-    {
-      "function_name": "个人信息管理",
-      "function_fxml": "/personal_information_page.fxml"
-    },
-    {
-      "function_name": "空闲时间统计",
-      "function_fxml": "/free_time_page/free_time_collect_page.fxml"
-    }
-  ]
+    "module_name": "成员管理",
+    "functions":
+    [
+      {
+        "function_name": "用户信息管理",
+        "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/user_management_pages/user_management_page.fxml"
+      },
+      {
+        "function_name": "新加成员",
+        "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml"
+      },
+      {
+        "function_name": "个人信息管理",
+        "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/personal_information_page.fxml"
+      },
+      {
+        "function_name": "空闲时间统计",
+        "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_collect_page.fxml"
+      }
+    ]
   },
   {
     "module_name": "签到与值班",

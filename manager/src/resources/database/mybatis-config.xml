@@ -31,7 +31,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="database_mappers/member.xml"/>
-        <mapper resource="database_mappers/student.xml"/>
+        <mapper resource="database/database_mappers/member.xml"/>
+        <mapper resource="database/database_mappers/student.xml"/>
     </mappers>
 </configuration>
