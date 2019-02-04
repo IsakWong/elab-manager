@@ -107,7 +107,7 @@ public class AttendanceRecordPageController extends BaseViewController {
     public void initializeController() {
 
         ObservableList<Member> members = FXCollections.<Member>observableArrayList();
-        members.addAll(DatabaseOperations.getInstance().selectAllMembers());
+        members.addAll(DatabaseOperations.getInstance().selectInSchoolMembers());
         for(int i = 0; i < members.size(); ++i) {
             nameList.add(members.get(i).getName());
         }

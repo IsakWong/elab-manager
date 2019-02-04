@@ -117,7 +117,7 @@ public class FreeTimeCollectPageController extends BaseViewController {
             loadWeekCheckBoxGroup(container,i);
         }
 
-        //new LoadOtherCheckBoxEventThread().start();
+        new LoadOtherCheckBoxEventThread().start();
 
         /**
          * 最上的选项监听

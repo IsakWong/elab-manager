@@ -99,7 +99,7 @@ public class PersonalInformationPageController extends BaseViewController {
                 "软件组"
         );
 
-        //setMessage();
+        setMessage();
 
         pwdInputField.focusedProperty().addListener(event -> {
             if(!pwdInputField.isFocused()) {

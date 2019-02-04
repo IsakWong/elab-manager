@@ -30,6 +30,9 @@
     <select id="selectAllMembers" resultMap="memberResultMap">
         select * from member
     </select>
+    <select id="selectInSchoolMembers" resultMap="memberResultMap">
+        select * from member where 年级 != "往届"
+    </select>
     <select id="selectLoginMessage" parameterType="string" resultType="loginMessage">
         select
             学号 as "number",

@@ -14,5 +14,4 @@ public class Function {
     public transient Module ParentModule;
     public transient Parent Root = null;
     public transient boolean IsInit = false;
-    public transient BaseViewController controller = null;
 }

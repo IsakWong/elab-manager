@@ -62,14 +62,6 @@ public class LoginWindowController extends BaseViewController {
     private double x_stage;
     private double y_stage;
 
-    public void loadModuleSettings(String toLoadModulesName) {
-        Gson gson = new Gson();
-        String strJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/" + toLoadModulesName));
-        Type typeList = new TypeToken<ArrayList<Module>>() {
-        }.getType();
-        ElabManagerApplication.modulesArrayList = gson.fromJson(strJson, typeList);
-    }
-
     public void showMainWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/main_window.fxml"));
@@ -78,8 +70,9 @@ public class LoginWindowController extends BaseViewController {
             Stage mainStage = new Stage();
             mainStage.initStyle(StageStyle.UNDECORATED);
             mainStage.setScene(new Scene(root, 1200, 800));
-            //controller.initializeController();
+            controller.initializeController();
             mainStage.show();
+            System.out.println(loginMessage.toString());
             ElabManagerApplication.primaryStage.close();
         } catch (Exception exp) {
             System.out.println(exp);
@@ -87,15 +80,61 @@ public class LoginWindowController extends BaseViewController {
 
     }
 
+    public void asynchronousProcessing() {
+        if(!isLogging)
+        {
+            isLogging = true;
+            Utilities.popMessage("正在登录中",container);
+            ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
+
+                @Override
+                public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
+                    observableEmitter.onNext(isUserValidated(userInputField.getText(), pwdInputField.getText()));
+                    isLogging = false;
+                }
+            };
+            Observable.create(ob)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(JavaFxScheduler.platform())
+                    .subscribe(new Observer<Boolean>() {
+                                   @Override
+                                   public void onSubscribe(Disposable disposable) {
+                                   }
+
+                                   @Override
+                                   public void onNext(Boolean s) {
+                                       if (s.booleanValue())
+                                           showMainWindow();
+                                       else
+                                           Utilities.popMessage("用户名或密码错误", container);
+                                   }
+
+                                   @Override
+                                   public void onError(Throwable throwable) {
+                                   }
+
+                                   @Override
+                                   public void onComplete() {
+                                   }
+                               }
+                    );
+        }else
+        {
+            Utilities.popMessage("正在登录中",container);
+        }
+
+    }
 
     public boolean isPwdValidated(String number, String password) {
         loginMessage = DatabaseOperations.getInstance().selectLoginMessage(number);
-        if(loginMessage == null) {
+        if (loginMessage == null) {
             return false;
-        } else if(!Utilities.encrypt(password).equals(loginMessage.getPassword())) {
+        } else if (!Utilities.encrypt(password).equals(loginMessage.getPassword())) {
             return false;
+        } else {
+            loginMessage.setOldNumber(loginMessage.getNumber());
+            return true;
         }
-        return true;
     }
 
     public boolean isUserValidated(String number, String password) {
@@ -118,59 +157,16 @@ public class LoginWindowController extends BaseViewController {
             if (event.getCode() == KeyCode.ENTER) {
                 if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                     Utilities.popMessage("用户名和密码不能为空", container);
-                else if (isUserValidated(userInputField.getText(), pwdInputField.getText())) {
-                    loginMessage.setOldNumber(loginMessage.getNumber());
-                    showMainWindow();
-                }
+                else
+                    asynchronousProcessing();
             }
         });
 
         logButton.setOnAction(event -> {
-            if(!isLogging)
-            {
-                isLogging = true;
-                Utilities.popMessage("正在登录中",container);
-                ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
-
-                    @Override
-                    public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
-                        observableEmitter.onNext(isUserValidated(userInputField.getText(), pwdInputField.getText()));
-                        isLogging = false;
-                    }
-                };
-                Observable.create(ob)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(JavaFxScheduler.platform())
-                        .subscribe(new Observer<Boolean>() {
-                                       @Override
-                                       public void onSubscribe(Disposable disposable) {
-
-                                       }
-
-                                       @Override
-                                       public void onNext(Boolean s) {
-                                           if (s.booleanValue())
-                                               showMainWindow();
-                                           else
-                                               Utilities.popMessage("密码错误",container);
-                                       }
-
-                                       @Override
-                                       public void onError(Throwable throwable) {
-
-                                       }
-
-                                       @Override
-                                       public void onComplete() {
-
-                                       }
-                                   }
-                        );
-            }else
-            {
-                Utilities.popMessage("正在登录中",container);
-            }
-
+            if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                Utilities.popMessage("用户名和密码不能为空", container);
+            else
+                asynchronousProcessing();
         });
 
         closeBtn.setOnMouseClicked(event -> {

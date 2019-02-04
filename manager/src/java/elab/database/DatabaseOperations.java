@@ -90,6 +90,16 @@ public class DatabaseOperations {
         }
     }
 
+    public List selectInSchoolMembers() {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            List members = session.selectList("member.selectInSchoolMembers");
+            return members;
+        } finally {
+            session.close();
+        }
+    }
+
     public void insertMember(Member member) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {

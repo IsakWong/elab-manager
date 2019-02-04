@@ -105,15 +105,24 @@ public class MainWindowController extends BaseViewController {
                     functionScrollPane.setVisible(false);
                     scrollPanes.add(functionScrollPane);
                     BaseViewController baseViewController = functionLoader.getController();
-                    baseViewController.initializeController();
                     func.Root = functionRoot;
-                    func.IsInit = true;
                     funcBtn.setOnMouseClicked(event -> {
                         if(event.getButton() == MouseButton.PRIMARY) {
-                            for(int i = 0; i < scrollPanes.size(); ++i)
-                                if(scrollPanes.get(i).isVisible())
-                                    scrollPanes.get(i).setVisible(false);
-                            functionScrollPane.setVisible(true);
+                            if (!func.IsInit) {
+                                func.IsInit = true;
+                                baseViewController.initializeController();
+                                for (int i = 0; i < scrollPanes.size(); ++i)
+                                    if (scrollPanes.get(i).isVisible())
+                                        scrollPanes.get(i).setVisible(false);
+                                functionScrollPane.setVisible(true);
+                            }
+                            else {
+                                for (int i = 0; i < scrollPanes.size(); ++i)
+                                    if (scrollPanes.get(i).isVisible())
+                                        scrollPanes.get(i).setVisible(false);
+                                functionScrollPane.setVisible(true);
+                            }
+
                         }
                     });
                     modulePageController.leftPanel.getChildren().add(funcBtn);

@@ -120,7 +120,6 @@ public class EnterScorePageController extends BaseViewController {
                     new ChangeListener<String>() {
                         @Override
                         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                            System.out.println(newValue);
                             if (!LocalDate.now().toString().equals(newValue)) logBtn.setDisable(true);
                             else logBtn.setDisable(false);
                         }
