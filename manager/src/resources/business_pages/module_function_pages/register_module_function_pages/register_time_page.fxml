@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" minWidth="250.0" prefHeight="700.0" prefWidth="250.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="RadioButton" />
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="700.0" prefWidth="1053.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="666.0" prefWidth="723.0">
+              <columns>
+                <TableColumn fx:id="number" prefWidth="150.0" text="学号" />
+                <TableColumn fx:id="name" prefWidth="120.0" text="姓名" />
+                  <TableColumn fx:id="group" prefWidth="120.0" text="组别" />
+                  <TableColumn fx:id="week" prefWidth="120.0" text="周次" />
+                  <TableColumn fx:id="totalTime" prefWidth="203.0" text="合计时间" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

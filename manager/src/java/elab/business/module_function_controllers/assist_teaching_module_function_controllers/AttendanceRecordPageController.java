@@ -1,5 +1,6 @@
 package elab.business.module_function_controllers.assist_teaching_module_function_controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
@@ -37,6 +38,8 @@ public class AttendanceRecordPageController extends BaseViewController {
     private JFXRadioButton assistRadioButton;
     @FXML
     private TextArea questionInputArea;
+    @FXML
+    private JFXButton saveBtn;
 
     private ObservableList<String> nameList = FXCollections.<String>observableArrayList();
     private ObservableList<String> chooseList = FXCollections.<String>observableArrayList();
@@ -165,6 +168,12 @@ public class AttendanceRecordPageController extends BaseViewController {
                     chooseListView.setItems(chooseList);
                     chooseListView.refresh();
                 }
+            }
+        });
+
+        saveBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                System.out.println(teachingList + "/n" + assistList + "/n" + questionInputArea.getText());
             }
         });
     }

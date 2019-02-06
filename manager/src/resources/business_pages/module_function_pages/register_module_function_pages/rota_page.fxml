@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.RotaPageController">
+   <children>
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="663.0" prefWidth="970.0">
+        <columns>
+          <TableColumn fx:id="number" prefWidth="180.0" text="学号" />
+          <TableColumn fx:id="name" prefWidth="120.0" text="姓名" />
+            <TableColumn fx:id="group" prefWidth="120.0" text="组别" />
+            <TableColumn fx:id="time" prefWidth="120.0" text="时段" />
+            <TableColumn fx:id="week" prefWidth="120.0" text="单双周" />
+            <TableColumn fx:id="day" prefWidth="120.0" text="星期" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -20,6 +20,14 @@
         <result property="courseSelectionTime" column="选课时间"/>
         <result property="remark" column="备注"/>
     </resultMap>
+    <resultMap id="rota" type="rota">
+        <result property="number" column="学号"/>
+        <result property="name" column="姓名"/>
+        <result property="group" column="组别"/>
+        <result property="time" column="时段"/>
+        <result property="week" column="单双周"/>
+        <result property="day" column="星期"/>
+    </resultMap>
     <select id="selectStudentByName" parameterType="string" resultMap="studentResultMap">
         select * from 2018秋_计算机安装与调试技术 where 姓名 = #{id}
     </select>
@@ -46,6 +54,9 @@
             值班形式 as "onDutyForm",
             课容量 as "classCapacity"
         from 开学日期
+    </select>
+    <select id="selectRota" resultMap="rota">
+        select * from duty
     </select>
     <update id="updateScore" parameterType="student">
         update 2018秋_计算机安装与调试技术 set

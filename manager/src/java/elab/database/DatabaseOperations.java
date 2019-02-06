@@ -43,8 +43,7 @@ public class DatabaseOperations {
     public LoginMessage selectLoginMessage(String number) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            LoginMessage loginMessage = session.selectOne("member.selectLoginMessage", number);
-            return loginMessage;
+            return session.selectOne("member.selectLoginMessage", number);
         } finally {
             session.close();
         }
@@ -53,8 +52,7 @@ public class DatabaseOperations {
     public List selectMemberByName(String name) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            List member = session.selectList("member.selectMemberByName", name);
-            return member;
+            return session.selectList("member.selectMemberByName", name);
         } finally {
             session.close();
         }
@@ -63,8 +61,7 @@ public class DatabaseOperations {
     public List selectMemberByNumber(String number) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            List member = session.selectList("member.selectMemberByNumber", number);
-            return member;
+            return session.selectList("member.selectMemberByNumber", number);
         } finally {
             session.close();
         }
@@ -73,8 +70,7 @@ public class DatabaseOperations {
     public List selectMemberByCollege(String college) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            List member = session.selectList("member.selectMemberByCollege", college);
-            return member;
+            return session.selectList("member.selectMemberByCollege", college);
         } finally {
             session.close();
         }
@@ -83,8 +79,7 @@ public class DatabaseOperations {
     public List selectAllMembers() {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            List members = session.selectList("member.selectAllMembers");
-            return members;
+            return session.selectList("member.selectAllMembers");
         } finally {
             session.close();
         }
@@ -93,8 +88,7 @@ public class DatabaseOperations {
     public List selectInSchoolMembers() {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            List members = session.selectList("member.selectInSchoolMembers");
-            return members;
+            return session.selectList("member.selectInSchoolMembers");
         } finally {
             session.close();
         }
@@ -132,8 +126,7 @@ public class DatabaseOperations {
     public List selectStudentByName(String name) {
         SqlSession session = classSqlSessionFactory.openSession();
         try {
-            List student = session.selectList("student.selectStudentByName", name);
-            return student;
+            return session.selectList("student.selectStudentByName", name);
         } finally {
             session.close();
         }
@@ -142,8 +135,7 @@ public class DatabaseOperations {
     public List selectStudentByNumber(String number) {
         SqlSession session = classSqlSessionFactory.openSession();
         try {
-            List student = session.selectList("student.selectStudentByNumber", number);
-            return student;
+            return session.selectList("student.selectStudentByNumber", number);
         } finally {
             session.close();
         }
@@ -152,8 +144,7 @@ public class DatabaseOperations {
     public List selectStudentByCollege(String college) {
         SqlSession session = classSqlSessionFactory.openSession();
         try {
-            List student = session.selectList("student.selectStudentByCollege", college);
-            return student;
+            return session.selectList("student.selectStudentByCollege", college);
         } finally {
             session.close();
         }
@@ -162,8 +153,7 @@ public class DatabaseOperations {
     public List selectAllStudents() {
         SqlSession session = classSqlSessionFactory.openSession();
         try {
-            List students = session.selectList("student.selectAllStudents");
-            return students;
+            return session.selectList("student.selectAllStudents");
         } finally {
             session.close();
         }
@@ -184,6 +174,15 @@ public class DatabaseOperations {
         try {
             SchoolOpeningInformation schoolOpeningInformation = session.selectOne("student.selectSchoolOpeningDate");
             return schoolOpeningInformation;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectRota() {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            return session.selectList("student.selectRota");
         } finally {
             session.close();
         }

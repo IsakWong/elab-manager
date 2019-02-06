@@ -38,7 +38,7 @@
                   </Label>
                   <JFXTextField fx:id="inputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
                      <VBox.margin>
-                        <Insets right="185.0" />
+                        <Insets right="148.0" />
                      </VBox.margin>
                   </JFXTextField>
                   <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="双击选择">
@@ -63,6 +63,9 @@
                         </JFXRadioButton>
                         <JFXRadioButton fx:id="assistRadioButton" selectedColor="#303F9F" text="助教" />
                      </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
@@ -73,7 +76,7 @@
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="13.0" />
                      </VBox.margin>
                   </Label>
                   <ListView fx:id="teachingListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" />

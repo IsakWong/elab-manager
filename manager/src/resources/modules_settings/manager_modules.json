@@ -54,23 +54,19 @@
   {
     "module_name": "签到与值班",
     "functions":
-    [/*
+    [
       {
         "function_name": "查看在线",
-        "function_fxml": "/view_loader_page.fxml"
+        "function_fxml": "/business_pages/module_function_pages/register_module_function_pages/view_loader_page.fxml"
       },
       {
         "function_name": "值班表",
-        "function_fxml": "/add_user_page.fxml"
+        "function_fxml": "/business_pages/module_function_pages/register_module_function_pages/rota_page.fxml"
       },
       {
         "function_name": "签到时间统计",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "值班",
-        "function_fxml": "/add_user_page.fxml"
-      }*/
+        "function_fxml": "/business_pages/module_function_pages/register_module_function_pages/register_time_page.fxml"
+      }
     ]
   },
   {

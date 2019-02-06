@@ -72,7 +72,6 @@ public class LoginWindowController extends BaseViewController {
             mainStage.setScene(new Scene(root, 1200, 800));
             controller.initializeController();
             mainStage.show();
-            System.out.println(loginMessage.toString());
             ElabManagerApplication.primaryStage.close();
         } catch (Exception exp) {
             System.out.println(exp);
