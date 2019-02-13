@@ -68,4 +68,14 @@
             密码 = #{password}
         where 学号 = #{oldNumber}
     </update>
+    <update id="setDuty" parameterType="string">
+        update member set
+            职务 = "班委"
+        where 姓名 = #{id}
+    </update>
+    <update id="removeDuty" parameterType="string">
+        update member set
+            职务 = null
+        where 姓名 = #{id}
+    </update>
 </mapper>

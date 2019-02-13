@@ -196,4 +196,24 @@ public class DatabaseOperations {
             session.close();
         }
     }
+
+    public void setDuty(String name) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.setDuty", name);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void removeDuty(String name) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.removeDuty", name);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
 }

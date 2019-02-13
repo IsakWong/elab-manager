@@ -123,6 +123,7 @@ public class AttendanceRecordPageController extends BaseViewController {
                     else addAssistListViewItem(selectedItem);
             }
         });
+
         chooseListView.setItems(nameList);
         teachingListView.setItems(teachingList);
         assistListView.setItems(assistList);
@@ -163,7 +164,8 @@ public class AttendanceRecordPageController extends BaseViewController {
                     for (int i = 0; i < nameList.size(); ++i)
                         if (Utilities.getPinyinString(nameList.get(i)).startsWith(inputField.getText())
                                 || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(inputField.getText())
-                                || nameList.get(i).startsWith(inputField.getText()))
+                                || nameList.get(i).startsWith(inputField.getText())
+                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(inputField.getText()))
                             chooseList.add(nameList.get(i));
                     chooseListView.setItems(chooseList);
                     chooseListView.refresh();
