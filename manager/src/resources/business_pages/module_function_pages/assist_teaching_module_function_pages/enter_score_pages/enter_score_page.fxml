@@ -50,15 +50,15 @@
                   <Font size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets right="93.0" top="30.0" />
+                  <Insets right="93.0" top="10.0" />
                </VBox.margin>
             </Label>
             <Label text="学号">
                <VBox.margin>
-                  <Insets right="95.0" top="20.0" />
+                  <Insets right="95.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <JFXTextField fx:id="numberInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="119.0">
+            <JFXTextField fx:id="numberInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -91,7 +91,7 @@
             </Label>
             <Label text="学号">
                <VBox.margin>
-                  <Insets right="95.0" top="20.0" />
+                  <Insets right="95.0" top="15.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="numberLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0">
@@ -101,7 +101,7 @@
             </Label>
             <Label text="姓名">
                <VBox.margin>
-                  <Insets right="95.0" top="20.0" />
+                  <Insets right="95.0" top="15.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="nameLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0">
@@ -111,7 +111,7 @@
             </Label>
             <Label text="硬件成绩">
                <VBox.margin>
-                  <Insets right="71.0" top="20.0" />
+                  <Insets right="71.0" top="15.0" />
                </VBox.margin>
             </Label>
             <JFXTextField fx:id="hardScoreInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0">
@@ -124,7 +124,7 @@
                   <Insets right="71.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <JFXTextField fx:id="softScoreInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="119.0">
+            <JFXTextField fx:id="softScoreInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>

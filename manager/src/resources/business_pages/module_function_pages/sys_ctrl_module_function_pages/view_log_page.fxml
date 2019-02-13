@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ViewLogPageController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1000.0">
+         <children>
+            <Label text="操作时间">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="datePicker">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </DatePicker>
+            <Label text="操作人学号">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
+            <JFXTextField fx:id="operatingNumberField" prefHeight="30.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <Label text="被修改人学号">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
+            <JFXTextField fx:id="operatedNumberField" prefHeight="30.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXTextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1000.0">
+         <children>
+            <Label text="登陆信息">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <JFXComboBox fx:id="informationComboBox" prefHeight="30.0" prefWidth="160.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXComboBox>
+            <JFXButton fx:id="returnBtn" prefHeight="30.0" prefWidth="75.0" text="重置">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="993.0">
+         <content>
+            <TableView fx:id="tableView" prefHeight="598.0" prefWidth="990.0">
+              <columns>
+                <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="operatingNumber" prefWidth="100.0" text="操作人学号" />
+                  <TableColumn fx:id="time" prefWidth="200.0" text="操作时间" />
+                  <TableColumn fx:id="IP" prefWidth="155.0" text="操作人IP" />
+                  <TableColumn fx:id="operatedNumber" prefWidth="100.0" text="被修改人学号" />
+                  <TableColumn fx:id="hardScore" prefWidth="65.0" text="硬件成绩" />
+                  <TableColumn fx:id="softScore" prefWidth="65.0" text="软件成绩" />
+                  <TableColumn fx:id="paperScore" prefWidth="65.0" text="试卷成绩" />
+                  <TableColumn fx:id="information" prefWidth="100.0" text="登陆信息" />
+                  <TableColumn fx:id="version" prefWidth="60.0" text="版本号" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

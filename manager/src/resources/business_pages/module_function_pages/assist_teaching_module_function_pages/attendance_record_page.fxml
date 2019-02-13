@@ -25,15 +25,15 @@
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="245.0" />
+                        <Insets right="250.0" />
                      </VBox.margin>
                   </Label>
-                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="查询(输入首字母)">
+                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="查询(可输入首字母)">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="225.0" />
+                        <Insets right="210.0" />
                      </VBox.margin>
                   </Label>
                   <JFXTextField fx:id="inputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
@@ -96,7 +96,7 @@
       </HBox>
       <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="上课所遇情况">
          <VBox.margin>
-            <Insets right="570.0" />
+            <Insets right="575.0" />
          </VBox.margin>
          <font>
             <Font size="14.0" />

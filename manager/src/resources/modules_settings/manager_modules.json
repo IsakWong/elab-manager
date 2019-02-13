@@ -72,11 +72,11 @@
   {
     "module_name": "系统控制",
     "functions":
-    [/*
+    [
       {
         "function_name": "Log信息查看",
-        "function_fxml": "/add_user_page.fxml"
-      },
+        "function_fxml": "/business_pages/module_function_pages/sys_ctrl_module_function_pages/view_log_page.fxml"
+      }/*,
       {
         "function_name": "选择非选课时间",
         "function_fxml": "/add_user_page.fxml"
@@ -93,6 +93,20 @@
         "function_name": "重要通知",
         "function_fxml": "/add_user_page.fxml"
       }*/
+    ]
+  },
+  {
+    "module_name": "招新",
+    "functions":
+    [
+      {
+        "function_name": "招新管理",
+        "function_fxml": "/add_user_page.fxml"
+      },
+      {
+        "function_name": "招新考核",
+        "function_fxml": "/add_user_page.fxml"
+      }
     ]
   }
 

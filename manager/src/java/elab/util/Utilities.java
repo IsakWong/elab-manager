@@ -99,7 +99,8 @@ public class Utilities {
 
     /**
      * 信息过滤器
-     * 用于过滤数据库表格中的信息(根据需要过滤的列位于数据表的列数(filteringInformationIndex),过滤出拥有filteringString的ListElements)
+     * 用于过滤数据库表格中的信息
+     * 根据需要过滤的列位于数据表的列数(filteringInformationIndex),过滤出拥有filteringString或以filteringString开头的ListElements
      * @param list
      * @param filteringString
      * @param filteringInformationIndex
@@ -110,6 +111,17 @@ public class Utilities {
         for(int i = 0; i < list.size(); ++i) {
             String[] properties = list.get(i).toString().split(" ");
             if(!properties[filteringInformationIndex].equals(filteringString)) {
+                list.remove(i);
+                --i;
+            }
+        }
+        return list;
+    }
+
+    public static List filter(List list, int filteringInformationIndex, String startString) {
+        for(int i = 0; i < list.size(); ++i) {
+            String[] properties = list.get(i).toString().split(" ");
+            if(!properties[filteringInformationIndex].startsWith(startString)) {
                 list.remove(i);
                 --i;
             }

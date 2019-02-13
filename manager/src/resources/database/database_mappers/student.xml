@@ -4,29 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="student">
     <resultMap id="studentResultMap" type="student">
-        <result property="number" column="学号"/>
-        <result property="name" column="姓名"/>
-        <result property="college" column="院系"/>
-        <result property="theoryClass" column="理论课"/>
-        <result property="hardTime" column="硬件时间"/>
-        <result property="softTime" column="软件时间"/>
-        <result property="hardScore" column="硬件成绩"/>
-        <result property="softScore" column="软件成绩"/>
-        <result property="paperScore" column="试卷成绩"/>
-        <result property="email" column="邮箱"/>
-        <result property="tel" column="联系电话"/>
-        <result property="pwd" column="密码"/>
-        <result property="makeUpLessons" column="补课"/>
-        <result property="courseSelectionTime" column="选课时间"/>
-        <result property="remark" column="备注"/>
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="院系" property="college"/>
+        <result column="理论课" property="theoryClass"/>
+        <result column="硬件时间" property="hardTime"/>
+        <result column="软件时间" property="softTime"/>
+        <result column="硬件成绩" property="hardScore"/>
+        <result column="软件成绩" property="softScore"/>
+        <result column="试卷成绩" property="paperScore"/>
+        <result column="邮箱" property="email"/>
+        <result column="联系电话" property="tel"/>
+        <result column="密码" property="pwd"/>
+        <result column="补课" property="makeUpLessons"/>
+        <result column="选课时间" property="courseSelectionTime"/>
+        <result column="备注" property="remark"/>
     </resultMap>
-    <resultMap id="rota" type="rota">
-        <result property="number" column="学号"/>
-        <result property="name" column="姓名"/>
-        <result property="group" column="组别"/>
-        <result property="time" column="时段"/>
-        <result property="week" column="单双周"/>
-        <result property="day" column="星期"/>
+    <resultMap id="rotaMap" type="rota">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="组别" property="group"/>
+        <result column="时段" property="time"/>
+        <result column="单双周" property="week"/>
+        <result column="星期" property="day"/>
     </resultMap>
     <select id="selectStudentByName" parameterType="string" resultMap="studentResultMap">
         select * from 2018秋_计算机安装与调试技术 where 姓名 = #{id}
@@ -55,8 +55,22 @@
             课容量 as "classCapacity"
         from 开学日期
     </select>
-    <select id="selectRota" resultMap="rota">
+    <select id="selectRota" resultMap="rotaMap">
         select * from duty
+    </select>
+    <select id="selectAllLogs" resultType="log">
+        select
+            ID as "ID",
+            操作时间 as "time",
+            操作人IP as "IP",
+            硬件成绩 as "hardScore",
+            软件成绩 as "softScore",
+            试卷成绩 as "paperScore",
+            登录信息 as "information",
+            版本号 as "version",
+            concat("\t", 操作人学号) as "operatingNumber",
+            concat("\t", 被修改人学号) as "operatedNumber"
+        from Log where 学期 = "2015春"
     </select>
     <update id="updateScore" parameterType="student">
         update 2018秋_计算机安装与调试技术 set

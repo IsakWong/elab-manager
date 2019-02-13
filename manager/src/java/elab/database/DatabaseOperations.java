@@ -187,4 +187,13 @@ public class DatabaseOperations {
             session.close();
         }
     }
+
+    public List selectAllLogs() {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            return session.selectList("student.selectAllLogs");
+        } finally {
+            session.close();
+        }
+    }
 }
