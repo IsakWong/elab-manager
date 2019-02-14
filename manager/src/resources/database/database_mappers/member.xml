@@ -4,19 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
     <resultMap id="memberResultMap" type="member">
-        <result property="number" column="学号"/>
-        <result property="userName" column="USERNAME"/>
-        <result property="name" column="姓名"/>
-        <result property="sex" column="性别"/>
-        <result property="college" column="院系"/>
-        <result property="group" column="组别"/>
-        <result property="tel" column="电话"/>
-        <result property="duty" column="职务"/>
-        <result property="grade" column="年级"/>
-        <result property="motto" column="座右铭"/>
-        <result property="password" column="密码"/>
-        <result property="teachingAmount" column="主讲"/>
-        <result property="assistAmount" column="助课"/>
+        <result column="学号" property="number"/>
+        <result column="USERNAME" property="userName"/>
+        <result column="姓名" property="name"/>
+        <result column="性别" property="sex"/>
+        <result column="院系" property="college"/>
+        <result column="组别" property="group"/>
+        <result column="电话" property="tel"/>
+        <result column="职务" property="duty"/>
+        <result column="年级" property="grade"/>
+        <result column="座右铭" property="motto"/>
+        <result column="密码" property="password"/>
+        <result column="主讲" property="teachingAmount"/>
+        <result column="助课" property="assistAmount"/>
     </resultMap>
     <select id="selectMemberByName" parameterType="string" resultMap="memberResultMap">
         select * from member where 姓名 = #{id}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recruitNew">
+    <resultMap id="newPeopleResultMap" type="newPerson">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="性别" property="sex"/>
+        <result column="Tel" property="tel"/>
+        <result column="组别" property="group"/>
+        <result column="专业" property="specialty"/>
+        <result column="籍贯" property="birthplace"/>
+        <result column="班级" property="classes"/>
+        <result column="职务" property="duty"/>
+        <result column="社团" property="corporation"/>
+        <result column="爱好" property="hobby"/>
+        <result column="面试时间" property="time"/>
+        <result column="Email" property="Email"/>
+        <result column="经历" property="experience"/>
+        <result column="理解" property="understanding"/>
+        <result column="自我评价" property="evaluation"/>
+    </resultMap>
+    <select id="selectNewPeople" resultMap="newPeopleResultMap">
+        select * from newperson
+    </select>
+</mapper>

@@ -16,6 +16,7 @@ public class DatabaseOperations {
 
     private static SqlSessionFactory studentSqlSessionFactory = null;
     private static SqlSessionFactory classSqlSessionFactory = null;
+    private static SqlSessionFactory recruitNewSqlSessionFactory = null;
 
     private static DatabaseOperations instance = null;
 
@@ -31,6 +32,9 @@ public class DatabaseOperations {
                 studentSqlSessionFactory = new SqlSessionFactoryBuilder().build(studentReader, "student");
                 Reader classReader = Resources.getResourceAsReader("database/mybatis-config.xml");
                 classSqlSessionFactory = new SqlSessionFactoryBuilder().build(classReader, "class");
+                Reader elabRecruitNew = Resources.getResourceAsReader("database/mybatis-config.xml");
+                recruitNewSqlSessionFactory = new SqlSessionFactoryBuilder().build(elabRecruitNew, "recruitNew");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -212,6 +216,15 @@ public class DatabaseOperations {
         try {
             session.update("member.removeDuty", name);
             session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectNewPeople() {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+             return session.selectList("recruitNew.selectNewPeople");
         } finally {
             session.close();
         }
