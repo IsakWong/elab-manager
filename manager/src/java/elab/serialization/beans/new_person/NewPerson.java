@@ -1,5 +1,7 @@
 package elab.serialization.beans.new_person;
 
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import org.apache.ibatis.type.Alias;
 
 @Alias("newPerson")
@@ -22,6 +24,7 @@ public class NewPerson {
     private String understanding;
     private String evaluation;
     private String oldNumber;
+    private ScrollPane scrollPane;
 
     public String getNumber() {
         return number;
@@ -159,8 +162,14 @@ public class NewPerson {
         this.oldNumber = oldNumber;
     }
 
+    public ScrollPane getScrollPane() { return scrollPane; }
+
+    public void setScrollPane(ScrollPane scrollPane) {
+        this.scrollPane = scrollPane;
+    }
+
     @Override
     public String toString() {
-        return number + " " + name + " " + sex + " " + tel + " " + group + " " + specialty + " " + birthplace + " " + classes + " " + duty  + " " + corporation + " " + hobby + " " + time + " " + Email + " " + experience + " " + understanding + " " + evaluation + " " +oldNumber;
+        return number + " " + name + " " + sex + " " + tel + " " + group + " " + specialty + " " + birthplace + " " + classes + " " + duty  + " " + corporation + " " + hobby + " " + time + " " + Email + " " + experience + " " + understanding + " " + evaluation + " " +oldNumber + " " + scrollPane;
     }
 }

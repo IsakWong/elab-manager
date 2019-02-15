@@ -24,4 +24,24 @@
     <select id="selectNewPeople" resultMap="newPeopleResultMap">
         select * from newperson
     </select>
+    <update id="updateNewPerson" parameterType="newPerson">
+        update newperson set
+            学号 = #{number},
+            姓名 = #{name},
+            性别 = #{sex},
+            Tel = #{tel},
+            组别 = #{group},
+            专业 = #{specialty},
+            籍贯 = #{birthplace},
+            班级 = #{classes},
+            职务 = #{duty},
+            社团 = #{corporation},
+            爱好 = #{hobby},
+            面试时间 = #{time},
+            Email = #{Email},
+            经历 = #{experience},
+            理解 = #{understanding},
+            自我评价 = #{evaluation}
+        where 学号 = #{oldNumber}
+    </update>
 </mapper>

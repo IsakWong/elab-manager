@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.recruitment_module_function_controllers.manage_recruitment_page_controllers.ManegeRecruitmentPageController">
+   <children>
+      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0" prefWidth="1000.0">
+         <children>
+            <Label text="导入本地录取名单">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <JFXButton fx:id="fileIn" prefHeight="30.0" prefWidth="30.0" text="+">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <Label text="批量操作">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <JFXButton fx:id="batchOperation" prefHeight="30.0" prefWidth="30.0" text="░">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0" prefWidth="1000.0">
+         <children>
+            <Label text="导出信息">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <JFXButton fx:id="fileOut" prefHeight="30.0" prefWidth="40.0" text="→">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ScrollPane prefHeight="697.0" prefWidth="1000.0">
+         <content>
+            <TableView fx:id="tableView" prefHeight="594.0" prefWidth="2010.0">
+              <columns>
+                <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
+                <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
+                  <TableColumn fx:id="sex" prefWidth="75.0" text="性别" />
+                  <TableColumn fx:id="tel" prefWidth="120.0" text="联系电话" />
+                  <TableColumn fx:id="group" prefWidth="75.0" text="组别" />
+                  <TableColumn fx:id="specialty" prefWidth="200.0" text="专业" />
+                  <TableColumn fx:id="birthplace" prefWidth="200.0" text="籍贯" />
+                  <TableColumn fx:id="classes" prefWidth="85.0" text="班级" />
+                  <TableColumn fx:id="duty" prefWidth="75.0" text="职务" />
+                  <TableColumn fx:id="corporation" prefWidth="150.0" text="社团" />
+                  <TableColumn fx:id="hobby" prefWidth="150.0" text="爱好" />
+                  <TableColumn fx:id="time" prefWidth="110.0" text="面试时间" />
+                  <TableColumn fx:id="Email" prefWidth="140.0" text="E-mail" />
+                  <TableColumn fx:id="experience" prefWidth="150.0" text="经历" />
+                  <TableColumn fx:id="understanding" prefWidth="150.0" text="理解" />
+                  <TableColumn fx:id="evaluation" prefWidth="150.0" text="自我评价" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+
+<JFXButton fx:id="addTimeBtn" contentDisplay="CENTER" ellipsisString="+" graphicTextGap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: ff0000;" text="+" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />

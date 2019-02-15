@@ -36,7 +36,7 @@ public class FreeTimeCollectPageController extends BaseViewController {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_checkbox.fxml"));
             Node checkboxGroup = loader.load();
-            Label day = (Label)checkboxGroup.lookup("#dayLabel");
+            Label day = (Label) checkboxGroup.lookup("#dayLabel");
             day.setText(DayString[DayIndex]);
 
             checkBoxes[WeekIndex][DayIndex][0] = (JFXCheckBox)checkboxGroup.lookup("#checkbox1");

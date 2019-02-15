@@ -2,6 +2,7 @@ package elab.database;
 
 import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.beans.member.Member;
+import elab.serialization.beans.new_person.NewPerson;
 import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
 import elab.serialization.beans.student.Student;
 import org.apache.ibatis.io.Resources;
@@ -225,6 +226,16 @@ public class DatabaseOperations {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
              return session.selectList("recruitNew.selectNewPeople");
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateNewPerson(NewPerson newPerson) {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            session.update("recruitNew.updateNewPerson", newPerson);
+            session.commit();
         } finally {
             session.close();
         }
