@@ -24,6 +24,7 @@ public class NewPerson {
     private String understanding;
     private String evaluation;
     private String oldNumber;
+    private Boolean selectionSituation = false;
     private ScrollPane scrollPane;
 
     public String getNumber() {
@@ -168,8 +169,16 @@ public class NewPerson {
         this.scrollPane = scrollPane;
     }
 
+    public Boolean getSelectionSituation() {
+        return selectionSituation;
+    }
+
+    public void setSelectionSituation(Boolean selectionSituation) {
+        this.selectionSituation = selectionSituation;
+    }
+
     @Override
     public String toString() {
-        return number + " " + name + " " + sex + " " + tel + " " + group + " " + specialty + " " + birthplace + " " + classes + " " + duty  + " " + corporation + " " + hobby + " " + time + " " + Email + " " + experience + " " + understanding + " " + evaluation + " " +oldNumber + " " + scrollPane;
+        return number + " " + name + " " + sex + " " + tel + " " + group + " " + specialty + " " + birthplace + " " + classes + " " + duty  + " " + corporation + " " + hobby + " " + time + " " + Email + " " + experience + " " + understanding + " " + evaluation;
     }
 }

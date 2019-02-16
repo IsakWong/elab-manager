@@ -4,9 +4,8 @@
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 
-
-<JFXButton fx:id="addTimeBtn" contentDisplay="CENTER" ellipsisString="" graphicTextGap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<JFXButton fx:id="addTimeBtn" contentDisplay="CENTER" ellipsisString="" graphicTextGap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" text="✦" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <font>
-      <Font name="System Bold" size="9.0" />
+      <Font size="7.0" />
    </font>
 </JFXButton>

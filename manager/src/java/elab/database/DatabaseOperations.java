@@ -5,6 +5,7 @@ import elab.serialization.beans.member.Member;
 import elab.serialization.beans.new_person.NewPerson;
 import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
 import elab.serialization.beans.student.Student;
+import javafx.collections.ObservableList;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -245,6 +246,17 @@ public class DatabaseOperations {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
             session.delete("recruitNew.deleteNewPerson", number);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void deleteNewPeople(ObservableList<NewPerson> newPeople) {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            for(NewPerson newPerson : newPeople)
+                session.delete("recruitNew.deleteNewPerson", newPerson.getNumber());
             session.commit();
         } finally {
             session.close();

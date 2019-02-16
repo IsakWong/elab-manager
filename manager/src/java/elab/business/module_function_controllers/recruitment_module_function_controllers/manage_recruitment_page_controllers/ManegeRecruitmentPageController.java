@@ -1,6 +1,7 @@
 package elab.business.module_function_controllers.recruitment_module_function_controllers.manage_recruitment_page_controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
@@ -13,7 +14,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseButton;
@@ -30,6 +35,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,7 +51,15 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     @FXML
     private JFXButton fileIn;
     @FXML
-    private JFXButton batchOperation;
+    private Label batchLabel;
+    @FXML
+    private Label cancelBatchLabel;
+    @FXML
+    private Label fileOutLabel;
+    @FXML
+    private JFXButton batchBtn;
+    @FXML
+    private JFXButton cancelBatchBtn;
     @FXML
     private JFXButton fileOut;
     @FXML
@@ -119,20 +134,96 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             if (file != null) {
                 if (file.getName().endsWith("xls")) {
                     HSSFWorkbook workbook = new HSSFWorkbook();
-                    HSSFSheet sheet = workbook.createSheet("sheet0");
-                    HSSFRow row = sheet.createRow(0);
-                    HSSFCell cell = row.createCell(0);
-                    cell.setCellValue("xls");
+                    HSSFSheet sheet = workbook.createSheet("sheet1");
+                    HSSFRow titleRow = sheet.createRow(0);
+                    //第一行列名
+                    for(int i = 0, j = 0; i < tableView.getColumns().size(); ++i) {
+                        TableColumn tableColumn = tableView.getColumns().get(i);
+                        if(!tableColumn.getText().equals("")) {
+                            HSSFCell cell = titleRow.createCell(i - j);
+                            cell.setCellValue(tableColumn.getText());
+                        } else {
+                            ++j;
+                        }
+                    }
+                    //数据
+                    ObservableList<NewPerson> newPeople = tableView.getItems();
+                    int i = 1;
+                    if(batchLabel.isVisible()) {
+                        for (NewPerson newPerson : newPeople) {
+                            HSSFRow row = sheet.createRow(i);
+                            String[] informations = newPerson.toString().split(" ");
+                            int j = 0;
+                            for (String information : informations) {
+                                HSSFCell cell = row.createCell(j);
+                                cell.setCellValue(information);
+                                j++;
+                            }
+                            ++i;
+                        }
+                    } else {
+                        for (NewPerson newPerson : newPeople) {
+                            if(newPerson.getSelectionSituation()) {
+                                HSSFRow row = sheet.createRow(i);
+                                String[] informations = newPerson.toString().split(" ");
+                                int j = 0;
+                                for (String information : informations) {
+                                    HSSFCell cell = row.createCell(j);
+                                    cell.setCellValue(information);
+                                    j++;
+                                }
+                                ++i;
+                            }
+                        }
+                    }
                     FileOutputStream stream = new FileOutputStream(file);
                     workbook.write(stream);
                     stream.flush();
                     stream.close();
                 } else if (file.getName().endsWith("xlsx")) {
                     XSSFWorkbook workbook = new XSSFWorkbook();
-                    XSSFSheet sheet = workbook.createSheet("sheet0");
-                    XSSFRow row = sheet.createRow(0);
-                    XSSFCell cell = row.createCell(0);
-                    cell.setCellValue("xls5");
+                    XSSFSheet sheet = workbook.createSheet("sheet1");
+                    XSSFRow titleRow = sheet.createRow(0);
+                    //第一行列名
+                    for(int i = 0, j = 0; i < tableView.getColumns().size(); ++i) {
+                        TableColumn tableColumn = tableView.getColumns().get(i);
+                        if(!tableColumn.getText().equals("")) {
+                            XSSFCell cell = titleRow.createCell(i - j);
+                            cell.setCellValue(tableColumn.getText());
+                        } else {
+                            ++j;
+                        }
+                    }
+                    //数据
+                    ObservableList<NewPerson> newPeople = tableView.getItems();
+                    int i = 1;
+                    if(batchLabel.isVisible()) {
+                        for (NewPerson newPerson : newPeople) {
+                            XSSFRow row = sheet.createRow(i);
+                            String[] informations = newPerson.toString().split(" ");
+                            int j = 0;
+                            for (String information : informations) {
+                                XSSFCell cell = row.createCell(j);
+                                cell.setCellValue(information);
+                                j++;
+                            }
+                            ++i;
+                        }
+                    } else {
+                        for (NewPerson newPerson : newPeople) {
+                            if(newPerson.getSelectionSituation()) {
+                                XSSFRow row = sheet.createRow(i);
+                                String[] informations = newPerson.toString().split(" ");
+                                int j = 0;
+                                for (String information : informations) {
+                                    XSSFCell cell = row.createCell(j);
+                                    cell.setCellValue(information);
+                                    j++;
+                                }
+                                ++i;
+                            }
+                        }
+                    }
                     FileOutputStream stream = new FileOutputStream(file);
                     workbook.write(stream);
                     stream.flush();
@@ -305,16 +396,45 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     public ContextMenu getContextMenu() {
         if(contextMenu == null) {
             contextMenu = new ContextMenu();
-            MenuItem delete = new MenuItem("删除记录");
+            MenuItem delete = new MenuItem();
+            if(batchLabel.isVisible())
+                delete.setText("删除信息");
+            else
+                delete.setText("删除所选信息");
             delete.setOnAction(event -> {
-                NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
-                ObservableList<NewPerson> newPeople = tableView.getItems();
-                newPeople.remove(newPerson);
-                tableView.refresh();
-                DatabaseOperations.getInstance().deleteNewPerson(newPerson.getNumber());
-                Utilities.popMessage("删除成功", container);
+                contextMenu.hide();
+                if(batchLabel.isVisible()) {
+                    NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
+                    ObservableList<NewPerson> newPeople = tableView.getItems();
+                    newPeople.remove(newPerson);
+                    tableView.refresh();
+                    DatabaseOperations.getInstance().deleteNewPerson(newPerson.getNumber());
+                    Utilities.popMessage("删除成功", container);
+                } else {
+                    Object[] options ={"确定", "取消"};
+                    int m = JOptionPane.showOptionDialog(null, "确定删除所选信息？", "注意", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+                    if(m == 0) {
+                        ObservableList<NewPerson> newPeople = tableView.getItems();
+                        ObservableList<NewPerson> deleteInformation = FXCollections.observableArrayList();
+                        for (NewPerson newPerson : newPeople) {
+                            if (newPerson.getSelectionSituation()) {
+                                deleteInformation.add(newPerson);
+                                newPeople.remove(newPerson);
+                            }
+                        }
+                        tableView.refresh();
+                        DatabaseOperations.getInstance().deleteNewPeople(deleteInformation);
+                        Utilities.popMessage("删除成功", container);
+                    }
+                }
             });
             contextMenu.getItems().add(delete);
+        } else {
+            MenuItem delete = contextMenu.getItems().get(0);
+            if(batchLabel.isVisible())
+                delete.setText("删除信息");
+            else
+                delete.setText("删除所选信息");
         }
         return contextMenu;
     }
@@ -406,7 +526,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                 AtomicReference<Boolean> isTimeEditing = new AtomicReference<>(false);
                 TableCell<NewPerson, ScrollPane> cell = new TableCell<NewPerson, ScrollPane>() {
                     @Override
-                    protected void updateItem(final ScrollPane scrollPane, boolean arg1) {
+                    protected void updateItem(ScrollPane scrollPane, boolean arg1) {
                         super.updateItem(scrollPane, arg1);
                         if (arg1) {
                             setGraphic(null);
@@ -513,6 +633,67 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         fileOut.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
                 chooseFileOut();
+            }
+        });
+
+        batchBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                batchLabel.setVisible(false);
+                batchBtn.setVisible(false);
+                cancelBatchLabel.setVisible(true);
+                cancelBatchBtn.setVisible(true);
+                fileOutLabel.setText("导出所选信息");
+                TableColumn<NewPerson, Boolean> selectColumn = new TableColumn<>();
+                tableView.getColumns().add(0, selectColumn);
+                selectColumn.setCellFactory(new Callback<TableColumn<NewPerson, Boolean>, TableCell<NewPerson, Boolean>>() {
+                    @Override
+                    public TableCell<NewPerson, Boolean> call(TableColumn<NewPerson, Boolean> param) {
+                        TableCell<NewPerson, Boolean> cell = new TableCell<NewPerson, Boolean>() {
+                            @Override
+                            protected void updateItem(Boolean selectionSituation, boolean arg1) {
+                                super.updateItem(selectionSituation, arg1);
+                                if (arg1) {
+                                    setGraphic(null);
+                                } else {
+                                    try {
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/check_box.fxml"));
+                                        Node node = loader.load();
+                                        JFXCheckBox checkBox = (JFXCheckBox) node.lookup("#checkBox");
+                                        setGraphic(checkBox);
+                                        checkBox.setOnMouseClicked(event1 -> {
+                                            TableCell<NewPerson, Boolean> cell = (TableCell<NewPerson, Boolean>) checkBox.getParent();
+                                            NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
+                                            newPerson.setSelectionSituation(checkBox.isSelected());
+                                        });
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    tableView.setPrefWidth(tableView.getWidth() + 43);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                });
+                selectColumn.setCellValueFactory(new PropertyValueFactory<NewPerson, Boolean>("selectionSituation"));
+                tableView.refresh();
+            }
+        });
+
+        cancelBatchBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                cancelBatchLabel.setVisible(false);
+                cancelBatchBtn.setVisible(false);
+                batchLabel.setVisible(true);
+                batchBtn.setVisible(true);
+                fileOutLabel.setText("导出信息");
+                tableView.getColumns().remove(0);
+                tableView.setPrefWidth(tableView.getWidth() - 43);
+                ObservableList<NewPerson> newPeople = tableView.getItems();
+                for(NewPerson newPerson : newPeople) {
+                    newPerson.setSelectionSituation(false);
+                }
+                tableView.refresh();
             }
         });
     }

@@ -20,21 +20,22 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </JFXButton>
-            <Label text="批量操作">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
-            </Label>
-            <JFXButton fx:id="batchOperation" prefHeight="30.0" prefWidth="30.0" text="░">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </JFXButton>
+               <children>
+                  <Label fx:id="batchLabel" layoutY="15.0" text="批量操作" />
+                  <JFXButton fx:id="batchBtn" layoutX="70.0" layoutY="8.0" prefHeight="30.0" prefWidth="30.0" text="░" />
+                  <Label fx:id="cancelBatchLabel" layoutY="15.0" text="取消批量操作" visible="false" />
+                  <JFXButton fx:id="cancelBatchBtn" layoutX="85.0" layoutY="8.0" prefHeight="30.0" prefWidth="30.0" text="▮" visible="false" />
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0" prefWidth="1000.0">
          <children>
-            <Label text="导出信息">
+            <Label fx:id="fileOutLabel" text="导出信息">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
@@ -48,7 +49,7 @@
       </HBox>
       <ScrollPane prefHeight="697.0" prefWidth="1000.0">
          <content>
-            <TableView fx:id="tableView" prefHeight="594.0" prefWidth="2010.0">
+            <TableView fx:id="tableView" prefHeight="594.0" prefWidth="2015.0">
               <columns>
                 <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
