@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseButton;
@@ -100,6 +101,8 @@ public class ManegeRecruitmentPageController extends BaseViewController {
 
     private ContextMenu contextMenu = null;
 
+    private String[] times = {"24日晚18:00", "24日晚19:00", "24日晚20:00", "25日晚18:00", "25日晚19:00", "25日晚20:00"};
+
     public void chooseFileIn() {
 
         FileChooser fileChooser = new FileChooser();
@@ -152,6 +155,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     int i = 1;
                     if(batchLabel.isVisible()) {
                         for (NewPerson newPerson : newPeople) {
+                            setSheetTime(newPerson);
                             HSSFRow row = sheet.createRow(i);
                             String[] informations = newPerson.toString().split(" ");
                             int j = 0;
@@ -165,6 +169,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     } else {
                         for (NewPerson newPerson : newPeople) {
                             if(newPerson.getSelectionSituation()) {
+                                setSheetTime(newPerson);
                                 HSSFRow row = sheet.createRow(i);
                                 String[] informations = newPerson.toString().split(" ");
                                 int j = 0;
@@ -200,6 +205,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     int i = 1;
                     if(batchLabel.isVisible()) {
                         for (NewPerson newPerson : newPeople) {
+                            setSheetTime(newPerson);
                             XSSFRow row = sheet.createRow(i);
                             String[] informations = newPerson.toString().split(" ");
                             int j = 0;
@@ -212,6 +218,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                         }
                     } else {
                         for (NewPerson newPerson : newPeople) {
+                            setSheetTime(newPerson);
                             if(newPerson.getSelectionSituation()) {
                                 XSSFRow row = sheet.createRow(i);
                                 String[] informations = newPerson.toString().split(" ");
@@ -302,7 +309,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     }
 
     public void initItems() {
-        String[] times = {"24日晚18:00", "24日晚19:00", "24日晚20:00", "25日晚18:00", "25日晚19:00", "25日晚20:00"};
         List list = DatabaseOperations.getInstance().selectNewPeople();
         ObservableList<NewPerson> newPeople = FXCollections.<NewPerson>observableArrayList();
         newPeople.addAll(list);
@@ -338,6 +344,18 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             }
         }
         tableView.setItems(newPeople);
+    }
+
+    public void setSheetTime(NewPerson newPerson) {
+        VBox timeContainer = (VBox) newPerson.getScrollPane().getContent();
+        JFXTextField textField0 = (JFXTextField) timeContainer.getChildren().get(0);
+        String newTime = textField0.getText();
+        for(int i = 1; i < timeContainer.getChildren().size(); ++i) {
+            newTime += ",";
+            JFXTextField textField = (JFXTextField) timeContainer.getChildren().get(i);
+            newTime += textField.getText();
+        }
+        newPerson.setSheetTime(newTime);
     }
 
     public void returnTime(NewPerson newPerson) {

@@ -24,6 +24,7 @@ public class NewPerson {
     private String understanding;
     private String evaluation;
     private String oldNumber;
+    private String sheetTime;
     private Boolean selectionSituation = false;
     private ScrollPane scrollPane;
 
@@ -163,6 +164,14 @@ public class NewPerson {
         this.oldNumber = oldNumber;
     }
 
+    public String getSheetTime() {
+        return sheetTime;
+    }
+
+    public void setSheetTime(String sheetTime) {
+        this.sheetTime = sheetTime;
+    }
+
     public ScrollPane getScrollPane() { return scrollPane; }
 
     public void setScrollPane(ScrollPane scrollPane) {
@@ -179,6 +188,6 @@ public class NewPerson {
 
     @Override
     public String toString() {
-        return number + " " + name + " " + sex + " " + tel + " " + group + " " + specialty + " " + birthplace + " " + classes + " " + duty  + " " + corporation + " " + hobby + " " + time + " " + Email + " " + experience + " " + understanding + " " + evaluation;
+        return number + " " + name + " " + sex + " " + tel + " " + group + " " + specialty + " " + birthplace + " " + classes + " " + duty  + " " + corporation + " " + hobby + " " + sheetTime + " " + Email + " " + experience + " " + understanding + " " + evaluation;
     }
 }
