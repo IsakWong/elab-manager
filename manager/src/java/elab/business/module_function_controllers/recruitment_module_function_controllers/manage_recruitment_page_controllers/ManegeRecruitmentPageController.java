@@ -3,6 +3,7 @@ package elab.business.module_function_controllers.recruitment_module_function_co
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.new_person.NewPerson;
@@ -144,9 +145,9 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     HSSFSheet sheet = workbook.createSheet("sheet1");
                     HSSFRow titleRow = sheet.createRow(0);
                     //第一行列名
-                    for(int i = 0, j = 0; i < tableView.getColumns().size(); ++i) {
+                    for (int i = 0, j = 0; i < tableView.getColumns().size(); ++i) {
                         TableColumn tableColumn = tableView.getColumns().get(i);
-                        if(!tableColumn.getText().equals("")) {
+                        if (!tableColumn.getText().equals("")) {
                             HSSFCell cell = titleRow.createCell(i - j);
                             cell.setCellValue(tableColumn.getText());
                         } else {
@@ -156,9 +157,8 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     //数据
                     ObservableList<NewPerson> newPeople = tableView.getItems();
                     int i = 1;
-                    if(batchLabel.isVisible()) {
+                    if (batchLabel.isVisible()) {
                         for (NewPerson newPerson : newPeople) {
-                            setSheetTime(newPerson);
                             HSSFRow row = sheet.createRow(i);
                             String[] informations = newPerson.toString().split(" ");
                             int j = 0;
@@ -171,8 +171,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                         }
                     } else {
                         for (NewPerson newPerson : newPeople) {
-                            if(newPerson.getSelectionSituation()) {
-                                setSheetTime(newPerson);
+                            if (newPerson.getSelectionSituation()) {
                                 HSSFRow row = sheet.createRow(i);
                                 String[] informations = newPerson.toString().split(" ");
                                 int j = 0;
@@ -194,9 +193,9 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     XSSFSheet sheet = workbook.createSheet("sheet1");
                     XSSFRow titleRow = sheet.createRow(0);
                     //第一行列名
-                    for(int i = 0, j = 0; i < tableView.getColumns().size(); ++i) {
+                    for (int i = 0, j = 0; i < tableView.getColumns().size(); ++i) {
                         TableColumn tableColumn = tableView.getColumns().get(i);
-                        if(!tableColumn.getText().equals("")) {
+                        if (!tableColumn.getText().equals("")) {
                             XSSFCell cell = titleRow.createCell(i - j);
                             cell.setCellValue(tableColumn.getText());
                         } else {
@@ -206,9 +205,8 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     //数据
                     ObservableList<NewPerson> newPeople = tableView.getItems();
                     int i = 1;
-                    if(batchLabel.isVisible()) {
+                    if (batchLabel.isVisible()) {
                         for (NewPerson newPerson : newPeople) {
-                            setSheetTime(newPerson);
                             XSSFRow row = sheet.createRow(i);
                             String[] informations = newPerson.toString().split(" ");
                             int j = 0;
@@ -221,8 +219,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                         }
                     } else {
                         for (NewPerson newPerson : newPeople) {
-                            setSheetTime(newPerson);
-                            if(newPerson.getSelectionSituation()) {
+                            if (newPerson.getSelectionSituation()) {
                                 XSSFRow row = sheet.createRow(i);
                                 String[] informations = newPerson.toString().split(" ");
                                 int j = 0;
@@ -240,10 +237,10 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     stream.flush();
                     stream.close();
                 } else {
-
+                    System.out.println("CSV");
                 }
             }
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -315,9 +312,10 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         List list = DatabaseOperations.getInstance().selectNewPeople();
         ObservableList<NewPerson> newPeople = FXCollections.<NewPerson>observableArrayList();
         newPeople.addAll(list);
-        for (int i = 0; i < newPeople.size(); ++i) {
-            newPeople.get(i).setOldNumber(newPeople.get(i).getNumber());
-            newPeople.get(i).setScrollPane(creatTimeContainer());
+        for (NewPerson newPerson : newPeople) {
+            newPerson.setOldNumber(newPerson.getNumber());
+            newPerson.setScrollPane(creatTimeContainer());
+            creatSheetTime(newPerson);
         }
         for (int i = 0; i < newPeople.size(); ++i) {
             String[] time = newPeople.get(i).getTime().split(",");
@@ -349,7 +347,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         tableView.setItems(newPeople);
     }
 
-    public void setSheetTime(NewPerson newPerson) {
+    public void creatSheetTime(NewPerson newPerson) {
         String[] time = newPerson.getTime().split(",");
         String newTime = null;
         switch (time[0]) {
@@ -504,15 +502,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         return contextMenu;
     }
 
-    public void setColumn(TableColumn<NewPerson, String> tableColumn) {
-        tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        tableColumn.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setName(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-    }
-
     public void initTableView() {
 
         tableView.setEditable(true);
@@ -527,21 +516,172 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             }
         });
 
-        setColumn(number);
-        setColumn(name);
-        setColumn(sex);
-        setColumn(tel);
-        setColumn(group);
-        setColumn(specialty);
-        setColumn(birthplace);
-        setColumn(classes);
-        setColumn(duty);
-        setColumn(corporation);
-        setColumn(hobby);
-        setColumn(Email);
-        setColumn(experience);
-        setColumn(understanding);
-        setColumn(evaluation);
+        number.setCellFactory(TextFieldTableCell.forTableColumn());
+        number.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null) {
+                ObservableList<NewPerson> newPeople = tableView.getItems();
+                Boolean newNumber = true;
+                for(NewPerson person : newPeople) {
+                    if(person.getNumber() != null && person.getNumber().equals(event.getNewValue())) {
+                        newNumber = false;
+                        Utilities.popMessage("此学号已存在,此信息无效", container);
+                        break;
+                    }
+                }
+                if(newNumber) {
+                    Utilities.popMessage("添加成功,请完善相关信息", container);
+                    newPerson.setNumber(event.getNewValue());
+                    DatabaseOperations.getInstance().insertNewPerson(newPerson);
+                    newPerson.setOldNumber(newPerson.getNumber());
+                }
+            } else {
+                newPerson.setNumber(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                newPerson.setOldNumber(newPerson.getNumber());
+            }
+        });
+
+        name.setCellFactory(TextFieldTableCell.forTableColumn());
+        name.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setName(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        sex.setCellFactory(TextFieldTableCell.forTableColumn());
+        sex.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setSex(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        tel.setCellFactory(TextFieldTableCell.forTableColumn());
+        tel.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setTel(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        group.setCellFactory(TextFieldTableCell.forTableColumn());
+        group.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setGroup(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        specialty.setCellFactory(TextFieldTableCell.forTableColumn());
+        specialty.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setSpecialty(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        birthplace.setCellFactory(TextFieldTableCell.forTableColumn());
+        birthplace.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setBirthplace(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        classes.setCellFactory(TextFieldTableCell.forTableColumn());
+        classes.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setClasses(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        duty.setCellFactory(TextFieldTableCell.forTableColumn());
+        duty.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setDuty(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        corporation.setCellFactory(TextFieldTableCell.forTableColumn());
+        corporation.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setCorporation(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        hobby.setCellFactory(TextFieldTableCell.forTableColumn());
+        hobby.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setHobby(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        Email.setCellFactory(TextFieldTableCell.forTableColumn());
+        Email.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setEmail(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        experience.setCellFactory(TextFieldTableCell.forTableColumn());
+        experience.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setExperience(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        understanding.setCellFactory(TextFieldTableCell.forTableColumn());
+        understanding.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setUnderstanding(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
+        evaluation.setCellFactory(TextFieldTableCell.forTableColumn());
+        evaluation.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+            else {
+                newPerson.setEvaluation(event.getNewValue());
+                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+            }
+        });
 
         time.setCellFactory(new Callback<TableColumn<NewPerson, ScrollPane>, TableCell<NewPerson, ScrollPane>>() {
             @Override
@@ -589,6 +729,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                             }
                             NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
                             returnTime(newPerson);
+                            creatSheetTime(newPerson);
                             DatabaseOperations.getInstance().updateNewPerson(newPerson);
                         }
                     }
@@ -600,33 +741,33 @@ public class ManegeRecruitmentPageController extends BaseViewController {
 
     public void setContextMenuHideEvent() {
         container.setOnMousePressed(event -> {
-            if(contextMenu.isShowing())
-                contextMenu.hide();
+            if(getContextMenu().isShowing())
+                getContextMenu().hide();
         });
 
         batchBtn.setOnMousePressed(event -> {
-            if(contextMenu.isShowing())
-                contextMenu.hide();
+            if(getContextMenu().isShowing())
+                getContextMenu().hide();
         });
 
         cancelBatchBtn.setOnMousePressed(event -> {
-            if(contextMenu.isShowing())
-                contextMenu.hide();
+            if(getContextMenu().isShowing())
+                getContextMenu().hide();
         });
 
         fileIn.setOnMouseClicked(event -> {
-            if(contextMenu.isShowing())
-                contextMenu.hide();
+            if(getContextMenu().isShowing())
+                getContextMenu().hide();
         });
 
         fileOut.setOnMousePressed(event -> {
-            if(contextMenu.isShowing())
-                contextMenu.hide();
+            if(getContextMenu().isShowing())
+                getContextMenu().hide();
         });
 
         addBtn.setOnMousePressed(event -> {
-            if(contextMenu.isShowing())
-                contextMenu.hide();
+            if(getContextMenu().isShowing())
+                getContextMenu().hide();
         });
     }
 
@@ -731,10 +872,24 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                 try {
                     ObservableList<NewPerson> newPeople = tableView.getItems();
                     NewPerson newPerson = new NewPerson();
+                    newPerson.setName("无");
+                    newPerson.setSex("男");
+                    newPerson.setTel("无");
+                    newPerson.setGroup("无");
+                    newPerson.setSpecialty("无");
+                    newPerson.setBirthplace("无");
+                    newPerson.setClasses("无");
+                    newPerson.setDuty("无");
+                    newPerson.setCorporation("无");
+                    newPerson.setHobby("无");
+                    newPerson.setTime("0");
+                    newPerson.setEmail("无");
+                    newPerson.setSheetTime("24日晚18:00");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/time_container.fxml"));
                     Node node = loader.load();
                     ScrollPane scrollPane = (ScrollPane) node.lookup("#scrollPane");
                     newPerson.setScrollPane(scrollPane);
+                    addTextField(newPerson, times[0]);
                     newPeople.add(0, newPerson);
                     tableView.refresh();
                 } catch (Exception e) {

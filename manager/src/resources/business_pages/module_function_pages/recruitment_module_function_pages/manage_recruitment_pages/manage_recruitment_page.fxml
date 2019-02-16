@@ -31,7 +31,7 @@
                   <JFXButton fx:id="cancelBatchBtn" layoutX="85.0" layoutY="8.0" prefHeight="30.0" prefWidth="30.0" text="▮" visible="false" />
                </children>
             </AnchorPane>
-            <Label fx:id="fileOutLabel1" text="注意：编辑信息完毕后按&quot;ENTER&quot;键方可完成编辑">
+            <Label fx:id="fileOutLabel1" text="注意：信息编辑完毕后按&quot;ENTER&quot;键方可完成编辑">
                <HBox.margin>
                   <Insets left="250.0" top="30.0" />
                </HBox.margin>

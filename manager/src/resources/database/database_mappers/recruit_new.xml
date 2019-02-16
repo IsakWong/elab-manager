@@ -24,6 +24,10 @@
     <select id="selectNewPeople" resultMap="newPeopleResultMap">
         select * from newperson
     </select>
+    <insert id="insertNewPerson" parameterType="newPerson">
+        insert into newperson (学号,姓名,性别,Tel,组别,专业,籍贯,班级,职务,社团,爱好,面试时间,Email,经历,理解,自我评价)
+        values (#{number},#{name},#{sex},#{tel},#{group},#{specialty},#{birthplace},#{classes},#{duty},#{corporation},#{hobby},#{time},#{Email},#{experience},#{understanding},#{evaluation})
+    </insert>
     <update id="updateNewPerson" parameterType="newPerson">
         update newperson set
             学号 = #{number},

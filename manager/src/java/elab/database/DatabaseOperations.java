@@ -232,6 +232,16 @@ public class DatabaseOperations {
         }
     }
 
+    public void insertNewPerson(NewPerson newPerson) {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            session.insert("recruitNew.insertNewPerson", newPerson);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
     public void updateNewPerson(NewPerson newPerson) {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
