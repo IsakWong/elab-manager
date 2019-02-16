@@ -62,7 +62,7 @@
             </JFXButton>
             <Label fx:id="fileOutLabel11" text="编辑完的信息会即时更新到数据库中">
                <HBox.margin>
-                  <Insets bottom="30.0" left="426.0" />
+                  <Insets bottom="30.0" left="427.0" />
                </HBox.margin>
             </Label>
          </children>

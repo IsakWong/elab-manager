@@ -11,6 +11,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,10 +21,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -36,7 +39,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -49,8 +52,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     @FXML
     private VBox container;
     @FXML
-    private JFXButton fileIn;
-    @FXML
     private Label batchLabel;
     @FXML
     private Label cancelBatchLabel;
@@ -60,6 +61,8 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     private JFXButton batchBtn;
     @FXML
     private JFXButton cancelBatchBtn;
+    @FXML
+    private JFXButton fileIn;
     @FXML
     private JFXButton fileOut;
     @FXML
@@ -347,13 +350,54 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     }
 
     public void setSheetTime(NewPerson newPerson) {
-        VBox timeContainer = (VBox) newPerson.getScrollPane().getContent();
-        JFXTextField textField0 = (JFXTextField) timeContainer.getChildren().get(0);
-        String newTime = textField0.getText();
-        for(int i = 1; i < timeContainer.getChildren().size(); ++i) {
-            newTime += ",";
-            JFXTextField textField = (JFXTextField) timeContainer.getChildren().get(i);
-            newTime += textField.getText();
+        String[] time = newPerson.getTime().split(",");
+        String newTime = null;
+        switch (time[0]) {
+            case "0":
+                newTime = times[0];
+                break;
+            case "1":
+                newTime = times[1];
+                break;
+            case "2":
+                newTime = times[2];
+                break;
+            case "3":
+                newTime = times[3];
+                break;
+            case "4":
+                newTime = times[4];
+                break;
+            case "5":
+                newTime = times[5];
+                break;
+            default:
+                break;
+        }
+        for(int i = 1; i < time.length; ++i) {
+                newTime += ",";
+                switch (time[i]) {
+                    case "0":
+                        newTime += times[0];
+                        break;
+                    case "1":
+                        newTime += times[1];
+                        break;
+                    case "2":
+                        newTime += times[2];
+                        break;
+                    case "3":
+                        newTime += times[3];
+                        break;
+                    case "4":
+                        newTime += times[4];
+                        break;
+                    case "5":
+                        newTime += times[5];
+                        break;
+                    default:
+                        break;
+                }
         }
         newPerson.setSheetTime(newTime);
     }
@@ -554,6 +598,38 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         });
     }
 
+    public void setContextMenuHideEvent() {
+        container.setOnMousePressed(event -> {
+            if(contextMenu.isShowing())
+                contextMenu.hide();
+        });
+
+        batchBtn.setOnMousePressed(event -> {
+            if(contextMenu.isShowing())
+                contextMenu.hide();
+        });
+
+        cancelBatchBtn.setOnMousePressed(event -> {
+            if(contextMenu.isShowing())
+                contextMenu.hide();
+        });
+
+        fileIn.setOnMouseClicked(event -> {
+            if(contextMenu.isShowing())
+                contextMenu.hide();
+        });
+
+        fileOut.setOnMousePressed(event -> {
+            if(contextMenu.isShowing())
+                contextMenu.hide();
+        });
+
+        addBtn.setOnMousePressed(event -> {
+            if(contextMenu.isShowing())
+                contextMenu.hide();
+        });
+    }
+
     @Override
     public void initializeController() {
 
@@ -659,12 +735,14 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     Node node = loader.load();
                     ScrollPane scrollPane = (ScrollPane) node.lookup("#scrollPane");
                     newPerson.setScrollPane(scrollPane);
-                    newPeople.add(newPerson);
+                    newPeople.add(0, newPerson);
                     tableView.refresh();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+
+        setContextMenuHideEvent();
     }
 }
