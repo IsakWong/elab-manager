@@ -14,7 +14,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -62,6 +61,8 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     private JFXButton cancelBatchBtn;
     @FXML
     private JFXButton fileOut;
+    @FXML
+    private JFXButton addBtn;
     @FXML
     private TableView<NewPerson> tableView;
     @FXML
@@ -243,11 +244,13 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             Node btnNode = btnLoader.load();
             JFXButton button = (JFXButton) btnNode.lookup("#addTimeBtn");
             button.setOnMouseClicked(clickEvent -> {
-                int size = timeContainer.getChildren().size();
-                if(size < 7)
-                    timeContainer.getChildren().add(size - 1, new JFXTextField());
-                else
-                    Utilities.popMessage("仅有六个面试时间段", container);
+                if(clickEvent.getButton() == MouseButton.PRIMARY) {
+                    int size = timeContainer.getChildren().size();
+                    if (size < 7)
+                        timeContainer.getChildren().add(size - 1, new JFXTextField());
+                    else
+                        Utilities.popMessage("仅有六个面试时间段", container);
+                }
             });
             button.setText("+");
             timeContainer.getChildren().add(button);
@@ -439,6 +442,15 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         return contextMenu;
     }
 
+    public void setColumn(TableColumn<NewPerson, String> tableColumn) {
+        tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        tableColumn.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            newPerson.setName(event.getNewValue());
+            DatabaseOperations.getInstance().updateNewPerson(newPerson);
+        });
+    }
+
     public void initTableView() {
 
         tableView.setEditable(true);
@@ -452,73 +464,22 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                 getContextMenu().hide();
             }
         });
-        number.setCellFactory(TextFieldTableCell.forTableColumn());
-        number.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setNumber(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-            newPerson.setOldNumber(newPerson.getNumber());
-        });
-        name.setCellFactory(TextFieldTableCell.forTableColumn());
-        name.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setName(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        sex.setCellFactory(TextFieldTableCell.forTableColumn());
-        sex.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setSex(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        tel.setCellFactory(TextFieldTableCell.forTableColumn());
-        tel.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setTel(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        group.setCellFactory(TextFieldTableCell.forTableColumn());
-        group.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setGroup(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        specialty.setCellFactory(TextFieldTableCell.forTableColumn());
-        specialty.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setSpecialty(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        birthplace.setCellFactory(TextFieldTableCell.forTableColumn());
-        birthplace.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setBirthplace(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        classes.setCellFactory(TextFieldTableCell.forTableColumn());
-        classes.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setClasses(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        duty.setCellFactory(TextFieldTableCell.forTableColumn());
-        duty.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setDuty(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        corporation.setCellFactory(TextFieldTableCell.forTableColumn());
-        corporation.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setCorporation(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        hobby.setCellFactory(TextFieldTableCell.forTableColumn());
-        hobby.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setHobby(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
+
+        setColumn(number);
+        setColumn(name);
+        setColumn(sex);
+        setColumn(tel);
+        setColumn(group);
+        setColumn(specialty);
+        setColumn(birthplace);
+        setColumn(classes);
+        setColumn(duty);
+        setColumn(corporation);
+        setColumn(hobby);
+        setColumn(Email);
+        setColumn(experience);
+        setColumn(understanding);
+        setColumn(evaluation);
 
         time.setCellFactory(new Callback<TableColumn<NewPerson, ScrollPane>, TableCell<NewPerson, ScrollPane>>() {
             @Override
@@ -566,38 +527,12 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                             }
                             NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
                             returnTime(newPerson);
-                            System.out.println(newPerson);
-                            //DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                            DatabaseOperations.getInstance().updateNewPerson(newPerson);
                         }
                     }
                 });
                 return cell;
             }
-        });
-
-        Email.setCellFactory(TextFieldTableCell.forTableColumn());
-        Email.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setEmail(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        experience.setCellFactory(TextFieldTableCell.forTableColumn());
-        experience.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setExperience(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        understanding.setCellFactory(TextFieldTableCell.forTableColumn());
-        understanding.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setUnderstanding(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
-        });
-        evaluation.setCellFactory(TextFieldTableCell.forTableColumn());
-        evaluation.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            newPerson.setEvaluation(event.getNewValue());
-            DatabaseOperations.getInstance().updateNewPerson(newPerson);
         });
     }
 
@@ -694,6 +629,23 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     newPerson.setSelectionSituation(false);
                 }
                 tableView.refresh();
+            }
+        });
+
+        addBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                try {
+                    ObservableList<NewPerson> newPeople = tableView.getItems();
+                    NewPerson newPerson = new NewPerson();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/time_container.fxml"));
+                    Node node = loader.load();
+                    ScrollPane scrollPane = (ScrollPane) node.lookup("#scrollPane");
+                    newPerson.setScrollPane(scrollPane);
+                    newPeople.add(newPerson);
+                    tableView.refresh();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

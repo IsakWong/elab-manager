@@ -6,6 +6,6 @@
 
 <JFXButton fx:id="addTimeBtn" contentDisplay="CENTER" ellipsisString="" graphicTextGap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" text="✦" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <font>
-      <Font size="7.0" />
+      <Font size="4.0" />
    </font>
 </JFXButton>

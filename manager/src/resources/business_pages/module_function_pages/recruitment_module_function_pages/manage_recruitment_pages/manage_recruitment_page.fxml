@@ -31,6 +31,11 @@
                   <JFXButton fx:id="cancelBatchBtn" layoutX="85.0" layoutY="8.0" prefHeight="30.0" prefWidth="30.0" text="▮" visible="false" />
                </children>
             </AnchorPane>
+            <Label fx:id="fileOutLabel1" text="注意：编辑信息完毕后按&quot;ENTER&quot;键方可完成编辑">
+               <HBox.margin>
+                  <Insets left="250.0" top="30.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0" prefWidth="1000.0">
@@ -45,11 +50,26 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </JFXButton>
+            <Label fx:id="fileOutLabel2" text="增添信息">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <JFXButton fx:id="addBtn" prefHeight="30.0" prefWidth="40.0" text="✦">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <Label fx:id="fileOutLabel11" text="编辑完的信息会即时更新到数据库中">
+               <HBox.margin>
+                  <Insets bottom="30.0" left="426.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
       <ScrollPane prefHeight="697.0" prefWidth="1000.0">
          <content>
-            <TableView fx:id="tableView" prefHeight="594.0" prefWidth="2015.0">
+            <TableView fx:id="tableView" prefHeight="594.0" prefWidth="2020.0">
               <columns>
                 <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
