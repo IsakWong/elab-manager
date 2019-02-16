@@ -152,6 +152,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             button.setOnMouseClicked(clickEvent -> {
                 timeContainer.getChildren().add(timeContainer.getChildren().size() - 1, new JFXTextField());
             });
+            button.setText("+");
             timeContainer.getChildren().add(button);
         } catch (IOException e) {
             e.printStackTrace();
@@ -163,8 +164,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     }
 
     public void setTextFieldEnable(VBox timeContainer, Boolean enable) {
-        int size = timeContainer.getChildren().size();
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < timeContainer.getChildren().size(); ++i) {
             JFXTextField textField = (JFXTextField) timeContainer.getChildren().get(i);
             textField.setDisable(!enable);
         }
@@ -189,6 +189,16 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         textField.setDisable(true);
         VBox timeContainer = (VBox) newPerson.getScrollPane().getContent();
         timeContainer.getChildren().add(textField);
+    }
+
+    public void clearUnusedField(VBox timeContainer) {
+        for(int i = 0; i < timeContainer.getChildren().size(); ++i) {
+            JFXTextField child = (JFXTextField) timeContainer.getChildren().get(i);
+            if(child.getText().equals("")) {
+                timeContainer.getChildren().remove(i);
+                --i;
+            }
+        }
     }
 
     public void initItems() {
@@ -358,11 +368,22 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             newPerson.setHobby(event.getNewValue());
             DatabaseOperations.getInstance().updateNewPerson(newPerson);
         });
+
         time.setCellFactory(new Callback<TableColumn<NewPerson, ScrollPane>, TableCell<NewPerson, ScrollPane>>() {
             @Override
             public TableCell<NewPerson, ScrollPane> call(TableColumn<NewPerson, ScrollPane> param) {
                 AtomicReference<Boolean> isTimeEditing = new AtomicReference<>(false);
-                TableCell<NewPerson, ScrollPane> cell = new TableCell<>();
+                TableCell<NewPerson, ScrollPane> cell = new TableCell<NewPerson, ScrollPane>() {
+                    @Override
+                    protected void updateItem(final ScrollPane scrollPane, boolean arg1) {
+                        super.updateItem(scrollPane, arg1);
+                        if (arg1) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(scrollPane);
+                        }
+                    }
+                };
                 cell.setOnMouseClicked(event -> {
                     if (event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
                         if(!isTimeEditing.get()) {
@@ -389,9 +410,10 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                                 removeBtn(timeContainer);
                             } else {
                                 removeBtn(timeContainer);
+                                clearUnusedField(timeContainer);
                                 setTextFieldEnable(timeContainer, false);
                             }
-                            NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
+                            NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
                             returnTime(newPerson);
                             System.out.println(newPerson);
                             //DatabaseOperations.getInstance().updateNewPerson(newPerson);
@@ -401,7 +423,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                 return cell;
             }
         });
-
         Email.setCellFactory(TextFieldTableCell.forTableColumn());
         Email.setOnEditCommit(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
@@ -431,8 +452,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     @Override
     public void initializeController() {
 
-        initTableView();
-
         number.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("name"));
         sex.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("sex"));
@@ -450,8 +469,8 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         understanding.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("understanding"));
         evaluation.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("evaluation"));
 
+        initTableView();
         initItems();
-        tableView.refresh();
 
         fileIn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
