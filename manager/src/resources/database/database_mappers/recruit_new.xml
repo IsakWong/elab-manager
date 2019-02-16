@@ -44,4 +44,7 @@
             自我评价 = #{evaluation}
         where 学号 = #{oldNumber}
     </update>
+    <delete id="deleteNewPerson" parameterType="string">
+        delete from newperson where 学号 = #{id}
+    </delete>
 </mapper>

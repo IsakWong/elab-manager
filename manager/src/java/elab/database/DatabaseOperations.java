@@ -240,4 +240,14 @@ public class DatabaseOperations {
             session.close();
         }
     }
+
+    public void deleteNewPerson(String number) {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            session.delete("recruitNew.deleteNewPerson", number);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
 }

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.new_person.NewPerson;
+import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -81,6 +82,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
     @FXML
     private TableColumn<NewPerson, String> evaluation;
 
+    private ContextMenu contextMenu = null;
 
     public void chooseFileIn() {
 
@@ -150,7 +152,11 @@ public class ManegeRecruitmentPageController extends BaseViewController {
             Node btnNode = btnLoader.load();
             JFXButton button = (JFXButton) btnNode.lookup("#addTimeBtn");
             button.setOnMouseClicked(clickEvent -> {
-                timeContainer.getChildren().add(timeContainer.getChildren().size() - 1, new JFXTextField());
+                int size = timeContainer.getChildren().size();
+                if(size < 7)
+                    timeContainer.getChildren().add(size - 1, new JFXTextField());
+                else
+                    Utilities.popMessage("仅有六个面试时间段", container);
             });
             button.setText("+");
             timeContainer.getChildren().add(button);
@@ -296,11 +302,36 @@ public class ManegeRecruitmentPageController extends BaseViewController {
         newPerson.setTime(newTime);
     }
 
+    public ContextMenu getContextMenu() {
+        if(contextMenu == null) {
+            contextMenu = new ContextMenu();
+            MenuItem delete = new MenuItem("删除记录");
+            delete.setOnAction(event -> {
+                NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
+                ObservableList<NewPerson> newPeople = tableView.getItems();
+                newPeople.remove(newPerson);
+                tableView.refresh();
+                DatabaseOperations.getInstance().deleteNewPerson(newPerson.getNumber());
+                Utilities.popMessage("删除成功", container);
+            });
+            contextMenu.getItems().add(delete);
+        }
+        return contextMenu;
+    }
+
     public void initTableView() {
 
         tableView.setEditable(true);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableView.getSelectionModel().setCellSelectionEnabled(true);
+        tableView.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.SECONDARY) {
+                getContextMenu().hide();
+                getContextMenu().show(container, event.getScreenX(), event.getScreenY());
+            } else {
+                getContextMenu().hide();
+            }
+        });
         number.setCellFactory(TextFieldTableCell.forTableColumn());
         number.setOnEditCommit(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
@@ -423,6 +454,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                 return cell;
             }
         });
+
         Email.setCellFactory(TextFieldTableCell.forTableColumn());
         Email.setOnEditCommit(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
