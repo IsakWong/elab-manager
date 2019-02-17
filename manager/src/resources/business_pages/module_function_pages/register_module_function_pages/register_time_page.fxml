@@ -46,7 +46,7 @@
             </JFXTextField>
          </children>
       </VBox>
-      <AnchorPane prefHeight="700.0" prefWidth="1053.0">
+      <AnchorPane prefHeight="700.0" prefWidth="723.0">
          <children>
             <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="666.0" prefWidth="723.0">
               <columns>

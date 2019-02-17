@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.SearchResultPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.SearchResultPageController">
    <children>
-      <TableView fx:id="studentTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="489.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css" visible="false">
+      <TableView fx:id="studentTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="486.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css" visible="false">
          <columns>
             <TableColumn fx:id="number" prefWidth="99.0" text="学号" />
             <TableColumn fx:id="name" prefWidth="74.0" text="姓名" />
@@ -18,11 +19,11 @@
             <TableColumn fx:id="tel" prefWidth="135.0" text="联系电话" />
          </columns>
       </TableView>
-      <TableView fx:id="memberTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="489.0" prefWidth="1118.0" stylesheets="@../../../../style/css/controls_style.css">
+      <TableView fx:id="memberTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="486.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css">
          <columns>
             <TableColumn fx:id="numberM" prefWidth="100.0" text="学号" />
             <TableColumn fx:id="userName" prefWidth="130.0" text="登陆用户名" />
-            <TableColumn fx:id="nameM" text="姓名" />
+            <TableColumn fx:id="nameM" prefWidth="57.0" text="姓名" />
             <TableColumn fx:id="sex" prefWidth="50.0" text="性别" />
             <TableColumn fx:id="teachingAmount" minWidth="0.0" prefWidth="75.0" text="主讲次数" />
             <TableColumn fx:id="assistAmount" prefWidth="75.0" text="助教次数" />

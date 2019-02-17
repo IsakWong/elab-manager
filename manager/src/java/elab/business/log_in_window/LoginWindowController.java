@@ -1,7 +1,6 @@
 package elab.business.log_in_window;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
@@ -9,7 +8,6 @@ import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.member.LoginMessage;
-import elab.serialization.module.Module;
 import elab.util.Utilities;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -23,18 +21,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-import static java.lang.Thread.sleep;
 
 public class LoginWindowController extends BaseViewController {
 
@@ -45,9 +37,9 @@ public class LoginWindowController extends BaseViewController {
     @FXML
     private Button logButton;
     @FXML
-    private ImageView closeBtn;
+    private JFXButton closeBtn;
     @FXML
-    private ImageView minBtn;
+    private JFXButton minBtn;
     @FXML
     private JFXPasswordField pwdInputField;
     @FXML
@@ -172,6 +164,7 @@ public class LoginWindowController extends BaseViewController {
             if (event.getButton() == MouseButton.PRIMARY)
                 ElabManagerApplication.primaryStage.close();
         });
+        closeBtn.setGraphic(Utilities.getImage("/pictures/close.png"));
 
         minBtn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
@@ -179,6 +172,7 @@ public class LoginWindowController extends BaseViewController {
                 stage.setIconified(true);
             }
         });
+        minBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
 
         //Drag Event
         topBar.setOnMouseDragged(event -> {

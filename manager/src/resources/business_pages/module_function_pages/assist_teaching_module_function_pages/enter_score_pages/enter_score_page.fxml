@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -37,7 +33,7 @@
                      </HBox.margin>
                   </Label>
                </children></HBox>
-            <JFXTabPane fx:id="tabPane" prefHeight="653.0" prefWidth="804.0" />
+            <JFXTabPane fx:id="tabPane" prefHeight="651.0" prefWidth="804.0" />
          </children>
          <HBox.margin>
             <Insets right="10.0" />

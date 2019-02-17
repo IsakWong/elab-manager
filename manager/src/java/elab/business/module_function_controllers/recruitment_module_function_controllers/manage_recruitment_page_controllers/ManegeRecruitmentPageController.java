@@ -3,7 +3,6 @@ package elab.business.module_function_controllers.recruitment_module_function_co
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.new_person.NewPerson;
@@ -12,9 +11,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,11 +21,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -40,13 +37,13 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
-import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-
 
 public class ManegeRecruitmentPageController extends BaseViewController {
 
@@ -165,7 +162,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                             for (String information : informations) {
                                 HSSFCell cell = row.createCell(j);
                                 cell.setCellValue(information);
-                                j++;
+                                ++j;
                             }
                             ++i;
                         }
@@ -178,7 +175,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                                 for (String information : informations) {
                                     HSSFCell cell = row.createCell(j);
                                     cell.setCellValue(information);
-                                    j++;
+                                    ++j;
                                 }
                                 ++i;
                             }
@@ -188,6 +185,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     workbook.write(stream);
                     stream.flush();
                     stream.close();
+                    Utilities.popMessage("导出成功", container);
                 } else if (file.getName().endsWith("xlsx")) {
                     XSSFWorkbook workbook = new XSSFWorkbook();
                     XSSFSheet sheet = workbook.createSheet("sheet1");
@@ -213,7 +211,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                             for (String information : informations) {
                                 XSSFCell cell = row.createCell(j);
                                 cell.setCellValue(information);
-                                j++;
+                                ++j;
                             }
                             ++i;
                         }
@@ -226,7 +224,7 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                                 for (String information : informations) {
                                     XSSFCell cell = row.createCell(j);
                                     cell.setCellValue(information);
-                                    j++;
+                                    ++j;
                                 }
                                 ++i;
                             }
@@ -236,8 +234,42 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                     workbook.write(stream);
                     stream.flush();
                     stream.close();
+                    Utilities.popMessage("导出成功", container);
                 } else {
-                    System.out.println("CSV");
+                    try {
+                        CSVFormat format = CSVFormat.DEFAULT.withRecordSeparator("\n");
+                        FileWriter fileWriter = new FileWriter(file.getPath(), true);
+                        CSVPrinter printer = new CSVPrinter(fileWriter, format);
+                        //第一行
+                        ArrayList<String> titleRow = new ArrayList<>();
+                        for (int i = 0; i < tableView.getColumns().size(); ++i) {
+                            TableColumn tableColumn = tableView.getColumns().get(i);
+                            if (!tableColumn.getText().equals(""))
+                                titleRow.add(tableColumn.getText());
+                        }
+                        printer.printRecord(titleRow);
+                        //数据
+                        ObservableList<NewPerson> newPeople = tableView.getItems();
+                        if (batchLabel.isVisible()) {
+                            for (NewPerson newPerson : newPeople) {
+                                String[] data = newPerson.toString().split(" ");
+                                printer.printRecord(data);
+                            }
+                        } else {
+                            for(NewPerson newPerson : newPeople) {
+                                if(newPerson.getSelectionSituation()) {
+                                    String[] data = newPerson.toString().split(" ");
+                                    printer.printRecord(data);
+                                }
+                            }
+                        }
+                        fileWriter.flush();
+                        printer.close(true);
+                        fileWriter.close();
+                        Utilities.popMessage("导出成功", container);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         } catch(Exception e) {
@@ -838,7 +870,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
-                                    tableView.setPrefWidth(tableView.getWidth() + 43);
                                 }
                             }
                         };
@@ -858,7 +889,6 @@ public class ManegeRecruitmentPageController extends BaseViewController {
                 batchBtn.setVisible(true);
                 fileOutLabel.setText("导出信息");
                 tableView.getColumns().remove(0);
-                tableView.setPrefWidth(tableView.getWidth() - 43);
                 ObservableList<NewPerson> newPeople = tableView.getItems();
                 for(NewPerson newPerson : newPeople) {
                     newPerson.setSelectionSituation(false);

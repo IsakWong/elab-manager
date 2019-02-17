@@ -81,7 +81,6 @@ public class StudentInformationPageController extends BaseViewController {
                         student = newValue;
                         numberLabel.setText(student.getNumber());
                         nameLabel.setText(student.getName());
-                        System.out.println(student);
                     }
                 }
         );

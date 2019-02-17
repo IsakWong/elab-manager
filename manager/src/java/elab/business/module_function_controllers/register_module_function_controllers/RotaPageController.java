@@ -1,6 +1,5 @@
 package elab.business.module_function_controllers.register_module_function_controllers;
 
-import com.mysql.cj.xdevapi.Table;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.rota;

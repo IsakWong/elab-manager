@@ -100,35 +100,6 @@ public class DatabaseOperations {
         }
     }
 
-    public void insertMember(Member member) {
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
-            session.insert("member.insertMember", member);
-            session.commit();
-        } finally {
-            session.close();
-        }
-    }
-
-    public void updateMember(LoginMessage loginMessage) {
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
-            session.update("member.updateMember", loginMessage);
-            session.commit();
-        } finally {
-            session.close();
-        }
-    }
-
-    public void deleteMember(){
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
-            session.commit();
-        } finally {
-            session.close();
-        }
-    }
-
     public List selectStudentByName(String name) {
         SqlSession session = classSqlSessionFactory.openSession();
         try {
@@ -165,15 +136,6 @@ public class DatabaseOperations {
         }
     }
 
-    public void updateScore(Student student) {
-        SqlSession session = classSqlSessionFactory.openSession();
-        try {
-            session.update("student.updateScore", student);
-            session.commit();
-        } finally {
-            session.close();
-        }
-    }
 
     public SchoolOpeningInformation selectSchoolOpeningDateInformation() {
         SqlSession session = studentSqlSessionFactory.openSession();
@@ -203,10 +165,58 @@ public class DatabaseOperations {
         }
     }
 
-    public void setDuty(String name) {
+    public List selectNewPeople() {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            return session.selectList("recruitNew.selectNewPeople");
+        } finally {
+            session.close();
+        }
+    }
+
+    public void insertMember(Member member) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            session.update("member.setDuty", name);
+            session.insert("member.insertMember", member);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void insertNewPerson(NewPerson newPerson) {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            session.insert("recruitNew.insertNewPerson", newPerson);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateMember(LoginMessage loginMessage) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.updateMember", loginMessage);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+    public void updateScore(Student student) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        try {
+            session.update("student.updateScore", student);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateNewPerson(NewPerson newPerson) {
+        SqlSession session = recruitNewSqlSessionFactory.openSession();
+        try {
+            session.update("recruitNew.updateNewPerson", newPerson);
             session.commit();
         } finally {
             session.close();
@@ -223,29 +233,10 @@ public class DatabaseOperations {
         }
     }
 
-    public List selectNewPeople() {
-        SqlSession session = recruitNewSqlSessionFactory.openSession();
+    public void setDuty(String name) {
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
-             return session.selectList("recruitNew.selectNewPeople");
-        } finally {
-            session.close();
-        }
-    }
-
-    public void insertNewPerson(NewPerson newPerson) {
-        SqlSession session = recruitNewSqlSessionFactory.openSession();
-        try {
-            session.insert("recruitNew.insertNewPerson", newPerson);
-            session.commit();
-        } finally {
-            session.close();
-        }
-    }
-
-    public void updateNewPerson(NewPerson newPerson) {
-        SqlSession session = recruitNewSqlSessionFactory.openSession();
-        try {
-            session.update("recruitNew.updateNewPerson", newPerson);
+            session.update("member.setDuty", name);
             session.commit();
         } finally {
             session.close();
@@ -267,6 +258,15 @@ public class DatabaseOperations {
         try {
             for(NewPerson newPerson : newPeople)
                 session.delete("recruitNew.deleteNewPerson", newPerson.getNumber());
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void deleteMember(){
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
             session.commit();
         } finally {
             session.close();

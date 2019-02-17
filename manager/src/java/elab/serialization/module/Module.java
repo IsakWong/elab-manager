@@ -5,7 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Module {
     @SerializedName("module_name")

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.ViewLoaderPageController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.ViewLoaderPageController">
    <children>
-      <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="700.0" prefWidth="280.0">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="280.0">
          <children>
             <DatePicker fx:id="datePicker">
                <VBox.margin>
@@ -52,15 +57,17 @@
                   <Font name="System Bold Italic" size="16.0" />
                </font>
                <VBox.margin>
-                  <Insets right="82.0" />
+                  <Insets right="86.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="listView" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="260.0" />
+            <ListView fx:id="listView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="260.0">
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin></ListView>
          </children>
       </VBox>
-      <ScrollPane prefHeight="700.0" prefWidth="1017.0">
-         <content>
-            <TableView fx:id="tableView" prefHeight="678.0" prefWidth="718.0">
+      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="667.0" prefWidth="720.0">
+            <TableView fx:id="tableView" prefHeight="663.0" prefWidth="718.0">
               <columns>
                 <TableColumn fx:id="number" prefWidth="90.0" text="学号" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
@@ -72,10 +79,9 @@
                   <TableColumn fx:id="totalTime" prefWidth="90.0" text="合计时间" />
               </columns>
             </TableView>
-         </content>
          <HBox.margin>
             <Insets top="20.0" />
          </HBox.margin>
-      </ScrollPane>
+      </AnchorPane>
    </children>
 </HBox>

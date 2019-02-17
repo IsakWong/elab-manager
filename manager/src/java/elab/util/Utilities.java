@@ -3,6 +3,8 @@ package elab.util;
 import com.jfoenix.controls.JFXSnackbar;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -340,4 +342,11 @@ public class Utilities {
         return hanyupinyin;
     }
 
+    public static ImageView getImage(String imagePath) {
+        Image image = new Image(imagePath);
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        return imageView;
+
+    }
 }

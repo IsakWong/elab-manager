@@ -16,27 +16,15 @@ import java.util.Properties;
 
 public class ElabManagerApplication extends Application {
 
-
     public final Logger logger = Logger.getLogger(ElabManagerApplication.class);
 
     public static Properties properties;
     public static Stage primaryStage;
-    public static ArrayList<Module> modulesArrayList;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         checkPropertyFile();
-
-        /*
-        SqlSession session = factory.openSession();
-        StudentMapper mapper = session.getMapper(StudentMapper.class);
-        Student s = new Student();
-        s.name = "123";
-        mapper.addStudent(s);
-        Student s2 = mapper.selectStudent(3);
-        session.commit();
-        */
 
         ElabManagerApplication.primaryStage = primaryStage;
 

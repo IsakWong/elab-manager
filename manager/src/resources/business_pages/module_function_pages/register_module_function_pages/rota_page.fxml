@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.RotaPageController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.RotaPageController">
    <children>
-      <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="663.0" prefWidth="970.0">
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="675.0" prefWidth="970.0">
         <columns>
           <TableColumn fx:id="number" prefWidth="180.0" text="学号" />
           <TableColumn fx:id="name" prefWidth="120.0" text="姓名" />

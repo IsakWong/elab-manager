@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="BOTTOM_CENTER" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.UserManagementPageController">
+<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.UserManagementPageController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="694.0">
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="140.0" prefWidth="630.0">
          <children>
             <VBox alignment="CENTER_RIGHT" prefHeight="148.0" prefWidth="142.0">
                <children>
@@ -76,7 +81,7 @@
             </VBox>
             <AnchorPane prefHeight="148.0" prefWidth="155.0">
                <children>
-                  <JFXButton fx:id="returnBtn" layoutX="39.0" layoutY="105.0" prefHeight="29.0" prefWidth="76.0" text="信息清除" />
+                  <JFXButton fx:id="returnBtn" layoutX="39.0" layoutY="103.0" prefHeight="29.0" prefWidth="76.0" text="信息清除" />
                </children>
             </AnchorPane>
          </children>
@@ -84,6 +89,6 @@
             <Insets left="220.0" right="150.0" />
          </VBox.margin>
       </HBox>
-      <JFXTabPane fx:id="tabPane" prefHeight="553.0" prefWidth="1000.0" stylesheets="@../../../../style/css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
+      <JFXTabPane fx:id="tabPane" minHeight="-Infinity" prefHeight="559.0" prefWidth="1000.0" stylesheets="@../../../../style/css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
    </children>
 </VBox>

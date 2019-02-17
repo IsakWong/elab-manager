@@ -14,7 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 
 import static java.lang.Double.MAX_VALUE;
 
-
 public class MainWindowController extends BaseViewController {
 
     @FXML
@@ -33,9 +31,9 @@ public class MainWindowController extends BaseViewController {
     @FXML
     private JFXTabPane tabPane;
     @FXML
-    private ImageView mainMenuCloseBtn;
+    private JFXButton mainMenuCloseBtn;
     @FXML
-    private ImageView mainMenuMinBtn;
+    private JFXButton mainMenuMinBtn;
 
     private double x1;
     private double y1;
@@ -51,6 +49,7 @@ public class MainWindowController extends BaseViewController {
                     stage.close();
                 }
             });
+            mainMenuCloseBtn.setGraphic(Utilities.getImage("/pictures/close.png"));
 
             mainMenuMinBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
@@ -58,6 +57,7 @@ public class MainWindowController extends BaseViewController {
                     stage.setIconified(true);
                 }
             });
+            mainMenuMinBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
 
             topBar.setOnMouseDragged(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
