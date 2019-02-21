@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="568.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers.StudentInformationPageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers.StudentInformationPageController">
       <TableView fx:id="tableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="568.0" prefWidth="804.0">
          <columns>
             <TableColumn fx:id="number" prefWidth="99.0" text="学号" />

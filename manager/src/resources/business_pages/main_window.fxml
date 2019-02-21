@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
+<VBox stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
    <children>
        <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="1149.0" style="-fx-background-color: #303F9F;">
            <children>
@@ -32,6 +32,6 @@
             </JFXButton>
            </children>
        </HBox>
-      <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../style/css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
+      <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" />
    </children>
 </VBox>

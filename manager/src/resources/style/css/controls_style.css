@@ -3,10 +3,74 @@
     -fx-font-size: 12px;
 }
 
+
+.top-panel{
+    -fx-background-color: rgb(48,63,159);
+}
+
+.left-panel{
+    -fx-background-color: rgb(63,81,181);
+}
+
+.left-panel-button{
+    -fx-text-alignment: center;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-font-size: 1.25em;
+    -fx-padding: 16px;
+}
+
+.card-view{
+    -fx-background-color: rgb(255,255,255);
+    -fx-effect:dropshadow(one-pass-box,rgba(0,0,0,0.4) ,10,0,0,2 );
+}
+
+.table-view:focused  .virtual-flow  .clipped-container  .sheet  .table-row-cell:filled:selected{
+    -fx-background-color: rgb(150,150,150);
+}
+.table-view .column-header-background{
+    -fx-pref-height: 40;
+    -fx-background-color: #3F51B5;
+}
+.table-view .column-header-background{
+    -fx-background-color: rgb(63,81,181);
+}
+.table-view .column-header .label{
+    -fx-alignment: center-left;
+    -fx-text-fill: white;
+    -fx-font-weight: normal;
+    -fx-padding: 0 0 0 4;
+    -fx-font-size: 13;
+}
+.table-view .column-header {
+    -fx-background-color: rgb(63,81,181);
+}
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+.table-row-cell{
+    -fx-cell-size: 35px;
+    -fx-alignment: center;
+}
+
+.tip-label{
+    -fx-background-color: #3F51B5;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 8 10 8;
+    -fx-margin: 0 -16 0 -16;
+}
+
+.raised-button {
+     -jfx-button-type: RAISED;
+     -fx-background-color: #3F51B5;
+     -fx-text-fill: white;
+}
+
 .elab-text-body{
     -fx-font-size: 13px;
     -fx-text-fill: #212121;
 }
+
 .elab-text-caption{
     -fx-font-size: 12px;
     -fx-text-fill: #727272;
@@ -76,21 +140,6 @@
 
 .jfx-tab-pane .headers-region .tab:selected .tab-container .tab-label {
     -fx-text-fill: WHITE;
-}
-
-.top-panel{
-    -fx-background-color: rgb(53,64,82);
-}
-
-.left-panel{
-    -fx-background-color: rgb(53,64,82);
-}
-
-.left-panel-button{
-    -fx-text-alignment: center;
-    -fx-text-fill: rgb(255,255,255);
-    -fx-font-size: 1.25em;
-    -fx-padding: 16px;
 }
 /* Input Demo */
 /* Burgers Demo */

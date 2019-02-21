@@ -65,60 +65,6 @@ public class StudentInformationPageController extends BaseViewController {
     @Override
     public void initializeController() {
 
-        number.setCellValueFactory(new PropertyValueFactory<Student, String>("number"));
-        name.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
-        college.setCellValueFactory(new PropertyValueFactory<Student, String>("college"));
-        hardScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("hardScore"));
-        softScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("softScore"));
-        paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
-        tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
-        ObservableList<Student> students = FXCollections.<Student>observableArrayList();
-        ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
 
-            @Override
-            public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
-                students.addAll(DatabaseOperations.getInstance().selectAllStudents());
-                studentAmount = students.size();
-                observableEmitter.onNext(true);
-            }
-        };
-        Observable.create(ob)
-                .subscribeOn(Schedulers.io())
-                .observeOn(JavaFxScheduler.platform())
-                .subscribe(new Observer<Boolean>() {
-                               @Override
-                               public void onSubscribe(Disposable disposable) {
-                               }
-
-                               @Override
-                               public void onNext(Boolean s) {
-                                   tableView.setItems(students);
-                               }
-
-                               @Override
-                               public void onError(Throwable throwable) {
-                               }
-
-                               @Override
-                               public void onComplete() {
-                               }
-                           }
-                );
-
-        tableView.setPlaceholder(new Label("当天无上课同学"));
-        /**
-         * TableView行选中事件监听
-         */
-
-        tableView.getSelectionModel().selectedItemProperty().addListener(
-                new ChangeListener<Student>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Student> observable, Student oldValue, Student newValue) {
-                        student = newValue;
-                        numberLabel.setText(student.getNumber());
-                        nameLabel.setText(student.getName());
-                    }
-                }
-        );
     }
 }
