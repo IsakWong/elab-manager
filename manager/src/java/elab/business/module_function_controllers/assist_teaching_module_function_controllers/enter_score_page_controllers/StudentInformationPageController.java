@@ -3,6 +3,14 @@ package elab.business.module_function_controllers.assist_teaching_module_functio
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.student.Student;
+import elab.util.Utilities;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -65,11 +73,39 @@ public class StudentInformationPageController extends BaseViewController {
         paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
         tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
         ObservableList<Student> students = FXCollections.<Student>observableArrayList();
-        students.addAll(DatabaseOperations.getInstance().selectAllStudents());
-        studentAmount = students.size();
-        tableView.setItems(students);
-        tableView.setPlaceholder(new Label("当天无上课同学"));
+        ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
 
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
+                students.addAll(DatabaseOperations.getInstance().selectAllStudents());
+                studentAmount = students.size();
+                observableEmitter.onNext(true);
+            }
+        };
+        Observable.create(ob)
+                .subscribeOn(Schedulers.io())
+                .observeOn(JavaFxScheduler.platform())
+                .subscribe(new Observer<Boolean>() {
+                               @Override
+                               public void onSubscribe(Disposable disposable) {
+                               }
+
+                               @Override
+                               public void onNext(Boolean s) {
+                                   tableView.setItems(students);
+                               }
+
+                               @Override
+                               public void onError(Throwable throwable) {
+                               }
+
+                               @Override
+                               public void onComplete() {
+                               }
+                           }
+                );
+
+        tableView.setPlaceholder(new Label("当天无上课同学"));
         /**
          * TableView行选中事件监听
          */
