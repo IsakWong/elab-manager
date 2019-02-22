@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.member.LoginMessage;
 import elab.util.Utilities;
@@ -16,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class PersonalInformationPageController extends BaseViewController {
+public class PersonalInformationPageController extends BaseFunctionContentController {
 
     private LoginMessage loginMessage = new LoginMessage();
 

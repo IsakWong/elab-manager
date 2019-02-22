@@ -1,6 +1,6 @@
 package elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers;
 
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.serialization.beans.student.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.List;
 
-public class SearchResultPageController extends BaseViewController {
+public class SearchResultPageController extends BaseFunctionContentController {
     @FXML
     private TableView tableView;
     @FXML

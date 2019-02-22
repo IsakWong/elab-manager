@@ -1,6 +1,6 @@
 package elab.business.module_function_controllers.assist_teaching_module_function_controllers;
 
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -9,7 +9,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ViewSelectCoursesInformationController extends BaseViewController {
+public class ViewSelectCoursesInformationController extends BaseFunctionContentController {
 
     @FXML
     private VBox container;
@@ -72,5 +72,6 @@ public class ViewSelectCoursesInformationController extends BaseViewController {
         for(int i = 0; i < WeekString.length; ++i) {
             loadWeekLabelGroup(container, i);
         }
+        IsDataInitialized = true;
     }
 }

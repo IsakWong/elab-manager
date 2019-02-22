@@ -3,7 +3,7 @@ package elab.business.module_function_controllers.recruitment_module_function_co
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.new_person.NewPerson;
 import elab.util.Utilities;
@@ -45,7 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class ManegeRecruitmentPageController extends BaseViewController {
+public class ManegeRecruitmentPageController extends BaseFunctionContentController {
 
     @FXML
     private VBox container;

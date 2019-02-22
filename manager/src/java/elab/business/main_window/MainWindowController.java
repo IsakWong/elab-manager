@@ -5,18 +5,18 @@ import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import elab.application.BaseViewController;
-import elab.business.ModulePageController;
+import elab.application.BaseFunctionContentController;
+import elab.application.BaseModulePageController;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
 import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.lang.reflect.Type;
@@ -43,6 +43,7 @@ public class MainWindowController extends BaseViewController {
     public void initializeController() {
         try {
 
+
             mainMenuCloseBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
                     Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
@@ -59,17 +60,17 @@ public class MainWindowController extends BaseViewController {
             });
             mainMenuMinBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
 
-            topBar.setOnMouseDragged(event -> {
+            tabPane.setOnMouseDragged(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
-                    Stage stage = (Stage) topBar.getScene().getWindow();
+                    Stage stage = (Stage) tabPane.getScene().getWindow();
                     stage.setX(x_stage + event.getScreenX() - x1);
                     stage.setY(y_stage + event.getScreenY() - y1);
                 }
             });
 
-            topBar.setOnMousePressed(event -> {
+            tabPane.setOnMousePressed(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
-                    Stage stage = (Stage) topBar.getScene().getWindow();
+                    Stage stage = (Stage) tabPane.getScene().getWindow();
                     x1 = event.getScreenX();
                     y1 = event.getScreenY();
                     x_stage = stage.getX();
@@ -86,49 +87,51 @@ public class MainWindowController extends BaseViewController {
                 FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/business_pages/module_page.fxml"));
                 Parent root = moduleLoader.load();
                 Tab userTab = new Tab();
-                module.Root = root;
-                userTab.setText(module.ModuleName);
-                ModulePageController modulePageController = moduleLoader.getController();
-                modulePageController.initializeController();
 
+
+                userTab.setText(module.ModuleName);
+                BaseModulePageController moduleController = moduleLoader.getController();
+                moduleController.initializeController();
+
+                module.FxmlRoot = root;
+                module.Controller = moduleController;
+
+                Pane container = (Pane) module.FxmlRoot.lookup("#container");
                 for (final Function func : module.Functions) {
                     JFXButton funcBtn = new JFXButton();
                     func.ParentModule = module;
                     funcBtn.getStyleClass().add("left-panel-button");
                     funcBtn.setText(func.FunctionName);
                     funcBtn.setMaxWidth(MAX_VALUE);
-                    FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
-                    Parent functionRoot = functionLoader.load();
-                    ArrayList<ScrollPane> scrollPanes = func.ParentModule.scrollPanes;
-                    ScrollPane functionScrollPane = new ScrollPane();
-                    functionScrollPane.setContent(functionRoot);
-                    functionScrollPane.setVisible(false);
-                    scrollPanes.add(functionScrollPane);
-                    BaseViewController baseViewController = functionLoader.getController();
-                    func.Root = functionRoot;
                     funcBtn.setOnMouseClicked(event -> {
-                        if(event.getButton() == MouseButton.PRIMARY) {
-                            if (!func.IsInit) {
-                                func.IsInit = true;
-                                baseViewController.initializeController();
-                                for (int i = 0; i < scrollPanes.size(); ++i)
-                                    if (scrollPanes.get(i).isVisible())
-                                        scrollPanes.get(i).setVisible(false);
-                                functionScrollPane.setVisible(true);
-                            }
-                            else {
-                                for (int i = 0; i < scrollPanes.size(); ++i)
-                                    if (scrollPanes.get(i).isVisible())
-                                        scrollPanes.get(i).setVisible(false);
-                                functionScrollPane.setVisible(true);
-                            }
+                        if (event.getButton() == MouseButton.PRIMARY) {
+                            try {
+                                if (!func.IsFxmlInitialized) {
+                                    FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
+                                    Parent functionRoot = functionLoader.load();
+                                    BaseFunctionContentController baseViewController = functionLoader.getController();
 
+                                    baseViewController.ParentModuleController = moduleController;
+                                    baseViewController.initializeController();
+
+                                    func.IsFxmlInitialized = true;
+                                    func.FxmlRoot = functionRoot;
+                                    func.Controller = baseViewController;
+
+                                    moduleController.setFunctionContent(func);
+                                    moduleController.BeginLoading();
+                                } else {
+
+                                    moduleController.setFunctionContent(func);
+                                    moduleController.BeginLoading();
+                                }
+                            } catch (Exception excep) {
+                                excep.printStackTrace();
+                            }
                         }
                     });
-                    modulePageController.leftPanel.getChildren().add(funcBtn);
+                    moduleController.leftPanel.getChildren().add(funcBtn);
                 }
-                AnchorPane container = (AnchorPane) module.Root.lookup("#container");
-                container.getChildren().addAll(module.scrollPanes);
                 userTab.setContent(root);
                 tabPane.getTabs().add(userTab);
             }

@@ -1,10 +1,10 @@
 package elab.business.module_function_controllers.register_module_function_controllers;
 
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class ViewLoaderPageController extends BaseViewController {
+public class ViewLoaderPageController extends BaseFunctionContentController {
 
     @FXML
     private DatePicker datePicker;

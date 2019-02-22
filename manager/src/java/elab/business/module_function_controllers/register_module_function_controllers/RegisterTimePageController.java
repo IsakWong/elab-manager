@@ -2,13 +2,13 @@ package elab.business.module_function_controllers.register_module_function_contr
 
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
-public class RegisterTimePageController extends BaseViewController {
+public class RegisterTimePageController extends BaseFunctionContentController {
 
     @FXML
     private JFXRadioButton all;

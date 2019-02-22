@@ -29,7 +29,7 @@
 }
 .table-view .column-header-background{
     -fx-pref-height: 40;
-    -fx-background-color: #3F51B5;
+    -fx-background-color: rgb(63,81,181);
 }
 .table-view .column-header-background{
     -fx-background-color: rgb(63,81,181);
@@ -75,16 +75,26 @@
     -fx-font-size: 12px;
     -fx-text-fill: #727272;
 }
+
+.jfx-dialog .stack-pane{
+    -fx-padding: 24 24 24 24;
+}
+.jfx-dialog-overlay-pane {
+    -fx-background-color: rgba(0.0, 0.0, 0.0, 0.4);
+}
+
 .elab-text-title{
     -fx-font-size: 14px;
 }
 
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color: #303F9F;
+    -fx-background-color: transparent;
+    -fx-margin: 0 0 0 30;
 }
 
 .jfx-tab-pane .tab-header-area .tab-down-button {
     -fx-background-color: WHITE;
+    -fx-margin: 30 30 30 30;
     -fx-min-width: 0.8em;
     -fx-max-width: 0.8em;
     -fx-min-height: 1.3em;
@@ -129,8 +139,9 @@
 
 .jfx-tab-pane .headers-region .tab .tab-container .tab-label {
     -fx-text-fill: rgba(255,255,255, .87);
-    -fx-padding: 16 16 16 16;
-    -fx-font-size: 17px;
+    -fx-padding: 24 24 24 24;
+    -fx-font-weight: normal;
+    -fx-font-size: 14px;
 }
 .jfx-tab-pane .headers-region .tab:closable .tab-container .tab-label{
     -fx-padding: 0 8 0 6;

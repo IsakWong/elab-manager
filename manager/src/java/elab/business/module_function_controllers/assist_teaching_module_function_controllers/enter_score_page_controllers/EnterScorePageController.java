@@ -1,10 +1,7 @@
 package elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import elab.application.BaseViewController;
+import com.jfoenix.controls.*;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.student.Student;
 import elab.util.Utilities;
@@ -20,17 +17,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
-import java.util.List;
 
-public class EnterScorePageController extends BaseViewController {
+public class EnterScorePageController extends BaseFunctionContentController {
 
     @FXML
     private DatePicker datePicker;
@@ -85,7 +79,6 @@ public class EnterScorePageController extends BaseViewController {
     @Override
     public void initializeController() {
         try {
-
             number.setCellValueFactory(new PropertyValueFactory<Student, String>("number"));
             name.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
             college.setCellValueFactory(new PropertyValueFactory<Student, String>("college"));
@@ -113,6 +106,8 @@ public class EnterScorePageController extends BaseViewController {
 
                                    @Override
                                    public void onNext(Boolean s) {
+                                       IsDataInitialized = true;
+                                       ParentModuleController.FinishLoading();
                                        resultTable.setItems(students);
                                    }
 
@@ -135,6 +130,7 @@ public class EnterScorePageController extends BaseViewController {
                     new ChangeListener<Student>() {
                         @Override
                         public void changed(ObservableValue<? extends Student> observable, Student oldValue, Student newValue) {
+                            ParentModuleController.BeginLoading();
                             student = newValue;
                             numberLabel.setText("学号：" + student.getNumber());
                             nameLabel.setText("姓名：" + student.getName());
@@ -145,6 +141,7 @@ public class EnterScorePageController extends BaseViewController {
 
             logBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
+
                     if (!numberLabel.getText().equals("")) {
                         student.setHardScore(Integer.parseInt(hardScoreInput.getText()));
                         student.setSoftScore(Integer.parseInt(softScoreInput.getText()));
@@ -180,5 +177,7 @@ public class EnterScorePageController extends BaseViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 }

@@ -3,10 +3,17 @@ package elab.business.module_function_controllers.assist_teaching_module_functio
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,7 +25,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
 
-public class AttendanceRecordPageController extends BaseViewController {
+public class AttendanceRecordPageController extends BaseFunctionContentController {
 
     @FXML
     private VBox container;
@@ -108,13 +115,44 @@ public class AttendanceRecordPageController extends BaseViewController {
 
     @Override
     public void initializeController() {
-
         ObservableList<Member> members = FXCollections.<Member>observableArrayList();
-        members.addAll(DatabaseOperations.getInstance().selectInSchoolMembers());
-        for(int i = 0; i < members.size(); ++i) {
-            nameList.add(members.get(i).getName());
-        }
+        ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>() {
 
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
+                members.addAll(DatabaseOperations.getInstance().selectInSchoolMembers());
+                observableEmitter.onNext(true);
+            }
+        };
+        Observable.create(ob)
+                .subscribeOn(Schedulers.io())
+                .observeOn(JavaFxScheduler.platform())
+                .subscribe(new Observer<Boolean>() {
+                               @Override
+                               public void onSubscribe(Disposable disposable) {
+                               }
+
+                               @Override
+                               public void onNext(Boolean s) {
+                                   ParentModuleController.FinishLoading();
+                                   for(int i = 0; i < members.size(); ++i) {
+                                       nameList.add(members.get(i).getName());
+                                   }
+
+                                   chooseListView.setItems(nameList);
+                                   teachingListView.setItems(teachingList);
+                                   assistListView.setItems(assistList);
+                               }
+
+                               @Override
+                               public void onError(Throwable throwable) {
+                               }
+
+                               @Override
+                               public void onComplete() {
+                               }
+                           }
+                );
         chooseListView.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
                 String selectedItem = chooseListView.getSelectionModel().getSelectedItem();
@@ -124,9 +162,6 @@ public class AttendanceRecordPageController extends BaseViewController {
             }
         });
 
-        chooseListView.setItems(nameList);
-        teachingListView.setItems(teachingList);
-        assistListView.setItems(assistList);
 
         teachingListView.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {

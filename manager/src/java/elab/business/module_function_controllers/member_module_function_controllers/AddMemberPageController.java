@@ -1,7 +1,7 @@
 package elab.business.module_function_controllers.member_module_function_controllers;
 
 import com.jfoenix.controls.*;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
@@ -13,7 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class AddMemberPageController extends BaseViewController {
+public class AddMemberPageController extends BaseFunctionContentController {
 
     @FXML
     private JFXTextField numberInputField;

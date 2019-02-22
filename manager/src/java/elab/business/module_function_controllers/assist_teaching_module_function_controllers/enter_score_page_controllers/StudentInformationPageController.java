@@ -1,27 +1,13 @@
 package elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers;
 
-import elab.application.BaseViewController;
-import elab.database.DatabaseOperations;
+import elab.application.BaseFunctionContentController;
 import elab.serialization.beans.student.Student;
-import elab.util.Utilities;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
-import io.reactivex.schedulers.Schedulers;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
-public class StudentInformationPageController extends BaseViewController {
+public class StudentInformationPageController extends BaseFunctionContentController {
 
     @FXML
     private TableView tableView;

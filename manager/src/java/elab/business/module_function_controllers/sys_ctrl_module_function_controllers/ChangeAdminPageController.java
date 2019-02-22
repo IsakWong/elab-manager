@@ -1,7 +1,7 @@
 package elab.business.module_function_controllers.sys_ctrl_module_function_controllers;
 
 import com.jfoenix.controls.JFXTextField;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 
-public class ChangeAdminPageController extends BaseViewController {
+public class ChangeAdminPageController extends BaseFunctionContentController {
 
     @FXML
     private JFXTextField selectField;

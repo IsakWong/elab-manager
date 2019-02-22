@@ -1,6 +1,6 @@
 package elab.business.module_function_controllers.register_module_function_controllers;
 
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.rota;
 import javafx.collections.FXCollections;
@@ -10,7 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class RotaPageController extends BaseViewController {
+public class RotaPageController extends BaseFunctionContentController {
 
     @FXML
     private TableView tableView;

@@ -2,7 +2,7 @@ package elab.business.module_function_controllers.member_module_function_control
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class FreeTimeCollectPageController extends BaseViewController {
+public class FreeTimeCollectPageController extends BaseFunctionContentController {
 
     @FXML
     private VBox container;

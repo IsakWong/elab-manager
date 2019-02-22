@@ -1,10 +1,8 @@
 package elab.serialization.module;
 
 import com.google.gson.annotations.SerializedName;
+import elab.application.BaseModulePageController;
 import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
-
-import java.util.ArrayList;
 
 public class Module {
     @SerializedName("module_name")
@@ -12,6 +10,6 @@ public class Module {
     @SerializedName("functions")
     public Function[] Functions;
 
-    public transient Parent Root = null;
-    public transient ArrayList<ScrollPane> scrollPanes = new ArrayList<>();
+    public transient Parent FxmlRoot = null;
+    public transient BaseModulePageController Controller;
 }
