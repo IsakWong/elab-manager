@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+    <resultMap id="memberResultMap" type="member">
+        <result column="学号" property="number"/>
+        <result column="USERNAME" property="userName"/>
+        <result column="姓名" property="name"/>
+        <result column="性别" property="sex"/>
+        <result column="院系" property="college"/>
+        <result column="组别" property="group"/>
+        <result column="电话" property="tel"/>
+        <result column="职务" property="duty"/>
+        <result column="年级" property="grade"/>
+        <result column="座右铭" property="motto"/>
+        <result column="密码" property="password"/>
+        <result column="主讲" property="teachingAmount"/>
+        <result column="助课" property="assistAmount"/>
+    </resultMap>
+    <select id="selectMemberByName" parameterType="string" resultMap="memberResultMap">
+        select * from member where 姓名 = #{id}
+    </select>
+    <select id="selectMemberByNumber" parameterType="string" resultMap="memberResultMap">
+        select * from member where 学号 = #{id}
+    </select>
+    <select id="selectMemberByCollege" parameterType="string" resultMap="memberResultMap">
+        select * from member where 院系 = #{id}
+    </select>
+    <select id="selectAllMembers" resultMap="memberResultMap">
+        select * from member
+    </select>
+    <select id="selectInSchoolMembers" resultMap="memberResultMap">
+        select * from member where 年级 != "往届"
+    </select>
+    <select id="selectLoginMessage" parameterType="string" resultType="loginMessage">
+        select
+            学号 as "number",
+            USERNAME as "userName",
+            姓名 as "name",
+            性别 as "sex",
+            院系 as "college",
+            组别 as "group",
+            电话 as "tel",
+            职务 as "duty",
+            年级 as "grade",
+            座右铭 as "motto",
+            密码 as "password"
+        from member
+        where 学号 = #{id}
+    </select>
+    <insert id="insertMember" parameterType="member">
+        insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课)
+        values (#{number},#{userName},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount})
+    </insert>
+    <update id="updateMember" parameterType="loginMessage">
+        update member set
+            学号 = #{number},
+            USERNAME = #{userName},
+            姓名 = #{name},N
+            性别 = #{sex},
+            院系 = #{college},
+            组别 = #{group},
+            电话 = #{tel},
+            职务 = #{duty},
+            年级 = #{grade},
+            座右铭 = #{motto},
+            密码 = #{password}
+        where 学号 = #{oldNumber}
+    </update>
+    <update id="setDuty" parameterType="string">
+        update member set
+            职务 = "班委"
+        where 姓名 = #{id}
+    </update>
+    <update id="removeDuty" parameterType="string">
+        update member set
+            职务 = null
+        where 姓名 = #{id}
+    </update>
+</mapper>

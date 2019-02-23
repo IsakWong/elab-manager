@@ -1,12 +1,15 @@
 package elab.serialization.module;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import elab.application.BaseModulePageController;
 import javafx.scene.Parent;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 public class Module {
     @SerializedName("module_name")
     public String ModuleName;
     @SerializedName("functions")
-    public Function[] Functions;}
+    public Function[] Functions;
+
+    public transient Parent FxmlRoot = null;
+    public transient BaseModulePageController Controller;
+}

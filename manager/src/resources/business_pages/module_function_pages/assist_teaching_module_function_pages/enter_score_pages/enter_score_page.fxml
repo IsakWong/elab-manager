@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers.EnterScorePageController">
+   <children>
+      <TableView fx:id="resultTable" nodeOrientation="LEFT_TO_RIGHT" styleClass="card-view">
+         <columns>
+            <TableColumn fx:id="number" prefWidth="99.0" text="学号" />
+            <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
+            <TableColumn fx:id="college" prefWidth="242.0" text="院系" />
+            <TableColumn fx:id="hardScore" prefWidth="83.0" text="硬件成绩" />
+            <TableColumn fx:id="softScore" prefWidth="75.0" text="软件成绩" />
+            <TableColumn fx:id="paperScore" prefWidth="75.0" text="试卷成绩" />
+            <TableColumn fx:id="tel" prefWidth="150.0" text="联系电话" />
+         </columns>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </TableView>
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card-view">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="日期选择">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="-16.0" right="-16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker fx:id="datePicker" prefHeight="30.0" prefWidth="186.0">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Label fx:id="schoolDate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="第X周 周X">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="course" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="课程">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="peopleAmount" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="共x人">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="16.0" right="16.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card-view">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="成绩输入">
+                     <VBox.margin>
+                        <Insets left="-16.0" right="-16.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numberLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="elab-text-title" text="学号：">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="nameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="elab-text-title" text="姓名：">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="硬件成绩">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="hardScoreInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="软件成绩">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="softScoreInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="试卷成绩">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="paperScoreInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXButton fx:id="logBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="输入">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Label prefHeight="46.0" prefWidth="152.0" styleClass="elab-text-caption" text="单击表格中的信息以获取姓名和学号" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin></VBox>
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</HBox>

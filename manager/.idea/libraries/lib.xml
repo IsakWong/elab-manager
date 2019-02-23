@@ -2,9 +2,13 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib" />
+      <root url="jar://F:/OpenCV/opencv/build/java/opencv-400.jar!/" />
+      <root url="jar://F:/JARS/pinyin4j/lib/pinyin4j-2.5.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://F:/OpenCV/opencv/build/java/opencv-400.jar!/" />
+    </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
   </library>
 </component>

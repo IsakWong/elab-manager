@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.ViewSelectCoursesInformationController">
+   <children>
+      <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="课程信息" textFill="WHITE">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <VBox fx:id="container" spacing="16.0">
+         <VBox.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </VBox.margin></VBox>
+      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="elab-text-caption" text="双击选课或调课，红色表示课程已满">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="16.0" />
+   </padding>
+</VBox>

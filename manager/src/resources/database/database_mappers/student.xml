@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student">
+    <resultMap id="studentResultMap" type="student">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="院系" property="college"/>
+        <result column="理论课" property="theoryClass"/>
+        <result column="硬件时间" property="hardTime"/>
+        <result column="软件时间" property="softTime"/>
+        <result column="硬件成绩" property="hardScore"/>
+        <result column="软件成绩" property="softScore"/>
+        <result column="试卷成绩" property="paperScore"/>
+        <result column="邮箱" property="email"/>
+        <result column="联系电话" property="tel"/>
+        <result column="密码" property="pwd"/>
+        <result column="补课" property="makeUpLessons"/>
+        <result column="选课时间" property="courseSelectionTime"/>
+        <result column="备注" property="remark"/>
+    </resultMap>
+    <resultMap id="rotaMap" type="rota">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="组别" property="group"/>
+        <result column="时段" property="time"/>
+        <result column="单双周" property="week"/>
+        <result column="星期" property="day"/>
+    </resultMap>
+    <select id="selectStudentByName" parameterType="string" resultMap="studentResultMap">
+        select * from 2018秋_计算机安装与调试技术 where 姓名 = #{id}
+    </select>
+    <select id="selectStudentByNumber" parameterType="string" resultMap="studentResultMap">
+        select * from 2018秋_计算机安装与调试技术 where 学号 = #{id}
+    </select>
+    <select id="selectStudentByCollege" parameterType="string" resultMap="studentResultMap">
+        select * from 2018秋_计算机安装与调试技术 where 院系 = #{id}
+    </select>
+    <select id="selectAllStudents" resultMap="studentResultMap">
+        select * from 2018秋_计算机安装与调试技术
+    </select>
+    <select id="selectSchoolOpeningDate" resultType="schoolOpen">
+        select
+            开学日期 as "schoolOpeningDate",
+            学期 as "term",
+            硬件理论 as "hardTheory",
+            软件理论 as "softTheory",
+            维护理论 as "maintenanceTheory",
+            硬件周次 as "hardWeeks",
+            软件周次 as "softWeeks",
+            维护周次 as "maintenanceWeeks",
+            关闭选课 as "closeChooseClasses",
+            值班形式 as "onDutyForm",
+            课容量 as "classCapacity"
+        from 开学日期
+    </select>
+    <select id="selectRota" resultMap="rotaMap">
+        select * from duty
+    </select>
+    <select id="selectAllLogs" resultType="log">
+        select
+            ID as "ID",
+            操作时间 as "time",
+            操作人IP as "IP",
+            硬件成绩 as "hardScore",
+            软件成绩 as "softScore",
+            试卷成绩 as "paperScore",
+            登录信息 as "information",
+            版本号 as "version",
+            concat("\t", 操作人学号) as "operatingNumber",
+            concat("\t", 被修改人学号) as "operatedNumber"
+        from Log where 学期 = "2015春"
+    </select>
+    <update id="updateScore" parameterType="student">
+        update 2018秋_计算机安装与调试技术 set
+            硬件成绩 = #{hardScore},
+            软件成绩 = #{softScore},
+            试卷成绩 = #{paperScore}
+        where 学号 = #{number}
+    </update>
+</mapper>

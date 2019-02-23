@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recruitNew">
+    <resultMap id="newPeopleResultMap" type="newPerson">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="性别" property="sex"/>
+        <result column="Tel" property="tel"/>
+        <result column="组别" property="group"/>
+        <result column="专业" property="specialty"/>
+        <result column="籍贯" property="birthplace"/>
+        <result column="班级" property="classes"/>
+        <result column="职务" property="duty"/>
+        <result column="社团" property="corporation"/>
+        <result column="爱好" property="hobby"/>
+        <result column="面试时间" property="time"/>
+        <result column="Email" property="Email"/>
+        <result column="经历" property="experience"/>
+        <result column="理解" property="understanding"/>
+        <result column="自我评价" property="evaluation"/>
+    </resultMap>
+    <select id="selectNewPeople" resultMap="newPeopleResultMap">
+        select * from newperson
+    </select>
+    <insert id="insertNewPerson" parameterType="newPerson">
+        insert into newperson (学号,姓名,性别,Tel,组别,专业,籍贯,班级,职务,社团,爱好,面试时间,Email,经历,理解,自我评价)
+        values (#{number},#{name},#{sex},#{tel},#{group},#{specialty},#{birthplace},#{classes},#{duty},#{corporation},#{hobby},#{time},#{Email},#{experience},#{understanding},#{evaluation})
+    </insert>
+    <update id="updateNewPerson" parameterType="newPerson">
+        update newperson set
+            学号 = #{number},
+            姓名 = #{name},
+            性别 = #{sex},
+            Tel = #{tel},
+            组别 = #{group},
+            专业 = #{specialty},
+            籍贯 = #{birthplace},
+            班级 = #{classes},
+            职务 = #{duty},
+            社团 = #{corporation},
+            爱好 = #{hobby},
+            面试时间 = #{time},
+            Email = #{Email},
+            经历 = #{experience},
+            理解 = #{understanding},
+            自我评价 = #{evaluation}
+        where 学号 = #{oldNumber}
+    </update>
+    <delete id="deleteNewPerson" parameterType="string">
+        delete from newperson where 学号 = #{id}
+    </delete>
+</mapper>

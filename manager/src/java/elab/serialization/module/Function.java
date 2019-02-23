@@ -1,7 +1,7 @@
 package elab.serialization.module;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import elab.application.BaseFunctionContentController;
 import javafx.scene.Parent;
 
 public class Function {
@@ -10,7 +10,9 @@ public class Function {
     @SerializedName("function_fxml")
     public String FunctionFXML;
 
-    public transient Parent Root = null;
-    public transient boolean IsInit = false;
+    public transient Module ParentModule;
 
+    public transient Parent FxmlRoot = null;
+    public transient BaseFunctionContentController Controller = null;
+    public transient boolean IsFxmlInitialized = false;
 }

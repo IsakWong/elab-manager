@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.RegisterTimePageController">
+   <children>
+      <VBox minWidth="250.0" prefHeight="700.0" prefWidth="250.0">
+         <children>
+            <Label text="统计对象">
+               <VBox.margin>
+                  <Insets left="25.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <JFXRadioButton fx:id="all" style="-jfx-selected-color: #303f9f;" text="全体成员">
+               <VBox.margin>
+                  <Insets left="40.0" top="20.0" />
+               </VBox.margin>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="hard" style="-jfx-selected-color: #303f9f;" text="电子组">
+               <VBox.margin>
+                  <Insets left="40.0" top="15.0" />
+               </VBox.margin>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="soft" style="-jfx-selected-color: #303f9f;" text="软件组">
+               <VBox.margin>
+                  <Insets left="40.0" top="15.0" />
+               </VBox.margin>
+            </JFXRadioButton>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Separator>
+            <Label text="查询(可输入首字母)">
+               <VBox.margin>
+                  <Insets left="25.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <JFXTextField fx:id="selectField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0">
+               <VBox.margin>
+                  <Insets left="40.0" top="5.0" />
+               </VBox.margin>
+            </JFXTextField>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="700.0" prefWidth="723.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="666.0" prefWidth="723.0">
+              <columns>
+                <TableColumn fx:id="number" prefWidth="150.0" text="学号" />
+                <TableColumn fx:id="name" prefWidth="120.0" text="姓名" />
+                  <TableColumn fx:id="group" prefWidth="120.0" text="组别" />
+                  <TableColumn fx:id="totalTime" prefWidth="322.0" text="合计时间" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

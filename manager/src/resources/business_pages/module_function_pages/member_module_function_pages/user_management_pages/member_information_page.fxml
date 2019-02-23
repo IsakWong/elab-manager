@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.MemberInformationPageController">
+      <TableView fx:id="tableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="486.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css">
+         <columns>
+            <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
+            <TableColumn fx:id="userName" prefWidth="130.0" text="登陆用户名" />
+            <TableColumn fx:id="name" prefWidth="58.0" text="姓名" />
+            <TableColumn fx:id="sex" prefWidth="50.0" text="性别" />
+            <TableColumn fx:id="teachingAmount" minWidth="0.0" prefWidth="75.0" text="主讲次数" />
+            <TableColumn fx:id="assistAmount" prefWidth="75.0" text="助教次数" />
+            <TableColumn fx:id="college" prefWidth="310.0" text="院系" />
+            <TableColumn fx:id="grade" prefWidth="50.0" text="年级" />
+            <TableColumn fx:id="tel" prefWidth="120.0" text="电话" />
+            <TableColumn fx:id="duty" prefWidth="50.0" text="职务" />
+            <TableColumn fx:id="group" text="组别" />
+         </columns>
+      </TableView>
+</AnchorPane>

@@ -1,41 +1,34 @@
 package elab.business.log_in_window;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
-import elab.serialization.member.LoginMessage;
-import elab.serialization.member.Member;
-import elab.serialization.module.Module;
-import elab.util.Encryptioner;
-import elab.utility.Utilities;
+import elab.serialization.beans.member.LoginMessage;
+import elab.util.Utilities;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.apache.ibatis.session.SqlSession;
-import sun.nio.cs.ArrayEncoder;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class LoginWindowController extends BaseViewController {
-
-    private DatabaseOperations operations = new DatabaseOperations();
-    private Encryptioner encryptioner = new Encryptioner();
 
     private LoginMessage loginMessage;
 
@@ -44,9 +37,9 @@ public class LoginWindowController extends BaseViewController {
     @FXML
     private Button logButton;
     @FXML
-    private ImageView closeBtn;
+    private JFXButton closeBtn;
     @FXML
-    private ImageView minBtn;
+    private JFXButton minBtn;
     @FXML
     private JFXPasswordField pwdInputField;
     @FXML
@@ -54,28 +47,16 @@ public class LoginWindowController extends BaseViewController {
     @FXML
     private VBox container;
 
+
+    boolean isLogging = false;
     private double x1;
     private double y1;
     private double x_stage;
     private double y_stage;
 
-    public void loadModuleSettings(String toLoadModulesName) {
-        Gson gson = new Gson();
-        String strJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/" + toLoadModulesName));
-        Type typeList = new TypeToken<ArrayList<Module>>() {
-        }.getType();
-        ElabManagerApplication.modulesArrayList = gson.fromJson(strJson, typeList);
-    }
-
-    public void popMessage(String message) {
-        JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
-    }
-
     public void showMainWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_window.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/main_window.fxml"));
             Parent root = loader.load();
             MainWindowController controller = loader.getController();
             Stage mainStage = new Stage();
@@ -85,27 +66,71 @@ public class LoginWindowController extends BaseViewController {
             mainStage.show();
             ElabManagerApplication.primaryStage.close();
         } catch (Exception exp) {
-
+            System.out.println(exp);
         }
 
     }
 
-    public boolean isPwdValidated(int number, String password) {
-        loginMessage = operations.selectLoginMessage(number);
-        if(loginMessage == null) {
-            return false;
-        } else if(!encryptioner.encrypt(password).equals(loginMessage.getPassword())) {
-            return false;
+    public void asynchronousProcessing() {
+        if(!isLogging)
+        {
+            isLogging = true;
+            Utilities.popMessage("正在登录中",container);
+            ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
+
+                @Override
+                public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
+                    observableEmitter.onNext(isUserValidated(userInputField.getText(), pwdInputField.getText()));
+                    isLogging = false;
+                }
+            };
+            Observable.create(ob)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(JavaFxScheduler.platform())
+                    .subscribe(new Observer<Boolean>() {
+                                   @Override
+                                   public void onSubscribe(Disposable disposable) {
+                                   }
+
+                                   @Override
+                                   public void onNext(Boolean s) {
+                                       if (s.booleanValue())
+                                           showMainWindow();
+                                       else
+                                           Utilities.popMessage("用户名或密码错误", container);
+                                   }
+
+                                   @Override
+                                   public void onError(Throwable throwable) {
+                                   }
+
+                                   @Override
+                                   public void onComplete() {
+                                   }
+                               }
+                    );
+        }else
+        {
+            Utilities.popMessage("正在登录中",container);
         }
-        return true;
+
     }
 
-    public boolean isUserValidated(int number, String password) {
-        if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
-            popMessage("用户名和密码不能为空");
+    public boolean isPwdValidated(String number, String password) {
+        loginMessage = DatabaseOperations.getInstance().selectLoginMessage(number);
+        if (loginMessage == null) {
             return false;
-        } else if(!isPwdValidated(number, password)) {
-            popMessage("用户名或密码错误");
+        } else if (!Utilities.encrypt(password).equals(loginMessage.getPassword())) {
+            return false;
+        } else {
+            loginMessage.setOldNumber(loginMessage.getNumber());
+            return true;
+        }
+    }
+
+    public boolean isUserValidated(String number, String password) {
+        if(!isPwdValidated(number, password)) {
+            Utilities.popMessage("用户名或密码错误", container);
             return false;
         } else
             return true;
@@ -114,35 +139,32 @@ public class LoginWindowController extends BaseViewController {
     @Override
     public void initializeController() {
 
-        /**
-         * 加载数据库配置文件
-         */
-
-        DatabaseOperations databaseOperations = new DatabaseOperations();
-        databaseOperations.build();
-
         userInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
                 pwdInputField.requestFocus();
         });
 
         pwdInputField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER)
-                if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
-                    showMainWindow();
-                }
+            if (event.getCode() == KeyCode.ENTER) {
+                if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                    Utilities.popMessage("用户名和密码不能为空", container);
+                else
+                    asynchronousProcessing();
+            }
         });
 
         logButton.setOnAction(event -> {
-            if (isUserValidated(Integer.parseInt(userInputField.getText()), pwdInputField.getText())) {
-                showMainWindow();
-            }
+            if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                Utilities.popMessage("用户名和密码不能为空", container);
+            else
+                asynchronousProcessing();
         });
 
         closeBtn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY)
                 ElabManagerApplication.primaryStage.close();
         });
+        closeBtn.setGraphic(Utilities.getImage("/pictures/close.png"));
 
         minBtn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
@@ -150,6 +172,7 @@ public class LoginWindowController extends BaseViewController {
                 stage.setIconified(true);
             }
         });
+        minBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
 
         //Drag Event
         topBar.setOnMouseDragged(event -> {
@@ -169,16 +192,4 @@ public class LoginWindowController extends BaseViewController {
             }
         });
     }
-/*
-    class LoginMessageSelectThread extends Thread {
-
-        public void run() {
-            DatabaseOperations databaseOperations = new DatabaseOperations();
-            SqlSession session = databaseOperations.getSession();
-            LoginMessage loginMessage = session.selectOne("member.findLoginMessage", 201782019);
-            ArrayList<Member> members = new ArrayList<>();
-            System.out.println(loginMessage);
-            session.close();
-        }
-    }*/
 }
