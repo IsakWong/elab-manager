@@ -30,23 +30,14 @@ public class Utilities {
      * @param message
      * @param container
      */
-
     public static void popMessage(String message, Pane container) {
         JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
+        bar.show(message,5000);
     }
-
-    public static void popMessage(String message, HBox container) {
+    public static void popMessage(String message, Pane container, long time) {
         JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
-    }
 
-    public static void popMessage(String message, VBox container) {
-        JFXSnackbar bar = new JFXSnackbar(container);
-        JFXSnackbar.SnackbarEvent event = new JFXSnackbar.SnackbarEvent(message);
-        bar.enqueue(event);
+        bar.show(message,time);
     }
 
     /**

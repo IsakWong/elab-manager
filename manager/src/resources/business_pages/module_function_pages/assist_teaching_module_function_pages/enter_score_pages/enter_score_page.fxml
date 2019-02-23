@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers.EnterScorePageController">
    <children>
-      <TableView fx:id="resultTable" nodeOrientation="LEFT_TO_RIGHT" styleClass="card-view">
+      <TableView fx:id="resultTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" styleClass="card-view">
          <columns>
-            <TableColumn fx:id="number" prefWidth="99.0" text="学号" />
-            <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
-            <TableColumn fx:id="college" prefWidth="242.0" text="院系" />
-            <TableColumn fx:id="hardScore" prefWidth="83.0" text="硬件成绩" />
-            <TableColumn fx:id="softScore" prefWidth="75.0" text="软件成绩" />
-            <TableColumn fx:id="paperScore" prefWidth="75.0" text="试卷成绩" />
-            <TableColumn fx:id="tel" prefWidth="150.0" text="联系电话" />
+            <TableColumn fx:id="number" prefWidth="99.0" resizable="false" text="学号" />
+            <TableColumn fx:id="name" prefWidth="75.0" resizable="false" text="姓名" />
+            <TableColumn fx:id="college" prefWidth="224.0" resizable="false" text="院系" />
+            <TableColumn fx:id="hardScore" prefWidth="101.0" resizable="false" text="硬件成绩" />
+            <TableColumn fx:id="softScore" prefWidth="75.0" resizable="false" text="软件成绩" />
+            <TableColumn fx:id="paperScore" prefWidth="75.0" resizable="false" text="试卷成绩" />
+            <TableColumn fx:id="tel" prefWidth="150.0" resizable="false" text="联系电话" />
          </columns>
          <HBox.margin>
             <Insets />
@@ -29,7 +31,7 @@
       </TableView>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card-view">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgb(255,255,255);">
                <children>
                   <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="日期选择">
                      <font>
@@ -44,6 +46,11 @@
                         <Insets top="8.0" />
                      </VBox.margin>
                   </DatePicker>
+                  <JFXDatePicker fx:id="date" defaultColor="#224fb9" showWeekNumbers="true">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </JFXDatePicker>
                   <Label fx:id="schoolDate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="第X周 周X">
                      <VBox.margin>
                         <Insets bottom="8.0" top="8.0" />
@@ -66,6 +73,9 @@
                <padding>
                   <Insets left="16.0" right="16.0" />
                </padding>
+               <effect>
+                  <DropShadow color="#000000a6" />
+               </effect>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card-view">
                <children>

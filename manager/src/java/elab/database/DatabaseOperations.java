@@ -48,11 +48,18 @@ public class DatabaseOperations {
 
     public LoginMessage selectLoginMessage(String number) {
         SqlSession session = studentSqlSessionFactory.openSession();
+        LoginMessage message = null;
         try {
-            return session.selectOne("member.selectLoginMessage", number);
-        } finally {
+            message = session.selectOne("member.selectLoginMessage", number);
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
             session.close();
         }
+        return message;
     }
 
     public List selectMemberByName(String name) {

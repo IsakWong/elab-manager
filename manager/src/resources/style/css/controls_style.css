@@ -1,15 +1,18 @@
 .root {
-    -fx-font-family: "微软雅黑";
-    -fx-font-size: 12px;
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 12.0;
+
+    main-color: rgb(63,81,181);
+    main-color-deep: rgb(48,63,159);
 }
 
 
 .top-panel{
-    -fx-background-color: rgb(48,63,159);
+    -fx-background-color: main-color-deep;
 }
 
 .left-panel{
-    -fx-background-color: rgb(63,81,181);
+    -fx-background-color: main-color;
 }
 
 .left-panel-button{
@@ -25,15 +28,13 @@
 }
 
 .table-view:focused  .virtual-flow  .clipped-container  .sheet  .table-row-cell:filled:selected{
-    -fx-background-color: rgb(150,150,150);
+    -fx-background-color: main-color;
 }
 .table-view .column-header-background{
     -fx-pref-height: 40;
-    -fx-background-color: rgb(63,81,181);
+    -fx-background-color: main-color-deep;
 }
-.table-view .column-header-background{
-    -fx-background-color: rgb(63,81,181);
-}
+
 .table-view .column-header .label{
     -fx-alignment: center-left;
     -fx-text-fill: white;
@@ -41,19 +42,24 @@
     -fx-padding: 0 0 0 4;
     -fx-font-size: 13;
 }
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected{
+    -fx-background: -fx-selection-bar;
+    -fx-table-cell-border-color: rgb(255,255,255);
+}
+
 .table-view .column-header {
-    -fx-background-color: rgb(63,81,181);
+    -fx-background-color: main-color-deep;
 }
-.table-view:focused{
-    -fx-background-color: transparent;
-}
+
 .table-row-cell{
     -fx-cell-size: 35px;
-    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-table-cell-border-width: 0px 1px 1px 0px;
+    -fx-table-cell-border-color: rgb(180,180,180);
 }
 
 .tip-label{
-    -fx-background-color: #3F51B5;
+    -fx-background-color: main-color-deep;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-padding: 10 8 10 8;
@@ -230,10 +236,6 @@
 
 .icons-rippler:hover {
     -fx-cursor: hand;
-}
-
-.jfx-check-box {
-    -fx-font-weight: BOLD;
 }
 
 .custom-jfx-check-box {

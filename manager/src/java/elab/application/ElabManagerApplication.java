@@ -1,7 +1,6 @@
 package elab.application;
 
 import elab.business.log_in_window.LoginWindowController;
-import elab.serialization.module.Module;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +10,6 @@ import javafx.stage.StageStyle;
 import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Properties;
 
 public class ElabManagerApplication extends Application {
@@ -23,8 +21,12 @@ public class ElabManagerApplication extends Application {
 
 
     @Override
+    public void stop() throws Exception {
+        flushProperty();
+    }
+    @Override
     public void start(Stage primaryStage) throws Exception {
-        checkPropertyFile();
+        loadPropertyFile();
 
         ElabManagerApplication.primaryStage = primaryStage;
 
@@ -40,23 +42,40 @@ public class ElabManagerApplication extends Application {
 
     }
 
-    public void checkPropertyFile() throws Exception {
-
-        File propertyFile = new File("settings.property");
-        if (!propertyFile.exists()) {
-            InputStream input = getClass().getResourceAsStream("/default_settings.properties");
-            FileOutputStream out = new FileOutputStream(propertyFile);
-            byte[] temp = new byte[input.available()];
-            input.read(temp);
-            out.write(temp);
-            out.flush();
-            out.close();
+    public void loadPropertyFile() {
+        try {
+            File propertyFile = new File("settings.property");
+            if (!propertyFile.exists()) {
+                InputStream input = getClass().getResourceAsStream("/default_settings.properties");
+                FileOutputStream out = new FileOutputStream(propertyFile);
+                byte[] temp = new byte[input.available()];
+                input.read(temp);
+                out.write(temp);
+                out.flush();
+                out.close();
+            }
+            FileInputStream stream = new FileInputStream(propertyFile);
+            properties = new Properties();
+            properties.load(stream);
+            stream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        FileInputStream stream = new FileInputStream(propertyFile);
-        properties = new Properties();
-        properties.load(stream);
         String strWidth = properties.getProperty("WINDOW_WIDTH");
         String strHeight = properties.getProperty("WINDOW_HEIGHT");
+
+    }
+
+    public void flushProperty() {
+        try {
+            File propertyFile = new File("settings.property");
+            FileOutputStream out = new FileOutputStream(propertyFile);
+            properties.store(out, "AUTO_LOG");
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

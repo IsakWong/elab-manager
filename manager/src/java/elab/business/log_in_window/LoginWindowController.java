@@ -1,21 +1,18 @@
 package elab.business.log_in_window;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseViewController;
 import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.member.LoginMessage;
 import elab.util.Utilities;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
-import io.reactivex.schedulers.Schedulers;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,7 +27,6 @@ import javafx.stage.StageStyle;
 
 public class LoginWindowController extends BaseViewController {
 
-    private LoginMessage loginMessage;
 
     @FXML
     private HBox topBar;
@@ -41,18 +37,100 @@ public class LoginWindowController extends BaseViewController {
     @FXML
     private JFXButton minBtn;
     @FXML
+    private JFXCheckBox autoLogin;
+    @FXML
+    private JFXCheckBox rememberPwd;
+    @FXML
     private JFXPasswordField pwdInputField;
     @FXML
     private JFXTextField userInputField;
     @FXML
     private VBox container;
 
+    private String user;
+    private String password;
 
-    boolean isLogging = false;
+    Session<LoginMessage> loginSession = new Session<LoginMessage>() {
+        @Override
+        public void onPostFetchResult(SessionResult<LoginMessage> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectLoginMessage(user);
+            if (Utilities.encrypt(password).equals(sessionResult.result.getPassword())) {
+
+            } else {
+                sessionResult.result = null;
+                sessionResult.errorMessage = "用户名密码错误";
+            }
+            if (sessionResult.result == null)
+                sessionResult.errorMessage = "无此学号用户";
+        }
+
+        @Override
+        public void onSuccess(LoginMessage param) {
+            writeUserInfomationToDisk();
+            showMainWindow();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            Utilities.popMessage(errorMessage, container);
+        }
+
+        @Override
+        public void onBusy() {
+            Utilities.popMessage("正在登陆中", container);
+        }
+    };
+
     private double x1;
     private double y1;
     private double x_stage;
     private double y_stage;
+
+    public void loadUserInfomationFromDisk() {
+        try {
+            String autoLoginProperty = ElabManagerApplication.properties.getProperty("AUTO_LOG_IN");
+            String rememberPwdProperty = ElabManagerApplication.properties.getProperty("REMEMBER_PASSWORD");
+            if (autoLoginProperty == null) {
+
+            } else {
+                if (autoLoginProperty.equals("true")) {
+                    autoLogin.setSelected(true);
+                    user = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER");
+                    password = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_PASSWORD");
+                    if (user != null && password != null) {
+                        Utilities.popMessage("正在登陆中", container);
+                        loginSession.send();
+                    }
+                }
+            }
+            if (rememberPwdProperty == null) {
+
+            } else {
+                if (rememberPwdProperty.equals("true")) {
+                    rememberPwd.setSelected(true);
+                    userInputField.setText(user);
+                    pwdInputField.setText(password);
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void writeUserInfomationToDisk() {
+        if (autoLogin.isSelected()) {
+            ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
+            ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
+            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
+            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", password);
+        }
+        if (rememberPwd.isSelected()) {
+            ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
+            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
+            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", password);
+        }
+    }
 
     public void showMainWindow() {
         try {
@@ -66,78 +144,24 @@ public class LoginWindowController extends BaseViewController {
             mainStage.show();
             ElabManagerApplication.primaryStage.close();
         } catch (Exception exp) {
-            System.out.println(exp);
+            exp.printStackTrace();
         }
 
-    }
-
-    public void asynchronousProcessing() {
-        if(!isLogging)
-        {
-            isLogging = true;
-            Utilities.popMessage("正在登录中",container);
-            ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>(){
-
-                @Override
-                public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
-                    observableEmitter.onNext(isUserValidated(userInputField.getText(), pwdInputField.getText()));
-                    isLogging = false;
-                }
-            };
-            Observable.create(ob)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(JavaFxScheduler.platform())
-                    .subscribe(new Observer<Boolean>() {
-                                   @Override
-                                   public void onSubscribe(Disposable disposable) {
-                                   }
-
-                                   @Override
-                                   public void onNext(Boolean s) {
-                                       if (s.booleanValue())
-                                           showMainWindow();
-                                       else
-                                           Utilities.popMessage("用户名或密码错误", container);
-                                   }
-
-                                   @Override
-                                   public void onError(Throwable throwable) {
-                                   }
-
-                                   @Override
-                                   public void onComplete() {
-                                   }
-                               }
-                    );
-        }else
-        {
-            Utilities.popMessage("正在登录中",container);
-        }
-
-    }
-
-    public boolean isPwdValidated(String number, String password) {
-        loginMessage = DatabaseOperations.getInstance().selectLoginMessage(number);
-        if (loginMessage == null) {
-            return false;
-        } else if (!Utilities.encrypt(password).equals(loginMessage.getPassword())) {
-            return false;
-        } else {
-            loginMessage.setOldNumber(loginMessage.getNumber());
-            return true;
-        }
-    }
-
-    public boolean isUserValidated(String number, String password) {
-        if(!isPwdValidated(number, password)) {
-            Utilities.popMessage("用户名或密码错误", container);
-            return false;
-        } else
-            return true;
     }
 
     @Override
     public void initializeController() {
+
+        loadUserInfomationFromDisk();
+
+        autoLogin.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue == true) {
+                    rememberPwd.setSelected(true);
+                }
+            }
+        });
 
         userInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER)
@@ -148,16 +172,25 @@ public class LoginWindowController extends BaseViewController {
             if (event.getCode() == KeyCode.ENTER) {
                 if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                     Utilities.popMessage("用户名和密码不能为空", container);
-                else
-                    asynchronousProcessing();
+                else {
+
+                    user = userInputField.getText();
+                    password = pwdInputField.getText();
+                    Utilities.popMessage("正在登陆中", container);
+                    loginSession.send();
+                }
             }
         });
 
         logButton.setOnAction(event -> {
             if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                 Utilities.popMessage("用户名和密码不能为空", container);
-            else
-                asynchronousProcessing();
+            else {
+                user = userInputField.getText();
+                password = pwdInputField.getText();
+                Utilities.popMessage("正在登陆中", container);
+                loginSession.send();
+            }
         });
 
         closeBtn.setOnMouseClicked(event -> {

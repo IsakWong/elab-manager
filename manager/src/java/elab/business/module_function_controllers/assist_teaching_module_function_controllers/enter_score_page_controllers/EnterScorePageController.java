@@ -25,9 +25,8 @@ import javafx.scene.layout.HBox;
 import java.time.LocalDate;
 
 public class EnterScorePageController extends BaseFunctionContentController {
-
     @FXML
-    private DatePicker datePicker;
+    private JFXDatePicker date;
     @FXML
     private Label schoolDate;
     @FXML
@@ -160,8 +159,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             /**
              * DatePicker日期选中事件监听
              */
-
-            datePicker.getEditor().textProperty().addListener(
+            date.getEditor().textProperty().addListener(
                     new ChangeListener<String>() {
                         @Override
                         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
