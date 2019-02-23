@@ -7,6 +7,7 @@ import elab.serialization.beans.school_opening_information.SchoolOpeningInformat
 import elab.serialization.beans.student.Student;
 import javafx.collections.ObservableList;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -47,19 +48,13 @@ public class DatabaseOperations {
     }
 
     public LoginMessage selectLoginMessage(String number) {
-        SqlSession session = studentSqlSessionFactory.openSession();
-        LoginMessage message = null;
+        SqlSession session = studentSqlSessionFactory.openSession(ExecutorType.SIMPLE,true);
         try {
-            message = session.selectOne("member.selectLoginMessage", number);
-
-        }catch (Exception e)
-        {
-            e.printStackTrace();
+            return session.selectOne("member.selectLoginMessage", number);
         }
         finally {
             session.close();
         }
-        return message;
     }
 
     public List selectMemberByName(String name) {

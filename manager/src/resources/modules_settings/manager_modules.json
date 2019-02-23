@@ -109,6 +109,15 @@
         "function_fxml": "/add_user_page.fxml"
       }
     ]
+  },
+  {
+    "module_name": "设置",
+    "functions":
+    [
+      {
+        "function_name": "管理系统设置",
+        "function_fxml": "/business_pages/module_function_pages/manager_settings.fxml"
+      }
+    ]
   }
-
 ]

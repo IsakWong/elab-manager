@@ -1,6 +1,7 @@
 package elab.application;
 
 import elab.business.log_in_window.LoginWindowController;
+import elab.util.OrderedProperties;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,7 @@ public class ElabManagerApplication extends Application {
 
     public final Logger logger = Logger.getLogger(ElabManagerApplication.class);
 
-    public static Properties properties;
+    public static OrderedProperties properties;
     public static Stage primaryStage;
 
 
@@ -26,6 +27,7 @@ public class ElabManagerApplication extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         loadPropertyFile();
 
         ElabManagerApplication.primaryStage = primaryStage;
@@ -55,7 +57,7 @@ public class ElabManagerApplication extends Application {
                 out.close();
             }
             FileInputStream stream = new FileInputStream(propertyFile);
-            properties = new Properties();
+            properties = new OrderedProperties();
             properties.load(stream);
             stream.close();
         } catch (Exception e) {
@@ -70,11 +72,13 @@ public class ElabManagerApplication extends Application {
         try {
             File propertyFile = new File("settings.property");
             FileOutputStream out = new FileOutputStream(propertyFile);
-            properties.store(out, "AUTO_LOG");
+            properties.store(out, "Settings");
             out.flush();
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
         }
 
     }

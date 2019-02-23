@@ -107,22 +107,36 @@ public class MainWindowController extends BaseViewController {
                         if (event.getButton() == MouseButton.PRIMARY) {
                             try {
                                 if (!func.IsFxmlInitialized) {
+
+                                    long begintime = System.nanoTime();
+
                                     FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
                                     Parent functionRoot = functionLoader.load();
                                     BaseFunctionContentController baseViewController = functionLoader.getController();
 
+                                    long endtime = System.nanoTime();
+                                    float costTime = (endtime - begintime)/1000000;
+                                    System.out.println(func.FunctionName + " FXML 加载完毕，加载时间为：" + costTime + " 毫秒");
+
                                     baseViewController.ParentModuleController = moduleController;
+                                    begintime = System.nanoTime();
+
                                     baseViewController.initializeController();
+
+                                    endtime = System.nanoTime(); costTime = (endtime - begintime)/1000000;
+                                    System.out.println(func.FunctionName + " 初始化完毕 ，加载时间为：" + costTime + " 毫秒");
 
                                     func.IsFxmlInitialized = true;
                                     func.FxmlRoot = functionRoot;
                                     func.Controller = baseViewController;
 
-                                    moduleController.setFunctionContent(func);
+                                    moduleController.addFunctionContent(func);
+                                    moduleController.setCurrentFunction(func);
                                     moduleController.BeginLoading();
+
                                 } else {
 
-                                    moduleController.setFunctionContent(func);
+                                    moduleController.setCurrentFunction(func);
                                     moduleController.BeginLoading();
                                 }
                             } catch (Exception excep) {

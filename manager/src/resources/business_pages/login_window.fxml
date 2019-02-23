@@ -53,13 +53,10 @@
             <Insets top="8.0" />
          </VBox.margin>
       </HBox>
-      <JFXButton fx:id="logButton" styleClass="elab-text-body" text="登录" textFill="#212121">
+      <JFXButton fx:id="logButton" styleClass="raised-button" text="登录" textFill="#212121">
          <VBox.margin>
-            <Insets top="8.0" />
+            <Insets top="16.0" />
          </VBox.margin>
-         <padding>
-            <Insets bottom="8.0" left="32.0" right="32.0" top="8.0" />
-         </padding>
          <font>
             <Font size="15.0" />
          </font>
@@ -72,7 +69,7 @@
             <Font name="Microsoft YaHei" size="12.0" />
          </font>
          <VBox.margin>
-            <Insets top="8.0" />
+            <Insets top="16.0" />
          </VBox.margin>
       </Label>
    </children>

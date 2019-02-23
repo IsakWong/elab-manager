@@ -1,16 +1,23 @@
 package elab.application;
 
 import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXListView;
 import elab.application.BaseViewController;
 import elab.serialization.module.Function;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseModulePageController extends BaseViewController {
 
+    @FXML
+    public JFXListView list;
     @FXML
     public VBox leftPanel;
     @FXML
@@ -20,14 +27,31 @@ public class BaseModulePageController extends BaseViewController {
 
     private Function CurrentFunction;
 
-    public void setFunctionContent(Function func)
+    public ArrayList<Function> loadedFuncs = new ArrayList<Function>();
+
+    public void setCurrentFunction(Function func)
     {
         if(func == CurrentFunction)
             return;
+        for (Function f : loadedFuncs) {
+            if(f != func)
+            {
+                f.FxmlRoot.setVisible(false);
+            }else
+            {
+                f.FxmlRoot.setVisible(true);
+            }
+        }
+        func.FxmlRoot.setVisible(true);
+        CurrentFunction = func;
+    }
+    public void addFunctionContent(Function func)
+    {
+        if(func == null)
+            return;
         else
         {
-            CurrentFunction = func;
-            container.getChildren().clear();
+            loadedFuncs.add(func);
             container.getChildren().add(func.FxmlRoot);
         }
     }
@@ -53,6 +77,9 @@ public class BaseModulePageController extends BaseViewController {
 
             }
             dialog.show(container);
+        }else{
+            if(dialog != null)
+                dialog.close();
         }
 
     }
@@ -63,6 +90,11 @@ public class BaseModulePageController extends BaseViewController {
     }
     @Override
     public void initializeController() {
+        list.getItems().add(new Label("123"));
+        for (int i = 0; i < 4; i++) {
 
+            list.getItems().add(new Label("123123" ));
+
+        }
     }
 }

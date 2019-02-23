@@ -48,13 +48,13 @@ public class LoginWindowController extends BaseViewController {
     private VBox container;
 
     private String user;
-    private String password;
+    private String md5Password;
 
     Session<LoginMessage> loginSession = new Session<LoginMessage>() {
         @Override
         public void onPostFetchResult(SessionResult<LoginMessage> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectLoginMessage(user);
-            if (Utilities.encrypt(password).equals(sessionResult.result.getPassword())) {
+            if (md5Password.equals(sessionResult.result.getPassword())) {
 
             } else {
                 sessionResult.result = null;
@@ -86,7 +86,7 @@ public class LoginWindowController extends BaseViewController {
     private double x_stage;
     private double y_stage;
 
-    public void loadUserInfomationFromDisk() {
+    public void loadUserInformationFromDisk() {
         try {
             String autoLoginProperty = ElabManagerApplication.properties.getProperty("AUTO_LOG_IN");
             String rememberPwdProperty = ElabManagerApplication.properties.getProperty("REMEMBER_PASSWORD");
@@ -96,8 +96,8 @@ public class LoginWindowController extends BaseViewController {
                 if (autoLoginProperty.equals("true")) {
                     autoLogin.setSelected(true);
                     user = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER");
-                    password = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_PASSWORD");
-                    if (user != null && password != null) {
+                    md5Password = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_PASSWORD");
+                    if (user != null && md5Password != null) {
                         Utilities.popMessage("正在登陆中", container);
                         loginSession.send();
                     }
@@ -109,7 +109,7 @@ public class LoginWindowController extends BaseViewController {
                 if (rememberPwdProperty.equals("true")) {
                     rememberPwd.setSelected(true);
                     userInputField.setText(user);
-                    pwdInputField.setText(password);
+                    pwdInputField.setText(md5Password);
                 }
             }
 
@@ -123,12 +123,12 @@ public class LoginWindowController extends BaseViewController {
             ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
             ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
             ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
-            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", password);
+            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
         }
         if (rememberPwd.isSelected()) {
             ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
             ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
-            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", password);
+            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
         }
     }
 
@@ -152,7 +152,7 @@ public class LoginWindowController extends BaseViewController {
     @Override
     public void initializeController() {
 
-        loadUserInfomationFromDisk();
+        loadUserInformationFromDisk();
 
         autoLogin.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -175,7 +175,7 @@ public class LoginWindowController extends BaseViewController {
                 else {
 
                     user = userInputField.getText();
-                    password = pwdInputField.getText();
+                    md5Password = Utilities.encrypt(pwdInputField.getText());
                     Utilities.popMessage("正在登陆中", container);
                     loginSession.send();
                 }
@@ -187,7 +187,7 @@ public class LoginWindowController extends BaseViewController {
                 Utilities.popMessage("用户名和密码不能为空", container);
             else {
                 user = userInputField.getText();
-                password = pwdInputField.getText();
+                md5Password = Utilities.encrypt(pwdInputField.getText());
                 Utilities.popMessage("正在登陆中", container);
                 loginSession.send();
             }

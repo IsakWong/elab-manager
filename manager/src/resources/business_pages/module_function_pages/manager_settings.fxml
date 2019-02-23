@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" maxWidth="400.0" prefWidth="400.0" spacing="16.0" styleClass="card-view" stylesheets="@../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.settings.ManagerSettings">
+   <children>
+      <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="登录设置">
+         <VBox.margin>
+            <Insets left="-16.0" right="-16.0" top="-16.0" />
+         </VBox.margin>
+      </Label>
+      <JFXCheckBox mnemonicParsing="false" text="自动登录">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></JFXCheckBox>
+      <JFXCheckBox layoutX="26.0" layoutY="65.0" mnemonicParsing="false" text="记住密码" />
+      <JFXButton buttonType="RAISED" mnemonicParsing="false" styleClass="raised-button" text="保存" />
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</VBox>
