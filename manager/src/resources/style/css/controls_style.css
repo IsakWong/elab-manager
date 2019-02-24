@@ -1,18 +1,25 @@
 .root {
     -fx-font-family: "Roboto Light";
     -fx-font-size: 12.0;
-
+    -dark-primary: #303f9f;
+    -light-primary: #c5cae9;
+    -primary: #3f51b5;
+    -text:#ffffff;
+    -accent:#448aff;
+    -primary-text:#212121;
+    -secondary-text: #757575;
+    -divider:#BDBDBD;
     main-color: rgb(63,81,181);
     main-color-deep: rgb(48,63,159);
 }
 
 
 .top-panel{
-    -fx-background-color: main-color-deep;
+    -fx-background-color: -dark-primary;
 }
 
 .left-panel{
-    -fx-background-color: main-color;
+    -fx-background-color: -light-primary;
 }
 
 .left-panel-button{
@@ -24,15 +31,15 @@
 
 .card-view{
     -fx-background-color: rgb(255,255,255);
-    -fx-effect:dropshadow(one-pass-box,rgba(0,0,0,0.4) ,10,0,0,2 );
+    -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.8) ,10,0,0.5,0.5 );
 }
 
 .table-view:focused  .virtual-flow  .clipped-container  .sheet  .table-row-cell:filled:selected{
-    -fx-background-color: main-color;
+    -fx-background-color: -light-primary;
 }
 .table-view .column-header-background{
     -fx-pref-height: 40;
-    -fx-background-color: main-color-deep;
+    -fx-background-color: -dark-primary;
 }
 
 .table-view .column-header .label{
@@ -42,13 +49,14 @@
     -fx-padding: 0 0 0 4;
     -fx-font-size: 13;
 }
+
 .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected{
     -fx-background: -fx-selection-bar;
     -fx-table-cell-border-color: rgb(255,255,255);
 }
 
 .table-view .column-header {
-    -fx-background-color: main-color-deep;
+    -fx-background-color: -dark-primary;
 }
 
 .table-row-cell{
@@ -59,22 +67,28 @@
 }
 
 .tip-label{
-    -fx-background-color: main-color-deep;
+    -fx-background-color: -dark-primary;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-padding: 10 8 10 8;
     -fx-margin: 0 -16 0 -16;
 }
-
-.raised-button {
-    -jfx-button-type: RAISED;
-    -fx-background-color: main-color;
-    -fx-padding: 8 24 8 24;
-    -fx-text-fill: white;
+.flat-button{
+    -jfx-button-type: FLAT;
+    -fx-text-fill: -primary-text;
 }
 
 .jfx-check-box {
-    -jfx-checked-color: main-color;
+    -jfx-checked-color: -accent;
+}
+.raised-button {
+    -jfx-button-type: RAISED;
+    -fx-background-color: -accent;
+    -fx-padding: 8 24 8 24;
+    -fx-text-fill: -text;
+}
+.raised-button .jfx-rippler{
+    -jfx-rippler-fill: rgba(255,255,255, .87);
 }
 
 .elab-text-body{
@@ -87,15 +101,12 @@
     -fx-text-fill: #727272;
 }
 
-.jfx-dialog .stack-pane{
-    -fx-padding: 24 24 24 24;
-}
 .jfx-dialog-overlay-pane {
-    -fx-background-color: rgba(0.0, 0.0, 0.0, 0.4);
+    -fx-background-color: rgba(0.0, 0.0, 0.0, 0.28);
 }
 
 .elab-text-title{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
 }
 
 .jfx-tab-pane .tab-header-background {
@@ -243,23 +254,25 @@
     -fx-cursor: hand;
 }
 
-
+.card-view-margin{
+    fx-margin:16 16 16 16;
+}
 /* Button */
 .button {
     -fx-font-size: 14px;
 }
 
-.jfx-list-cell-container > .label {
-    -fx-text-fill: white;
-}
 
 .jfx-list-cell:odd:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
-    -fx-background-color: main-color-deep;
+    -fx-text-fill: white;
+    -fx-background-color: -dark-primary;
 }
 
+.jfx-list-cell{
+    -fx-background-color: -primary;
+}
 
-.jfx-list-cell {
-    -fx-background-color: transparent;
+.jfx-list-cell > .label{
     -fx-text-fill: white;
 }
 
@@ -268,27 +281,9 @@
 }
 
 .jfx-list-cell .jfx-rippler {
-    -jfx-rippler-fill: main-color-deep;
+    -jfx-rippler-fill: white;
 }
 
-
-
-.jfx-list-view {
-
-    -fx-background-insets: 0;
-    -jfx-cell-horizontal-margin: 0.0;
-    -jfx-cell-vertical-margin: 5.0;
-    -jfx-vertical-gap: 10;
-    -jfx-expanded: false;
-    -fx-pref-width: 200;
-
-}
-
-
-
-.jfx-toggle-button {
-    -jfx-toggle-color: RED;
-}
 
 .jfx-tool-bar {
     -fx-font-size: 20;
@@ -297,6 +292,18 @@
     -fx-pref-width: 100%;
     -fx-pref-height: 64px;
 }
+
+.jfx-list-view {
+    -jfx-vertical-gap: 10;
+    -jfx-expanded: false;
+}
+
+
+
+.jfx-toggle-button {
+    -jfx-toggle-color: RED;
+}
+
 
 .jfx-tool-bar HBox {
     -fx-alignment: center;
@@ -389,17 +396,6 @@
     -fx-fill: rgb(113, 118, 114);
 }
 
-.main-button {
-    -fx-pref-width: 60px;
-    -fx-background-color: #0F9D58;
-    -fx-background-radius: 60px;
-    -fx-pref-height: 60px;
-    -fx-min-width: -fx-pref-width;
-    -fx-max-width: -fx-pref-width;
-    -fx-min-height: -fx-pref-height;
-    -fx-max-height: -fx-pref-height;
-    -jfx-button-type: RAISED;
-}
 .main-button .jfx-rippler{
     -jfx-rippler-fill: rgba(255,255,255, .87);
 }

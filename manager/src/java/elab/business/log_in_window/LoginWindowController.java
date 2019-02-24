@@ -139,7 +139,9 @@ public class LoginWindowController extends BaseViewController {
             MainWindowController controller = loader.getController();
             Stage mainStage = new Stage();
             mainStage.initStyle(StageStyle.UNDECORATED);
-            mainStage.setScene(new Scene(root, 1200, 800));
+            float width =Float.valueOf(ElabManagerApplication.properties.getProperty("WINDOW_WIDTH"));
+            float height = Float.valueOf(ElabManagerApplication.properties.getProperty("WINDOW_HEIGHT"));
+            mainStage.setScene(new Scene(root, 1000, 800));
             controller.initializeController();
             mainStage.show();
             ElabManagerApplication.primaryStage.close();

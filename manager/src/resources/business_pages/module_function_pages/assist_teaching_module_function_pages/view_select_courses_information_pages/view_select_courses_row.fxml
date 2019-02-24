@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="weekLabel" alignment="CENTER" contentDisplay="TOP" text="第X周" textAlignment="CENTER">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
       </Label>
    </children>

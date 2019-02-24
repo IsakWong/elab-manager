@@ -1,113 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="container" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.AttendanceRecordPageController">
+<VBox alignment="CENTER" fillWidth="false" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.AttendanceRecordPageController">
    <children>
-      <DatePicker fx:id="datePicker">
-         <VBox.margin>
-            <Insets bottom="20.0" right="500.0" top="50.0" />
-         </VBox.margin>
-      </DatePicker>
-      <HBox prefHeight="564.0" prefWidth="1000.0">
+      <VBox fx:id="container" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
          <children>
-            <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="500.0">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="助课信息">
+               <VBox.margin>
+                  <Insets left="-16.0" right="-16.0" />
+               </VBox.margin>
+            </Label>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="elab-text-title" text="点击图标选择日期">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <JFXDatePicker defaultColor="#298af8" promptText="(上课日期)" />
+            <Label layoutX="26.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="elab-text-title" text="选择当天主讲">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="16.0">
                <children>
-                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="上课信息查询">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="250.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="查询(可输入首字母)">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="210.0" />
-                     </VBox.margin>
-                  </Label>
-                  <JFXTextField fx:id="inputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
-                     <VBox.margin>
-                        <Insets right="148.0" />
-                     </VBox.margin>
-                  </JFXTextField>
-                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="双击选择">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="275.0" />
-                     </VBox.margin>
-                  </Label>
-                  <ListView fx:id="chooseListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
-                     <VBox.margin>
-                        <Insets right="30.0" />
-                     </VBox.margin>
-                  </ListView>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <JFXRadioButton fx:id="teachingRadioButton" selectedColor="#303F9F" text="主讲">
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin>
-                        </JFXRadioButton>
-                        <JFXRadioButton fx:id="assistRadioButton" selectedColor="#303F9F" text="助教" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </HBox>
+                  <JFXTextField fx:id="inputField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="(键入拼音缩写筛选)" />
+                  <JFXComboBox fx:id="comboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="选择主讲" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="500.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Label layoutX="26.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="elab-text-title" text="助教">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <HBox layoutX="26.0" layoutY="158.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="16.0">
                <children>
-                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="主讲(双击除去)">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="13.0" />
-                     </VBox.margin>
-                  </Label>
-                  <ListView fx:id="teachingListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" />
-                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="助教(双击除去)">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="assistListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </ListView>
+                  <JFXTextField fx:id="inputField1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="(键入拼音缩写筛选)" />
+                  <JFXComboBox fx:id="comboBox1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="选择助教" />
                </children>
-            </VBox>
+            </HBox>
+            <ListView fx:id="assistListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="350.0">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </ListView>
+            <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="上课所遇情况">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="questionInputArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="350.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextArea>
+            <JFXButton fx:id="saveBtn" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" styleClass="raised-button" text="保存">
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+            </JFXButton>
          </children>
-      </HBox>
-      <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" text="上课所遇情况">
-         <VBox.margin>
-            <Insets right="575.0" />
-         </VBox.margin>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="questionInputArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="658.0">
-         <VBox.margin>
-            <Insets bottom="10.0" top="20.0" />
-         </VBox.margin>
-      </TextArea>
-      <JFXButton fx:id="saveBtn" prefHeight="35.0" prefWidth="92.0" text="保存">
-         <VBox.margin>
-            <Insets bottom="60.0" />
-         </VBox.margin>
-      </JFXButton>
+         <padding>
+            <Insets left="16.0" right="16.0" />
+         </padding>
+      </VBox>
    </children>
 </VBox>

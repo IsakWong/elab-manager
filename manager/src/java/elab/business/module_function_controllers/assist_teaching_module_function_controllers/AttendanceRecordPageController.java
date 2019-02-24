@@ -1,6 +1,7 @@
 package elab.business.module_function_controllers.assist_teaching_module_function_controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
@@ -20,6 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
@@ -30,19 +32,13 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
     @FXML
     private VBox container;
     @FXML
+    private JFXComboBox comboBox;
+    @FXML
     private DatePicker datePicker;
     @FXML
     private JFXTextField inputField;
     @FXML
-    private ListView<String> chooseListView;
-    @FXML
-    private ListView<String> teachingListView;
-    @FXML
     private ListView<String> assistListView;
-    @FXML
-    private JFXRadioButton teachingRadioButton;
-    @FXML
-    private JFXRadioButton assistRadioButton;
     @FXML
     private TextArea questionInputArea;
     @FXML
@@ -63,13 +59,11 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                     }
                     else if (i == assistList.size() - 1) {
                         teachingList.add(item);
-                        teachingListView.refresh();
                     }
                 }
             }
             else {
                 teachingList.add(item);
-                teachingListView.refresh();
             }
         }
         else Utilities.popMessage("主讲只能有一位", container);
@@ -139,9 +133,8 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                                        nameList.add(members.get(i).getName());
                                    }
 
-                                   chooseListView.setItems(nameList);
-                                   teachingListView.setItems(teachingList);
-                                   assistListView.setItems(assistList);
+                                   comboBox.setItems(nameList);
+                                   comboBox.showingProperty();
                                }
 
                                @Override
@@ -153,47 +146,11 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                                }
                            }
                 );
-        chooseListView.setOnMouseClicked(event -> {
-            if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
-                String selectedItem = chooseListView.getSelectionModel().getSelectedItem();
-                if(selectedItem != null)
-                    if(teachingRadioButton.isSelected()) addTeachingListViewItem(selectedItem);
-                    else addAssistListViewItem(selectedItem);
-            }
-        });
-
-
-        teachingListView.setOnMouseClicked(event -> {
-            if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
-                String selectItem = teachingListView.getSelectionModel().getSelectedItem();
-                if(selectItem != null) teachingList.remove(selectItem);
-                teachingListView.refresh();
-            }
-        });
-
-        assistListView.setOnMouseClicked(event -> {
-            if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
-                String selectItem = assistListView.getSelectionModel().getSelectedItem();
-                if(selectItem != null) assistList.remove(selectItem);
-                assistListView.refresh();
-            }
-        });
-
-        teachingRadioButton.setOnAction(event -> {
-            assistRadioButton.setSelected(!teachingRadioButton.isSelected()) ;
-        });
-        teachingRadioButton.setSelected(true);
-
-        assistRadioButton.setOnAction(event -> {
-            teachingRadioButton.setSelected(!assistRadioButton.isSelected());
-        });
 
         inputField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (inputField.getText().equals("")) {
-                    chooseListView.setItems(nameList);
-                    chooseListView.refresh();
                 } else {
                     if(chooseList.size() != 0) chooseList.remove(0, chooseList.size());
                     for (int i = 0; i < nameList.size(); ++i)
@@ -202,8 +159,6 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                                 || nameList.get(i).startsWith(inputField.getText())
                                 || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(inputField.getText()))
                             chooseList.add(nameList.get(i));
-                    chooseListView.setItems(chooseList);
-                    chooseListView.refresh();
                 }
             }
         });

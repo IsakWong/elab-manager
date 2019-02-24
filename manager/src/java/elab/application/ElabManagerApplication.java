@@ -39,7 +39,9 @@ public class ElabManagerApplication extends Application {
 
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
+
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(true);
         primaryStage.show();
 
     }

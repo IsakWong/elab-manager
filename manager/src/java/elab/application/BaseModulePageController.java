@@ -6,6 +6,8 @@ import elab.application.BaseViewController;
 import elab.serialization.module.Function;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -40,6 +42,10 @@ public class BaseModulePageController extends BaseViewController {
             }else
             {
                 f.FxmlRoot.setVisible(true);
+                double top = 16;
+                double right = 16;
+                StackPane.setMargin(f.FxmlRoot,new Insets(top,right,top,right));
+                StackPane.setAlignment(f.FxmlRoot, Pos.CENTER);
             }
         }
         func.FxmlRoot.setVisible(true);
@@ -90,11 +96,5 @@ public class BaseModulePageController extends BaseViewController {
     }
     @Override
     public void initializeController() {
-        list.getItems().add(new Label("123"));
-        for (int i = 0; i < 4; i++) {
-
-            list.getItems().add(new Label("123123" ));
-
-        }
     }
 }

@@ -4,15 +4,21 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
+import com.sun.tracing.dtrace.FunctionName;
 import elab.application.BaseViewController;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseModulePageController;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
 import elab.util.Utilities;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
@@ -87,8 +93,6 @@ public class MainWindowController extends BaseViewController {
                 FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/business_pages/module_page.fxml"));
                 Parent root = moduleLoader.load();
                 Tab userTab = new Tab();
-
-
                 userTab.setText(module.ModuleName);
                 BaseModulePageController moduleController = moduleLoader.getController();
                 moduleController.initializeController();
@@ -98,54 +102,56 @@ public class MainWindowController extends BaseViewController {
 
                 Pane container = (Pane) module.FxmlRoot.lookup("#container");
                 for (final Function func : module.Functions) {
-                    JFXButton funcBtn = new JFXButton();
-                    func.ParentModule = module;
-                    funcBtn.getStyleClass().add("left-panel-button");
-                    funcBtn.setText(func.FunctionName);
-                    funcBtn.setMaxWidth(MAX_VALUE);
-                    funcBtn.setOnMouseClicked(event -> {
-                        if (event.getButton() == MouseButton.PRIMARY) {
-                            try {
-                                if (!func.IsFxmlInitialized) {
-
-                                    long begintime = System.nanoTime();
-
-                                    FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
-                                    Parent functionRoot = functionLoader.load();
-                                    BaseFunctionContentController baseViewController = functionLoader.getController();
-
-                                    long endtime = System.nanoTime();
-                                    float costTime = (endtime - begintime)/1000000;
-                                    System.out.println(func.FunctionName + " FXML 加载完毕，加载时间为：" + costTime + " 毫秒");
-
-                                    baseViewController.ParentModuleController = moduleController;
-                                    begintime = System.nanoTime();
-
-                                    baseViewController.initializeController();
-
-                                    endtime = System.nanoTime(); costTime = (endtime - begintime)/1000000;
-                                    System.out.println(func.FunctionName + " 初始化完毕 ，加载时间为：" + costTime + " 毫秒");
-
-                                    func.IsFxmlInitialized = true;
-                                    func.FxmlRoot = functionRoot;
-                                    func.Controller = baseViewController;
-
-                                    moduleController.addFunctionContent(func);
-                                    moduleController.setCurrentFunction(func);
-                                    moduleController.BeginLoading();
-
-                                } else {
-
-                                    moduleController.setCurrentFunction(func);
-                                    moduleController.BeginLoading();
-                                }
-                            } catch (Exception excep) {
-                                excep.printStackTrace();
-                            }
-                        }
-                    });
-                    moduleController.leftPanel.getChildren().add(funcBtn);
+                    Label label = new Label(func.FunctionName);
+                    moduleController.list.getItems().add(label);
                 }
+                moduleController.list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+                moduleController.list.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        try {
+                            int index = newValue.intValue();
+                            if(index >= module.Functions.length)
+                                return;
+                            Function func = module.Functions[index];
+                            if (!func.IsFxmlInitialized) {
+
+                                long begintime = System.nanoTime();
+
+                                FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
+                                Pane functionRoot = functionLoader.load();
+                                BaseFunctionContentController baseViewController = functionLoader.getController();
+
+                                long endtime = System.nanoTime();
+                                float costTime = (endtime - begintime)/1000000;
+                                System.out.println(func.FunctionName + " FXML 加载完毕，加载时间为：" + costTime + " 毫秒");
+
+                                baseViewController.ParentModuleController = moduleController;
+                                begintime = System.nanoTime();
+
+                                baseViewController.initializeController();
+
+                                endtime = System.nanoTime(); costTime = (endtime - begintime)/1000000;
+                                System.out.println(func.FunctionName + " 初始化完毕 ，加载时间为：" + costTime + " 毫秒");
+
+                                func.IsFxmlInitialized = true;
+                                func.FxmlRoot = functionRoot;
+                                func.Controller = baseViewController;
+
+                                moduleController.addFunctionContent(func);
+                                moduleController.setCurrentFunction(func);
+                                moduleController.BeginLoading();
+
+                            } else {
+                                moduleController.setCurrentFunction(func);
+                                moduleController.BeginLoading();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
                 userTab.setContent(root);
                 tabPane.getTabs().add(userTab);
             }
