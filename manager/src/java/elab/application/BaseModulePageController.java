@@ -21,8 +21,6 @@ public class BaseModulePageController extends BaseViewController {
     @FXML
     public JFXListView list;
     @FXML
-    public VBox leftPanel;
-    @FXML
     public StackPane container;
 
     private JFXDialog dialog = null;
@@ -44,8 +42,6 @@ public class BaseModulePageController extends BaseViewController {
                 f.FxmlRoot.setVisible(true);
                 double top = 16;
                 double right = 16;
-                StackPane.setMargin(f.FxmlRoot,new Insets(top,right,top,right));
-                StackPane.setAlignment(f.FxmlRoot, Pos.CENTER);
             }
         }
         func.FxmlRoot.setVisible(true);
@@ -62,7 +58,7 @@ public class BaseModulePageController extends BaseViewController {
         }
     }
 
-    public void BeginLoading()
+    public void beginLoading()
     {
         if(!CurrentFunction.Controller.IsDataInitialized)
         {
@@ -89,7 +85,7 @@ public class BaseModulePageController extends BaseViewController {
         }
 
     }
-    public void FinishLoading()
+    public void finishLoading()
     {
         if(dialog !=null)
             dialog.close();

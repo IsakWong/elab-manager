@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.application.BaseModulePageController">
+<HBox xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.application.BaseModulePageController">
    <children>
-      <JFXListView fx:id="list" fixedCellSize="40.0" maxHeight="1.7976931348623157E308" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" style="-fx-background-color: -primary;" />
-      <StackPane fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgb(255,255,255);" />
+      <JFXListView fx:id="list" fixedCellSize="40.0" maxHeight="1.7976931348623157E308" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" style="-fx-background-color: -primary;" HBox.hgrow="NEVER" />
+      <StackPane fx:id="container" style="-fx-background-color: rgb(255,255,255);" HBox.hgrow="SOMETIMES" />
    </children>
 </HBox>

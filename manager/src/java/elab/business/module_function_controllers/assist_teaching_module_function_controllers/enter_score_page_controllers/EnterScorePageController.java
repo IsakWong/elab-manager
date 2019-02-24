@@ -3,6 +3,7 @@ package elab.business.module_function_controllers.assist_teaching_module_functio
 import com.jfoenix.controls.*;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.student.Student;
 import elab.util.Utilities;
 import io.reactivex.Observable;
@@ -23,6 +24,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class EnterScorePageController extends BaseFunctionContentController {
     @FXML
@@ -72,12 +74,42 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
     private Student student;
 
+    ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+
     private int studentAmount;
+
+    Session<List> queryStudentSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents();
+            if(sessionResult.result == null)
+                sessionResult.errorMessage="无法获取该日期上课的学生";
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            students.clear();
+            students.addAll(param);
+            finishLoading();
+            resultTable.setItems(students);
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage,3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取信息中",3000);
+        }
+    };
 
 
     @Override
     public void initializeController() {
         try {
+            queryStudentSession.send();
             number.setCellValueFactory(new PropertyValueFactory<Student, String>("number"));
             name.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
             college.setCellValueFactory(new PropertyValueFactory<Student, String>("college"));
@@ -85,40 +117,6 @@ public class EnterScorePageController extends BaseFunctionContentController {
             softScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("softScore"));
             paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
             tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
-            ObservableList<Student> students = FXCollections.<Student>observableArrayList();
-            ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>() {
-
-                @Override
-                public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
-                    students.addAll(DatabaseOperations.getInstance().selectAllStudents());
-                    studentAmount = students.size();
-                    observableEmitter.onNext(true);
-                }
-            };
-            Observable.create(ob)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(JavaFxScheduler.platform())
-                    .subscribe(new Observer<Boolean>() {
-                                   @Override
-                                   public void onSubscribe(Disposable disposable) {
-                                   }
-
-                                   @Override
-                                   public void onNext(Boolean s) {
-                                       IsDataInitialized = true;
-                                       ParentModuleController.FinishLoading();
-                                       resultTable.setItems(students);
-                                   }
-
-                                   @Override
-                                   public void onError(Throwable throwable) {
-                                   }
-
-                                   @Override
-                                   public void onComplete() {
-                                   }
-                               }
-                    );
 
             resultTable.setPlaceholder(new Label("当天无上课同学"));
             /**
@@ -129,7 +127,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
                     new ChangeListener<Student>() {
                         @Override
                         public void changed(ObservableValue<? extends Student> observable, Student oldValue, Student newValue) {
-                            ParentModuleController.BeginLoading();
+                            ParentModuleController.beginLoading();
                             student = newValue;
                             numberLabel.setText("学号：" + student.getNumber());
                             nameLabel.setText("姓名：" + student.getName());

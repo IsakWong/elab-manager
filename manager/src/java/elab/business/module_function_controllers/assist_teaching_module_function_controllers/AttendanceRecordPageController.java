@@ -2,7 +2,6 @@ package elab.business.module_function_controllers.assist_teaching_module_functio
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
@@ -21,7 +20,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
@@ -118,6 +116,7 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                 observableEmitter.onNext(true);
             }
         };
+
         Observable.create(ob)
                 .subscribeOn(Schedulers.io())
                 .observeOn(JavaFxScheduler.platform())
@@ -128,11 +127,11 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
 
                                @Override
                                public void onNext(Boolean s) {
-                                   ParentModuleController.FinishLoading();
+                                   ParentModuleController.finishLoading();
                                    for(int i = 0; i < members.size(); ++i) {
                                        nameList.add(members.get(i).getName());
                                    }
-
+                                   finishLoading();
                                    comboBox.setItems(nameList);
                                    comboBox.showingProperty();
                                }

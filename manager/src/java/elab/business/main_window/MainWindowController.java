@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
-import com.sun.tracing.dtrace.FunctionName;
 import elab.application.BaseViewController;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseModulePageController;
@@ -13,7 +12,6 @@ import elab.serialization.module.Module;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,8 +25,6 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-
-import static java.lang.Double.MAX_VALUE;
 
 public class MainWindowController extends BaseViewController {
 
@@ -140,11 +136,11 @@ public class MainWindowController extends BaseViewController {
 
                                 moduleController.addFunctionContent(func);
                                 moduleController.setCurrentFunction(func);
-                                moduleController.BeginLoading();
+                                moduleController.beginLoading();
 
                             } else {
                                 moduleController.setCurrentFunction(func);
-                                moduleController.BeginLoading();
+                                moduleController.beginLoading();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
