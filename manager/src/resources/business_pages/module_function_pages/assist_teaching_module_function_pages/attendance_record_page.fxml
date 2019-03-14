@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.AttendanceRecordPageController">
+<VBox alignment="CENTER" fillWidth="false" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.AttendanceRecordPageController">
    <children>
       <VBox fx:id="container" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
          <children>
@@ -29,7 +29,7 @@
                   <Insets top="12.0" />
                </VBox.margin>
             </Label>
-            <JFXDatePicker defaultColor="#298af8" promptText="(上课日期)" />
+            <JFXDatePicker fx:id="datePicker" defaultColor="#298af8" promptText="(上课日期)" />
             <Label layoutX="26.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="elab-text-title" text="选择当天主讲">
                <font>
                   <Font size="14.0" />

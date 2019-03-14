@@ -11,23 +11,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="container" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.log_in_window.LoginWindowController">
+<VBox fx:id="container" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.log_in_window.LoginWindowController">
    <children>
       <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3F51B5;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="400.0" prefHeight="400.0" prefWidth="500.0" text="科中管理系统" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="400.0" prefHeight="150.0" prefWidth="400.0" text="科中管理系统" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
-                  <Insets right="16.0" />
+                  <Insets left="132.0" right="16.0" />
                </HBox.margin>
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <JFXButton fx:id="minBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
+            <JFXButton fx:id="minBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0">
                <HBox.margin>
-                  <Insets right="16.0" top="16.0" />
+                  <Insets right="10.0" top="16.0" />
                </HBox.margin></JFXButton>
-            <JFXButton fx:id="closeBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
+            <JFXButton fx:id="closeBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0">
                <HBox.margin>
                   <Insets right="16.0" top="16.0" />
                </HBox.margin>

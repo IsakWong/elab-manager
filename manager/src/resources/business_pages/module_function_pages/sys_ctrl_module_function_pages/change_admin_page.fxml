@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<HBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ChangeAdminPageController">
+<HBox fx:id="container" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ChangeAdminPageController">
    <children>
-      <VBox prefHeight="700.0" prefWidth="500.0">
+      <VBox>
          <children>
             <Label text="查询(输入首字母)">
                <VBox.margin>
@@ -25,23 +26,23 @@
                   <Insets left="60.0" top="50.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="chooseListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0">
+            <ListView fx:id="chooseListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                <VBox.margin>
-                  <Insets left="60.0" top="10.0" />
+                  <Insets bottom="5.0" left="60.0" top="10.0" />
                </VBox.margin>
             </ListView>
          </children>
       </VBox>
-      <VBox prefHeight="700.0" prefWidth="500.0">
+      <VBox>
          <children>
             <Label text="班委列表(双击除去)">
                <VBox.margin>
                   <Insets left="30.0" top="50.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="adminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="350.0">
+            <ListView fx:id="adminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="248.0">
                <VBox.margin>
-                  <Insets left="30.0" top="10.0" />
+                  <Insets bottom="5.0" left="30.0" right="5.0" top="10.0" />
                </VBox.margin>
             </ListView>
          </children>

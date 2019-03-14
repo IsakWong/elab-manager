@@ -1,6 +1,5 @@
 package elab.database;
 
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -28,6 +27,7 @@ public abstract class Session<ReturnType> implements SessionCallback<ReturnType>
             observableEmitter.onComplete();
         }
     };
+
     Observer<SessionResult> subscriber = new Observer<SessionResult>() {
         @Override
         public void onSubscribe(Disposable disposable) {
@@ -63,10 +63,6 @@ public abstract class Session<ReturnType> implements SessionCallback<ReturnType>
                     .subscribe(subscriber);
         } else {
             this.onBusy();
-
         }
-
     }
-
-
 }

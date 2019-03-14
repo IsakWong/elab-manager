@@ -105,7 +105,6 @@ public class EnterScorePageController extends BaseFunctionContentController {
         }
     };
 
-
     @Override
     public void initializeController() {
         try {
@@ -157,6 +156,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             /**
              * DatePicker日期选中事件监听
              */
+
             date.getEditor().textProperty().addListener(
                     new ChangeListener<String>() {
                         @Override
@@ -173,7 +173,5 @@ public class EnterScorePageController extends BaseFunctionContentController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }

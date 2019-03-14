@@ -51,17 +51,18 @@ public class LoginWindowController extends BaseViewController {
     private String md5Password;
 
     Session<LoginMessage> loginSession = new Session<LoginMessage>() {
+
         @Override
         public void onPostFetchResult(SessionResult<LoginMessage> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectLoginMessage(user);
-            if (md5Password.equals(sessionResult.result.getPassword())) {
+            if (sessionResult.result == null)
+                sessionResult.errorMessage = "无此学号用户";
+            else if (md5Password.equals(sessionResult.result.getPassword())) {
 
             } else {
                 sessionResult.result = null;
                 sessionResult.errorMessage = "用户名密码错误";
             }
-            if (sessionResult.result == null)
-                sessionResult.errorMessage = "无此学号用户";
         }
 
         @Override

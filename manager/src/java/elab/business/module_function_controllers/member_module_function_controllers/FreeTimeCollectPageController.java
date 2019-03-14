@@ -20,11 +20,11 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     @FXML
     private VBox container;
     @FXML
+    private VBox pageContainer;
+    @FXML
     private JFXButton save;
     @FXML
     private TextArea questionBoard;
-    @FXML
-    private AnchorPane pageContainer;
 
     String[] DayString = {" ","周一","周二","周三","周四","周五","周六","周日"};
     String[] WeekString = {"所有周","第一周","第二周","第三周","第四周","第五周","第六周","第七周","第八周","第九周","第十周","第十一周","第十二周","第十三周","第十四周"};
@@ -197,5 +197,7 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
                 Utilities.popMessage("信息保存成功!", pageContainer);
             }
         });
+
+        finishLoading();
     }
 }

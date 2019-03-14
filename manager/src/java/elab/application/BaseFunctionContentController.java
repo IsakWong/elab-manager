@@ -8,16 +8,17 @@ public class BaseFunctionContentController extends BaseViewController {
     public Function Func;
     public BaseModulePageController ParentModuleController;
 
-    public void popupMessage(String message,long time)
-    {
-        Utilities.popMessage(message,ParentModuleController.container,time);
+    public void popupMessage(String message, long time) {
+        Utilities.popMessage(message, ParentModuleController.container, time);
     }
 
-    public void finishLoading(){
+    public void finishLoading() {
         IsDataInitialized = true;
         ParentModuleController.finishLoading();
     }
-    public void beginLoading(){ParentModuleController.beginLoading();}
+
+    public void beginLoading() {ParentModuleController.beginLoading();}
+
     @Override
     public void initializeController() {   }
 }

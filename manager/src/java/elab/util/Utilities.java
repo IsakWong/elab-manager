@@ -333,6 +333,12 @@ public class Utilities {
         return hanyupinyin;
     }
 
+    /**
+     * 获取图片
+     * @param imagePath
+     * @return
+     */
+
     public static ImageView getImage(String imagePath) {
         Image image = new Image(imagePath);
         ImageView imageView = new ImageView();

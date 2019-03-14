@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
+import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.new_person.NewPerson;
 import elab.util.Utilities;
@@ -118,7 +119,17 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         Stage stage = (Stage) container.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
-            if (file.getName().endsWith(".xls")) ;
+            Object[] options ={"确定", "取消"};
+            int m = JOptionPane.showOptionDialog(null, "新表单将覆盖已有表单，是否继续？", "Attention",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            if(m == 0) {
+                if (file.getName().endsWith(".xls")) {
+
+                } else if(file.getName().endsWith(".xlsx")) {
+
+                } else if(file.getName().endsWith(".csv")) {
+
+                }
+            }
         }
     }
 
@@ -185,6 +196,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     workbook.write(stream);
                     stream.flush();
                     stream.close();
+                    workbook.close();
                     Utilities.popMessage("导出成功", container);
                 } else if (file.getName().endsWith("xlsx")) {
                     XSSFWorkbook workbook = new XSSFWorkbook();
@@ -234,6 +246,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     workbook.write(stream);
                     stream.flush();
                     stream.close();
+                    workbook.close();
                     Utilities.popMessage("导出成功", container);
                 } else {
                     try {

@@ -1,5 +1,8 @@
 package elab.database;
 
+import elab.database.mappers.RotaOperations;
+import elab.database.mappers.TableOperations;
+import elab.serialization.beans.Rota;
 import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.beans.member.Member;
 import elab.serialization.beans.new_person.NewPerson;
@@ -7,7 +10,6 @@ import elab.serialization.beans.school_opening_information.SchoolOpeningInformat
 import elab.serialization.beans.student.Student;
 import javafx.collections.ObservableList;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -29,15 +31,14 @@ public class DatabaseOperations {
 
     protected DatabaseOperations() {
         try {
-                //读取mybatis-config.xml文件
-                Reader studentReader = Resources.getResourceAsReader("database/mybatis-config.xml");
-                //初始化mybatis,创建SqlSessionFactory类的实例
-                studentSqlSessionFactory = new SqlSessionFactoryBuilder().build(studentReader, "student");
-                Reader classReader = Resources.getResourceAsReader("database/mybatis-config.xml");
-                classSqlSessionFactory = new SqlSessionFactoryBuilder().build(classReader, "class");
-                Reader elabRecruitNew = Resources.getResourceAsReader("database/mybatis-config.xml");
-                recruitNewSqlSessionFactory = new SqlSessionFactoryBuilder().build(elabRecruitNew, "recruitNew");
-
+            //读取mybatis-config.xml文件
+            Reader studentReader = Resources.getResourceAsReader("database/mybatis-config.xml");
+            //初始化mybatis,创建SqlSessionFactory类的实例
+            studentSqlSessionFactory = new SqlSessionFactoryBuilder().build(studentReader, "student");
+            Reader classReader = Resources.getResourceAsReader("database/mybatis-config.xml");
+            classSqlSessionFactory = new SqlSessionFactoryBuilder().build(classReader, "class");
+            Reader elabRecruitNew = Resources.getResourceAsReader("database/mybatis-config.xml");
+            recruitNewSqlSessionFactory = new SqlSessionFactoryBuilder().build(elabRecruitNew, "recruitNew");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,11 +49,10 @@ public class DatabaseOperations {
     }
 
     public LoginMessage selectLoginMessage(String number) {
-        SqlSession session = studentSqlSessionFactory.openSession(ExecutorType.SIMPLE,true);
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             return session.selectOne("member.selectLoginMessage", number);
-        }
-        finally {
+        } finally {
             session.close();
         }
     }
@@ -142,8 +142,7 @@ public class DatabaseOperations {
     public SchoolOpeningInformation selectSchoolOpeningDateInformation() {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            SchoolOpeningInformation schoolOpeningInformation = session.selectOne("student.selectSchoolOpeningDate");
-            return schoolOpeningInformation;
+            return session.selectOne("student.selectSchoolOpeningDate");
         } finally {
             session.close();
         }
@@ -196,6 +195,20 @@ public class DatabaseOperations {
         }
     }
 
+    public void leadingInRota(List<Rota> rotas) {
+        SqlSession session =studentSqlSessionFactory.openSession();
+        try {
+            TableOperations tableOperations = session.getMapper(TableOperations.class);
+            tableOperations.deleteTable("duty");
+            RotaOperations rotaOperations = session.getMapper(RotaOperations.class);
+            rotaOperations.createRota("duty");
+            rotaOperations.insertRota(rotas, "duty");
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
     public void updateMember(LoginMessage loginMessage) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
@@ -205,6 +218,7 @@ public class DatabaseOperations {
             session.close();
         }
     }
+
     public void updateScore(Student student) {
         SqlSession session = classSqlSessionFactory.openSession();
         try {

@@ -8,13 +8,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ViewLogPageController">
+<VBox alignment="TOP_CENTER" prefHeight="495.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ViewLogPageController">
    <children>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1000.0">
+      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="796.0">
          <children>
             <Label text="操作时间">
                <HBox.margin>
@@ -47,8 +47,11 @@
                </HBox.margin>
             </JFXTextField>
          </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1000.0">
+      <HBox alignment="CENTER">
          <children>
             <Label text="登陆信息">
                <HBox.margin>
@@ -66,9 +69,12 @@
                </HBox.margin>
             </JFXButton>
          </children>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
       </HBox>
-      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="592.0" prefWidth="998.0">
-            <TableView fx:id="tableView" prefHeight="598.0" prefWidth="998.0">
+      <AnchorPane>
+            <TableView fx:id="tableView" prefHeight="400.0" prefWidth="798.0">
               <columns>
                 <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="operatingNumber" prefWidth="100.0" text="操作人学号" />
@@ -82,6 +88,9 @@
                   <TableColumn fx:id="version" prefWidth="60.0" text="版本号" />
               </columns>
             </TableView>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </VBox.margin>
       </AnchorPane>
    </children>
 </VBox>

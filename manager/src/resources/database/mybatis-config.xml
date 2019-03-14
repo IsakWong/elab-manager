@@ -9,7 +9,7 @@
         <typeAlias alias="loginMessage" type="elab.serialization.beans.member.LoginMessage"/>
         <typeAlias alias="student" type="elab.serialization.beans.student.Student"/>
         <typeAlias alias="schoolOpen" type="elab.serialization.beans.school_opening_information.SchoolOpeningInformation"/>
-        <typeAlias alias="rota" type="elab.serialization.beans.rota"/>
+        <typeAlias alias="rota" type="elab.serialization.beans.Rota"/>
         <typeAlias alias="log" type="elab.serialization.beans.log.Log"/>
         <typeAlias alias="newPerson" type="elab.serialization.beans.new_person.NewPerson"/>
     </typeAliases>
@@ -18,7 +18,7 @@
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/student?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/student?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="elabtemp"/>
                 <property name="password" value="elab123456"/>
             </dataSource>
@@ -27,7 +27,7 @@
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/class?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/class?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="elabtemp"/>
                 <property name="password" value="elab123456"/>
             </dataSource>
@@ -36,7 +36,7 @@
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/ElabRecruitNew?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="url" value="jdbc:mysql://bbs.dlut-elab.cn:3306/ElabRecruitNew?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="elabtemp"/>
                 <property name="password" value="elab123456"/>
             </dataSource>
@@ -46,5 +46,7 @@
         <mapper resource="database/database_mappers/member.xml"/>
         <mapper resource="database/database_mappers/student.xml"/>
         <mapper resource="database/database_mappers/recruit_new.xml"/>
+        <mapper resource="database/database_mappers/rota_operations.xml"/>
+        <mapper resource="database/database_mappers/table_operations.xml"/>
     </mappers>
 </configuration>

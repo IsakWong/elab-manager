@@ -3,7 +3,7 @@ package elab.serialization.beans;
 import org.apache.ibatis.type.Alias;
 
 @Alias("rota")
-public class rota {
+public class Rota {
 
     private String number;
     private String name;
@@ -63,5 +63,17 @@ public class rota {
     @Override
     public String toString() {
         return number + "" + name + "" + group + "" + time + "" + week + "" + day;
+    }
+
+    public Rota(String number, String name, String group, String time, String week, String day){
+        this.number = number;
+        this.name = name;
+        this.group = group;
+        this.time = time;
+        this.week = week;
+        this.day = day;
+    }
+
+    public Rota() {
     }
 }

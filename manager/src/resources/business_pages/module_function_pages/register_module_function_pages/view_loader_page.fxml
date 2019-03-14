@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.ViewLoaderPageController">
+<HBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.ViewLoaderPageController">
    <children>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="280.0">
+      <VBox alignment="TOP_CENTER">
          <children>
             <DatePicker fx:id="datePicker">
                <VBox.margin>
@@ -60,14 +60,17 @@
                   <Insets right="86.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="listView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="260.0">
+            <ListView fx:id="listView">
                <VBox.margin>
-                  <Insets top="2.0" />
+                  <Insets bottom="5.0" top="2.0" />
                </VBox.margin></ListView>
          </children>
+         <HBox.margin>
+            <Insets bottom="5.0" left="5.0" />
+         </HBox.margin>
       </VBox>
-      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="667.0" prefWidth="720.0">
-            <TableView fx:id="tableView" prefHeight="663.0" prefWidth="718.0">
+      <AnchorPane>
+            <TableView fx:id="tableView">
               <columns>
                 <TableColumn fx:id="number" prefWidth="90.0" text="学号" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
@@ -80,7 +83,7 @@
               </columns>
             </TableView>
          <HBox.margin>
-            <Insets top="20.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="20.0" />
          </HBox.margin>
       </AnchorPane>
    </children>

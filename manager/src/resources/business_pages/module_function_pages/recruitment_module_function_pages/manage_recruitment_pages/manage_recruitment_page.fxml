@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.recruitment_module_function_controllers.manage_recruitment_page_controllers.ManegeRecruitmentPageController">
+<VBox fx:id="container" prefHeight="490.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.recruitment_module_function_controllers.manage_recruitment_page_controllers.ManegeRecruitmentPageController">
    <children>
-      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0" prefWidth="1000.0">
+      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0">
          <children>
             <Label text="导入本地录取名单">
                <HBox.margin>
@@ -36,12 +36,12 @@
             </AnchorPane>
             <Label fx:id="fileOutLabel1" text="注意：信息编辑完毕后按&quot;ENTER&quot;键方可完成编辑">
                <HBox.margin>
-                  <Insets left="250.0" top="30.0" />
+                  <Insets left="100.0" top="30.0" />
                </HBox.margin>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0" prefWidth="1000.0">
+      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0">
          <children>
             <AnchorPane prefHeight="45.0" prefWidth="136.0">
                <children>
@@ -64,13 +64,13 @@
             </JFXButton>
             <Label fx:id="fileOutLabel11" text="编辑完的信息会即时更新到数据库中">
                <HBox.margin>
-                  <Insets bottom="30.0" left="388.0" />
+                  <Insets bottom="30.0" left="238.0" />
                </HBox.margin>
             </Label>
          </children>
       </HBox>
-      <AnchorPane prefHeight="601.0" prefWidth="1000.0">
-          <TableView fx:id="tableView" prefHeight="601.0" prefWidth="1000.0">
+      <AnchorPane prefHeight="400.0" prefWidth="960.0">
+          <TableView fx:id="tableView" prefHeight="400.0" prefWidth="931.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0">
              <columns>
                  <TableColumn fx:id="number" prefWidth="100.0" text="学号" />
                  <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />

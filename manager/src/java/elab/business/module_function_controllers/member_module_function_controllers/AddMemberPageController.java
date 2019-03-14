@@ -44,7 +44,7 @@ public class AddMemberPageController extends BaseFunctionContentController {
     @FXML
     private ImageView twicePwdOK;
     @FXML
-    private AnchorPane container;
+    private VBox container;
 
     private Paint unFocusColor;
 
@@ -237,5 +237,7 @@ public class AddMemberPageController extends BaseFunctionContentController {
                 telInputField.setUnFocusColor(unFocusColor);
             }
         });
+
+        finishLoading();
     }
 }

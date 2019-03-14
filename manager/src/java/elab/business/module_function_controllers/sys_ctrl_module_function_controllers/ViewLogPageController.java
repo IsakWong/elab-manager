@@ -3,6 +3,7 @@ package elab.business.module_function_controllers.sys_ctrl_module_function_contr
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import elab.application.BaseFunctionContentController;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.log.Log;
@@ -23,7 +24,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class ViewLogPageController extends BaseViewController {
+public class ViewLogPageController extends BaseFunctionContentController {
 
     @FXML
     private DatePicker datePicker;

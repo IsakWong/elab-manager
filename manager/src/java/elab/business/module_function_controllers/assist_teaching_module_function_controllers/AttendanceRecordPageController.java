@@ -2,6 +2,7 @@ package elab.business.module_function_controllers.assist_teaching_module_functio
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
@@ -19,7 +20,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
@@ -32,7 +32,7 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
     @FXML
     private JFXComboBox comboBox;
     @FXML
-    private DatePicker datePicker;
+    private JFXDatePicker datePicker;
     @FXML
     private JFXTextField inputField;
     @FXML

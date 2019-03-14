@@ -27,18 +27,15 @@ public class BaseModulePageController extends BaseViewController {
 
     private Function CurrentFunction;
 
-    public ArrayList<Function> loadedFuncs = new ArrayList<Function>();
+    public ArrayList<Function> loadedFuncs = new ArrayList<>();
 
-    public void setCurrentFunction(Function func)
-    {
+    public void setCurrentFunction(Function func) {
         if(func == CurrentFunction)
             return;
         for (Function f : loadedFuncs) {
-            if(f != func)
-            {
+            if(f != func) {
                 f.FxmlRoot.setVisible(false);
-            }else
-            {
+            } else {
                 f.FxmlRoot.setVisible(true);
                 double top = 16;
                 double right = 16;
@@ -47,49 +44,43 @@ public class BaseModulePageController extends BaseViewController {
         func.FxmlRoot.setVisible(true);
         CurrentFunction = func;
     }
-    public void addFunctionContent(Function func)
-    {
+    public void addFunctionContent(Function func) {
         if(func == null)
             return;
-        else
-        {
+        else {
             loadedFuncs.add(func);
             container.getChildren().add(func.FxmlRoot);
         }
     }
 
-    public void beginLoading()
-    {
-        if(!CurrentFunction.Controller.IsDataInitialized)
-        {
-            if(dialog == null)
-            {
-                try
-                {
+    public void beginLoading() {
+        if(!CurrentFunction.Controller.IsDataInitialized) {
+            if(dialog == null) {
+                try {
                     dialog = new JFXDialog();
                     dialog.setOverlayClose(false);
                     FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/business_pages/loading_dialog.fxml"));
                     Parent root = moduleLoader.load();
                     VBox box = (VBox) root.lookup("#dialog");
                     dialog.setContent(box);
-                }catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
             }
             dialog.show(container);
-        }else{
+        } else {
             if(dialog != null)
                 dialog.close();
         }
 
     }
-    public void finishLoading()
-    {
-        if(dialog !=null)
+
+    public void finishLoading() {
+        if(dialog != null)
             dialog.close();
     }
+
     @Override
     public void initializeController() {
     }

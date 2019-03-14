@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" spacing="4.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers.EnterScorePageController">
+<HBox fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" spacing="4.0" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.enter_score_page_controllers.EnterScorePageController">
    <children>
       <TableView fx:id="resultTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="card-view">
          <columns>
@@ -28,7 +28,7 @@
             <Insets />
          </HBox.margin>
       </TableView>
-      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="179.0">
          <children>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-background-color: rgb(255,255,255);">
                <children>
@@ -71,7 +71,7 @@
                   <DropShadow color="#000000a6" />
                </effect>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefWidth="100.0" styleClass="card-view">
+            <VBox alignment="TOP_CENTER" prefHeight="432.0" prefWidth="179.0" styleClass="card-view">
                <children>
                   <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="tip-label" text="成绩输入">
                      <VBox.margin>

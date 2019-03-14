@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="elab.database.mappers.RotaOperations">
+    <update id="createRota" parameterType="String">
+        CREATE TABLE ${rotaName} (
+            学号 varchar(255) DEFAULT NULL,
+            姓名 varchar(255) DEFAULT NULL,
+            组别 varchar(255) DEFAULT NULL,
+            时段 varchar(255) DEFAULT NULL,
+            单双周 varchar(255) DEFAULT NULL,
+            星期 varchar(255) DEFAULT NULL);
+        ALTER TABLE ${rotaName} CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+    </update>
+    <insert id="insertRota" parameterType="java.util.List">
+        insert into ${tableName} (学号,姓名,组别,时段,单双周,星期)
+        values
+        <foreach collection="rotas" separator="," item="rota">
+            (#{rota.number},#{rota.name},#{rota.group},#{rota.time},#{rota.week},#{rota.day})
+        </foreach>
+    </insert>
+</mapper>

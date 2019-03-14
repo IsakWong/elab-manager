@@ -23,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -45,6 +46,7 @@ public class MainWindowController extends BaseViewController {
     public void initializeController() {
         try {
 
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
             mainMenuCloseBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
