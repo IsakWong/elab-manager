@@ -1,6 +1,7 @@
 package elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers;
 
 import com.jfoenix.controls.*;
+import elab.application.BaseFunctionContentController;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.util.Utilities;
@@ -12,7 +13,7 @@ import javafx.scene.input.MouseButton;
 
 import java.util.List;
 
-public class UserManagementPageController extends BaseViewController {
+public class UserManagementPageController extends BaseFunctionContentController {
 
     @FXML
     private JFXTextField name;

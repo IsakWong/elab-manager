@@ -1,5 +1,6 @@
 package elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers;
 
+import elab.application.BaseFunctionContentController;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.serialization.beans.member.Member;
@@ -10,7 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class MemberInformationPageController extends BaseViewController {
+public class MemberInformationPageController extends BaseFunctionContentController {
 
     @FXML
     private TableView<Member> tableView;

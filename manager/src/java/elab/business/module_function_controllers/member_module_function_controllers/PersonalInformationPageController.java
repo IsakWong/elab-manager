@@ -233,5 +233,6 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
             if(event.getButton() == MouseButton.PRIMARY)
                 cleanPwd();
         });
+        IsDataInitialized = true;
     }
 }
