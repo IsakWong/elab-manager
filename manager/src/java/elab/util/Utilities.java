@@ -36,7 +36,6 @@ public class Utilities {
     }
     public static void popMessage(String message, Pane container, long time) {
         JFXSnackbar bar = new JFXSnackbar(container);
-
         bar.show(message,time);
     }
 

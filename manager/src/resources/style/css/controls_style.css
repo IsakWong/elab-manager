@@ -31,7 +31,7 @@
 
 .card-view{
     -fx-background-color: rgb(255,255,255);
-    -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.8) ,10,0,0.5,0.5 );
+    -fx-effect:dropshadow(one-pass-box,rgba(0,0,0,0.6) ,5,0,0.4,0.4 );
 }
 
 .table-view:focused  .virtual-flow  .clipped-container  .sheet  .table-row-cell:filled:selected{

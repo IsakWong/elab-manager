@@ -7,12 +7,13 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.UserManagementPageController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.UserManagementPageController">
    <children>
-      <VBox alignment="CENTER" prefHeight="106.0" prefWidth="712.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
          <children>
             <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="信息查询" />
             <HBox alignment="CENTER">
@@ -75,9 +76,19 @@
             <Insets bottom="8.0" />
          </VBox.margin>
       </VBox>
-      <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css" tabClosingPolicy="UNAVAILABLE" />
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="信息列表" />
+            <AnchorPane maxHeight="1.7976931348623157E308">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="70.0" style="-fx-background-color: #0177D6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
    </children>
    <padding>
-      <Insets bottom="10.0" left="8.0" right="8.0" top="8.0" />
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
    </padding>
 </VBox>

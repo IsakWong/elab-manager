@@ -4,9 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.SearchResultPageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers.SearchResultPageController">
    <children>
-      <TableView fx:id="studentTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="486.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css" visible="false">
+      <TableView fx:id="studentTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@../../../../style/css/controls_style.css" visible="false">
          <columns>
             <TableColumn fx:id="number" prefWidth="99.0" text="学号" />
             <TableColumn fx:id="name" prefWidth="74.0" text="姓名" />
@@ -19,7 +19,7 @@
             <TableColumn fx:id="tel" prefWidth="135.0" text="联系电话" />
          </columns>
       </TableView>
-      <TableView fx:id="memberTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="486.0" prefWidth="998.0" stylesheets="@../../../../style/css/controls_style.css">
+      <TableView fx:id="memberTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@../../../../style/css/controls_style.css">
          <columns>
             <TableColumn fx:id="numberM" prefWidth="100.0" text="学号" />
             <TableColumn fx:id="userName" prefWidth="130.0" text="登陆用户名" />

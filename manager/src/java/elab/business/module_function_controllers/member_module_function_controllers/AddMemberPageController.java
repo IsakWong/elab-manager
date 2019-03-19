@@ -237,7 +237,6 @@ public class AddMemberPageController extends BaseFunctionContentController {
                 telInputField.setUnFocusColor(unFocusColor);
             }
         });
-
-        finishLoading();
+        IsDataInitialized = true;
     }
 }

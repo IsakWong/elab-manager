@@ -1,7 +1,8 @@
 package elab.business.module_function_controllers.member_module_function_controllers.user_management_page_controllers;
 
-import elab.application.BaseViewController;
+import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.student.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +11,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class StudentInformationPageController extends BaseViewController {
+import java.util.List;
+
+public class StudentInformationPageController extends BaseFunctionContentController {
 
     @FXML
     private TableView<Student> tableView;
@@ -33,10 +36,38 @@ public class StudentInformationPageController extends BaseViewController {
     @FXML
     private TableColumn<Student, String> tel;
 
+    private Boolean isInit = false;
+
+    Session<List> queryStudentSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents();
+            if(sessionResult.result == null)
+                sessionResult.errorMessage="无法获取本学期的学生信息";
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+            students.addAll(param);
+            tableView.setItems(students);
+            isInit = true;
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage,3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取信息中",3000);
+        }
+    };
+
     @Override
     public void initializeController() {
-        ObservableList<Student> students = FXCollections.<Student>observableArrayList();
-        students.addAll(DatabaseOperations.getInstance().selectAllStudents());
+        queryStudentSession.send();
         number.setCellValueFactory(new PropertyValueFactory<Student, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
         college.setCellValueFactory(new PropertyValueFactory<Student, String>("college"));
@@ -46,6 +77,9 @@ public class StudentInformationPageController extends BaseViewController {
         softScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("softScore"));
         paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
         tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
-        tableView.setItems(students);
+    }
+
+    public Boolean isInit() {
+        return isInit;
     }
 }

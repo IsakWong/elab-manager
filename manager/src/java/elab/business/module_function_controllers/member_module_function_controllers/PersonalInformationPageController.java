@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
-import elab.database.Session;
 import elab.serialization.beans.member.LoginMessage;
 import elab.util.Utilities;
 import javafx.fxml.FXML;
@@ -56,29 +55,6 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
     private VBox container;
 
     private Paint unFocusColor;
-
-    Session<LoginMessage> loginSession = new Session<LoginMessage>() {
-        @Override
-        public void onPostFetchResult(SessionResult<LoginMessage> sessionResult) {
-            DatabaseOperations.getInstance().updateMember(loginMessage);
-        }
-
-        @Override
-        public void onSuccess(LoginMessage param) {
-            loginMessage.setOldNumber(loginMessage.getNumber());
-            Utilities.popMessage("用户信息更新成功", container);
-        }
-
-        @Override
-        public void onError(String errorMessage) {
-            Utilities.popMessage(errorMessage, container);
-        }
-
-        @Override
-        public void onBusy() {
-            Utilities.popMessage("正在更新中", container);
-        }
-    };
 
     public void cleanPwd() {
         pwdInputField.setText("");
@@ -232,7 +208,9 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
                     else
                         loginMessage.setSex("女");
                     loginMessage.setPassword(Utilities.encrypt(pwdInputField.getText()));
-                    loginSession.send();
+                    DatabaseOperations.getInstance().updateMember(loginMessage);
+                    loginMessage.setOldNumber(loginMessage.getNumber());
+                    Utilities.popMessage("修改信息成功!", container);
                     cleanPwd();
                 }
             }
@@ -256,7 +234,6 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
             if(event.getButton() == MouseButton.PRIMARY)
                 cleanPwd();
         });
-
-        finishLoading();
+        IsDataInitialized = true;
     }
 }

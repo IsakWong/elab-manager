@@ -30,8 +30,6 @@ import java.util.ArrayList;
 public class MainWindowController extends BaseViewController {
 
     @FXML
-    private HBox topBar;
-    @FXML
     private JFXTabPane tabPane;
     @FXML
     private JFXButton mainMenuCloseBtn;

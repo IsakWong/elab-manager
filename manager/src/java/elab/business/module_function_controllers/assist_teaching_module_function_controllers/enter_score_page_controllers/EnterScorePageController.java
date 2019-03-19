@@ -6,13 +6,6 @@ import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.student.Student;
 import elab.util.Utilities;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
-import io.reactivex.schedulers.Schedulers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -137,7 +130,6 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
             logBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
-
                     if (!numberLabel.getText().equals("")) {
                         student.setHardScore(Integer.parseInt(hardScoreInput.getText()));
                         student.setSoftScore(Integer.parseInt(softScoreInput.getText()));
