@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.log.Log;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
@@ -80,8 +81,37 @@ public class ViewLogPageController extends BaseFunctionContentController {
         tableView.refresh();
     }
 
+    Session<List> queryLogSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectAllLogs();
+            if(sessionResult.result == null)
+                sessionResult.errorMessage="无法获取该Log信息";
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<Log> logs = FXCollections.observableArrayList();
+            logs.addAll(param);
+            tableView.setItems(logs);
+            finishLoading();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取Log信息", 3000);
+        }
+    };
+
     @Override
     public void initializeController() {
+
+        queryLogSession.send();
 
         informationComboBox.getItems().addAll(
                 "所有信息",

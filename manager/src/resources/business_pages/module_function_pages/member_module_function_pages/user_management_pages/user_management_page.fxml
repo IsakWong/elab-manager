@@ -79,7 +79,7 @@
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
          <children>
             <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="信息列表" />
-            <AnchorPane maxHeight="1.7976931348623157E308">
+            <AnchorPane maxHeight="1.7976931348623157E308" prefHeight="500.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="70.0" style="-fx-background-color: #0177D6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                   <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

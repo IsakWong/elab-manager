@@ -7,44 +7,61 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="container" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ChangeAdminPageController">
+<HBox fx:id="container" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="16.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.sys_ctrl_module_function_controllers.ChangeAdminPageController">
    <children>
-      <VBox>
+      <VBox alignment="CENTER">
          <children>
-            <Label text="查询(输入首字母)">
+            <VBox alignment="CENTER" prefWidth="100.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="查询(键入拼音缩写筛选)">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="selectField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="187.0">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
                <VBox.margin>
-                  <Insets left="60.0" top="50.0" />
+                  <Insets bottom="16.0" />
                </VBox.margin>
-            </Label>
-            <JFXTextField fx:id="selectField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="187.0">
-               <VBox.margin>
-                  <Insets left="60.0" top="10.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <Label text="双击选择">
-               <VBox.margin>
-                  <Insets left="60.0" top="50.0" />
-               </VBox.margin>
-            </Label>
-            <ListView fx:id="chooseListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="60.0" top="10.0" />
-               </VBox.margin>
-            </ListView>
+            </VBox>
+            <VBox prefHeight="495.0" prefWidth="248.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="双击选择">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <ListView fx:id="chooseListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="248.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ListView>
+               </children></VBox>
          </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
       </VBox>
-      <VBox>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <children>
-            <Label text="班委列表(双击除去)">
-               <VBox.margin>
-                  <Insets left="30.0" top="50.0" />
-               </VBox.margin>
-            </Label>
-            <ListView fx:id="adminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="248.0">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="30.0" right="5.0" top="10.0" />
-               </VBox.margin>
-            </ListView>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="班委列表(双击除去)">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <ListView fx:id="adminListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="555.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ListView>
+               </children>
+            </VBox>
          </children>
       </VBox>
    </children>

@@ -47,7 +47,7 @@ public class MemberInformationPageController extends BaseFunctionContentControll
     Session<List> queryMemberSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents();
+            sessionResult.result = DatabaseOperations.getInstance().selectAllMembers();
             if(sessionResult.result == null)
                 sessionResult.errorMessage="无法获取成员信息";
         }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.Rota;
 import elab.util.Utilities;
 import javafx.collections.FXCollections;
@@ -220,19 +221,43 @@ public class RotaPageController extends BaseFunctionContentController {
         }
     }
 
+    Session<List> queryRotaSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectRota();
+            if(sessionResult.result == null)
+                sessionResult.errorMessage="无法获取值班表";
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<Rota> rota = FXCollections.observableArrayList();
+            rota.addAll(param);
+            tableView.setItems(rota);
+            finishLoading();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage,3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取信息中",3000);
+        }
+    };
+
     @Override
     public void initializeController() {
 
+        queryRotaSession.send();
         number.setCellValueFactory(new PropertyValueFactory<String, Rota>("number"));
         name.setCellValueFactory(new PropertyValueFactory<String, Rota>("name"));
         group.setCellValueFactory(new PropertyValueFactory<String, Rota>("group"));
         time.setCellValueFactory(new PropertyValueFactory<String, Rota>("time"));
         week.setCellValueFactory(new PropertyValueFactory<String, Rota>("week"));
         day.setCellValueFactory(new PropertyValueFactory<String, Rota>("day"));
-
-        ObservableList<Rota> rota = FXCollections.observableArrayList();
-        rota.addAll(DatabaseOperations.getInstance().selectRota());
-        tableView.setItems(rota);
 
         rotaFileIn.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY) {

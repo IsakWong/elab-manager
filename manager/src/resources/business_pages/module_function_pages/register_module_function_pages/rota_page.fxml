@@ -24,7 +24,7 @@
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
          <children>
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="值班表" />
-            <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+            <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="700.0">
               <columns>
                 <TableColumn fx:id="number" prefWidth="180.0" text="学号" />
                 <TableColumn fx:id="name" prefWidth="120.0" text="姓名" />

@@ -3,6 +3,7 @@ package elab.business.module_function_controllers.sys_ctrl_module_function_contr
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
@@ -13,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
+
+import java.util.List;
 
 public class ChangeAdminPageController extends BaseFunctionContentController {
 
@@ -29,17 +32,43 @@ public class ChangeAdminPageController extends BaseFunctionContentController {
     private ObservableList<String> chooseList = FXCollections.<String>observableArrayList();
     private ObservableList<String> adminList = FXCollections.<String>observableArrayList();
 
+    Session<List> queryMemberSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectAllMembers();
+            if(sessionResult == null) {
+                sessionResult.errorMessage = "无法获取成员信息";
+            }
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<Member> members = FXCollections.<Member>observableArrayList();
+            members.addAll(param);
+            for(int i = 0; i < members.size(); ++i) {
+                if(members.get(i).getDuty() == null)
+                    chooseList.add(members.get(i).getName());
+                else
+                    adminList.add(members.get(i).getName());
+            }
+            finishLoading();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取Log信息", 3000);
+        }
+    };
+
     @Override
     public void initializeController() {
 
-        ObservableList<Member> members = FXCollections.<Member>observableArrayList();
-        members.addAll(DatabaseOperations.getInstance().selectAllMembers());
-        for(int i = 0; i < members.size(); ++i) {
-            if(members.get(i).getDuty() == null)
-                chooseList.add(members.get(i).getName());
-            else
-                adminList.add(members.get(i).getName());
-        }
+        queryMemberSession.send();
 
         chooseListView.setItems(chooseList);
         adminListView.setItems(adminList);

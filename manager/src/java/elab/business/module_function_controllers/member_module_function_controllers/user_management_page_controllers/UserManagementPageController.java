@@ -165,7 +165,7 @@ public class UserManagementPageController extends BaseFunctionContentController 
                 }
             });
 
-                finishLoading();
+            finishLoading();
 
         } catch (Exception exp) {
             System.out.println(exp.toString());
