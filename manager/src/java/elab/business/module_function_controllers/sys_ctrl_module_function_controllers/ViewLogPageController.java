@@ -69,28 +69,49 @@ public class ViewLogPageController extends BaseFunctionContentController {
      * (详情请看数据表中的"操作时间"列以及Utilities.filter())
      */
 
-    private void selectLogs() {
-        List list = DatabaseOperations.getInstance().selectAllLogs();
-        ObservableList<Log> chooseLogs = FXCollections.<Log>observableArrayList();
-        if(isDateChanged) Utilities.filter(list, newDate, 2);
-        if(!operatingNumberField.getText().equals("")) Utilities.filter(list, 1, "\t" + operatingNumberField.getText());
-        if(!operatedNumberField.getText().equals("")) Utilities.filter(list, 5, "\t" + operatedNumberField.getText());
-        if(!informationComboBox.getValue().equals("所有信息")) Utilities.filter(list, informationComboBox.getValue(), 9);
-        chooseLogs.addAll(list);
-        tableView.setItems(chooseLogs);
-        tableView.refresh();
-    }
+    Session<List> selectLogSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectAllLogs();
+            if(sessionResult.result == null) {
+                sessionResult.errorMessage = "无法获取log信息";
+            }
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<Log> chooseLogs = FXCollections.<Log>observableArrayList();
+            if(isDateChanged) Utilities.filter(param, newDate, 2);
+            if(!operatingNumberField.getText().equals("")) Utilities.filter(param, 1, "\t" + operatingNumberField.getText());
+            if(!operatedNumberField.getText().equals("")) Utilities.filter(param, 5, "\t" + operatedNumberField.getText());
+            if(!informationComboBox.getValue().equals("所有信息")) Utilities.filter(param, informationComboBox.getValue(), 9);
+            chooseLogs.addAll(param);
+            tableView.setItems(chooseLogs);
+            tableView.refresh();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取Log信息", 3000);
+        }
+    };
 
     Session<List> queryLogSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectAllLogs();
             if(sessionResult.result == null)
-                sessionResult.errorMessage="无法获取该Log信息";
+                sessionResult.errorMessage="无法获取Log信息";
         }
 
         @Override
         public void onSuccess(List param) {
+            logList = param;
             ObservableList<Log> logs = FXCollections.observableArrayList();
             logs.addAll(param);
             tableView.setItems(logs);
@@ -133,13 +154,12 @@ public class ViewLogPageController extends BaseFunctionContentController {
         informationComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogs();
+                selectLogSession.send();
             }
         });
 
-        logList = DatabaseOperations.getInstance().selectAllLogs();
         returnBtn.setOnMouseClicked(event -> {
-            ObservableList<Log> logs = FXCollections.<Log>observableArrayList();
+            ObservableList<Log> logs = FXCollections.observableArrayList();
             logs.addAll(logList);
             datePicker.setValue(LocalDate.now());
             isDateChanged = false;
@@ -156,7 +176,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
                     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                         newDate = newValue;
                         isDateChanged = true;
-                        selectLogs();
+                        selectLogSession.send();
                     }
                 }
         );
@@ -192,27 +212,24 @@ public class ViewLogPageController extends BaseFunctionContentController {
         operatingNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogs();
+                selectLogSession.send();
             }
         });
 
         operatedNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogs();
+                selectLogSession.send();
             }
         });
 
         informationComboBox.getEditor().textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogs();
+                selectLogSession.send();
             }
         });
 
-        ObservableList<Log> logs = FXCollections.<Log>observableArrayList();
-        logs.addAll(logList);
-        tableView.setItems(logs);
         ID.setCellValueFactory(new PropertyValueFactory<Log, String>("ID"));
         operatingNumber.setCellValueFactory(new PropertyValueFactory<Log, String>("operatingNumber"));
         time.setCellValueFactory(new PropertyValueFactory<Log, String>("time"));
@@ -223,7 +240,6 @@ public class ViewLogPageController extends BaseFunctionContentController {
         paperScore.setCellValueFactory(new PropertyValueFactory<Log, String>("paperScore"));
         information.setCellValueFactory(new PropertyValueFactory<Log, String>("information"));
         version.setCellValueFactory(new PropertyValueFactory<Log, String>("version"));
-
         tableView.setPlaceholder(new Label("无Log信息"));
     }
 }

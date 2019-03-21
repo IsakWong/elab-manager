@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.new_person.NewPerson;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
@@ -104,6 +105,32 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
     private ContextMenu contextMenu = null;
 
     private String[] times = {"24日晚18:00", "24日晚19:00", "24日晚20:00", "25日晚18:00", "25日晚19:00", "25日晚20:00"};
+
+    Session<List> queryNewPeopleSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectNewPeople();
+            if(sessionResult.result == null) {
+                sessionResult.errorMessage = "无法获取新成员信息";
+            }
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            initItems(param);
+            finishLoading();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 3000);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在获取信息", 3000);
+        }
+    };
 
     public void chooseFileIn() {
 
@@ -353,8 +380,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         }
     }
 
-    public void initItems() {
-        List list = DatabaseOperations.getInstance().selectNewPeople();
+    public void initItems(List list) {
         ObservableList<NewPerson> newPeople = FXCollections.<NewPerson>observableArrayList();
         newPeople.addAll(list);
         for (NewPerson newPerson : newPeople) {
@@ -570,7 +596,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 for(NewPerson person : newPeople) {
                     if(person.getNumber() != null && person.getNumber().equals(event.getNewValue())) {
                         newNumber = false;
-                        Utilities.popMessage("此学号已存在,此信息无效", container);
+                        Utilities.popMessage("此学号已存在,信息无效", container);
                         break;
                     }
                 }
@@ -819,6 +845,8 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
     @Override
     public void initializeController() {
 
+        queryNewPeopleSession.send();
+
         number.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("name"));
         sex.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("sex"));
@@ -837,7 +865,6 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         evaluation.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("evaluation"));
 
         initTableView();
-        initItems();
 
         fileIn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
