@@ -1,5 +1,6 @@
 package elab.business.module_function_controllers.register_module_function_controllers;
 
+import com.jfoenix.controls.JFXDatePicker;
 import elab.application.BaseFunctionContentController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -7,7 +8,7 @@ import javafx.scene.control.*;
 public class ViewLoaderPageController extends BaseFunctionContentController {
 
     @FXML
-    private DatePicker datePicker;
+    private JFXDatePicker datePicker;
     @FXML
     private Label arrivalLabel;
     @FXML

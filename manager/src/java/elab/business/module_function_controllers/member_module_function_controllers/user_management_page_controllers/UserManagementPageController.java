@@ -2,7 +2,6 @@ package elab.business.module_function_controllers.member_module_function_control
 
 import com.jfoenix.controls.*;
 import elab.application.BaseFunctionContentController;
-import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.util.Utilities;
 import javafx.fxml.FXML;

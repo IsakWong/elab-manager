@@ -40,6 +40,7 @@ public abstract class Session<ReturnType> implements SessionCallback<ReturnType>
                 Session.this.onSuccess(sessionResult.result);
             else
                 Session.this.onError(returnType.errorMessage);
+            IsSending = false;
         }
 
         @Override

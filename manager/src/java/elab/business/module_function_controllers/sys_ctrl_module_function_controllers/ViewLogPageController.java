@@ -19,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 
 import java.time.LocalDate;
@@ -37,6 +39,8 @@ public class ViewLogPageController extends BaseFunctionContentController {
     private JFXComboBox<String> informationComboBox;
     @FXML
     private JFXButton returnBtn;
+    @FXML
+    private JFXButton selectBtn;
     @FXML
     private TableView tableView;
     @FXML
@@ -59,10 +63,11 @@ public class ViewLogPageController extends BaseFunctionContentController {
     private TableColumn<Log, String> information;
     @FXML
     private TableColumn<Log, String> version;
+    @FXML
+    private VBox container;
 
     private List logList;
-    private String newDate;
-    private Boolean isDateChanged = false;
+    private Boolean isInit = false;
 
     /**
      * 由于日期格式与规定格式重复，selectLogs()的index在2后的均加一
@@ -80,8 +85,10 @@ public class ViewLogPageController extends BaseFunctionContentController {
 
         @Override
         public void onSuccess(List param) {
-            ObservableList<Log> chooseLogs = FXCollections.<Log>observableArrayList();
-            if(isDateChanged) Utilities.filter(param, newDate, 2);
+            if(isInit)
+                Utilities.popMessage("正在查询信息", container);
+            ObservableList<Log> chooseLogs = FXCollections.observableArrayList();
+            if(!(datePicker.getValue() == null)) Utilities.filter(param, datePicker.getValue().toString(), 2);
             if(!operatingNumberField.getText().equals("")) Utilities.filter(param, 1, "\t" + operatingNumberField.getText());
             if(!operatedNumberField.getText().equals("")) Utilities.filter(param, 5, "\t" + operatedNumberField.getText());
             if(!informationComboBox.getValue().equals("所有信息")) Utilities.filter(param, informationComboBox.getValue(), 9);
@@ -97,7 +104,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
 
         @Override
         public void onBusy() {
-            popupMessage("正在获取Log信息", 3000);
+            popupMessage("正在获取信息，请稍候", 3000);
         }
     };
 
@@ -115,6 +122,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
             ObservableList<Log> logs = FXCollections.observableArrayList();
             logs.addAll(param);
             tableView.setItems(logs);
+            isInit = true;
             finishLoading();
         }
 
@@ -136,11 +144,11 @@ public class ViewLogPageController extends BaseFunctionContentController {
 
         informationComboBox.getItems().addAll(
                 "所有信息",
-                "管理员登陆",
+                "管理员登录",
                 "查询或修改选课信息",
-                "第一次登陆",
+                "第一次登录",
                 "管理员退出",
-                "科中成员登陆",
+                "科中成员登录",
                 "科中成员退出",
                 "密码错误",
                 "上课同学退出",
@@ -151,35 +159,24 @@ public class ViewLogPageController extends BaseFunctionContentController {
         );
         informationComboBox.setValue("所有信息");
 
-        informationComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogSession.send();
+        returnBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                ObservableList<Log> logs = FXCollections.observableArrayList();
+                logs.addAll(logList);
+                datePicker.setValue(LocalDate.now());
+                operatingNumberField.setText("");
+                operatedNumberField.setText("");
+                informationComboBox.setValue("所有信息");
+                tableView.setItems(logs);
+                tableView.refresh();
             }
         });
 
-        returnBtn.setOnMouseClicked(event -> {
-            ObservableList<Log> logs = FXCollections.observableArrayList();
-            logs.addAll(logList);
-            datePicker.setValue(LocalDate.now());
-            isDateChanged = false;
-            operatingNumberField.setText("");
-            operatedNumberField.setText("");
-            informationComboBox.setValue("所有信息");
-            tableView.setItems(logs);
-            tableView.refresh();
+        selectBtn.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                selectLogSession.send();
+            }
         });
-
-        datePicker.getEditor().textProperty().addListener(
-                new ChangeListener<String>() {
-                    @Override
-                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                        newDate = newValue;
-                        isDateChanged = true;
-                        selectLogSession.send();
-                    }
-                }
-        );
 
         /**
          * 设置DatePicker选中日期的输出格式
@@ -206,27 +203,6 @@ public class ViewLogPageController extends BaseFunctionContentController {
                 } else {
                     return null;
                 }
-            }
-        });
-
-        operatingNumberField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogSession.send();
-            }
-        });
-
-        operatedNumberField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogSession.send();
-            }
-        });
-
-        informationComboBox.getEditor().textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectLogSession.send();
             }
         });
 

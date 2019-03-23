@@ -34,7 +34,7 @@
                         <Label fx:id="batchLabel" layoutY="15.0" text="批量操作" />
                         <JFXButton fx:id="batchBtn" layoutX="69.0" layoutY="5.0" prefHeight="35.0" prefWidth="62.0" styleClass="raised-button" text="░" />
                         <Label fx:id="cancelBatchLabel" layoutY="15.0" text="取消批量操作" visible="false" />
-                        <JFXButton fx:id="cancelBatchBtn" layoutX="85.0" layoutY="8.0" prefHeight="30.0" prefWidth="30.0" text="▮" visible="false" />
+                        <JFXButton fx:id="cancelBatchBtn" layoutX="85.0" layoutY="8.0" prefHeight="30.0" prefWidth="30.0" styleClass="raised-button" text="▮" visible="false" />
                      </children>
                   </AnchorPane>
                </children>

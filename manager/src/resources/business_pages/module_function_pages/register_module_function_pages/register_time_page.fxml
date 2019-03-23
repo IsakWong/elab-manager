@@ -4,57 +4,18 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="container" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.RegisterTimePageController">
+<HBox fx:id="container" spacing="8.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.register_module_function_controllers.RegisterTimePageController">
    <children>
-      <VBox>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
          <children>
-            <Label text="统计对象">
-               <VBox.margin>
-                  <Insets left="25.0" top="20.0" />
-               </VBox.margin>
-            </Label>
-            <JFXRadioButton fx:id="all" style="-jfx-selected-color: #303f9f;" text="全体成员">
-               <VBox.margin>
-                  <Insets left="40.0" top="20.0" />
-               </VBox.margin>
-            </JFXRadioButton>
-            <JFXRadioButton fx:id="hard" style="-jfx-selected-color: #303f9f;" text="电子组">
-               <VBox.margin>
-                  <Insets left="40.0" top="15.0" />
-               </VBox.margin>
-            </JFXRadioButton>
-            <JFXRadioButton fx:id="soft" style="-jfx-selected-color: #303f9f;" text="软件组">
-               <VBox.margin>
-                  <Insets left="40.0" top="15.0" />
-               </VBox.margin>
-            </JFXRadioButton>
-            <Separator prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Separator>
-            <Label text="查询(键入拼音首字母筛选)">
-               <VBox.margin>
-                  <Insets left="25.0" top="20.0" />
-               </VBox.margin>
-            </Label>
-            <JFXTextField fx:id="selectField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0">
-               <VBox.margin>
-                  <Insets left="40.0" top="5.0" />
-               </VBox.margin>
-            </JFXTextField>
-         </children>
-      </VBox>
-      <AnchorPane>
-         <children>
-            <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="622.0">
+            <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="签到时间" />
+            <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="714.0">
               <columns>
                 <TableColumn fx:id="number" prefWidth="150.0" text="学号" />
                 <TableColumn fx:id="name" prefWidth="120.0" text="姓名" />
@@ -63,6 +24,54 @@
               </columns>
             </TableView>
          </children>
-      </AnchorPane>
+      </VBox>
+      <VBox maxHeight="1.7976931348623157E308" minWidth="200.0" spacing="8.0">
+         <children>
+            <VBox styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="统计对象选择" />
+                  <JFXRadioButton fx:id="all" style="-jfx-selected-color: #303f9f;" text="全体成员">
+                     <VBox.margin>
+                        <Insets left="40.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="hard" style="-jfx-selected-color: #303f9f;" text="电子组">
+                     <VBox.margin>
+                        <Insets left="40.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="soft" style="-jfx-selected-color: #303f9f;" text="软件组">
+                     <VBox.margin>
+                        <Insets left="40.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXRadioButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
+            <VBox styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="查询(键入拼音首字母筛选)">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="selectField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0">
+                     <VBox.margin>
+                        <Insets left="20.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
+               <padding>
+                  <Insets bottom="9.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css" />
    </children>
+   <padding>
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+   </padding>
 </HBox>

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.AttendanceRecordPageController">
+<VBox fx:id="container" alignment="CENTER" fillWidth="false" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.assist_teaching_module_function_controllers.AttendanceRecordPageController">
    <children>
-      <VBox fx:id="container" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+      <VBox minHeight="-Infinity" minWidth="-Infinity" spacing="8.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
          <children>
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="助课信息">
                <VBox.margin>
