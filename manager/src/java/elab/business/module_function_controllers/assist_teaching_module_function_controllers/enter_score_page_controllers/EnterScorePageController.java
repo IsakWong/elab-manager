@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class EnterScorePageController extends BaseFunctionContentController {
+
     @FXML
     private JFXDatePicker date;
     @FXML
@@ -33,17 +34,11 @@ public class EnterScorePageController extends BaseFunctionContentController {
     @FXML
     private Label numberLabel;
     @FXML
-    private TextField numberInput;
-    @FXML
-    private TextField nameInput;
-    @FXML
     private TextField hardScoreInput;
     @FXML
     private TextField softScoreInput;
     @FXML
     private TextField paperScoreInput;
-    @FXML
-    private JFXButton selectBtn;
     @FXML
     private JFXButton logBtn;
     @FXML
@@ -69,8 +64,6 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
     ObservableList<Student> students = FXCollections.<Student>observableArrayList();
 
-    private int studentAmount;
-
     Session<List> queryStudentSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
@@ -85,6 +78,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             students.addAll(param);
             finishLoading();
             resultTable.setItems(students);
+            peopleAmount.setText("共" + students.size() + "人");
         }
 
         @Override
@@ -95,6 +89,33 @@ public class EnterScorePageController extends BaseFunctionContentController {
         @Override
         public void onBusy() {
             popupMessage("正在获取信息中",3000);
+        }
+    };
+
+    Session<Boolean> updateScoreSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            student.setHardScore(Integer.parseInt(hardScoreInput.getText()));
+            student.setSoftScore(Integer.parseInt(softScoreInput.getText()));
+            student.setPaperScore(Integer.parseInt(paperScoreInput.getText()));
+            DatabaseOperations.getInstance().updateScore(student);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+            resultTable.refresh();
+            hardScoreInput.setText("");
+            softScoreInput.setText("");
+            paperScoreInput.setText("");
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在更新成绩",1500);
         }
     };
 
@@ -111,6 +132,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
 
             resultTable.setPlaceholder(new Label("当天无上课同学"));
+
             /**
              * TableView行选中事件监听
              */
@@ -131,14 +153,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             logBtn.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
                     if (!numberLabel.getText().equals("")) {
-                        student.setHardScore(Integer.parseInt(hardScoreInput.getText()));
-                        student.setSoftScore(Integer.parseInt(softScoreInput.getText()));
-                        student.setPaperScore(Integer.parseInt(paperScoreInput.getText()));
-                        DatabaseOperations.getInstance().updateScore(student);
-                        resultTable.refresh();
-                        hardScoreInput.setText("");
-                        softScoreInput.setText("");
-                        paperScoreInput.setText("");
+                        updateScoreSession.send();
                     } else {
                         Utilities.popMessage("请选择学生信息", container);
                     }
@@ -161,7 +176,6 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
             schoolDate.setText("第" + Integer.toString(Utilities.getSchoolCalendarWeek()) + "周 " + Utilities.getSystemWeek());
             course.setText(Utilities.getCourseSort());
-            peopleAmount.setText("共" + studentAmount + "人");
         } catch (Exception e) {
             e.printStackTrace();
         }

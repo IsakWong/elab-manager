@@ -42,38 +42,14 @@ public class MemberInformationPageController extends BaseFunctionContentControll
     @FXML
     private TableColumn<Member, String> group;
 
-    private Boolean isInit = false;
-
-    Session<List> queryMemberSession = new Session<List>() {
-        @Override
-        public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllMembers();
-            if(sessionResult.result == null)
-                sessionResult.errorMessage="无法获取成员信息";
-        }
-
-        @Override
-        public void onSuccess(List param) {
-            ObservableList<Member> members = FXCollections.observableArrayList();
-            members.addAll(param);
-            tableView.setItems(members);
-            isInit = true;
-        }
-
-        @Override
-        public void onError(String errorMessage) {
-            popupMessage(errorMessage,3000);
-        }
-
-        @Override
-        public void onBusy() {
-            popupMessage("正在获取信息中",3000);
-        }
-    };
-
     @Override
     public void initializeController() {
-        queryMemberSession.send();
+
+        List<Member> member = DatabaseOperations.getInstance().selectAllMembers();
+        ObservableList<Member> members = FXCollections.observableArrayList();
+        members.addAll(member);
+        tableView.setItems(members);
+
         number.setCellValueFactory(new PropertyValueFactory<Member, String>("number"));
         userName.setCellValueFactory(new PropertyValueFactory<Member, String>("userName"));
         name.setCellValueFactory(new PropertyValueFactory<Member, String>("name"));
@@ -85,9 +61,5 @@ public class MemberInformationPageController extends BaseFunctionContentControll
         tel.setCellValueFactory(new PropertyValueFactory<Member, String>("tel"));
         duty.setCellValueFactory(new PropertyValueFactory<Member, String>("duty"));
         group.setCellValueFactory(new PropertyValueFactory<Member, String>("group"));
-    }
-
-    public Boolean isInit() {
-        return isInit;
     }
 }

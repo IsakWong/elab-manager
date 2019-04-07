@@ -50,6 +50,8 @@ public class LoginWindowController extends BaseViewController {
     private String user;
     private String md5Password;
 
+
+
     Session<LoginMessage> loginSession = new Session<LoginMessage>() {
 
         @Override
@@ -69,6 +71,7 @@ public class LoginWindowController extends BaseViewController {
         public void onSuccess(LoginMessage param) {
             writeUserInfomationToDisk();
             showMainWindow();
+            loginSession.IsSending = false;
         }
 
         @Override

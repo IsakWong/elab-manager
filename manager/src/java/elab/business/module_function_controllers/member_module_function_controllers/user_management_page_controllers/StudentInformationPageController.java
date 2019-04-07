@@ -3,6 +3,7 @@ package elab.business.module_function_controllers.member_module_function_control
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
+import elab.serialization.beans.member.Member;
 import elab.serialization.beans.student.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,38 +37,14 @@ public class StudentInformationPageController extends BaseFunctionContentControl
     @FXML
     private TableColumn<Student, String> tel;
 
-    private Boolean isInit = false;
-
-    Session<List> queryStudentSession = new Session<List>() {
-        @Override
-        public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents();
-            if(sessionResult.result == null)
-                sessionResult.errorMessage="无法获取本学期的学生信息";
-        }
-
-        @Override
-        public void onSuccess(List param) {
-            ObservableList<Student> students = FXCollections.<Student>observableArrayList();
-            students.addAll(param);
-            tableView.setItems(students);
-            isInit = true;
-        }
-
-        @Override
-        public void onError(String errorMessage) {
-            popupMessage(errorMessage,3000);
-        }
-
-        @Override
-        public void onBusy() {
-            popupMessage("正在获取信息中",3000);
-        }
-    };
-
     @Override
     public void initializeController() {
-        queryStudentSession.send();
+
+        List<Student> student = DatabaseOperations.getInstance().selectAllStudents();
+        ObservableList<Student> students = FXCollections.observableArrayList();
+        students.addAll(student);
+        tableView.setItems(students);
+
         number.setCellValueFactory(new PropertyValueFactory<Student, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
         college.setCellValueFactory(new PropertyValueFactory<Student, String>("college"));
@@ -77,9 +54,5 @@ public class StudentInformationPageController extends BaseFunctionContentControl
         softScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("softScore"));
         paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
         tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
-    }
-
-    public Boolean isInit() {
-        return isInit;
     }
 }

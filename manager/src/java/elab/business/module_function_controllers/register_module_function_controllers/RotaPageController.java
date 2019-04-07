@@ -91,8 +91,6 @@ public class RotaPageController extends BaseFunctionContentController {
         Object[] options = {"确定", "取消"};
         int m = JOptionPane.showOptionDialog(null, "新表单将覆盖已有表单，是否继续？", "Attention",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(m == 0) {
-
-
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("选择文件");
             fileChooser.setInitialDirectory(

@@ -3,15 +3,23 @@ package elab.business.module_function_controllers.member_module_function_control
 import com.jfoenix.controls.*;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
+import elab.face_recognition.FaceRecognitionTool;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class AddMemberPageController extends BaseFunctionContentController {
 
@@ -40,6 +48,10 @@ public class AddMemberPageController extends BaseFunctionContentController {
     @FXML
     private RadioButton sexChoose_woman;
     @FXML
+    private AnchorPane photoPane;
+    @FXML
+    private ImageView photoView;
+    @FXML
     private ImageView pwdOK;
     @FXML
     private ImageView twicePwdOK;
@@ -47,8 +59,40 @@ public class AddMemberPageController extends BaseFunctionContentController {
     private VBox container;
 
     private Paint unFocusColor;
+    private byte[] photoData = null;
+    private String[] photoName = null;
 
-    public void cleanMessage() {
+    private void loadPhoto() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("选择照片");
+            fileChooser.setInitialDirectory(
+                    new File(System.getProperty("user.home"))
+            );
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                    new FileChooser.ExtensionFilter("PNG", "*.png"),
+                    new FileChooser.ExtensionFilter("BMP", "*.bmp")
+            );
+            Stage stage = (Stage) container.getScene().getWindow();
+            File file = fileChooser.showOpenDialog(stage);
+            if (file != null) {
+                byte[] b = new byte[(int) file.length()];
+                FileInputStream fis = new FileInputStream(file);
+                fis.read(b);
+                photoData = b;
+                fis.close();
+                photoName = file.getName().split("\\.");
+                Image photo = new Image(file.toURI().toString());
+                photoView.setImage(photo);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cleanMessage() {
+        photoView.setImage(null);
         numberInputField.setText("");
         userInputField.setText("");
         nameInputField.setText("");
@@ -162,12 +206,17 @@ public class AddMemberPageController extends BaseFunctionContentController {
                 pwdInputField.setUnFocusColor(unFocusColor);
                 twicePwdInputField.setUnFocusColor(unFocusColor);
                 telInputField.setUnFocusColor(unFocusColor);
+                photoView.setImage(null);
             }
         });
 
         logButton.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY) {
                 boolean allMessageCkecked = true;
+                if (photoView.getImage() == null) {
+                    allMessageCkecked = false;
+                    photoPane.setStyle("-fx-border-color: #ff0000");
+                }
                 if (numberInputField.getText().equals("")) {
                     allMessageCkecked = false;
                     numberInputField.setUnFocusColor(Color.RED);
@@ -196,6 +245,8 @@ public class AddMemberPageController extends BaseFunctionContentController {
                     Utilities.popMessage("请查看信息填写是否完整", container);
                 } else {
                     Member newMember = new Member();
+                    newMember.setPhoto(photoData);
+                    newMember.setPhotoFormat(photoName[1]);
                     newMember.setNumber(numberInputField.getText());
                     newMember.setUserName(userInputField.getText());
                     newMember.setName(nameInputField.getText());
@@ -237,6 +288,14 @@ public class AddMemberPageController extends BaseFunctionContentController {
                 telInputField.setUnFocusColor(unFocusColor);
             }
         });
+
+        photoView.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                photoPane.setStyle("-fx-border-color: #000000");
+                loadPhoto();
+            }
+        });
+
         IsDataInitialized = true;
     }
 }

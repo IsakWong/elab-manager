@@ -5,6 +5,8 @@ import org.apache.ibatis.type.Alias;
 @Alias("member")
 public class Member {
 
+    private byte[] photo;
+    private String photoFormat;
     private String number;
     private String userName;
     private String name;
@@ -131,6 +133,22 @@ public class Member {
 
     public void setAssistAmount(int assistAmount) {
         this.assistAmount = assistAmount;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getPhotoFormat() {
+        return photoFormat;
+    }
+
+    public void setPhotoFormat(String photoFormat) {
+        this.photoFormat = photoFormat;
     }
 
     @Override

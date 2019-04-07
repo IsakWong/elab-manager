@@ -17,6 +17,9 @@
         <result column="密码" property="password"/>
         <result column="主讲" property="teachingAmount"/>
         <result column="助课" property="assistAmount"/>
+        <result column="照片" property="photo"/>
+        <result column="照片格式" property="photoFormat"/>
+
     </resultMap>
     <select id="selectMemberByName" parameterType="string" resultMap="memberResultMap">
         select * from member where 姓名 = #{id}
@@ -45,19 +48,21 @@
             职务 as "duty",
             年级 as "grade",
             座右铭 as "motto",
-            密码 as "password"
+            密码 as "password",
+            照片 as "photo",
+            照片格式 as "photoFormat"
         from member
         where 学号 = #{id}
     </select>
     <insert id="insertMember" parameterType="member">
-        insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课)
-        values (#{number},#{userName},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount})
+        insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课,照片,照片格式)
+        values (#{number},#{userName},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount},#{photo},#{photoFormat})
     </insert>
     <update id="updateMember" parameterType="loginMessage">
         update member set
             学号 = #{number},
             USERNAME = #{userName},
-            姓名 = #{name},N
+            姓名 = #{name},
             性别 = #{sex},
             院系 = #{college},
             组别 = #{group},
@@ -65,7 +70,9 @@
             职务 = #{duty},
             年级 = #{grade},
             座右铭 = #{motto},
-            密码 = #{password}
+            密码 = #{password},
+            照片 = #{photo},
+            照片格式 = #{photoFormat}
         where 学号 = #{oldNumber}
     </update>
     <update id="setDuty" parameterType="string">

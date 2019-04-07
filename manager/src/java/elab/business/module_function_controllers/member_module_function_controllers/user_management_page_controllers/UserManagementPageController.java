@@ -4,6 +4,10 @@ import com.jfoenix.controls.*;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.util.Utilities;
+import io.reactivex.*;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,7 +71,6 @@ public class UserManagementPageController extends BaseFunctionContentController 
             FXMLLoader memberInformationLoader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/member_module_function_pages/user_management_pages/member_information_page.fxml"));
             Parent memberInformationRoot = memberInformationLoader.load();
             MemberInformationPageController memberInformationPageController = memberInformationLoader.getController();
-            memberInformationPageController.initializeController();
             memberTab.setContent(memberInformationRoot);
             tabPane.getTabs().add(memberTab);
 
@@ -75,7 +78,6 @@ public class UserManagementPageController extends BaseFunctionContentController 
             FXMLLoader studentInformationLoader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/member_module_function_pages/user_management_pages/student_information_page.fxml"));
             Parent studentInformationRoot = studentInformationLoader.load();
             StudentInformationPageController studentInformationPageController = studentInformationLoader.getController();
-            studentInformationPageController.initializeController();
             studentTab.setContent(studentInformationRoot);
             tabPane.getTabs().add(studentTab);
 
@@ -85,6 +87,36 @@ public class UserManagementPageController extends BaseFunctionContentController 
             searchResultPageController.initializeController();
             searchResult.setContent(searchResultRoot);
             tabPane.getTabs().add(searchResult);
+
+            ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>() {
+                @Override
+                public void subscribe(ObservableEmitter<Boolean> observableEmitter) throws Exception {
+                    memberInformationPageController.initializeController();
+                    studentInformationPageController.initializeController();
+                    observableEmitter.onNext(true);
+                }
+            };
+            Observable.create(ob)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(JavaFxScheduler.platform())
+                    .subscribe(new Observer<Boolean>() {
+                        @Override
+                        public void onSubscribe(Disposable disposable) {
+                        }
+
+                        @Override
+                        public void onNext(Boolean aBoolean) {
+                            finishLoading();
+                        }
+
+                        @Override
+                        public void onError(Throwable throwable) {
+                        }
+
+                        @Override
+                        public void onComplete() {
+                        }
+                    });
 
             /**
              * 搜索按钮点击后，检查三个信息栏的信息填写情况并找到符合的信息
@@ -163,8 +195,6 @@ public class UserManagementPageController extends BaseFunctionContentController 
                     college.setValue("");
                 }
             });
-
-            finishLoading();
 
         } catch (Exception exp) {
             System.out.println(exp.toString());

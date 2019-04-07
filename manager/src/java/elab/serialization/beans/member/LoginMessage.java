@@ -7,6 +7,8 @@ public class LoginMessage {
 
     private static int oldNumber;
     private static int number;
+    private static byte[] photo;
+    private static String photoFormat;
     private static String userName;
     private static String name;
     private static String sex;
@@ -114,8 +116,24 @@ public class LoginMessage {
         LoginMessage.password = password;
     }
 
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        LoginMessage.photo = photo;
+    }
+
+    public String getPhotoFormat() {
+        return photoFormat;
+    }
+
+    public void setPhotoFormat(String photoFormat) {
+        LoginMessage.photoFormat = photoFormat;
+    }
+
     @Override
     public String toString() {
-        return number + " " + userName + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password;
+        return number + " " + userName + " " + name + " " + sex + " " + college + " " + group + " " + tel + " " + duty + " " + grade + " " + motto + " " + password ;
     }
 }

@@ -40,8 +40,8 @@
             </Label>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="16.0">
                <children>
-                  <JFXTextField fx:id="inputField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="(键入拼音缩写筛选)" />
-                  <JFXComboBox fx:id="comboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="选择主讲" />
+                  <JFXTextField fx:id="primaryInputField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="(键入拼音缩写筛选)" />
+                  <JFXComboBox fx:id="primaryComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="选择主讲" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -57,8 +57,8 @@
             </Label>
             <HBox layoutX="26.0" layoutY="158.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="16.0">
                <children>
-                  <JFXTextField fx:id="inputField1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="(键入拼音缩写筛选)" />
-                  <JFXComboBox fx:id="comboBox1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="选择助教" />
+                  <JFXTextField fx:id="secondaryInputField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="(键入拼音缩写筛选)" />
+                  <JFXComboBox fx:id="secondaryComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="选择助教" />
                </children>
             </HBox>
             <ListView fx:id="assistListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="350.0">

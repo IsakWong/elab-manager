@@ -30,11 +30,15 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
     @FXML
     private VBox container;
     @FXML
-    private JFXComboBox comboBox;
+    private JFXComboBox primaryComboBox;
+    @FXML
+    private JFXComboBox secondaryComboBox;
     @FXML
     private JFXDatePicker datePicker;
     @FXML
-    private JFXTextField inputField;
+    private JFXTextField primaryInputField;
+    @FXML
+    private JFXTextField secondaryInputField;
     @FXML
     private ListView<String> assistListView;
     @FXML
@@ -42,10 +46,9 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
     @FXML
     private JFXButton saveBtn;
 
-    private ObservableList<String> nameList = FXCollections.<String>observableArrayList();
-    private ObservableList<String> chooseList = FXCollections.<String>observableArrayList();
-    private ObservableList<String> teachingList = FXCollections.<String>observableArrayList();
-    private ObservableList<String> assistList = FXCollections.<String>observableArrayList();
+    private ObservableList<String> nameList = FXCollections.observableArrayList();
+    private ObservableList<String> teachingList = FXCollections.observableArrayList();
+    private ObservableList<String> assistList = FXCollections.observableArrayList();
 
     private void addTeachingListViewItem(String item) {
         if (teachingList.size() == 0) {
@@ -132,8 +135,8 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                                        nameList.add(members.get(i).getName());
                                    }
                                    finishLoading();
-                                   comboBox.setItems(nameList);
-                                   comboBox.showingProperty();
+                                   primaryComboBox.setItems(nameList);
+                                   primaryComboBox.showingProperty();
                                }
 
                                @Override
@@ -146,18 +149,38 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                            }
                 );
 
-        inputField.textProperty().addListener(new ChangeListener<String>() {
+        primaryInputField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (inputField.getText().equals("")) {
+                if (primaryInputField.getText().equals("")) {
+                    primaryComboBox.setItems(nameList);
                 } else {
-                    if(chooseList.size() != 0) chooseList.remove(0, chooseList.size());
+                    if(teachingList.size() != 0) teachingList.clear();
                     for (int i = 0; i < nameList.size(); ++i)
-                        if (Utilities.getPinyinString(nameList.get(i)).startsWith(inputField.getText())
-                                || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(inputField.getText())
-                                || nameList.get(i).startsWith(inputField.getText())
-                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(inputField.getText()))
-                            chooseList.add(nameList.get(i));
+                        if (Utilities.getPinyinString(nameList.get(i)).startsWith(primaryInputField.getText())
+                                || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(primaryInputField.getText())
+                                || nameList.get(i).startsWith(primaryInputField.getText())
+                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(primaryInputField.getText()))
+                            teachingList.add(nameList.get(i));
+                    primaryComboBox.setItems(teachingList);
+                }
+            }
+        });
+
+        secondaryInputField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(secondaryInputField.getText().equals("")) {
+
+                } else {
+                    if(assistList.size() != 0) assistList.clear();
+                    for (int i = 0; i < nameList.size(); ++i)
+                        if (Utilities.getPinyinString(nameList.get(i)).startsWith(secondaryInputField.getText())
+                                || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(secondaryInputField.getText())
+                                || nameList.get(i).startsWith(secondaryInputField.getText())
+                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(secondaryInputField.getText()))
+                            assistList.add(nameList.get(i));
+                    secondaryComboBox.setItems(assistList);
                 }
             }
         });
