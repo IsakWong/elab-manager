@@ -106,8 +106,6 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
     private String[] times = {"24日晚18:00", "24日晚19:00", "24日晚20:00", "25日晚18:00", "25日晚19:00", "25日晚20:00"};
 
-    private String deleteNumber;
-
     private NewPerson commonPerson = new NewPerson();
 
     Session<List> queryNewPeopleSession = new Session<List>() {
@@ -142,7 +140,6 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
             contextMenu.hide();
             if(batchLabel.isVisible()) {
                 NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
-                ObservableList<NewPerson> newPeople = tableView.getItems();
                 sessionResult.result = DatabaseOperations.getInstance().deleteNewPerson(newPerson.getNumber());
             } else {
                 Object[] options ={"确定", "取消"};
@@ -153,10 +150,8 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     for (NewPerson newPerson : newPeople) {
                         if (newPerson.getSelectionSituation()) {
                             deleteInformation.add(newPerson);
-                            newPeople.remove(newPerson);
                         }
                     }
-                    tableView.refresh();
                     sessionResult.result = DatabaseOperations.getInstance().deleteNewPeople(deleteInformation);
                 }
             }
@@ -164,14 +159,21 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
         @Override
         public void onSuccess(Boolean param) {
+            ObservableList<NewPerson> newPeople = tableView.getItems();
             if(batchLabel.isVisible()) {
                 NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
-                ObservableList<NewPerson> newPeople = tableView.getItems();
                 newPeople.remove(newPerson);
-                tableView.refresh();
             } else {
+                for (int i = 0; i < newPeople.size(); ++i) {
+                    NewPerson newPerson = newPeople.get(i);
+                    if (newPerson.getSelectionSituation()) {
+                        newPeople.remove(newPerson);
+                        --i;
+                    }
+                }
 
             }
+            //tableView.refresh();
             popupMessage("删除成功", 1500);
         }
 
@@ -660,7 +662,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
         number.setCellFactory(TextFieldTableCell.forTableColumn());
         number.setOnEditStart(event -> {
-            Utilities.popMessage("学号须有9位，否则视为无效学号", container);
+            popupMessage("学号须有9位，否则视为无效学号", 1500);
         });
         number.setOnEditCommit(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
