@@ -8,25 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/settings.property" beforeDir="false" afterPath="$PROJECT_DIR$/settings.property" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/RotaPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/RotaPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/face_recognition/FaceRecognitionTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/face_recognition/FaceRecognitionTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/LoginMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/LoginMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/member/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/attendance_record_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/attendance_record_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/personal_information_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/personal_information_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/manage_recruitment_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/manage_recruitment_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/database/database_mappers/member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/database/database_mappers/member.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/elab/serialization/beans/new_person/NewPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/elab/serialization/beans/new_person/NewPerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/pictures/photo.null" beforeDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,39 +75,41 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="76" />
-          <entry key="java" value="4967" />
+          <entry key="java" value="7771" />
           <entry key="xml" value="132" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4967" />
+          <entry key="JAVA" value="7771" />
           <entry key="XML" value="208" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="117" />
-          <entry key="java" value="93" />
-          <entry key="xml" value="7" />
+          <entry key="class" value="5" />
+          <entry key="fxml" value="125" />
+          <entry key="java" value="119" />
+          <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="93" />
-          <entry key="XML" value="124" />
+          <entry key="CLASS" value="5" />
+          <entry key="JAVA" value="119" />
+          <entry key="XML" value="133" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="30" />
+          <entry key="project.closed" value="32" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.19" value="2" />
-          <entry key="project.open.time.20" value="3" />
+          <entry key="project.open.time.20" value="4" />
           <entry key="project.open.time.21" value="3" />
           <entry key="project.open.time.22" value="3" />
-          <entry key="project.open.time.23" value="5" />
+          <entry key="project.open.time.23" value="6" />
           <entry key="project.open.time.24" value="4" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="2" />
@@ -128,7 +117,7 @@
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.opened" value="31" />
+          <entry key="project.opened" value="34" />
         </counts>
       </usages-collector>
     </session>
@@ -139,19 +128,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="73" column="43" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+            <state relative-caret-position="1494">
+              <caret line="104" column="46" selection-start-line="103" selection-start-column="17" selection-end-line="104" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+            <state relative-caret-position="393">
+              <caret line="204" column="30" lean-forward="true" selection-start-line="204" selection-start-column="30" selection-end-line="204" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7132#7133#0" expanded="true" />
+                <element signature="e#7192#7193#0" expanded="true" />
+                <element signature="e#7310#7311#0" expanded="true" />
+                <element signature="e#27101#27102#0" expanded="true" />
+                <element signature="e#27191#27192#0" expanded="true" />
+                <element signature="e#27401#27402#0" expanded="true" />
+                <element signature="e#27488#27489#0" expanded="true" />
+                <element signature="e#37357#37801#0" expanded="true" />
+                <element signature="e#37800#37801#0" expanded="true" />
+                <element signature="e#39506#39954#0" expanded="true" />
+                <element signature="e#39953#39954#0" expanded="true" />
+                <element signature="e#45739#47331#0" expanded="true" />
+                <element signature="e#47330#47331#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="270" column="49" lean-forward="true" selection-start-line="270" selection-start-column="49" selection-end-line="270" selection-end-column="49" />
+            <state relative-caret-position="522">
+              <caret line="93" column="9" lean-forward="true" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,26 +176,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2538">
-              <caret line="53" column="63" lean-forward="true" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
+            <state relative-caret-position="417">
+              <caret line="221" column="28" lean-forward="true" selection-start-line="221" selection-start-column="28" selection-end-line="221" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/database/database_mappers/member.xml">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/serialization/beans/new_person/NewPerson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/elab/face_recognition/FaceRecognitionTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2502">
-              <caret line="171" column="41" selection-start-line="171" selection-start-column="41" selection-end-line="171" selection-end-column="41" />
+            <state relative-caret-position="432">
+              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+              <folding>
+                <element signature="e#3731#3732#0" expanded="true" />
+                <element signature="e#3762#3763#0" expanded="true" />
+                <element signature="e#3815#3816#0" expanded="true" />
+                <element signature="e#3855#3856#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,8 +200,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/RotaPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3186">
-              <caret line="208" column="73" selection-start-line="208" selection-start-column="73" selection-end-line="208" selection-end-column="73" />
+            <state relative-caret-position="3474">
+              <caret line="224" column="81" selection-start-line="224" selection-start-column="81" selection-end-line="224" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/elab/database/Session.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -214,19 +225,14 @@
         <option value="XmlFile" />
         <option value="mybatisXlm" />
         <option value="mybatisMapper" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setSheetTime</find>
-      <find>returnTime</find>
-      <find>creatSheetTime</find>
-      <find>messageWithNoNull</find>
-      <find>jfx-button</find>
       <find>minBtn</find>
       <find>jfx-dialog</find>
       <find>contentHolder</find>
@@ -252,6 +258,11 @@
       <find>LoginMessage</find>
       <find>loginMessage</find>
       <find>selectLoginMess</find>
+      <find>send</find>
+      <find>DatabaseOperations.getInstance().</find>
+      <find>update</find>
+      <find>DatabaseOperations.getInstance().dele</find>
+      <find>DatabaseOperations</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -265,11 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/resources/modules_settings/manager_modules.json" />
-        <option value="$PROJECT_DIR$/src/java/elab/application/ElabManagerApplication.java" />
-        <option value="$PROJECT_DIR$/src/java/elab/serialization/module/Function.java" />
-        <option value="$PROJECT_DIR$/src/resources/default_settings.properties" />
-        <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_column.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_row.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_label.fxml" />
         <option value="$PROJECT_DIR$/src/resources/style/css/controls_style.css" />
@@ -287,7 +293,6 @@
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/register_module_function_pages/rota_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/sys_ctrl_module_function_pages/change_admin_page.fxml" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/sys_ctrl_module_function_controllers/ChangeAdminPageController.java" />
-        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/sys_ctrl_module_function_pages/view_log_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_information_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_collect_page.fxml" />
@@ -296,12 +301,8 @@
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/register_module_function_pages/view_loader_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/user_management_page.fxml" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/sys_ctrl_module_function_controllers/ViewLogPageController.java" />
-        <option value="$PROJECT_DIR$/src/java/elab/database/Session.java" />
-        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/StudentInformationPageController.java" />
-        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/FreeTimeCollectPageController.java" />
-        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/attendance_record_page.fxml" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java" />
@@ -310,12 +311,22 @@
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/manage_recruitment_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml" />
         <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/personal_information_page.fxml" />
-        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/serialization/beans/member/LoginMessage.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java" />
         <option value="$PROJECT_DIR$/src/java/elab/serialization/beans/member/Member.java" />
         <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java" />
         <option value="$PROJECT_DIR$/src/resources/database/database_mappers/member.xml" />
+        <option value="$PROJECT_DIR$/src/java/elab/database/Session.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/database/UpdateSession.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/database/SessionCallback.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java" />
+        <option value="$PROJECT_DIR$/src/java/elab/serialization/beans/new_person/NewPerson.java" />
+        <option value="$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/sex_combo_box.fxml" />
+        <option value="$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java" />
       </list>
     </option>
   </component>
@@ -325,11 +336,17 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="951" />
     <option name="width" value="975" />
-    <option name="height" value="1048" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -363,7 +380,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -827,6 +843,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -840,7 +857,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/gitlib/manager/src/java/elab/serialization/member/member.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554647141116" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554807593552" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/commons-csv-1.6.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1033,10 +1050,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18431635" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21055438" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1045,8 +1062,8 @@
       <window_info id="Favorites" order="6" weight="0.32934132" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32790446" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.15035461" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33659065" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14983714" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3355049" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32907802" />
@@ -1056,22 +1073,22 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.32765958" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32247558" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3213898" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="15" weight="0.32897863" />
-      <window_info anchor="bottom" id="JProfiler" order="16" weight="0.32928476" />
+      <window_info anchor="bottom" id="JProfiler" order="16" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="JetGradle" order="3" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.32945737" />
-      <window_info anchor="right" id="Maven" order="11" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.32945737" />
+      <window_info anchor="right" id="Maven" order="10" />
+      <window_info anchor="right" id="Maven Projects" order="11" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1089,9 +1106,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java</url>
-          <line>230</line>
+          <line>75</line>
           <properties />
-          <option name="timeStamp" value="49" />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java</url>
+          <line>92</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java</url>
+          <line>80</line>
+          <properties />
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1101,100 +1136,17 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/main_window/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/main_window.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/student_information_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/search_result_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/member_information_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/SearchResultPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/sys_ctrl_module_function_pages/change_admin_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/settings/ManagerSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10601">
-          <caret line="846" column="8" selection-start-line="846" selection-start-column="8" selection-end-line="846" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/sys_ctrl_module_function_controllers/ChangeAdminPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/sys_ctrl_module_function_pages/view_log_page.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/search_result_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/student_information_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_information_page.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_collect_page.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/register_module_function_pages/register_time_page.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/register_module_function_pages/rota_page.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/ViewLoaderPageController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1204,16 +1156,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/register_module_function_pages/view_loader_page.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/user_management_pages/user_management_page.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/sys_ctrl_module_function_controllers/ViewLogPageController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1229,39 +1181,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/database/SessionCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/enter_score_pages/enter_score_page.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="75" selection-start-line="20" selection-start-column="75" selection-end-line="20" selection-end-column="75" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="76" column="29" lean-forward="true" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/database/Session.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1026">
-          <caret line="77" column="26" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1273,17 +1197,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/attendance_record_page.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="108" column="44" selection-start-line="108" selection-start-column="44" selection-end-line="108" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1321,20 +1238,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/manage_recruitment_page.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/database/database_mappers/student.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216" />
-      </provider>
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/database/database_mappers/recruit_new.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1342,20 +1247,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/personal_information_page.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="27" column="43" lean-forward="true" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/serialization/beans/member/LoginMessage.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1378,17 +1283,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/java/elab/database/UpdateSession.java" />
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="73" column="43" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+        <state relative-caret-position="513">
+          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/AddMemberPageController.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/database/database_mappers/student.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+        <state relative-caret-position="-486" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/database/SessionCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="86" selection-start-line="4" selection-start-column="86" selection-end-line="4" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/log_in_window/LoginWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="61" column="78" lean-forward="true" selection-start-line="61" selection-start-column="78" selection-end-line="61" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/SearchResultPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/AttendanceRecordPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1090">
+          <caret line="117" column="64" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/ViewSelectCoursesInformationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/StudentInformationPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/UserManagementPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1548">
+          <caret line="38" column="66" lean-forward="true" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/user_management_page_controllers/MemberInformationPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="38" column="44" lean-forward="true" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="197" column="48" lean-forward="true" selection-start-line="197" selection-start-column="48" selection-end-line="197" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/assist_teaching_module_function_pages/view_select_courses_information_pages/view_select_courses_row.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/database/database_mappers/member.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1399,24 +1377,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/RotaPageController.java">
+    <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/internal/schedulers/ScheduledRunnable.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3186">
-          <caret line="208" column="73" selection-start-line="208" selection-start-column="73" selection-end-line="208" selection-end-column="73" />
+        <state relative-caret-position="178">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/database/database_mappers/member.xml">
+    <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/Scheduler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+        <state relative-caret-position="87">
+          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/internal/operators/observable/ObservableSubscribeOn.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/Observable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="3001" selection-start-line="3001" selection-end-line="3001" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.2.2.jar!/io/reactivex/internal/operators/observable/ObservableCreate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/time_container.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/sex_combo_box.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/assist_teaching_module_function_controllers/enter_score_page_controllers/EnterScorePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1494">
+          <caret line="104" column="46" selection-start-line="103" selection-start-column="17" selection-end-line="104" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/register_module_function_controllers/RotaPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3474">
+          <caret line="224" column="81" selection-start-line="224" selection-start-column="81" selection-end-line="224" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/database/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/serialization/beans/new_person/NewPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding>
+            <element signature="e#3731#3732#0" expanded="true" />
+            <element signature="e#3762#3763#0" expanded="true" />
+            <element signature="e#3815#3816#0" expanded="true" />
+            <element signature="e#3855#3856#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/recruitment_module_function_controllers/manage_recruitment_page_controllers/ManegeRecruitmentPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="204" column="30" lean-forward="true" selection-start-line="204" selection-start-column="30" selection-end-line="204" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7132#7133#0" expanded="true" />
+            <element signature="e#7192#7193#0" expanded="true" />
+            <element signature="e#7310#7311#0" expanded="true" />
+            <element signature="e#27101#27102#0" expanded="true" />
+            <element signature="e#27191#27192#0" expanded="true" />
+            <element signature="e#27401#27402#0" expanded="true" />
+            <element signature="e#27488#27489#0" expanded="true" />
+            <element signature="e#37357#37801#0" expanded="true" />
+            <element signature="e#37800#37801#0" expanded="true" />
+            <element signature="e#39506#39954#0" expanded="true" />
+            <element signature="e#39953#39954#0" expanded="true" />
+            <element signature="e#45739#47331#0" expanded="true" />
+            <element signature="e#47330#47331#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/business/module_function_controllers/member_module_function_controllers/PersonalInformationPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="270" column="49" lean-forward="true" selection-start-line="270" selection-start-column="49" selection-end-line="270" selection-end-column="49" />
+        <state relative-caret-position="522">
+          <caret line="93" column="9" lean-forward="true" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1425,8 +1493,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/elab/database/DatabaseOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2538">
-          <caret line="53" column="63" lean-forward="true" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
+        <state relative-caret-position="417">
+          <caret line="221" column="28" lean-forward="true" selection-start-line="221" selection-start-column="28" selection-end-line="221" selection-end-column="28" />
         </state>
       </provider>
     </entry>

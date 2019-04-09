@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.sun.deploy.Environment;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.serialization.beans.member.LoginMessage;
 import elab.util.Utilities;
 import javafx.fxml.FXML;
@@ -66,6 +67,32 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
     private HBox container;
 
     private Paint unFocusColor;
+    private byte[] photoData = null;
+    private String[] photoName = null;
+
+    Session<Boolean> updateLoginMessageSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().updateMember(loginMessage);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+            loginMessage.setOldNumber(loginMessage.getNumber());
+            Utilities.popMessage("信息更新成功!", container);
+            cleanPwd();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage("更新信息失败",1500);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("busy",1500);
+        }
+    };
 
     public void cleanPwd() {
         pwdInputField.setText("");
@@ -121,13 +148,12 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
             Stage stage = (Stage) container.getScene().getWindow();
             File file = fileChooser.showOpenDialog(stage);
             if (file != null) {
-                byte[] photoData = new byte[(int) file.length()];
+                byte[] b = new byte[(int) file.length()];
                 FileInputStream fis = new FileInputStream(file);
-                fis.read(photoData);
+                fis.read(b);
                 fis.close();
-                loginMessage.setPhoto(photoData);
-                String[] photoName = file.getName().split("\\.");
-                loginMessage.setPhotoFormat(photoName[1]);
+                photoData = b;
+                photoName = file.getName().split("\\.");
                 Image photo = new Image(file.toURI().toString());
                 photoView.setImage(photo);
             }
@@ -270,10 +296,12 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
                     else
                         loginMessage.setSex("女");
                     loginMessage.setPassword(Utilities.encrypt(pwdInputField.getText()));
-                    DatabaseOperations.getInstance().updateMember(loginMessage);
-                    loginMessage.setOldNumber(loginMessage.getNumber());
-                    Utilities.popMessage("修改信息成功!", container);
-                    cleanPwd();
+                    if(photoData != null) {
+                        loginMessage.setPhoto(photoData);
+                        loginMessage.setPhotoFormat(photoName[1]);
+                    }
+                    Utilities.popMessage("正在更新信息", container);
+                    updateLoginMessageSession.send();
                 }
             }
         });
@@ -289,7 +317,7 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
                 twicePwdInputField.setUnFocusColor(unFocusColor);
                 twicePwdOK.setVisible(false);
                 telInputField.setUnFocusColor(unFocusColor);
-                photoView.setImage(null);
+                photoPane.setStyle("-fx-border-color: #000000");
             }
         });
 

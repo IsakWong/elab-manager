@@ -62,7 +62,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
     private Student student;
 
-    ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+    private ObservableList<Student> students = FXCollections.<Student>observableArrayList();
 
     Session<List> queryStudentSession = new Session<List>() {
         @Override
@@ -83,12 +83,12 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
         @Override
         public void onError(String errorMessage) {
-            popupMessage(errorMessage,3000);
+            popupMessage(errorMessage,1500);
         }
 
         @Override
         public void onBusy() {
-            popupMessage("正在获取信息中",3000);
+            popupMessage("正在获取信息中",1500);
         }
     };
 
@@ -98,7 +98,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             student.setHardScore(Integer.parseInt(hardScoreInput.getText()));
             student.setSoftScore(Integer.parseInt(softScoreInput.getText()));
             student.setPaperScore(Integer.parseInt(paperScoreInput.getText()));
-            DatabaseOperations.getInstance().updateScore(student);
+            sessionResult.result = DatabaseOperations.getInstance().updateScore(student);
         }
 
         @Override
@@ -111,6 +111,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
         @Override
         public void onError(String errorMessage) {
+            popupMessage("成绩更新失败",1500);
         }
 
         @Override

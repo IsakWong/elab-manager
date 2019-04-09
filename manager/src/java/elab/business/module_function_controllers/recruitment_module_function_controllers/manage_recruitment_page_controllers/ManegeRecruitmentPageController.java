@@ -2,9 +2,9 @@ package elab.business.module_function_controllers.recruitment_module_function_co
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
-import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.new_person.NewPerson;
@@ -74,7 +74,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
     @FXML
     private TableColumn<NewPerson, String> name;
     @FXML
-    private TableColumn<NewPerson, String> sex;
+    private TableColumn<NewPerson, JFXComboBox> sex;
     @FXML
     private TableColumn<NewPerson, String> tel;
     @FXML
@@ -106,6 +106,10 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
     private String[] times = {"24日晚18:00", "24日晚19:00", "24日晚20:00", "25日晚18:00", "25日晚19:00", "25日晚20:00"};
 
+    private String deleteNumber;
+
+    private NewPerson commonPerson = new NewPerson();
+
     Session<List> queryNewPeopleSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
@@ -129,6 +133,77 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         @Override
         public void onBusy() {
             popupMessage("正在获取信息", 3000);
+        }
+    };
+
+    Session<Boolean> deleteNewPersonSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            contextMenu.hide();
+            if(batchLabel.isVisible()) {
+                NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
+                ObservableList<NewPerson> newPeople = tableView.getItems();
+                sessionResult.result = DatabaseOperations.getInstance().deleteNewPerson(newPerson.getNumber());
+            } else {
+                Object[] options ={"确定", "取消"};
+                int m = JOptionPane.showOptionDialog(null, "确定删除所选信息？", "注意", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+                if(m == 0) {
+                    ObservableList<NewPerson> newPeople = tableView.getItems();
+                    ObservableList<NewPerson> deleteInformation = FXCollections.observableArrayList();
+                    for (NewPerson newPerson : newPeople) {
+                        if (newPerson.getSelectionSituation()) {
+                            deleteInformation.add(newPerson);
+                            newPeople.remove(newPerson);
+                        }
+                    }
+                    tableView.refresh();
+                    sessionResult.result = DatabaseOperations.getInstance().deleteNewPeople(deleteInformation);
+                }
+            }
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+            if(batchLabel.isVisible()) {
+                NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
+                ObservableList<NewPerson> newPeople = tableView.getItems();
+                newPeople.remove(newPerson);
+                tableView.refresh();
+            } else {
+
+            }
+            popupMessage("删除成功", 1500);
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在删除信息", 1500);
+        }
+    };
+
+    Session<Boolean> updateNewPersonSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().updateNewPerson(commonPerson);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage("数据更新失败", 1500);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在更新数据", 1500);
         }
     };
 
@@ -380,11 +455,31 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         }
     }
 
+    public JFXComboBox creatSexComboBox(NewPerson newPerson) {
+        JFXComboBox returnBox = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/sex_combo_box.fxml"));
+            Node node = loader.load();
+            JFXComboBox comboBox = (JFXComboBox) node.lookup("#comboBox");
+            comboBox.getItems().addAll(
+                    "男",
+                    "女"
+            );
+            comboBox.setValue(newPerson.getSex());
+            comboBox.setDisable(true);
+            returnBox = comboBox;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return returnBox;
+    }
+
     public void initItems(List list) {
-        ObservableList<NewPerson> newPeople = FXCollections.<NewPerson>observableArrayList();
+        ObservableList<NewPerson> newPeople = FXCollections.observableArrayList();
         newPeople.addAll(list);
         for (NewPerson newPerson : newPeople) {
             newPerson.setOldNumber(newPerson.getNumber());
+            newPerson.setComboBox(creatSexComboBox(newPerson));
             newPerson.setScrollPane(creatTimeContainer());
             creatSheetTime(newPerson);
         }
@@ -536,31 +631,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
             else
                 delete.setText("删除所选信息");
             delete.setOnAction(event -> {
-                contextMenu.hide();
-                if(batchLabel.isVisible()) {
-                    NewPerson newPerson = tableView.getSelectionModel().getSelectedItem();
-                    ObservableList<NewPerson> newPeople = tableView.getItems();
-                    newPeople.remove(newPerson);
-                    tableView.refresh();
-                    DatabaseOperations.getInstance().deleteNewPerson(newPerson.getNumber());
-                    Utilities.popMessage("删除成功", container);
-                } else {
-                    Object[] options ={"确定", "取消"};
-                    int m = JOptionPane.showOptionDialog(null, "确定删除所选信息？", "注意", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-                    if(m == 0) {
-                        ObservableList<NewPerson> newPeople = tableView.getItems();
-                        ObservableList<NewPerson> deleteInformation = FXCollections.observableArrayList();
-                        for (NewPerson newPerson : newPeople) {
-                            if (newPerson.getSelectionSituation()) {
-                                deleteInformation.add(newPerson);
-                                newPeople.remove(newPerson);
-                            }
-                        }
-                        tableView.refresh();
-                        DatabaseOperations.getInstance().deleteNewPeople(deleteInformation);
-                        Utilities.popMessage("删除成功", container);
-                    }
-                }
+                deleteNewPersonSession.send();
             });
             contextMenu.getItems().add(delete);
         } else {
@@ -588,6 +659,9 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         });
 
         number.setCellFactory(TextFieldTableCell.forTableColumn());
+        number.setOnEditStart(event -> {
+            Utilities.popMessage("学号须有9位，否则视为无效学号", container);
+        });
         number.setOnEditCommit(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null) {
@@ -601,156 +675,260 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     }
                 }
                 if(newNumber) {
-                    Utilities.popMessage("添加成功,请完善相关信息", container);
                     newPerson.setNumber(event.getNewValue());
-                    DatabaseOperations.getInstance().insertNewPerson(newPerson);
+                    Session<Boolean> insertNewPersonSession = new Session<Boolean>() {
+                        @Override
+                        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+                            sessionResult.result = DatabaseOperations.getInstance().insertNewPerson(newPerson);
+                        }
+
+                        @Override
+                        public void onSuccess(Boolean param) {
+                            popupMessage("添加成功,请完善相关信息", 1500);
+                        }
+
+                        @Override
+                        public void onError(String errorMessage) {
+                        }
+
+                        @Override
+                        public void onBusy() {
+                            popupMessage("正在添加新成员信息", 1500);
+                        }
+                    };
+                    insertNewPersonSession.send();
                     newPerson.setOldNumber(newPerson.getNumber());
                 }
             } else {
                 newPerson.setNumber(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
                 newPerson.setOldNumber(newPerson.getNumber());
             }
         });
 
         name.setCellFactory(TextFieldTableCell.forTableColumn());
+        name.setOnEditStart(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() == null)
+                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
+        });
         name.setOnEditCommit(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            if(newPerson.getNumber() == null)
-                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+            if(newPerson.getNumber() != null) {
                 newPerson.setName(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
-            }
-        });
-        sex.setCellFactory(TextFieldTableCell.forTableColumn());
-        sex.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            if(newPerson.getNumber() == null)
-                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
-                newPerson.setSex(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         tel.setCellFactory(TextFieldTableCell.forTableColumn());
-        tel.setOnEditCommit(event -> {
+        tel.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        tel.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setTel(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         group.setCellFactory(TextFieldTableCell.forTableColumn());
-        group.setOnEditCommit(event -> {
+        group.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        group.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setGroup(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         specialty.setCellFactory(TextFieldTableCell.forTableColumn());
-        specialty.setOnEditCommit(event -> {
+        specialty.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        specialty.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setSpecialty(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         birthplace.setCellFactory(TextFieldTableCell.forTableColumn());
-        birthplace.setOnEditCommit(event -> {
+        birthplace.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        birthplace.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setBirthplace(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         classes.setCellFactory(TextFieldTableCell.forTableColumn());
-        classes.setOnEditCommit(event -> {
+        classes.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        classes.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setClasses(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         duty.setCellFactory(TextFieldTableCell.forTableColumn());
-        duty.setOnEditCommit(event -> {
+        duty.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        duty.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setDuty(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         corporation.setCellFactory(TextFieldTableCell.forTableColumn());
-        corporation.setOnEditCommit(event -> {
+        corporation.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        corporation.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setCorporation(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         hobby.setCellFactory(TextFieldTableCell.forTableColumn());
-        hobby.setOnEditCommit(event -> {
+        hobby.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        hobby.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setHobby(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         Email.setCellFactory(TextFieldTableCell.forTableColumn());
-        Email.setOnEditCommit(event -> {
+        Email.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        Email.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setEmail(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         experience.setCellFactory(TextFieldTableCell.forTableColumn());
-        experience.setOnEditCommit(event -> {
+        experience.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        experience.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setExperience(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         understanding.setCellFactory(TextFieldTableCell.forTableColumn());
-        understanding.setOnEditCommit(event -> {
+        understanding.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        understanding.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setUnderstanding(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
             }
         });
         evaluation.setCellFactory(TextFieldTableCell.forTableColumn());
-        evaluation.setOnEditCommit(event -> {
+        evaluation.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
                 Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-            else {
+        });
+        evaluation.setOnEditCommit(event -> {
+            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
+            if(newPerson.getNumber() != null) {
                 newPerson.setEvaluation(event.getNewValue());
-                DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                commonPerson = newPerson;
+                updateNewPersonSession.send();
+            }
+        });
+
+        sex.setCellFactory(new Callback<TableColumn<NewPerson, JFXComboBox>, TableCell<NewPerson, JFXComboBox>>() {
+            @Override
+            public TableCell<NewPerson, JFXComboBox> call(TableColumn<NewPerson, JFXComboBox> param) {
+                AtomicReference<Boolean> isEditing = new AtomicReference<>(false);
+                TableCell<NewPerson, JFXComboBox> cell = new TableCell<NewPerson, JFXComboBox>() {
+                    @Override
+                    protected void updateItem(JFXComboBox comboBox, boolean arg1) {
+                        super.updateItem(comboBox, arg1);
+                        if (arg1) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(comboBox);
+                        }
+                    }
+                };
+                cell.setOnMouseClicked(event -> {
+                    if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
+                        if(!isEditing.get()) {
+                            isEditing.set(true);
+                            JFXComboBox comboBox = (JFXComboBox) cell.getItem();
+                            comboBox.setDisable(false);
+                        }
+                    }
+                });
+                cell.focusedProperty().addListener(new ChangeListener<Boolean>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                        if(!newValue && isEditing.get()) {
+                            isEditing.set(false);
+                            JFXComboBox comboBox = cell.getItem();
+                            comboBox.setDisable(true);
+                            NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
+                            newPerson.setSex((String) comboBox.getValue());
+                            commonPerson = newPerson;
+                            updateNewPersonSession.send();
+                        }
+                    }
+                });
+                return cell;
             }
         });
 
@@ -801,7 +979,8 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                             NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
                             returnTime(newPerson);
                             creatSheetTime(newPerson);
-                            DatabaseOperations.getInstance().updateNewPerson(newPerson);
+                            commonPerson = newPerson;
+                            updateNewPersonSession.send();
                         }
                     }
                 });
@@ -849,7 +1028,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
         number.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("name"));
-        sex.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("sex"));
+        sex.setCellValueFactory(new PropertyValueFactory<NewPerson, JFXComboBox>("comboBox"));
         tel.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("tel"));
         group.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("group"));
         specialty.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("specialty"));
@@ -955,11 +1134,19 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     newPerson.setTime("0");
                     newPerson.setEmail("无");
                     newPerson.setSheetTime("24日晚18:00");
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/time_container.fxml"));
-                    Node node = loader.load();
-                    ScrollPane scrollPane = (ScrollPane) node.lookup("#scrollPane");
+                    FXMLLoader scrollPaneLoader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/time_container.fxml"));
+                    Node nodeA = scrollPaneLoader.load();
+                    ScrollPane scrollPane = (ScrollPane) nodeA.lookup("#scrollPane");
                     newPerson.setScrollPane(scrollPane);
                     addTextField(newPerson, times[0]);
+                    FXMLLoader comboBoxLoader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/sex_combo_box.fxml"));
+                    Node nodeB = comboBoxLoader.load();
+                    JFXComboBox comboBox = (JFXComboBox) nodeB.lookup("#comboBox");
+                    comboBox.setValue(newPerson.getSex());
+                    comboBox.getItems().addAll(
+                            "男",
+                            "女");
+                    newPerson.setComboBox(comboBox);
                     newPeople.add(0, newPerson);
                     tableView.refresh();
                 } catch (Exception e) {

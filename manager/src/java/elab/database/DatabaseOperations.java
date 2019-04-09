@@ -175,27 +175,29 @@ public class DatabaseOperations {
         }
     }
 
-    public void insertMember(Member member) {
+    public Boolean insertMember(Member member) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.insert("member.insertMember", member);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void insertNewPerson(NewPerson newPerson) {
+    public Boolean insertNewPerson(NewPerson newPerson) {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
             session.insert("recruitNew.insertNewPerson", newPerson);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void leadingInRota(List<Rota> rotas) {
+    public Boolean leadingInRota(List<Rota> rotas) {
         SqlSession session =studentSqlSessionFactory.openSession();
         try {
             TableOperations tableOperations = session.getMapper(TableOperations.class);
@@ -204,86 +206,95 @@ public class DatabaseOperations {
             rotaOperations.createRota("duty");
             rotaOperations.insertRota(rotas, "duty");
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void updateMember(LoginMessage loginMessage) {
+    public Boolean updateMember(LoginMessage loginMessage) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.updateMember", loginMessage);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void updateScore(Student student) {
+    public Boolean updateScore(Student student) {
         SqlSession session = classSqlSessionFactory.openSession();
         try {
             session.update("student.updateScore", student);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void updateNewPerson(NewPerson newPerson) {
+    public Boolean updateNewPerson(NewPerson newPerson) {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
             session.update("recruitNew.updateNewPerson", newPerson);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void removeDuty(String name) {
+    public Boolean removeDuty(String name) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.removeDuty", name);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void setDuty(String name) {
+    public Boolean setDuty(String name) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.setDuty", name);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void deleteNewPerson(String number) {
+    public Boolean deleteNewPerson(String number) {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
             session.delete("recruitNew.deleteNewPerson", number);
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void deleteNewPeople(ObservableList<NewPerson> newPeople) {
+    public Boolean deleteNewPeople(ObservableList<NewPerson> newPeople) {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
             for(NewPerson newPerson : newPeople)
                 session.delete("recruitNew.deleteNewPerson", newPerson.getNumber());
             session.commit();
+            return true;
         } finally {
             session.close();
         }
     }
 
-    public void deleteMember(){
+    public Boolean deleteMember(){
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.commit();
+            return true;
         } finally {
             session.close();
         }

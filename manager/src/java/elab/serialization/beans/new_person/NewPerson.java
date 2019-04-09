@@ -1,5 +1,6 @@
 package elab.serialization.beans.new_person;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import org.apache.ibatis.type.Alias;
@@ -27,6 +28,7 @@ public class NewPerson {
     private String sheetTime;
     private Boolean selectionSituation = false;
     private ScrollPane scrollPane;
+    private JFXComboBox comboBox;
 
     public String getNumber() {
         return number;
@@ -176,6 +178,14 @@ public class NewPerson {
 
     public void setScrollPane(ScrollPane scrollPane) {
         this.scrollPane = scrollPane;
+    }
+
+    public JFXComboBox getComboBox() {
+        return comboBox;
+    }
+
+    public void setComboBox(JFXComboBox comboBox) {
+        this.comboBox = comboBox;
     }
 
     public Boolean getSelectionSituation() {
