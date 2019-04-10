@@ -8,6 +8,7 @@ import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.new_person.NewPerson;
+import elab.util.EditingCell;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -78,7 +79,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
     @FXML
     private TableColumn<NewPerson, String> tel;
     @FXML
-    private TableColumn<NewPerson, String> group;
+    private TableColumn<NewPerson, JFXComboBox> group;
     @FXML
     private TableColumn<NewPerson, String> specialty;
     @FXML
@@ -171,9 +172,8 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                         --i;
                     }
                 }
-
             }
-            //tableView.refresh();
+            tableView.refresh();
             popupMessage("删除成功", 1500);
         }
 
@@ -457,17 +457,31 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         }
     }
 
-    public JFXComboBox creatSexComboBox(NewPerson newPerson) {
+    public JFXComboBox creatComboBox(NewPerson newPerson, int operation) {
         JFXComboBox returnBox = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/sex_combo_box.fxml"));
             Node node = loader.load();
             JFXComboBox comboBox = (JFXComboBox) node.lookup("#comboBox");
-            comboBox.getItems().addAll(
-                    "男",
-                    "女"
-            );
-            comboBox.setValue(newPerson.getSex());
+            switch (operation) {
+                case 1:
+                    comboBox.getItems().addAll(
+                            "男",
+                            "女"
+                    );
+                    comboBox.setValue(newPerson.getSex());
+                    break;
+                case 2:
+                    comboBox.getItems().addAll(
+                            "电子组",
+                            "软件组"
+                    );
+                    comboBox.setPrefWidth(comboBox.getPrefWidth() + 30);
+                    comboBox.setValue(newPerson.getGroup());
+                    break;
+                default:
+                    break;
+            }
             comboBox.setDisable(true);
             returnBox = comboBox;
         } catch(Exception e) {
@@ -481,7 +495,8 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         newPeople.addAll(list);
         for (NewPerson newPerson : newPeople) {
             newPerson.setOldNumber(newPerson.getNumber());
-            newPerson.setComboBox(creatSexComboBox(newPerson));
+            newPerson.setSexComboBox(creatComboBox(newPerson, 1));
+            newPerson.setGroupComboBox(creatComboBox(newPerson, 2));
             newPerson.setScrollPane(creatTimeContainer());
             creatSheetTime(newPerson);
         }
@@ -660,7 +675,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
             }
         });
 
-        number.setCellFactory(TextFieldTableCell.forTableColumn());
+        number.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         number.setOnEditStart(event -> {
             popupMessage("学号须有9位，否则视为无效学号", 1500);
         });
@@ -691,6 +706,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
                         @Override
                         public void onError(String errorMessage) {
+                            popupMessage("新成员添加失败", 1500);
                         }
 
                         @Override
@@ -709,7 +725,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
             }
         });
 
-        name.setCellFactory(TextFieldTableCell.forTableColumn());
+        name.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         name.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -723,7 +739,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        tel.setCellFactory(TextFieldTableCell.forTableColumn());
+        tel.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         tel.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -737,21 +753,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        group.setCellFactory(TextFieldTableCell.forTableColumn());
-        group.setOnEditStart(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            if(newPerson.getNumber() == null)
-                Utilities.popMessage("请先填写学号,否则信息无法更新到数据库", container);
-        });
-        group.setOnEditCommit(event -> {
-            NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
-            if(newPerson.getNumber() != null) {
-                newPerson.setGroup(event.getNewValue());
-                commonPerson = newPerson;
-                updateNewPersonSession.send();
-            }
-        });
-        specialty.setCellFactory(TextFieldTableCell.forTableColumn());
+        specialty.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         specialty.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -765,7 +767,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        birthplace.setCellFactory(TextFieldTableCell.forTableColumn());
+        birthplace.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         birthplace.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -779,7 +781,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        classes.setCellFactory(TextFieldTableCell.forTableColumn());
+        classes.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         classes.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -793,7 +795,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        duty.setCellFactory(TextFieldTableCell.forTableColumn());
+        duty.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         duty.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -807,7 +809,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        corporation.setCellFactory(TextFieldTableCell.forTableColumn());
+        corporation.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         corporation.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -821,7 +823,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        hobby.setCellFactory(TextFieldTableCell.forTableColumn());
+        hobby.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         hobby.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -835,7 +837,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        Email.setCellFactory(TextFieldTableCell.forTableColumn());
+        Email.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         Email.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -849,7 +851,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        experience.setCellFactory(TextFieldTableCell.forTableColumn());
+        experience.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         experience.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -863,7 +865,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        understanding.setCellFactory(TextFieldTableCell.forTableColumn());
+        understanding.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         understanding.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -877,7 +879,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                 updateNewPersonSession.send();
             }
         });
-        evaluation.setCellFactory(TextFieldTableCell.forTableColumn());
+        evaluation.setCellFactory((TableColumn<NewPerson,String> p) -> new EditingCell<>());
         evaluation.setOnEditStart(event -> {
             NewPerson newPerson = tableView.getItems().get(event.getTablePosition().getRow());
             if(newPerson.getNumber() == null)
@@ -911,7 +913,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
                         if(!isEditing.get()) {
                             isEditing.set(true);
-                            JFXComboBox comboBox = (JFXComboBox) cell.getItem();
+                            JFXComboBox comboBox = cell.getItem();
                             comboBox.setDisable(false);
                         }
                     }
@@ -925,6 +927,48 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                             comboBox.setDisable(true);
                             NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
                             newPerson.setSex((String) comboBox.getValue());
+                            commonPerson = newPerson;
+                            updateNewPersonSession.send();
+                        }
+                    }
+                });
+                return cell;
+            }
+        });
+
+        group.setCellFactory(new Callback<TableColumn<NewPerson, JFXComboBox>, TableCell<NewPerson, JFXComboBox>>() {
+            @Override
+            public TableCell<NewPerson, JFXComboBox> call(TableColumn<NewPerson, JFXComboBox> param) {
+                AtomicReference<Boolean> isEditing = new AtomicReference<>(false);
+                TableCell<NewPerson, JFXComboBox> cell = new TableCell<NewPerson, JFXComboBox>() {
+                    @Override
+                    protected void updateItem(JFXComboBox comboBox, boolean arg1) {
+                        super.updateItem(comboBox, arg1);
+                        if (arg1) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(comboBox);
+                        }
+                    }
+                };
+                cell.setOnMouseClicked(event -> {
+                    if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY) {
+                        if(!isEditing.get()) {
+                            isEditing.set(true);
+                            JFXComboBox comboBox = cell.getItem();
+                            comboBox.setDisable(false);
+                        }
+                    }
+                });
+                cell.focusedProperty().addListener(new ChangeListener<Boolean>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                        if(!newValue && isEditing.get()) {
+                            isEditing.set(false);
+                            JFXComboBox comboBox = cell.getItem();
+                            comboBox.setDisable(true);
+                            NewPerson newPerson = (NewPerson) cell.getTableRow().getItem();
+                            newPerson.setGroup((String) comboBox.getValue());
                             commonPerson = newPerson;
                             updateNewPersonSession.send();
                         }
@@ -1030,9 +1074,9 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
 
         number.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("number"));
         name.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("name"));
-        sex.setCellValueFactory(new PropertyValueFactory<NewPerson, JFXComboBox>("comboBox"));
+        sex.setCellValueFactory(new PropertyValueFactory<NewPerson, JFXComboBox>("sexComboBox"));
         tel.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("tel"));
-        group.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("group"));
+        group.setCellValueFactory(new PropertyValueFactory<NewPerson, JFXComboBox>("groupComboBox"));
         specialty.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("specialty"));
         birthplace.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("birthplace"));
         classes.setCellValueFactory(new PropertyValueFactory<NewPerson, String>("classes"));
@@ -1126,7 +1170,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     newPerson.setName("无");
                     newPerson.setSex("男");
                     newPerson.setTel("无");
-                    newPerson.setGroup("无");
+                    newPerson.setGroup("电子组");
                     newPerson.setSpecialty("无");
                     newPerson.setBirthplace("无");
                     newPerson.setClasses("无");
@@ -1136,19 +1180,10 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
                     newPerson.setTime("0");
                     newPerson.setEmail("无");
                     newPerson.setSheetTime("24日晚18:00");
-                    FXMLLoader scrollPaneLoader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/time_container.fxml"));
-                    Node nodeA = scrollPaneLoader.load();
-                    ScrollPane scrollPane = (ScrollPane) nodeA.lookup("#scrollPane");
-                    newPerson.setScrollPane(scrollPane);
+                    newPerson.setSexComboBox(creatComboBox(newPerson, 1));
+                    newPerson.setGroupComboBox(creatComboBox(newPerson, 2));
+                    newPerson.setScrollPane(creatTimeContainer());
                     addTextField(newPerson, times[0]);
-                    FXMLLoader comboBoxLoader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/sex_combo_box.fxml"));
-                    Node nodeB = comboBoxLoader.load();
-                    JFXComboBox comboBox = (JFXComboBox) nodeB.lookup("#comboBox");
-                    comboBox.setValue(newPerson.getSex());
-                    comboBox.getItems().addAll(
-                            "男",
-                            "女");
-                    newPerson.setComboBox(comboBox);
                     newPeople.add(0, newPerson);
                     tableView.refresh();
                 } catch (Exception e) {

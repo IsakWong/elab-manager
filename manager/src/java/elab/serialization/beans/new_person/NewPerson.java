@@ -28,7 +28,8 @@ public class NewPerson {
     private String sheetTime;
     private Boolean selectionSituation = false;
     private ScrollPane scrollPane;
-    private JFXComboBox comboBox;
+    private JFXComboBox sexComboBox;
+    private JFXComboBox groupComboBox;
 
     public String getNumber() {
         return number;
@@ -180,12 +181,20 @@ public class NewPerson {
         this.scrollPane = scrollPane;
     }
 
-    public JFXComboBox getComboBox() {
-        return comboBox;
+    public JFXComboBox getGroupComboBox() {
+        return groupComboBox;
     }
 
-    public void setComboBox(JFXComboBox comboBox) {
-        this.comboBox = comboBox;
+    public void setGroupComboBox(JFXComboBox groupComboBox) {
+        this.groupComboBox = groupComboBox;
+    }
+
+    public JFXComboBox getSexComboBox() {
+        return sexComboBox;
+    }
+
+    public void setSexComboBox(JFXComboBox sexComboBox) {
+        this.sexComboBox = sexComboBox;
     }
 
     public Boolean getSelectionSituation() {

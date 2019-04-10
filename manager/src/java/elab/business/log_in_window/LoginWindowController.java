@@ -69,6 +69,7 @@ public class LoginWindowController extends BaseViewController {
 
         @Override
         public void onSuccess(LoginMessage param) {
+            param.setOldNumber(param.getNumber());
             writeUserInfomationToDisk();
             showMainWindow();
             loginSession.IsSending = false;

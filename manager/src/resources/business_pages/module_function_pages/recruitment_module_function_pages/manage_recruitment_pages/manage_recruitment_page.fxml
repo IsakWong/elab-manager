@@ -44,15 +44,15 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="45.0">
                <children>
-                  <AnchorPane prefHeight="45.0" prefWidth="136.0">
-                     <children>
-                        <Label fx:id="fileOutLabel" layoutY="15.0" text="导出信息" />
-                        <JFXButton fx:id="fileOut" layoutX="60.0" layoutY="4.0" prefHeight="35.0" prefWidth="62.0" styleClass="raised-button" text="→" />
-                     </children>
+                  <Label fx:id="fileOutLabel" text="导出信息">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
-                  </AnchorPane>
+                  </Label>
+                  <JFXButton fx:id="fileOut" prefHeight="35.0" prefWidth="62.0" styleClass="raised-button" text="→">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></JFXButton>
                   <Label fx:id="fileOutLabel2" text="增添信息">
                      <HBox.margin>
                         <Insets left="50.0" />
@@ -85,8 +85,8 @@
                        <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
                        <TableColumn fx:id="sex" prefWidth="75.0" text="性别" />
                        <TableColumn fx:id="tel" prefWidth="120.0" text="联系电话" />
-                       <TableColumn fx:id="group" prefWidth="75.0" text="组别" />
-                       <TableColumn fx:id="specialty" prefWidth="200.0" text="专业" />
+                       <TableColumn fx:id="group" prefWidth="101.0" text="组别" />
+                       <TableColumn fx:id="specialty" prefWidth="174.0" text="专业" />
                        <TableColumn fx:id="birthplace" prefWidth="200.0" text="籍贯" />
                        <TableColumn fx:id="classes" prefWidth="85.0" text="班级" />
                        <TableColumn fx:id="duty" prefWidth="75.0" text="职务" />
