@@ -20,8 +20,8 @@ public class EditingCell<T> extends TableCell<T, String> {
 
     @Override
     public void cancelEdit() {
-        super.cancelEdit();
-        setText(getItem());
+        super.commitEdit(textField.getText());
+        setText(textField.getText() == "" ? null : textField.getText());
         setGraphic(null);
     }
 
@@ -56,6 +56,6 @@ public class EditingCell<T> extends TableCell<T, String> {
     }
 
     private String getString() {
-        return getItem() == null ? "" : getItem().toString();
+        return getItem() == null ? "" : getItem();
     }
 }

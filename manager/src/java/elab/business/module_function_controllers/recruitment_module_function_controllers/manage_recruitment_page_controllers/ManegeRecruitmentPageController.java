@@ -195,7 +195,7 @@ public class ManegeRecruitmentPageController extends BaseFunctionContentControll
         }
 
         @Override
-        public void onSuccess(Boolean param) {
+        public void onSuccess(Boolean param) { popupMessage("yes", 20000);
         }
 
         @Override
