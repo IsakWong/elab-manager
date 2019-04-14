@@ -69,8 +69,11 @@ public class LoginWindowController extends BaseViewController {
 
         @Override
         public void onSuccess(LoginMessage param) {
-            param.setOldNumber(param.getNumber());
-            writeUserInfomationToDisk();
+            //保存登陆凭证
+            param.setValid(true);
+            ElabManagerApplication.currentCertification = param;
+
+            writeUserInformationToDisk();
             showMainWindow();
             loginSession.IsSending = false;
         }
@@ -123,7 +126,7 @@ public class LoginWindowController extends BaseViewController {
         }
     }
 
-    public void writeUserInfomationToDisk() {
+    public void writeUserInformationToDisk() {
         if (autoLogin.isSelected()) {
             ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
             ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
@@ -138,6 +141,8 @@ public class LoginWindowController extends BaseViewController {
     }
 
     public void showMainWindow() {
+        if( !ElabManagerApplication.currentCertification.isValid())
+            return;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/main_window.fxml"));
             Parent root = loader.load();

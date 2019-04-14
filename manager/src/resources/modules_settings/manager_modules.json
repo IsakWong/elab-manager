@@ -1,6 +1,26 @@
 [
   {
+    "module_name": "个人主页",
+    "module_fxml": "/business_pages/module_page.fxml",
+    "functions":
+    [
+      {
+        "function_name": "主页",
+        "function_fxml": "/business_pages/module_function_pages/person_space_pages/person_space_page.fxml"
+      },
+      {
+        "function_name": "个人信息管理",
+        "function_fxml": "/business_pages/module_function_pages/person_space_pages/personal_information_page.fxml"
+      },
+      {
+        "function_name": "空闲时间统计",
+        "function_fxml": "/business_pages/module_function_pages/person_space_pages/free_time_pages/free_time_collect_page.fxml"
+      }
+    ]
+  },
+  {
     "module_name": "助课管理",
+    "module_fxml": "/business_pages/module_page.fxml",
     "functions":
     [
       {
@@ -14,23 +34,12 @@
       {
         "function_name": "助教出勤统计",
         "function_fxml": "/business_pages/module_function_pages/assist_teaching_module_function_pages/attendance_record_page.fxml"
-      }/*,
-    {
-      "function_name": "数据处理",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "理论课签到情况",
-      "function_fxml": "/add_user_page.fxml"
-    },
-    {
-      "function_name": "自动填表",
-      "function_fxml": "/add_user_page.fxml"
-    }*/
+      }
     ]
   },
   {
     "module_name": "成员管理",
+    "module_fxml": "/business_pages/module_page.fxml",
     "functions":
     [
       {
@@ -40,19 +49,12 @@
       {
         "function_name": "新加成员",
         "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/add_member_page.fxml"
-      },
-      {
-        "function_name": "个人信息管理",
-        "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/personal_information_page.fxml"
-      },
-      {
-        "function_name": "空闲时间统计",
-        "function_fxml": "/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_collect_page.fxml"
       }
     ]
   },
   {
     "module_name": "签到与值班",
+    "module_fxml": "/business_pages/module_page.fxml",
     "functions":
     [
       {
@@ -71,33 +73,22 @@
   },
   {
     "module_name": "系统控制",
+    "module_fxml": "/business_pages/module_page.fxml",
     "functions":
     [
       {
         "function_name": "Log信息查看",
         "function_fxml": "/business_pages/module_function_pages/sys_ctrl_module_function_pages/view_log_page.fxml"
       },
-      /*
-      {
-        "function_name": "选择非选课时间",
-        "function_fxml": "/add_user_page.fxml"
-      },*/
       {
         "function_name": "修改管理员列表",
         "function_fxml": "/business_pages/module_function_pages/sys_ctrl_module_function_pages/change_admin_page.fxml"
-      }/*,
-      {
-        "function_name": "局域网远程控制",
-        "function_fxml": "/add_user_page.fxml"
-      },
-      {
-        "function_name": "重要通知",
-        "function_fxml": "/add_user_page.fxml"
-      }*/
+      }
     ]
   },
   {
     "module_name": "招新",
+    "module_fxml": "/business_pages/module_page.fxml",
     "functions":
     [
       {
@@ -112,6 +103,7 @@
   },
   {
     "module_name": "设置",
+    "module_fxml": "/business_pages/module_page.fxml",
     "functions":
     [
       {

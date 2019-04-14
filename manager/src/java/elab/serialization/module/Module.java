@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 public class Module {
     @SerializedName("module_name")
     public String ModuleName;
+    @SerializedName("module_fxml")
+    public String ModuleFxml;
     @SerializedName("functions")
     public Function[] Functions;
 

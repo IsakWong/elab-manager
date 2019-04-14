@@ -86,7 +86,7 @@ public class MainWindowController extends BaseViewController {
             }.getType();
             ArrayList<Module> moduleList = gson.fromJson(moduleJson, typeList);
             for (Module module : moduleList) {
-                FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource("/business_pages/module_page.fxml"));
+                FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource(module.ModuleFxml));
                 Parent root = moduleLoader.load();
                 Tab userTab = new Tab();
                 userTab.setText(module.ModuleName);

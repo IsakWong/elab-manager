@@ -4,10 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import elab.application.BaseFunctionContentController;
 import elab.util.Utilities;
-import io.reactivex.*;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
-import io.reactivex.schedulers.Schedulers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -36,7 +31,7 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     private void loadDayCheckBoxGroup(HBox WeekRow,int WeekIndex, int DayIndex) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_checkbox.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/person_space_pages/free_time_pages/free_time_checkbox.fxml"));
             Node checkboxGroup = loader.load();
             Label day = (Label) checkboxGroup.lookup("#dayLabel");
             day.setText(DayString[DayIndex]);
@@ -55,7 +50,7 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     private void loadWeekCheckBoxGroup(VBox Container,int WeekIndex) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/member_module_function_pages/free_time_pages/free_time_row.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/person_space_pages/free_time_pages/free_time_row.fxml"));
             HBox row = loader.load();
             Label day = (Label)row.lookup("#weekLabel");
             day.setText(WeekString[WeekIndex]);

@@ -1,6 +1,7 @@
 package elab.application;
 
 import elab.business.log_in_window.LoginWindowController;
+import elab.serialization.beans.member.LoginMessage;
 import elab.util.OrderedProperties;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ public class ElabManagerApplication extends Application {
 
     public static OrderedProperties properties;
     public static Stage primaryStage;
+    public static LoginMessage currentCertification = new LoginMessage();
 
 
     @Override
