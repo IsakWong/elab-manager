@@ -213,7 +213,7 @@ public class Utilities {
 
     private static String checkCourseSort() {
         int c = 2;
-        String[] courseSort = {"硬件课", "软件课", ""};
+        String[] courseSort = {"硬件课", "软件课", "无课程"};
         String[] hardWeeks = getSchoolOpeningInformation().getHardWeeks().split("~");
         String[] softWeeks = getSchoolOpeningInformation().getSoftWeeks().split("~");
         if(Integer.parseInt(hardWeeks[0]) <= getSchoolCalendarWeek() && getSchoolCalendarWeek() <= Integer.parseInt(hardWeeks[1]))

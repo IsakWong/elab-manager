@@ -158,7 +158,7 @@ public class FaceRecognitionTool extends JPanel {
 
         CascadeClassifier faceDetector = new CascadeClassifier();
 
-        faceDetector.load("face_recognition/haarcascade_frontalface_alt.xml");
+        faceDetector.load("F:\\OpenCV\\opencv\\sources\\data\\haarcascades\\haarcascade_frontalface_alt.xml");
         //这是opencv的安装路径下找到sources\\data\\haarcascades\\haarcascade_frontalface_alt.xml文件
 
 
@@ -185,5 +185,9 @@ public class FaceRecognitionTool extends JPanel {
     public static void run(HBox container) {
         if(start() == 0)
             Utilities.popMessage("系统未检测到可用的相机,请检查设备", container);
+    }
+
+    public static void main(String[] args) {
+        start();
     }
 }
