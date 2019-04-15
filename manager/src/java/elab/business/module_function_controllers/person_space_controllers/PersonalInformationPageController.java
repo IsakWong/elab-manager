@@ -1,4 +1,4 @@
-package elab.business.module_function_controllers.member_module_function_controllers;
+package elab.business.module_function_controllers.person_space_controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.sun.deploy.Environment;
 import elab.application.BaseFunctionContentController;
+import elab.application.ElabManagerApplication;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.member.LoginMessage;
@@ -27,7 +28,7 @@ import java.io.*;
 
 public class PersonalInformationPageController extends BaseFunctionContentController {
 
-    private LoginMessage loginMessage = new LoginMessage();
+    private LoginMessage loginMessage;
 
     @FXML
     private JFXTextField numberInputField;
@@ -165,6 +166,7 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
     @Override
     public void initializeController() {
 
+        loginMessage = ElabManagerApplication.currentCertification;
         unFocusColor = pwdInputField.getUnFocusColor();
 
         collegeChooseBox.getItems().addAll(

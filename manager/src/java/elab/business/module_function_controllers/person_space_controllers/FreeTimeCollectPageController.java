@@ -1,4 +1,4 @@
-package elab.business.module_function_controllers.member_module_function_controllers;
+package elab.business.module_function_controllers.person_space_controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;

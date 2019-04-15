@@ -6,74 +6,95 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="container" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.log_in_window.LoginWindowController">
+<VBox style="-fx-background-color: transparent;" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.log_in_window.LoginWindowController">
    <children>
-      <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3F51B5;">
+      <VBox fx:id="container" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" prefWidth="600.0" styleClass="dropshadow-window">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="400.0" prefHeight="150.0" prefWidth="400.0" text="科中管理系统" textAlignment="CENTER" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="132.0" right="16.0" />
-               </HBox.margin>
+            <HBox fx:id="topBar" alignment="TOP_RIGHT" style="-fx-background-color: #3F51B5;">
+               <children>
+                  <JFXButton fx:id="minBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0">
+                     <HBox.margin>
+                        <Insets bottom="16.0" right="10.0" top="16.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="closeBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0">
+                     <HBox.margin>
+                        <Insets bottom="16.0" right="16.0" top="16.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" style="-fx-background-color: #3F51B5;" text="科中管理系统" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="30.0" />
                </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="32.0" />
+               </padding>
             </Label>
-            <JFXButton fx:id="minBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0">
-               <HBox.margin>
-                  <Insets right="10.0" top="16.0" />
-               </HBox.margin></JFXButton>
-            <JFXButton fx:id="closeBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0">
-               <HBox.margin>
-                  <Insets right="16.0" top="16.0" />
-               </HBox.margin>
+            <JFXTextField fx:id="userInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefWidth="300.0" promptText="用户名:" styleClass="elab-text-body">
+               <VBox.margin>
+                  <Insets top="32.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="密码:" styleClass="elab-text-body">
+               <VBox.margin>
+                  <Insets bottom="8.0" top="32.0" />
+               </VBox.margin>
+            </JFXPasswordField>
+            <HBox alignment="CENTER" spacing="100.0">
+               <children>
+                  <JFXCheckBox fx:id="autoLogin" checkedColor="rgb(0,81,181)" mnemonicParsing="false" styleClass="elab-text-caption" text="自动登录" />
+                  <JFXCheckBox fx:id="rememberPwd" checkedColor="rgb(0,81,181)" layoutX="274.0" layoutY="10.0" mnemonicParsing="false" styleClass="elab-text-caption" text="记住密码" />
+               </children>
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
+            </HBox>
+            <JFXButton fx:id="logButton" defaultButton="true" styleClass="raised-button" text="登录" textFill="#212121">
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <Shadow blurType="ONE_PASS_BOX" radius="6.2925" width="6.17" />
+               </effect>
             </JFXButton>
+            <Label layoutX="284.0" layoutY="166.0" styleClass="elab-text-caption" text="Copyright @ 2018 ELAB. All rights reserved" textAlignment="CENTER" textFill="#727272">
+               <font>
+                  <Font name="Microsoft YaHei" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="42.0" top="16.0" />
+               </VBox.margin>
+            </Label>
          </children>
-      </HBox>
-      <JFXTextField fx:id="userInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefWidth="300.0" promptText="用户名:" styleClass="elab-text-body">
-         <VBox.margin>
-            <Insets top="32.0" />
-         </VBox.margin>
-      </JFXTextField>
-      <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="密码:" styleClass="elab-text-body">
-         <VBox.margin>
-            <Insets bottom="8.0" top="32.0" />
-         </VBox.margin>
-      </JFXPasswordField>
-      <HBox alignment="CENTER" spacing="100.0">
-         <children>
-            <JFXCheckBox fx:id="autoLogin" checkedColor="rgb(0,81,181)" mnemonicParsing="false" styleClass="elab-text-caption" text="自动登录" />
-            <JFXCheckBox fx:id="rememberPwd" checkedColor="rgb(0,81,181)" layoutX="274.0" layoutY="10.0" mnemonicParsing="false" styleClass="elab-text-caption" text="记住密码" />
-         </children>
-         <VBox.margin>
-            <Insets top="8.0" />
-         </VBox.margin>
-      </HBox>
-      <JFXButton fx:id="logButton" styleClass="raised-button" text="登录" textFill="#212121">
-         <VBox.margin>
-            <Insets top="16.0" />
-         </VBox.margin>
-         <font>
-            <Font size="15.0" />
-         </font>
+         <opaqueInsets>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </opaqueInsets>
          <effect>
-            <Shadow blurType="ONE_PASS_BOX" radius="6.2925" width="6.17" />
+            <DropShadow blurType="ONE_PASS_BOX" color="#00000074" height="35.0" offsetX="1.0" offsetY="1.0" radius="18.25" width="40.0" />
          </effect>
-      </JFXButton>
-      <Label layoutX="284.0" layoutY="166.0" styleClass="elab-text-caption" text="Copyright @ 2018 ELAB. All rights reserved" textAlignment="CENTER" textFill="#727272">
-         <font>
-            <Font name="Microsoft YaHei" size="12.0" />
-         </font>
          <VBox.margin>
-            <Insets top="16.0" />
+            <Insets />
          </VBox.margin>
-      </Label>
+      </VBox>
    </children>
-   <opaqueInsets>
-      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-   </opaqueInsets>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
 </VBox>

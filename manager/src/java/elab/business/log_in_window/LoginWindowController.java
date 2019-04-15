@@ -22,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -148,10 +149,12 @@ public class LoginWindowController extends BaseViewController {
             Parent root = loader.load();
             MainWindowController controller = loader.getController();
             Stage mainStage = new Stage();
-            mainStage.initStyle(StageStyle.UNDECORATED);
+            mainStage.initStyle(StageStyle.TRANSPARENT);
             float width =Float.valueOf(ElabManagerApplication.properties.getProperty("WINDOW_WIDTH"));
             float height = Float.valueOf(ElabManagerApplication.properties.getProperty("WINDOW_HEIGHT"));
-            mainStage.setScene(new Scene(root, 1000, 800));
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            scene.setFill(Color.TRANSPARENT);
             controller.initializeController();
             mainStage.show();
             ElabManagerApplication.primaryStage.close();

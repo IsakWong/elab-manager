@@ -2,23 +2,36 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1000.0" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
+
+<VBox style="-fx-background-color: transparent;" stylesheets="@../style/css/controls_style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.main_window.MainWindowController">
    <children>
-      <ImageView fitHeight="70.0" fitWidth="1000.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <image>
-            <Image url="@../top_panel.png" />
-         </image>
-         <effect>
-            <DropShadow color="#000000d3" height="50.0" radius="12.0" width="0.0" />
-         </effect>
-      </ImageView>
-      <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <JFXButton fx:id="mainMenuMinBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="16.0" />
-      <JFXButton fx:id="mainMenuCloseBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="1000.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <image>
+                  <Image url="@../top_panel.png" />
+               </image>
+               <effect>
+                  <DropShadow color="#000000d3" height="50.0" radius="12.0" width="0.0" />
+               </effect>
+            </ImageView>
+            <JFXTabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <JFXButton fx:id="mainMenuMinBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="16.0" />
+            <JFXButton fx:id="mainMenuCloseBtn" ellipsisString="" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
+         </children>
+          <effect>
+              <DropShadow blurType="ONE_PASS_BOX" color="#00000074" height="35.0" offsetX="1.0" offsetY="1.0" radius="18.25" width="40.0" />
+          </effect>
+      </AnchorPane>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+   </padding>
+</VBox>

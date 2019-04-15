@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import elab.application.BaseViewController;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseModulePageController;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
@@ -36,55 +38,133 @@ public class MainWindowController extends BaseViewController {
     @FXML
     private JFXButton mainMenuMinBtn;
 
+    ArrayList<Module> moduleList;
+
     private double x1;
     private double y1;
     private double x_stage;
     private double y_stage;
 
+
+    private void loadModuleFunctionFxmlAtIndex(Module module , int index)
+    {
+        Module selectModule = module;
+        BaseModulePageController moduleController = selectModule.Controller;
+        try {
+            if(index >= selectModule.Functions.length)
+                return;
+            Function func = selectModule.Functions[index];
+            if (!func.IsFxmlInitialized) {
+
+                long begintime = System.nanoTime();
+
+                FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
+                Pane functionRoot = functionLoader.load();
+                BaseFunctionContentController baseViewController = functionLoader.getController();
+
+                long endtime = System.nanoTime();
+                float costTime = (endtime - begintime) / 1000000;
+                System.out.println(func.FunctionName + " FXML 加载完毕，加载时间为：" + costTime + " 毫秒");
+
+                baseViewController.ParentModuleController = selectModule.Controller;
+                begintime = System.nanoTime();
+
+                baseViewController.initializeController();
+
+                endtime = System.nanoTime();
+                costTime = (endtime - begintime) / 1000000;
+                System.out.println(func.FunctionName + " 初始化完毕 ，加载时间为：" + costTime + " 毫秒");
+
+                func.IsFxmlInitialized = true;
+                func.FxmlRoot = functionRoot;
+                func.Controller = baseViewController;
+
+                moduleController.addFunctionContent(func);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void initTabPane()
+    {
+        tabPane.setOnMouseDragged(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                Stage stage = (Stage) tabPane.getScene().getWindow();
+                stage.setX(x_stage + event.getScreenX() - x1);
+                stage.setY(y_stage + event.getScreenY() - y1);
+            }
+        });
+
+        tabPane.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if(moduleList != null)
+                {
+                    Module selectModule = moduleList.get(newValue.intValue());
+                    BaseModulePageController moduleController = selectModule.Controller;
+                    if( selectModule != null && moduleController != null)
+                    {
+                        if(moduleController.getCurrentFunction() == null && selectModule.Functions != null && selectModule.Functions[0] != null)
+                        {
+                            Function func = selectModule.Functions[0];
+                            long begintime = System.nanoTime();
+                            loadModuleFunctionFxmlAtIndex(selectModule,0);
+                            moduleController.setCurrentFunction(selectModule.Functions[0]);
+                            moduleController.beginLoading();
+                            long endtime = System.nanoTime();
+                            float costTime = (endtime - begintime) / 1000000;
+                            System.out.println(func.FunctionName + " 显示完毕 ，加载时间为：" + costTime + " 毫秒");
+
+                        }
+                    }
+                }
+            }
+        });
+
+        tabPane.setOnMousePressed(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                Stage stage = (Stage) tabPane.getScene().getWindow();
+                x1 = event.getScreenX();
+                y1 = event.getScreenY();
+                x_stage = stage.getX();
+                y_stage = stage.getY();
+            }
+        });
+
+    }
+    private void initToolbar()
+    {
+        mainMenuCloseBtn.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
+                stage.close();
+            }
+        });
+        mainMenuCloseBtn.setGraphic(Utilities.getImage("/pictures/close.png"));
+
+        mainMenuMinBtn.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                Stage stage = (Stage) mainMenuMinBtn.getScene().getWindow();
+                stage.setIconified(true);
+            }
+        });
+        mainMenuMinBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
+    }
     public void initializeController() {
+
+
         try {
 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-            mainMenuCloseBtn.setOnMouseClicked(event -> {
-                if (event.getButton() == MouseButton.PRIMARY) {
-                    Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
-                    stage.close();
-                }
-            });
-            mainMenuCloseBtn.setGraphic(Utilities.getImage("/pictures/close.png"));
-
-            mainMenuMinBtn.setOnMouseClicked(event -> {
-                if (event.getButton() == MouseButton.PRIMARY) {
-                    Stage stage = (Stage) mainMenuMinBtn.getScene().getWindow();
-                    stage.setIconified(true);
-                }
-            });
-            mainMenuMinBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
-
-            tabPane.setOnMouseDragged(event -> {
-                if (event.getButton() == MouseButton.PRIMARY) {
-                    Stage stage = (Stage) tabPane.getScene().getWindow();
-                    stage.setX(x_stage + event.getScreenX() - x1);
-                    stage.setY(y_stage + event.getScreenY() - y1);
-                }
-            });
-
-            tabPane.setOnMousePressed(event -> {
-                if (event.getButton() == MouseButton.PRIMARY) {
-                    Stage stage = (Stage) tabPane.getScene().getWindow();
-                    x1 = event.getScreenX();
-                    y1 = event.getScreenY();
-                    x_stage = stage.getX();
-                    y_stage = stage.getY();
-                }
-            });
-
             Gson gson = new Gson();
             String moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/manager_modules.json"));
-            Type typeList = new TypeToken<ArrayList<Module>>() {
-            }.getType();
-            ArrayList<Module> moduleList = gson.fromJson(moduleJson, typeList);
+            Type typeList = new TypeToken<ArrayList<Module>>() {}.getType();
+
+
+            moduleList = gson.fromJson(moduleJson, typeList);
+
             for (Module module : moduleList) {
                 FXMLLoader moduleLoader = new FXMLLoader(getClass().getResource(module.ModuleFxml));
                 Parent root = moduleLoader.load();
@@ -105,54 +185,19 @@ public class MainWindowController extends BaseViewController {
                 moduleController.list.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                     @Override
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                        try {
-                            int index = newValue.intValue();
-                            if(index >= module.Functions.length)
-                                return;
-                            Function func = module.Functions[index];
-                            if (!func.IsFxmlInitialized) {
-
-                                long begintime = System.nanoTime();
-
-                                FXMLLoader functionLoader = new FXMLLoader(getClass().getResource(func.FunctionFXML));
-                                Pane functionRoot = functionLoader.load();
-                                BaseFunctionContentController baseViewController = functionLoader.getController();
-
-                                long endtime = System.nanoTime();
-                                float costTime = (endtime - begintime)/1000000;
-                                System.out.println(func.FunctionName + " FXML 加载完毕，加载时间为：" + costTime + " 毫秒");
-
-                                baseViewController.ParentModuleController = moduleController;
-                                begintime = System.nanoTime();
-
-                                baseViewController.initializeController();
-
-                                endtime = System.nanoTime(); costTime = (endtime - begintime)/1000000;
-                                System.out.println(func.FunctionName + " 初始化完毕 ，加载时间为：" + costTime + " 毫秒");
-
-                                func.IsFxmlInitialized = true;
-                                func.FxmlRoot = functionRoot;
-                                func.Controller = baseViewController;
-
-                                moduleController.addFunctionContent(func);
-                                moduleController.setCurrentFunction(func);
-                                moduleController.beginLoading();
-
-                            } else {
-                                moduleController.setCurrentFunction(func);
-                                moduleController.beginLoading();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        loadModuleFunctionFxmlAtIndex(module,newValue.intValue());
+                        moduleController.setCurrentFunction(module.Functions[newValue.intValue()]);
+                        moduleController.beginLoading();
                     }
                 });
-
                 userTab.setContent(root);
                 tabPane.getTabs().add(userTab);
             }
         } catch (Exception exp) {
             exp.printStackTrace();
         }
+
+        initToolbar();
+        initTabPane();
     }
 }

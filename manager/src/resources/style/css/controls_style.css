@@ -1,6 +1,5 @@
 .root {
     -fx-font-family: "Roboto Light";
-    -fx-font-size: 12.0;
     -dark-primary: #303f9f;
     -light-primary: #c5cae9;
     -primary: #3f51b5;
@@ -13,6 +12,9 @@
     main-color-deep: rgb(48,63,159);
 }
 
+.dropshadow-window {
+    -fx-background-color: rgb(255,255,255);
+}
 
 .top-panel{
     -fx-background-color: -dark-primary;

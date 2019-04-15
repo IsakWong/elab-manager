@@ -29,6 +29,9 @@ public class BaseModulePageController extends BaseViewController {
 
     public ArrayList<Function> loadedFuncs = new ArrayList<>();
 
+    public Function getCurrentFunction(){
+        return CurrentFunction;
+    }
     public void setCurrentFunction(Function func) {
         if(func == CurrentFunction)
             return;
@@ -83,5 +86,6 @@ public class BaseModulePageController extends BaseViewController {
 
     @Override
     public void initializeController() {
+
     }
 }
