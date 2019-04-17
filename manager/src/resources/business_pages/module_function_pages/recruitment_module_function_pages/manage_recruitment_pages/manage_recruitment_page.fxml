@@ -63,11 +63,6 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <Label fx:id="fileOutLabel1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="223.0" text="信息编辑完毕后按&quot;ENTER&quot;键方可完成编辑，编辑完的信息会即时更新到数据库中" wrapText="true">
-                     <HBox.margin>
-                        <Insets left="200.0" />
-                     </HBox.margin>
-                  </Label>
                </children>
                <VBox.margin>
                   <Insets bottom="2.0" />

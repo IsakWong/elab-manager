@@ -51,7 +51,12 @@ public class LoginWindowController extends BaseViewController {
     private String user;
     private String md5Password;
 
+    private double x1;
+    private double y1;
+    private double x_stage;
+    private double y_stage;
 
+    private Boolean isPwdRemembered = false;
 
     Session<LoginMessage> loginSession = new Session<LoginMessage>() {
 
@@ -90,22 +95,17 @@ public class LoginWindowController extends BaseViewController {
         }
     };
 
-    private double x1;
-    private double y1;
-    private double x_stage;
-    private double y_stage;
-
     public void loadUserInformationFromDisk() {
         try {
             String autoLoginProperty = ElabManagerApplication.properties.getProperty("AUTO_LOG_IN");
             String rememberPwdProperty = ElabManagerApplication.properties.getProperty("REMEMBER_PASSWORD");
+            user = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER");
+            md5Password = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_PASSWORD");
             if (autoLoginProperty == null) {
 
             } else {
                 if (autoLoginProperty.equals("true")) {
                     autoLogin.setSelected(true);
-                    user = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER");
-                    md5Password = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_PASSWORD");
                     if (user != null && md5Password != null) {
                         Utilities.popMessage("正在登陆中", container);
                         loginSession.send();
@@ -116,29 +116,20 @@ public class LoginWindowController extends BaseViewController {
 
             } else {
                 if (rememberPwdProperty.equals("true")) {
+                    isPwdRemembered = true;
                     rememberPwd.setSelected(true);
                     userInputField.setText(user);
-                    pwdInputField.setText(md5Password);
+                    pwdInputField.setText("0123456789");
                 }
             }
-
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
     public void writeUserInformationToDisk() {
-        if (autoLogin.isSelected()) {
-            ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
-            ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
-            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
-            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
-        }
-        if (rememberPwd.isSelected()) {
-            ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
-            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
-            ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
-        }
+        ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
+        ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
     }
 
     public void showMainWindow() {
@@ -174,6 +165,20 @@ public class LoginWindowController extends BaseViewController {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (newValue == true) {
                     rememberPwd.setSelected(true);
+                    ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
+                } else {
+                    ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "false");
+                }
+            }
+        });
+
+        rememberPwd.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue == true) {
+                    ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
+                } else {
+                    ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "false");
                 }
             }
         });
@@ -188,9 +193,10 @@ public class LoginWindowController extends BaseViewController {
                 if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                     Utilities.popMessage("用户名和密码不能为空", container);
                 else {
-
-                    user = userInputField.getText();
-                    md5Password = Utilities.encrypt(pwdInputField.getText());
+                    if(!isPwdRemembered) {
+                        user = userInputField.getText();
+                        md5Password = Utilities.encrypt(pwdInputField.getText());
+                    }
                     Utilities.popMessage("正在登陆中", container);
                     loginSession.send();
                 }
@@ -201,8 +207,10 @@ public class LoginWindowController extends BaseViewController {
             if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                 Utilities.popMessage("用户名和密码不能为空", container);
             else {
-                user = userInputField.getText();
-                md5Password = Utilities.encrypt(pwdInputField.getText());
+                if(!isPwdRemembered) {
+                    user = userInputField.getText();
+                    md5Password = Utilities.encrypt(pwdInputField.getText());
+                }
                 Utilities.popMessage("正在登陆中", container);
                 loginSession.send();
             }

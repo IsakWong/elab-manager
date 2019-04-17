@@ -23,11 +23,11 @@ public class ElabManagerApplication extends Application {
     public static Stage primaryStage;
     public static LoginMessage currentCertification = new LoginMessage();
 
-
     @Override
     public void stop() throws Exception {
         flushProperty();
     }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -46,7 +46,6 @@ public class ElabManagerApplication extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.show();
-
     }
 
     public void loadPropertyFile() {
@@ -70,7 +69,6 @@ public class ElabManagerApplication extends Application {
         }
         String strWidth = properties.getProperty("WINDOW_WIDTH");
         String strHeight = properties.getProperty("WINDOW_HEIGHT");
-
     }
 
     public void flushProperty() {
@@ -82,10 +80,9 @@ public class ElabManagerApplication extends Application {
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
-        }
+        } finally {
 
+        }
     }
 
     public static void main(String[] args) {

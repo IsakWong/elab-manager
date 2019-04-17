@@ -108,7 +108,7 @@
     [
       {
         "function_name": "管理系统设置",
-        "function_fxml": "/business_pages/module_function_pages/manager_settings.fxml"
+        "function_fxml": "/business_pages/module_function_pages/manager_settings_pages/manager_settings_page.fxml"
       }
     ]
   }

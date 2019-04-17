@@ -27,6 +27,7 @@ public class LoginMessage {
     public void setValid(boolean value){
         isValid = value;
     }
+
     public boolean isValid() {
         return isValid;
     }

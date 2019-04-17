@@ -39,6 +39,8 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
     @FXML
     private JFXTextField telInputField;
     @FXML
+    private JFXTextField pwdTextField;
+    @FXML
     private JFXPasswordField pwdInputField;
     @FXML
     private JFXPasswordField twicePwdInputField;
@@ -58,6 +60,10 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
     private RadioButton sexChoose_woman;
     @FXML
     private AnchorPane photoPane;
+    @FXML
+    private ImageView open;
+    @FXML
+    private ImageView close;
     @FXML
     private ImageView pwdOK;
     @FXML
@@ -341,6 +347,23 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
                     }
                 }
             }
+        });
+
+        open.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                pwdInputField.setVisible(false);
+                pwdTextField.setVisible(true);
+                pwdTextField.setText(pwdInputField.getText());
+                open.setVisible(false);
+                close.setVisible(true);
+            }
+        });
+
+        open.setOnMouseReleased(event -> {pwdInputField.setVisible(false);
+            pwdTextField.setVisible(false);
+            pwdInputField.setVisible(true);
+            close.setVisible(false);
+            open.setVisible(true);
         });
 
         IsDataInitialized = true;

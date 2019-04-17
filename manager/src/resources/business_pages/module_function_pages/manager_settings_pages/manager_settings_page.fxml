@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.settings.ManagerSettings">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.settings.ManagerSettings">
    <children>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="12.0" styleClass="card-view" stylesheets="@../../style/css/controls_style.css" VBox.vgrow="NEVER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="12.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css" VBox.vgrow="NEVER">
          <children>
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="400.0" styleClass="tip-label" text="设置">
                <VBox.margin>
@@ -16,13 +15,12 @@
                </VBox.margin>
             </Label>
             <Label alignment="BASELINE_LEFT" layoutX="26.0" layoutY="184.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="elab-text-title" text="登陆设置" textAlignment="CENTER" />
-            <JFXCheckBox mnemonicParsing="false" text="自动登录">
+            <JFXCheckBox fx:id="autoLoginBox" checkedColor="#303f9f" mnemonicParsing="false" text="自动登录">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </JFXCheckBox>
-            <JFXCheckBox layoutX="26.0" layoutY="65.0" mnemonicParsing="false" text="记住密码" />
-            <JFXButton buttonType="RAISED" mnemonicParsing="false" styleClass="raised-button" text="保存" />
+            <JFXCheckBox fx:id="rememberPwdBox" checkedColor="#303f9f" layoutX="26.0" layoutY="65.0" mnemonicParsing="false" text="记住密码" />
             <Label alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="elab-text-title" text="致谢：" textAlignment="CENTER">
                <VBox.margin>
                   <Insets top="24.0" />
