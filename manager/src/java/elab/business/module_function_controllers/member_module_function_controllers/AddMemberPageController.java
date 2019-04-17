@@ -32,6 +32,8 @@ public class AddMemberPageController extends BaseFunctionContentController {
     @FXML
     private JFXTextField telInputField;
     @FXML
+    private JFXTextField pwdTextField;
+    @FXML
     private JFXPasswordField pwdInputField;
     @FXML
     private JFXPasswordField twicePwdInputField;
@@ -49,6 +51,10 @@ public class AddMemberPageController extends BaseFunctionContentController {
     private RadioButton sexChoose_woman;
     @FXML
     private AnchorPane photoPane;
+    @FXML
+    private ImageView open;
+    @FXML
+    private ImageView close;
     @FXML
     private ImageView photoView;
     @FXML
@@ -294,6 +300,23 @@ public class AddMemberPageController extends BaseFunctionContentController {
                 photoPane.setStyle("-fx-border-color: #000000");
                 loadPhoto();
             }
+        });
+
+        open.setOnMousePressed(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                pwdInputField.setVisible(false);
+                pwdTextField.setVisible(true);
+                pwdTextField.setText(pwdInputField.getText());
+                open.setVisible(false);
+                close.setVisible(true);
+            }
+        });
+
+        open.setOnMouseReleased(event -> {pwdInputField.setVisible(false);
+            pwdTextField.setVisible(false);
+            pwdInputField.setVisible(true);
+            close.setVisible(false);
+            open.setVisible(true);
         });
 
         IsDataInitialized = true;

@@ -12,6 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -111,7 +112,7 @@
                               <Insets bottom="16.0" top="16.0" />
                            </VBox.margin>
                         </JFXTextField>
-                          <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                          <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                               <children>
                                   <JFXRadioButton fx:id="sexChoose_man" mnemonicParsing="false" prefHeight="16.0" prefWidth="83.0" selectedColor="#303F9F" text="男" />
                                   <JFXRadioButton fx:id="sexChoose_woman" mnemonicParsing="false" prefHeight="16.0" prefWidth="60.0" selectedColor="#303F9F" text="女">
@@ -124,23 +125,38 @@
                                   <Insets bottom="12.0" top="16.0" />
                               </VBox.margin>
                           </HBox>
-                          <HBox alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="231.0">
-                              <VBox.margin>
-                                  <Insets bottom="16.0" top="14.0" />
-                              </VBox.margin>
-                              <children>
-                                  <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
-                                  <ImageView fx:id="pwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                      <image>
-                                          <Image url="@../../../pictures/ok.jpg" />
-                                      </image>
-                                      <HBox.margin>
-                                          <Insets right="18.0" />
-                                      </HBox.margin>
-                                  </ImageView>
-                              </children>
-                          </HBox>
-                          <HBox alignment="CENTER_RIGHT">
+                         <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="231.0">
+                             <VBox.margin>
+                                 <Insets bottom="16.0" top="14.0" />
+                             </VBox.margin>
+                             <children>
+                                 <Pane minWidth="-Infinity" prefHeight="16.0" prefWidth="333.0">
+                                     <children>
+                                         <JFXPasswordField fx:id="pwdInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="300.0" />
+                                         <JFXTextField fx:id="pwdTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="300.0" visible="false" />
+                                         <ImageView fx:id="open" fitHeight="20.0" fitWidth="32.0" layoutX="301.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                 <Image url="@../../../pictures/open.jpg" />
+                                             </image>
+                                         </ImageView>
+                                         <ImageView fx:id="close" fitHeight="20.0" fitWidth="32.0" layoutX="301.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                             <image>
+                                                 <Image url="@../../../pictures/close.jpg" />
+                                             </image>
+                                         </ImageView>
+                                     </children>
+                                 </Pane>
+                                 <ImageView fx:id="pwdOK" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                     <image>
+                                         <Image url="@../../../pictures/ok.jpg" />
+                                     </image>
+                                     <HBox.margin>
+                                         <Insets left="10.0" />
+                                     </HBox.margin>
+                                 </ImageView>
+                             </children>
+                         </HBox>
+                          <HBox alignment="CENTER_LEFT">
                               <VBox.margin>
                                   <Insets bottom="16.0" top="16.0" />
                               </VBox.margin>
