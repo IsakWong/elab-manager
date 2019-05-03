@@ -1,15 +1,13 @@
 package elab.business.module_function_controllers.settings;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import elab.application.BaseFunctionContentController;
 import elab.application.ElabManagerApplication;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseButton;
 
-public class ManagerSettings extends BaseFunctionContentController {
+public class ManagerSettingsPageController extends BaseFunctionContentController {
 
     @FXML
     private JFXCheckBox autoLoginBox;

@@ -50,6 +50,7 @@ public class LoginWindowController extends BaseViewController {
 
     private String user;
     private String md5Password;
+    private String duty;
 
     private double x1;
     private double y1;
@@ -78,7 +79,10 @@ public class LoginWindowController extends BaseViewController {
             //保存登陆凭证
             param.setValid(true);
             ElabManagerApplication.currentCertification = param;
-
+            if(param.getDuty() == null)
+                duty = "同学";
+            else
+                duty = "班委";
             writeUserInformationToDisk();
             showMainWindow();
             loginSession.IsSending = false;
@@ -130,6 +134,7 @@ public class LoginWindowController extends BaseViewController {
     public void writeUserInformationToDisk() {
         ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
         ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
+        ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_DUTY", duty);
     }
 
     public void showMainWindow() {
@@ -203,16 +208,18 @@ public class LoginWindowController extends BaseViewController {
             }
         });
 
-        logButton.setOnAction(event -> {
-            if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
-                Utilities.popMessage("用户名和密码不能为空", container);
-            else {
-                if(!isPwdRemembered) {
-                    user = userInputField.getText();
-                    md5Password = Utilities.encrypt(pwdInputField.getText());
+        logButton.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY) {
+                if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                    Utilities.popMessage("用户名和密码不能为空", container);
+                else {
+                    if (!isPwdRemembered) {
+                        user = userInputField.getText();
+                        md5Password = Utilities.encrypt(pwdInputField.getText());
+                    }
+                    Utilities.popMessage("正在登陆中", container);
+                    loginSession.send();
                 }
-                Utilities.popMessage("正在登陆中", container);
-                loginSession.send();
             }
         });
 

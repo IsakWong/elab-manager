@@ -95,7 +95,7 @@
                              </Label>
                          </children>
                      </VBox>
-                     <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                     <VBox alignment="CENTER_LEFT" prefHeight="443.0" prefWidth="389.0">
                          <children>
                              <JFXTextField fx:id="numberInputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefWidth="300.0">
                                  <VBox.margin>

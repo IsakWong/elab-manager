@@ -13,7 +13,6 @@ import javafx.stage.StageStyle;
 import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.util.Properties;
 
 public class ElabManagerApplication extends Application {
 

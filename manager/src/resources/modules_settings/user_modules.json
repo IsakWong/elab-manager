@@ -79,10 +79,6 @@
       {
         "function_name": "Log信息查看",
         "function_fxml": "/business_pages/module_function_pages/sys_ctrl_module_function_pages/view_log_page.fxml"
-      },
-      {
-        "function_name": "修改管理员列表",
-        "function_fxml": "/business_pages/module_function_pages/sys_ctrl_module_function_pages/change_admin_page.fxml"
       }
     ]
   },

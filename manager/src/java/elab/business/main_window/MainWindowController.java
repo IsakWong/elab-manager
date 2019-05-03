@@ -8,6 +8,8 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import elab.application.BaseViewController;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseModulePageController;
+import elab.application.ElabManagerApplication;
+import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
 import elab.util.Utilities;
@@ -44,7 +46,6 @@ public class MainWindowController extends BaseViewController {
     private double y1;
     private double x_stage;
     private double y_stage;
-
 
     private void loadModuleFunctionFxmlAtIndex(Module module , int index)
     {
@@ -159,9 +160,13 @@ public class MainWindowController extends BaseViewController {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
             Gson gson = new Gson();
-            String moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/manager_modules.json"));
+            String moduleJson;
+            String duty = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_DUTY");
+            if(duty.equals("班委"))
+                moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/admin_modules.json"));
+            else
+                moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/user_modules.json"));
             Type typeList = new TypeToken<ArrayList<Module>>() {}.getType();
-
 
             moduleList = gson.fromJson(moduleJson, typeList);
 
