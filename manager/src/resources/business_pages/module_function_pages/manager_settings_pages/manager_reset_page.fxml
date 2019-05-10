@@ -1,10 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="elab.business.module_function_controllers.settings.ManagerResetPageController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.settings.ManagerResetPageController">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" spacing="12.0" styleClass="card-view" stylesheets="@../../../style/css/controls_style.css">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="系统初始化设置">
+               <VBox.margin>
+                  <Insets left="-16.0" right="-16.0" top="-16.0" />
+               </VBox.margin></Label>
+            <Label styleClass="elab-text-title" text="日期选择" />
+            <HBox alignment="BOTTOM_LEFT" spacing="10.0">
+               <children>
+                  <Label text="开学日期" />
+                  <AnchorPane fx:id="datePickerPane">
+                     <children>
+                        <JFXDatePicker fx:id="termStartDatePicker" defaultColor="#303f9f" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                     </children></AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_LEFT" spacing="10.0">
+               <children>
+                  <Label text="硬件周     从" />
+                  <JFXComboBox fx:id="hardStartBox" prefHeight="23.0" prefWidth="60.0" />
+                  <Label text="周    到" />
+                  <JFXComboBox fx:id="hardEndBox" prefHeight="23.0" prefWidth="60.0" />
+                  <Label text="周" />
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_LEFT" spacing="10.0">
+               <children>
+                  <Label text="软件周     从" />
+                  <JFXComboBox fx:id="softStartBox" prefHeight="23.0" prefWidth="60.0" />
+                  <Label text="周    到" />
+                  <JFXComboBox fx:id="softEndBox" prefHeight="23.0" prefWidth="60.0" />
+                  <Label text="周" />
+               </children>
+            </HBox>
+            <Label styleClass="elab-text-title" text="其他设置">
+               <VBox.margin>
+                  <Insets top="24.0" />
+               </VBox.margin></Label>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="学期" />
+                  <JFXTextField fx:id="termField" />
+                  <JFXButton fx:id="saveBtn" mnemonicParsing="false" styleClass="raised-button" text="保存全部信息">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </padding></VBox>
+   </children>
+</VBox>

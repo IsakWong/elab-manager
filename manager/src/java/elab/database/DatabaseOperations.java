@@ -198,7 +198,7 @@ public class DatabaseOperations {
     }
 
     public Boolean leadingInRota(List<Rota> rotas) {
-        SqlSession session =studentSqlSessionFactory.openSession();
+        SqlSession session = studentSqlSessionFactory.openSession();
         try {
             TableOperations tableOperations = session.getMapper(TableOperations.class);
             tableOperations.deleteTable("duty");
@@ -216,6 +216,50 @@ public class DatabaseOperations {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.updateMember", loginMessage);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean setTermStartDate(String date) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.setTermStartDate", date);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean setTerm(String term) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.setTerm", term);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean setHardWeeks(String weeks) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.setHardWeeks", weeks);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean setSoftWeeks(String weeks) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.setSoftWeeks", weeks);
             session.commit();
             return true;
         } finally {
