@@ -69,7 +69,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectAllStudents();
             if(sessionResult.result == null)
-                sessionResult.errorMessage="无法获取该日期上课的学生";
+                sessionResult.errorMessage = "无法获取该日期上课的学生";
         }
 
         @Override

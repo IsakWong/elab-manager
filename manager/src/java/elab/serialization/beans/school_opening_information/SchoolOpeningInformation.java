@@ -9,10 +9,8 @@ public class SchoolOpeningInformation {
     private String term;
     private String hardTheory;
     private String softTheory;
-    private String maintenanceTheory;
     private String hardWeeks;
     private String softWeeks;
-    private String maintenanceWeeks;
     private String closeChooseClasses;
     private String onDutyForm;
     private String classCapacity;
@@ -49,14 +47,6 @@ public class SchoolOpeningInformation {
         this.softTheory = softTheory;
     }
 
-    public String getMaintenanceTheory() {
-        return maintenanceTheory;
-    }
-
-    public void setMaintenanceTheory(String maintenanceTheory) {
-        this.maintenanceTheory = maintenanceTheory;
-    }
-
     public String getHardWeeks() {
         return hardWeeks;
     }
@@ -71,14 +61,6 @@ public class SchoolOpeningInformation {
 
     public void setSoftWeeks(String softWeeks) {
         this.softWeeks = softWeeks;
-    }
-
-    public String getMaintenanceWeeks() {
-        return maintenanceWeeks;
-    }
-
-    public void setMaintenanceWeeks(String maintenanceWeeks) {
-        this.maintenanceWeeks = maintenanceWeeks;
     }
 
     public String getCloseChooseClasses() {
@@ -107,6 +89,6 @@ public class SchoolOpeningInformation {
 
     @Override
     public String toString() {
-        return schoolOpeningDate + " " + term + " " + hardTheory + " " + softTheory + " " + maintenanceTheory + " " + hardWeeks + " " + softWeeks + " " + maintenanceWeeks + " " + closeChooseClasses + " " + onDutyForm + " " + classCapacity;
+        return schoolOpeningDate + " " + term + " " + hardTheory + " " + softTheory + " " + hardWeeks + " " + softWeeks + " " + closeChooseClasses + " " + onDutyForm + " " + classCapacity;
     }
 }

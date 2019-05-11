@@ -7,11 +7,21 @@ import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
+import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
+import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class ManagerResetPageController extends BaseFunctionContentController {
 
@@ -28,20 +38,26 @@ public class ManagerResetPageController extends BaseFunctionContentController {
     @FXML
     private JFXComboBox<String> softEndBox;
     @FXML
-    private JFXTextField termField;
-    @FXML
     private JFXButton saveBtn;
+    @FXML
+    private VBox container;
 
     private Paint unfocusedColor;
 
     Session<Boolean> setMessageSession = new Session<Boolean>() {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
-            DatabaseOperations.getInstance().setTermStartDate(termStartDatePicker.getValue() + " 00:00:00");
-            DatabaseOperations.getInstance().setHardWeeks(hardStartBox.getValue() + "~" + hardEndBox.getValue());
-            DatabaseOperations.getInstance().setSoftWeeks(softStartBox.getValue() + "~" + softEndBox.getValue());
-            DatabaseOperations.getInstance().setTerm(termField.getText());
-            popupMessage("正在更新信息", 1500);
+            SchoolOpeningInformation schoolOpeningInformation = new SchoolOpeningInformation();
+            schoolOpeningInformation.setSchoolOpeningDate(termStartDatePicker.getValue() + " 00:00:00");
+            schoolOpeningInformation.setHardWeeks(hardStartBox.getValue() + "~" + hardEndBox.getValue());
+            schoolOpeningInformation.setHardTheory(Utilities.getWeekFirstDayDate(Integer.parseInt(hardStartBox.getValue()), 1));
+            schoolOpeningInformation.setSoftWeeks(softStartBox.getValue() + "~" + softEndBox.getValue());
+            schoolOpeningInformation.setSoftTheory(Utilities.getWeekFirstDayDate(Integer.parseInt(softStartBox.getValue()), 1));
+            schoolOpeningInformation.setTerm(Utilities.getTerm(schoolOpeningInformation.getSchoolOpeningDate()));
+            sessionResult.result = DatabaseOperations.getInstance().setSchoolOpeningDateInformation(schoolOpeningInformation);
+            Utilities.setSchoolOpeningInformation(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation());
+            if(sessionResult.result == null)
+                sessionResult.errorMessage = "信息更新失败";
         }
 
         @Override
@@ -60,10 +76,35 @@ public class ManagerResetPageController extends BaseFunctionContentController {
         }
     };
 
+    private void initInformation() {
+        try {
+            SchoolOpeningInformation schoolOpeningInformation = Utilities.getSchoolOpeningInformation();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date termStartDate = simpleDateFormat.parse(schoolOpeningInformation.getSchoolOpeningDate());
+            Instant instant = termStartDate.toInstant();
+            ZoneId zoneId = ZoneId.systemDefault();
+            LocalDate termStartLocalDate = instant.atZone(zoneId).toLocalDate();
+            termStartDatePicker.setValue(termStartLocalDate);
+
+            String[] hardWeeks = schoolOpeningInformation.getHardWeeks().split("~");
+            hardStartBox.setValue(hardWeeks[0]);
+            hardEndBox.setValue(hardWeeks[1]);
+            for(int startWeek = Integer.parseInt(hardWeeks[0]) + 1; startWeek < 17; ++startWeek)
+                hardEndBox.getItems().add(Integer.toString(startWeek));
+            String[] softWeeks = schoolOpeningInformation.getSoftWeeks().split("~");
+            softStartBox.setValue(softWeeks[0]);
+            softEndBox.setValue(softWeeks[1]);
+            for(int startWeek = Integer.parseInt(softWeeks[0]) + 1; startWeek < 17; ++startWeek)
+                softEndBox.getItems().add(Integer.toString(startWeek));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initializeController() {
 
-        unfocusedColor = termField.getUnFocusColor();
+        unfocusedColor = Color.valueOf("000000");
         datePickerPane.setStyle("-fx-border-color: #ffffff");
 
         for(int i = 1; i < 17; ++i) {
@@ -71,7 +112,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             softStartBox.getItems().add(Integer.toString(i));
         }
 
-        termStartDatePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> System.out.println(newValue));
+        initInformation();
 
         hardStartBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(!hardEndBox.getItems().isEmpty())
@@ -110,12 +151,10 @@ public class ManagerResetPageController extends BaseFunctionContentController {
                     softEndBox.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
-                if(termField.getText().equals("")) {
-                    termField.setUnFocusColor(Color.RED);
-                    isAllMessageFinished = false;
-                }
-                if(isAllMessageFinished)
+                if(isAllMessageFinished) {
+                    Utilities.popMessage("正在更新信息", container);
                     setMessageSession.send();
+                }
                 else
                     popupMessage("请检查所有信息!", 1500);
             }
@@ -144,11 +183,6 @@ public class ManagerResetPageController extends BaseFunctionContentController {
         softEndBox.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY)
                 softEndBox.setUnFocusColor(unfocusedColor);
-        });
-
-        termField.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
-                termField.setUnFocusColor(unfocusedColor);
         });
 
         finishLoading();

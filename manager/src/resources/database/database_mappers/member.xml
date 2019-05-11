@@ -19,7 +19,6 @@
         <result column="助课" property="assistAmount"/>
         <result column="照片" property="photo"/>
         <result column="照片格式" property="photoFormat"/>
-
     </resultMap>
     <select id="selectMemberByName" parameterType="string" resultMap="memberResultMap">
         select * from member where 姓名 = #{id}
@@ -85,20 +84,13 @@
             职务 = null
         where 姓名 = #{id}
     </update>
-    <update id="setTermStartDate" parameterType="String">
+    <update id="setSchoolOpeningDateInformation" parameterType="schoolOpen">
         update 开学日期 set
-            开学日期 = #{id}
-    </update>
-    <update id="setTerm" parameterType="String">
-        update 开学日期 set
-            学期 = #{id}
-    </update>
-    <update id="setHardWeeks" parameterType="String">
-        update 开学日期 set
-            硬件周次 = #{id}
-    </update>
-    <update id="setSoftWeeks" parameterType="String">
-        update 开学日期 set
-            软件周次 = #{id}
+            开学日期 = #{schoolOpeningDate},
+            学期 = #{term},
+            硬件理论 = #{hardTheory},
+            软件理论 = #{softTheory},
+            硬件周次 = #{hardWeeks},
+            软件周次 = #{softWeeks}
     </update>
 </mapper>

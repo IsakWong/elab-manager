@@ -223,43 +223,10 @@ public class DatabaseOperations {
         }
     }
 
-    public Boolean setTermStartDate(String date) {
+    public Boolean setSchoolOpeningDateInformation(SchoolOpeningInformation schoolOpeningInformation) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            session.update("member.setTermStartDate", date);
-            session.commit();
-            return true;
-        } finally {
-            session.close();
-        }
-    }
-
-    public Boolean setTerm(String term) {
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
-            session.update("member.setTerm", term);
-            session.commit();
-            return true;
-        } finally {
-            session.close();
-        }
-    }
-
-    public Boolean setHardWeeks(String weeks) {
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
-            session.update("member.setHardWeeks", weeks);
-            session.commit();
-            return true;
-        } finally {
-            session.close();
-        }
-    }
-
-    public Boolean setSoftWeeks(String weeks) {
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
-            session.update("member.setSoftWeeks", weeks);
+            session.update("member.setSchoolOpeningDateInformation", schoolOpeningInformation);
             session.commit();
             return true;
         } finally {

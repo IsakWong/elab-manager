@@ -32,7 +32,7 @@ public class Utilities {
      */
     public static void popMessage(String message, Pane container) {
         JFXSnackbar bar = new JFXSnackbar(container);
-        bar.show(message,5000);
+        bar.show(message,1500);
     }
     public static void popMessage(String message, Pane container, long time) {
         JFXSnackbar bar = new JFXSnackbar(container);
@@ -136,6 +136,10 @@ public class Utilities {
         return instance == null ? buildSchoolOpeningInformation() : instance;
     }
 
+    public static void setSchoolOpeningInformation(SchoolOpeningInformation schoolOpeningInformation) {
+        instance = schoolOpeningInformation;
+    }
+
     /**
      * 获取从开学日期到当前日期天数差
      * @return
@@ -167,6 +171,7 @@ public class Utilities {
                     else daysDistance += 365;
                 }
             daysDistance += (endDay - startDay);
+            SchoolDays = daysDistance;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -184,6 +189,53 @@ public class Utilities {
 
     public static int getSchoolCalendarWeek() {
         return getSchoolDays() / 7 + 1;
+    }
+
+    /**
+     * 获取校历某周某天日期
+     * @param week
+     * @return
+     */
+
+    public static String getWeekFirstDayDate(int week, int day) {
+        --week;
+        --day;
+        String date = null;
+        try {
+            SchoolOpeningInformation schoolOpeningInformation = getSchoolOpeningInformation();
+            String startDateStr = schoolOpeningInformation.getSchoolOpeningDate();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date startDate = simpleDateFormat.parse(startDateStr);
+            Calendar endCal = Calendar.getInstance();
+            endCal.setTime(startDate);
+            endCal.add(Calendar.DAY_OF_YEAR, week * 7 + day);
+            Date endDate = endCal.getTime();
+            date = simpleDateFormat.format(endDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    /**
+     * 获取学期
+     * @return
+     */
+
+    public static String getTerm(String schoolOpeningDateString) {
+        String term = null;
+        try {
+            String[] s = schoolOpeningDateString.split(" ");
+            String[] dayDateInformation = s[0].split("-");
+            int month = Integer.parseInt(dayDateInformation[1]);
+            if(month <= 6)
+                term = dayDateInformation[0] + "春";
+            else
+                term = dayDateInformation[0] + "秋";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return term;
     }
 
     /**
