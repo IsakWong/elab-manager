@@ -197,19 +197,16 @@ public class Utilities {
      * @return
      */
 
-    public static String getWeekFirstDayDate(int week, int day) {
+    public static String getWeekFirstDayDate(String startDateString, int week, int day) {
         --week;
         --day;
         String date = null;
         try {
-            SchoolOpeningInformation schoolOpeningInformation = getSchoolOpeningInformation();
-            String startDateStr = schoolOpeningInformation.getSchoolOpeningDate();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date startDate = simpleDateFormat.parse(startDateStr);
+            Date startDate = simpleDateFormat.parse(startDateString);
+            long endMillis = startDate.getTime() + (long)(week * 7 + day) * 24 * 3600 * 1000;
             Calendar endCal = Calendar.getInstance();
-            endCal.setTime(startDate);
-            endCal.add(Calendar.DAY_OF_YEAR, week * 7 + day);
-            Date endDate = endCal.getTime();
+            Date endDate = new Date(endMillis);
             date = simpleDateFormat.format(endDate);
         } catch (Exception e) {
             e.printStackTrace();

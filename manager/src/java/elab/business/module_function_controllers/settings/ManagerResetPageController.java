@@ -50,9 +50,9 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             SchoolOpeningInformation schoolOpeningInformation = new SchoolOpeningInformation();
             schoolOpeningInformation.setSchoolOpeningDate(termStartDatePicker.getValue() + " 00:00:00");
             schoolOpeningInformation.setHardWeeks(hardStartBox.getValue() + "~" + hardEndBox.getValue());
-            schoolOpeningInformation.setHardTheory(Utilities.getWeekFirstDayDate(Integer.parseInt(hardStartBox.getValue()), 1));
+            schoolOpeningInformation.setHardTheory(Utilities.getWeekFirstDayDate(schoolOpeningInformation.getSchoolOpeningDate(), Integer.parseInt(hardStartBox.getValue()), 1));
             schoolOpeningInformation.setSoftWeeks(softStartBox.getValue() + "~" + softEndBox.getValue());
-            schoolOpeningInformation.setSoftTheory(Utilities.getWeekFirstDayDate(Integer.parseInt(softStartBox.getValue()), 1));
+            schoolOpeningInformation.setSoftTheory(Utilities.getWeekFirstDayDate(schoolOpeningInformation.getSchoolOpeningDate(), Integer.parseInt(softStartBox.getValue()), 1));
             schoolOpeningInformation.setTerm(Utilities.getTerm(schoolOpeningInformation.getSchoolOpeningDate()));
             sessionResult.result = DatabaseOperations.getInstance().setSchoolOpeningDateInformation(schoolOpeningInformation);
             Utilities.setSchoolOpeningInformation(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation());

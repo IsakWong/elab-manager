@@ -57,12 +57,14 @@ public class LoginWindowController extends BaseViewController {
     private double x_stage;
     private double y_stage;
 
-    private Boolean isPwdRemembered = false;
+    private Boolean isUserChanged = false;
+    private Boolean isPwdChanged = false;
 
     Session<LoginMessage> loginSession = new Session<LoginMessage>() {
 
         @Override
         public void onPostFetchResult(SessionResult<LoginMessage> sessionResult) {
+            setControlDisable(true);
             sessionResult.result = DatabaseOperations.getInstance().selectLoginMessage(user);
             if (sessionResult.result == null)
                 sessionResult.errorMessage = "无此学号用户";
@@ -99,12 +101,29 @@ public class LoginWindowController extends BaseViewController {
         }
     };
 
-    public void loadUserInformationFromDisk() {
+    private void setControlDisable(Boolean statue) {
+        userInputField.setDisable(statue);
+        pwdInputField.setDisable(statue);
+        autoLogin.setDisable(statue);
+        rememberPwd.setDisable(statue);
+        logButton.setDisable(statue);
+    }
+
+    private void loadUserInformationFromDisk() {
         try {
             String autoLoginProperty = ElabManagerApplication.properties.getProperty("AUTO_LOG_IN");
             String rememberPwdProperty = ElabManagerApplication.properties.getProperty("REMEMBER_PASSWORD");
             user = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER");
             md5Password = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_PASSWORD");
+            userInputField.setText(user);
+            if (rememberPwdProperty == null) {
+
+            } else {
+                if (rememberPwdProperty.equals("true")) {
+                    rememberPwd.setSelected(true);
+                    pwdInputField.setText("0123456789");
+                }
+            }
             if (autoLoginProperty == null) {
 
             } else {
@@ -114,16 +133,6 @@ public class LoginWindowController extends BaseViewController {
                         Utilities.popMessage("正在登陆中", container);
                         loginSession.send();
                     }
-                }
-            }
-            if (rememberPwdProperty == null) {
-
-            } else {
-                if (rememberPwdProperty.equals("true")) {
-                    isPwdRemembered = true;
-                    rememberPwd.setSelected(true);
-                    userInputField.setText(user);
-                    pwdInputField.setText("0123456789");
                 }
             }
         } catch (Exception e) {
@@ -165,27 +174,25 @@ public class LoginWindowController extends BaseViewController {
 
         loadUserInformationFromDisk();
 
-        autoLogin.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue == true) {
-                    rememberPwd.setSelected(true);
-                    ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
-                } else {
-                    ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "false");
-                }
+        autoLogin.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true) {
+                rememberPwd.setSelected(true);
+                ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "true");
+            } else {
+                ElabManagerApplication.properties.setProperty("AUTO_LOG_IN", "false");
             }
         });
 
-        rememberPwd.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue == true) {
-                    ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
-                } else {
-                    ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "false");
-                }
+        rememberPwd.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true) {
+                ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "true");
+            } else {
+                ElabManagerApplication.properties.setProperty("REMEMBER_PASSWORD", "false");
             }
+        });
+
+        userInputField.textProperty().addListener((observable, oldValue, newValue) -> {
+            isUserChanged = true;
         });
 
         userInputField.setOnKeyPressed(event -> {
@@ -193,15 +200,19 @@ public class LoginWindowController extends BaseViewController {
                 pwdInputField.requestFocus();
         });
 
+        pwdInputField.textProperty().addListener((observable, oldValue, newValue) -> {
+            isPwdChanged = true;
+        });
+
         pwdInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                     Utilities.popMessage("用户名和密码不能为空", container);
                 else {
-                    if(!isPwdRemembered) {
+                    if(isUserChanged)
                         user = userInputField.getText();
+                    if(isPwdChanged)
                         md5Password = Utilities.encrypt(pwdInputField.getText());
-                    }
                     Utilities.popMessage("正在登陆中", container);
                     loginSession.send();
                 }
@@ -213,10 +224,10 @@ public class LoginWindowController extends BaseViewController {
                 if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
                     Utilities.popMessage("用户名和密码不能为空", container);
                 else {
-                    if (!isPwdRemembered) {
+                    if(isUserChanged)
                         user = userInputField.getText();
+                    if(isPwdChanged)
                         md5Password = Utilities.encrypt(pwdInputField.getText());
-                    }
                     Utilities.popMessage("正在登陆中", container);
                     loginSession.send();
                 }
