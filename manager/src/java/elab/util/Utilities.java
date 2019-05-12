@@ -17,10 +17,14 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 public class Utilities {
@@ -215,13 +219,14 @@ public class Utilities {
     }
 
     /**
-     * 获取学期
+     * 计算学期
      * @return
      */
 
-    public static String getTerm(String schoolOpeningDateString) {
+    public static String getTerm() {
         String term = null;
         try {
+            String schoolOpeningDateString = getSchoolOpeningInformation().getSchoolOpeningDate();
             String[] s = schoolOpeningDateString.split(" ");
             String[] dayDateInformation = s[0].split("-");
             int month = Integer.parseInt(dayDateInformation[1]);
@@ -252,6 +257,16 @@ public class Utilities {
 
     public static String getSystemWeek() {
         return systemWeek == null ? convertSystemWeek() : systemWeek;
+    }
+
+    public static String getSystemDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(new Date());
+    }
+
+    public static String getSystemDate(String pattern) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        return dateFormat.format(new Date());
     }
 
     /**
@@ -393,5 +408,27 @@ public class Utilities {
         imageView.setImage(image);
         return imageView;
 
+    }
+
+    public static String getIP() {
+        String ip = null;
+        try {
+            Enumeration allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+            InetAddress address;
+            while (allNetInterfaces.hasMoreElements()) {
+                NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
+                Enumeration addresses = netInterface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    address = (InetAddress) addresses.nextElement();
+                    if (address != null && address instanceof Inet4Address) {
+                        ip = address.getHostAddress();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return ip;
+        }
     }
 }

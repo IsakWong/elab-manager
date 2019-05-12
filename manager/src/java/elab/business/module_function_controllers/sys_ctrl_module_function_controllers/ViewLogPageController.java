@@ -77,7 +77,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
     Session<List> selectLogSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllLogs();
+            sessionResult.result = DatabaseOperations.getInstance().selectAllLogs(Utilities.getTerm());
             if(sessionResult.result == null) {
                 sessionResult.errorMessage = "无法获取log信息";
             }
@@ -111,7 +111,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
     Session<List> queryLogSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllLogs();
+            sessionResult.result = DatabaseOperations.getInstance().selectAllLogs(Utilities.getTerm());
             if(sessionResult.result == null)
                 sessionResult.errorMessage="无法获取Log信息";
         }

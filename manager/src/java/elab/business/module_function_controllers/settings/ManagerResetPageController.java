@@ -12,7 +12,6 @@ import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -28,8 +27,6 @@ public class ManagerResetPageController extends BaseFunctionContentController {
     @FXML
     private JFXDatePicker termStartDatePicker;
     @FXML
-    private AnchorPane datePickerPane;
-    @FXML
     private JFXComboBox<String> hardStartBox;
     @FXML
     private JFXComboBox<String> hardEndBox;
@@ -44,6 +41,8 @@ public class ManagerResetPageController extends BaseFunctionContentController {
 
     private Paint unfocusedColor;
 
+    private JFXTextField datePickerEditer;
+
     Session<Boolean> setMessageSession = new Session<Boolean>() {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
@@ -53,7 +52,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             schoolOpeningInformation.setHardTheory(Utilities.getWeekFirstDayDate(schoolOpeningInformation.getSchoolOpeningDate(), Integer.parseInt(hardStartBox.getValue()), 1));
             schoolOpeningInformation.setSoftWeeks(softStartBox.getValue() + "~" + softEndBox.getValue());
             schoolOpeningInformation.setSoftTheory(Utilities.getWeekFirstDayDate(schoolOpeningInformation.getSchoolOpeningDate(), Integer.parseInt(softStartBox.getValue()), 1));
-            schoolOpeningInformation.setTerm(Utilities.getTerm(schoolOpeningInformation.getSchoolOpeningDate()));
+            schoolOpeningInformation.setTerm(Utilities.getTerm());
             sessionResult.result = DatabaseOperations.getInstance().setSchoolOpeningDateInformation(schoolOpeningInformation);
             Utilities.setSchoolOpeningInformation(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation());
             if(sessionResult.result == null)
@@ -104,8 +103,9 @@ public class ManagerResetPageController extends BaseFunctionContentController {
     @Override
     public void initializeController() {
 
+        datePickerEditer = (JFXTextField)termStartDatePicker.getEditor();
+
         unfocusedColor = Color.valueOf("000000");
-        datePickerPane.setStyle("-fx-border-color: #ffffff");
 
         for(int i = 1; i < 17; ++i) {
             hardStartBox.getItems().add(Integer.toString(i));
@@ -132,7 +132,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             if(event.getButton() == MouseButton.PRIMARY) {
                 Boolean isAllMessageFinished = true;
                 if(termStartDatePicker.getValue() == null) {
-                    datePickerPane.setStyle("-fx-border-color: #ff0000");
+                    datePickerEditer.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
                 if(hardStartBox.getValue() == null) {
@@ -160,9 +160,16 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             }
         });
 
+        JFXTextField editor = (JFXTextField) termStartDatePicker.getEditor();
+
         termStartDatePicker.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY)
-                datePickerPane.setStyle("-fx-border-color: #ffffff");
+                datePickerEditer.setUnFocusColor(unfocusedColor);
+        });
+
+        datePickerEditer.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY)
+                datePickerEditer.setUnFocusColor(unfocusedColor);
         });
 
         hardStartBox.setOnMouseClicked(event -> {

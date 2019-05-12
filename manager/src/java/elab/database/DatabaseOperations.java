@@ -3,6 +3,7 @@ package elab.database;
 import elab.database.mappers.RotaOperations;
 import elab.database.mappers.TableOperations;
 import elab.serialization.beans.Rota;
+import elab.serialization.beans.log.Log;
 import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.beans.member.Member;
 import elab.serialization.beans.new_person.NewPerson;
@@ -157,10 +158,19 @@ public class DatabaseOperations {
         }
     }
 
-    public List selectAllLogs() {
+    public List selectAllLogs(String term) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            return session.selectList("student.selectAllLogs");
+            return session.selectList("student.selectAllLogs", term);
+        } finally {
+            session.close();
+        }
+    }
+
+    public List selectLoader(String date) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            return session.selectList("student.selectLoader", date);
         } finally {
             session.close();
         }
@@ -190,6 +200,17 @@ public class DatabaseOperations {
         SqlSession session = recruitNewSqlSessionFactory.openSession();
         try {
             session.insert("recruitNew.insertNewPerson", newPerson);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean writeLog(Log log) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.insert("student.writeLog", log);
             session.commit();
             return true;
         } finally {

@@ -15,6 +15,7 @@ public class Log {
     private String paperScore;
     private String information;
     private String version;
+    private String term;
 
     public String getID() {
         return ID;
@@ -96,8 +97,16 @@ public class Log {
         this.version = version;
     }
 
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
     @Override
     public String toString() {
-        return ID + " " + operatingNumber + " " + time + " " + IP + " " + operatedNumber + " " + hardScore + " " + softScore + " " + paperScore + " " + information + " " + version;
+        return ID + " " + operatingNumber + " " + time + " " + IP + " " + operatedNumber + " " + hardScore + " " + softScore + " " + paperScore + " " + information + " " + version + " " + term;
     }
 }

@@ -28,6 +28,17 @@
         <result column="单双周" property="week"/>
         <result column="星期" property="day"/>
     </resultMap>
+    <resultMap id="loaderMap" type="loader">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="组别" property="group"/>
+        <result column="日期" property="date"/>
+        <result column="周次" property="week"/>
+        <result column="登入" property="login"/>
+        <result column="离开" property="logout"/>
+        <result column="合计时间" property="totalTime"/>
+        <result column="学期" property="term"/>
+    </resultMap>
     <select id="selectStudentByName" parameterType="string" resultMap="studentResultMap">
         select * from 2018秋_计算机安装与调试技术 where 姓名 = #{id}
     </select>
@@ -56,7 +67,7 @@
     <select id="selectRota" resultMap="rotaMap">
         select * from duty
     </select>
-    <select id="selectAllLogs" resultType="log">
+    <select id="selectAllLogs" parameterType="String" resultType="log">
         select
             ID as "ID",
             操作时间 as "time",
@@ -68,8 +79,15 @@
             版本号 as "version",
             concat("\t", 操作人学号) as "operatingNumber",
             concat("\t", 被修改人学号) as "operatedNumber"
-        from Log where 学期 = "2015春"
+        from Log where 学期 = #{id}
     </select>
+    <select id="selectLoader" parameterType="String" resultMap="loaderMap">
+        select * from 时间统计 where 日期 = #{id}
+    </select>
+    <insert id="writeLog" parameterType="log">
+        insert into Log (ID,操作人学号,操作时间,操作人IP,被修改人学号,硬件成绩,软件成绩,试卷成绩,登录信息,版本号,学期)
+        values(#{ID},#{operatingNumber},#{time},#{IP},#{operatedNumber},#{hardScore},#{softScore},#{paperScore},#{information},#{version},#{term})
+    </insert>
     <update id="updateScore" parameterType="student">
         update 2018秋_计算机安装与调试技术 set
             硬件成绩 = #{hardScore},

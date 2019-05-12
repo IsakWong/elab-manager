@@ -12,6 +12,7 @@
         <typeAlias alias="rota" type="elab.serialization.beans.Rota"/>
         <typeAlias alias="log" type="elab.serialization.beans.log.Log"/>
         <typeAlias alias="newPerson" type="elab.serialization.beans.new_person.NewPerson"/>
+        <typeAlias alias="loader" type="elab.serialization.beans.loader.Loader"/>
     </typeAliases>
     <environments default="student">
         <environment id="student">

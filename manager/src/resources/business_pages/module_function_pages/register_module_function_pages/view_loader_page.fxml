@@ -23,7 +23,7 @@
                         <Insets left="4.0" top="5.0" />
                      </VBox.margin>
                   </JFXDatePicker>
-                  <Label text="新到：">
+                  <Label styleClass="elab-text-title" text="新到：">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -39,7 +39,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label text="刚下：">
+                  <Label styleClass="elab-text-title" text="刚下：">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -88,14 +88,14 @@
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="704.0" prefWidth="677.0">
                   <TableView fx:id="tableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="number" prefWidth="90.0" text="学号" />
-                      <TableColumn fx:id="name" prefWidth="75.0" text="姓名" />
-                        <TableColumn fx:id="group" prefWidth="75.0" text="组别" />
-                        <TableColumn fx:id="date" prefWidth="90.0" text="日期" />
-                        <TableColumn fx:id="week" prefWidth="75.0" text="周次" />
-                        <TableColumn fx:id="arrivalTime" prefWidth="90.0" text="登入" />
-                        <TableColumn fx:id="leaveTime" prefWidth="90.0" text="离开" />
-                        <TableColumn fx:id="totalTime" prefWidth="90.0" text="合计时间" />
+                      <TableColumn fx:id="number" prefWidth="83.0" text="学号" />
+                      <TableColumn fx:id="name" prefWidth="73.0" text="姓名" />
+                        <TableColumn fx:id="group" prefWidth="66.0" text="组别" />
+                        <TableColumn fx:id="date" prefWidth="157.0" text="日期" />
+                        <TableColumn fx:id="week" prefWidth="37.0" text="周次" />
+                        <TableColumn fx:id="arrivalTime" prefWidth="75.0" text="登入" />
+                        <TableColumn fx:id="leaveTime" text="离开" />
+                        <TableColumn fx:id="totalTime" prefWidth="85.0" text="合计时间" />
                     </columns>
                   </TableView>
             </AnchorPane>

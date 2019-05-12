@@ -9,6 +9,7 @@ import elab.application.ElabManagerApplication;
 import elab.business.main_window.MainWindowController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
+import elab.serialization.beans.log.Log;
 import elab.serialization.beans.member.LoginMessage;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
@@ -27,7 +28,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class LoginWindowController extends BaseViewController {
-
 
     @FXML
     private HBox topBar;
@@ -51,6 +51,7 @@ public class LoginWindowController extends BaseViewController {
     private String user;
     private String md5Password;
     private String duty;
+    private String logInformation;
 
     private double x1;
     private double y1;
@@ -72,7 +73,7 @@ public class LoginWindowController extends BaseViewController {
 
             } else {
                 sessionResult.result = null;
-                sessionResult.errorMessage = "用户名密码错误";
+                sessionResult.errorMessage = "用户名或密码错误";
             }
         }
 
@@ -92,12 +93,45 @@ public class LoginWindowController extends BaseViewController {
 
         @Override
         public void onError(String errorMessage) {
+            logInformation = "密码错误";
+            loginSession.send();
             Utilities.popMessage(errorMessage, container);
         }
 
         @Override
         public void onBusy() {
             Utilities.popMessage("正在登陆中", container);
+        }
+    };
+
+    Session<Boolean> writeLogSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            Log log = new Log();
+            log.setOperatingNumber(userInputField.getText());
+            log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+            log.setIP(Utilities.getIP());
+            log.setInformation(logInformation);
+            log.setVersion(ElabManagerApplication.properties.getProperty("VERSION"));
+            log.setTerm(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation().getTerm());
+            log.setID(null);
+            log.setOperatedNumber(null);
+            log.setHardScore(null);
+            log.setSoftScore(null);
+            log.setPaperScore(null);
+            DatabaseOperations.getInstance().writeLog(log);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+        }
+
+        @Override
+        public void onBusy() {
         }
     };
 
@@ -150,6 +184,11 @@ public class LoginWindowController extends BaseViewController {
         if( !ElabManagerApplication.currentCertification.isValid())
             return;
         try {
+            if(duty.equals("班委"))
+                logInformation = "班委登录";
+            else
+                logInformation = "科中成员登陆";
+            writeLogSession.send();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/main_window.fxml"));
             Parent root = loader.load();
             MainWindowController controller = loader.getController();
