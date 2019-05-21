@@ -95,6 +95,7 @@ public class LoginWindowController extends BaseViewController {
         public void onError(String errorMessage) {
             logInformation = "密码错误";
             loginSession.send();
+            setControlDisable(false);
             Utilities.popMessage(errorMessage, container);
         }
 

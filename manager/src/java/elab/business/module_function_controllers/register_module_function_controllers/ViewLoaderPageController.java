@@ -47,6 +47,7 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
     private ObservableList<String> nameList = FXCollections.observableArrayList();
 
     private String sessionDate = Utilities.getSystemDate();
+    private Boolean isInit = false;
 
     Session<List> queryLoaderSession = new Session<List>() {
 
@@ -107,6 +108,7 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
 
         queryLoaderSession.send();
         queryNameListSession.send();
+        isInit = true;
 
         number.setCellValueFactory(new PropertyValueFactory<String, Loader>("number"));
         name.setCellValueFactory(new PropertyValueFactory<String, Loader>("name"));
@@ -121,8 +123,10 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
 
         datePicker.setValue(LocalDate.now());
         datePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
-            sessionDate = newValue;
-            queryLoaderSession.send();
+            if(isInit) {
+                sessionDate = newValue;
+                queryLoaderSession.send();
+            }
         });
     }
 }

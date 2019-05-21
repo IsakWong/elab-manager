@@ -83,21 +83,6 @@
     ]
   },
   {
-    "module_name": "招新",
-    "module_fxml": "/business_pages/module_page.fxml",
-    "functions":
-    [
-      {
-        "function_name": "招新管理",
-        "function_fxml": "/business_pages/module_function_pages/recruitment_module_function_pages/manage_recruitment_pages/manage_recruitment_page.fxml"
-      },
-      {
-        "function_name": "招新考核",
-        "function_fxml": "/add_user_page.fxml"
-      }
-    ]
-  },
-  {
     "module_name": "设置",
     "module_fxml": "/business_pages/module_page.fxml",
     "functions":
