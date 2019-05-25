@@ -2,8 +2,10 @@ package elab.business.module_function_controllers.assist_teaching_module_functio
 
 import com.jfoenix.controls.*;
 import elab.application.BaseFunctionContentController;
+import elab.application.ElabManagerApplication;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
+import elab.serialization.beans.log.Log;
 import elab.serialization.beans.student.Student;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
@@ -64,6 +66,37 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
     private ObservableList<Student> students = FXCollections.<Student>observableArrayList();
 
+    Session<Boolean> writeLogSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            Log log = new Log();
+            log.setInformation("修改成绩");
+            log.setOperatingNumber(ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER"));
+            log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+            log.setIP(Utilities.getIP());
+            log.setVersion(ElabManagerApplication.properties.getProperty("VERSION"));
+            log.setTerm(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation().getTerm());
+            log.setID(null);
+            log.setOperatedNumber(null);
+            log.setHardScore(null);
+            log.setSoftScore(null);
+            log.setPaperScore(null);
+            DatabaseOperations.getInstance().writeLog(log);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+        }
+
+        @Override
+        public void onBusy() {
+        }
+    };
+
     Session<List> queryStudentSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
@@ -107,6 +140,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             hardScoreInput.setText("");
             softScoreInput.setText("");
             paperScoreInput.setText("");
+            writeLogSession.send();
         }
 
         @Override
@@ -139,14 +173,11 @@ public class EnterScorePageController extends BaseFunctionContentController {
              */
 
             resultTable.getSelectionModel().selectedItemProperty().addListener(
-                    new ChangeListener<Student>() {
-                        @Override
-                        public void changed(ObservableValue<? extends Student> observable, Student oldValue, Student newValue) {
-                            ParentModuleController.beginLoading();
-                            student = newValue;
-                            numberLabel.setText("学号：" + student.getNumber());
-                            nameLabel.setText("姓名：" + student.getName());
-                        }
+                    (ChangeListener<Student>) (observable, oldValue, newValue) -> {
+                        ParentModuleController.beginLoading();
+                        student = newValue;
+                        numberLabel.setText("学号：" + student.getNumber());
+                        nameLabel.setText("姓名：" + student.getName());
                     }
             );
 
@@ -166,12 +197,9 @@ public class EnterScorePageController extends BaseFunctionContentController {
              */
 
             date.getEditor().textProperty().addListener(
-                    new ChangeListener<String>() {
-                        @Override
-                        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                            if (!LocalDate.now().toString().equals(newValue)) logBtn.setDisable(true);
-                            else logBtn.setDisable(false);
-                        }
+                    (observable, oldValue, newValue) -> {
+                        if (!LocalDate.now().toString().equals(newValue)) logBtn.setDisable(true);
+                        else logBtn.setDisable(false);
                     }
             );
 

@@ -2,8 +2,10 @@ package elab.business.module_function_controllers.sys_ctrl_module_function_contr
 
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
+import elab.application.ElabManagerApplication;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
+import elab.serialization.beans.log.Log;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
 import javafx.beans.value.ChangeListener;
@@ -65,6 +67,37 @@ public class ChangeAdminPageController extends BaseFunctionContentController {
         }
     };
 
+    Session<Boolean> writeLogSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            Log log = new Log();
+            log.setInformation("修改管理员");
+            log.setOperatingNumber(ElabManagerApplication.properties.getProperty("LAST_USER"));
+            log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+            log.setIP(Utilities.getIP());
+            log.setVersion(ElabManagerApplication.properties.getProperty("VERSION"));
+            log.setTerm(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation().getTerm());
+            log.setID(null);
+            log.setOperatedNumber(null);
+            log.setHardScore(null);
+            log.setSoftScore(null);
+            log.setPaperScore(null);
+            DatabaseOperations.getInstance().writeLog(log);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+        }
+
+        @Override
+        public void onBusy() {
+        }
+    };
+
     @Override
     public void initializeController() {
 
@@ -82,6 +115,7 @@ public class ChangeAdminPageController extends BaseFunctionContentController {
                     adminList.add(selectItem);
                     adminListView.refresh();
                     DatabaseOperations.getInstance().setDuty(selectItem);
+                    writeLogSession.send();
                     Utilities.popMessage("管理员添加成功", container);
                 }
             }
@@ -96,6 +130,7 @@ public class ChangeAdminPageController extends BaseFunctionContentController {
                     chooseList.add(selectItem);
                     chooseListView.refresh();
                     DatabaseOperations.getInstance().removeDuty(selectItem);
+                    writeLogSession.send();
                     Utilities.popMessage("管理员已被移除", container);
                 }
             }

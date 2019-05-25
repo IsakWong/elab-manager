@@ -4,13 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import elab.application.BaseFunctionContentController;
-import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.log.Log;
 import elab.util.Utilities;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -145,17 +142,12 @@ public class ViewLogPageController extends BaseFunctionContentController {
         informationComboBox.getItems().addAll(
                 "所有信息",
                 "管理员登录",
-                "查询或修改选课信息",
-                "第一次登录",
                 "管理员退出",
                 "科中成员登录",
                 "科中成员退出",
                 "密码错误",
-                "上课同学退出",
                 "修改成绩",
-                "修改管理员",
-                "主讲人",
-                "助教"
+                "修改管理员"
         );
         informationComboBox.setValue("所有信息");
 

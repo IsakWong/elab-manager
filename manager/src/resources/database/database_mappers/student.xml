@@ -67,22 +67,22 @@
     <select id="selectRota" resultMap="rotaMap">
         select * from duty
     </select>
-    <select id="selectAllLogs" parameterType="String" resultType="log">
-        select
-            ID as "ID",
-            操作时间 as "time",
-            操作人IP as "IP",
-            硬件成绩 as "hardScore",
-            软件成绩 as "softScore",
-            试卷成绩 as "paperScore",
-            登录信息 as "information",
-            版本号 as "version",
-            concat("\t", 操作人学号) as "operatingNumber",
-            concat("\t", 被修改人学号) as "operatedNumber"
-        from Log where 学期 = #{id}
-    </select>
     <select id="selectLoader" parameterType="String" resultMap="loaderMap">
         select * from 时间统计 where 日期 = #{id}
+    </select>
+    <select id="selectAllLogs" parameterType="String" resultType="log">
+        select
+        ID as "ID",
+        操作时间 as "time",
+        操作人IP as "IP",
+        硬件成绩 as "hardScore",
+        软件成绩 as "softScore",
+        试卷成绩 as "paperScore",
+        登录信息 as "information",
+        版本号 as "version",
+        concat("\t", 操作人学号) as "operatingNumber",
+        concat("\t", 被修改人学号) as "operatedNumber"
+        from Log where 学期 = #{id}
     </select>
     <insert id="writeLog" parameterType="log">
         insert into Log (ID,操作人学号,操作时间,操作人IP,被修改人学号,硬件成绩,软件成绩,试卷成绩,登录信息,版本号,学期)

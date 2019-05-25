@@ -94,7 +94,7 @@ public class LoginWindowController extends BaseViewController {
         @Override
         public void onError(String errorMessage) {
             logInformation = "密码错误";
-            loginSession.send();
+            writeLogSession.send();
             setControlDisable(false);
             Utilities.popMessage(errorMessage, container);
         }
@@ -109,10 +109,10 @@ public class LoginWindowController extends BaseViewController {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
             Log log = new Log();
+            log.setInformation(logInformation);
             log.setOperatingNumber(userInputField.getText());
             log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
             log.setIP(Utilities.getIP());
-            log.setInformation(logInformation);
             log.setVersion(ElabManagerApplication.properties.getProperty("VERSION"));
             log.setTerm(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation().getTerm());
             log.setID(null);
@@ -186,7 +186,7 @@ public class LoginWindowController extends BaseViewController {
             return;
         try {
             if(duty.equals("班委"))
-                logInformation = "班委登录";
+                logInformation = "管理员登录";
             else
                 logInformation = "科中成员登陆";
             writeLogSession.send();
@@ -275,8 +275,14 @@ public class LoginWindowController extends BaseViewController {
         });
 
         closeBtn.setOnMouseClicked(event -> {
-            if (event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
+                if(duty.equals("班委"))
+                    logInformation = "管理员退出";
+                else
+                    logInformation = "科中成员退出";
+                writeLogSession.send();
                 ElabManagerApplication.primaryStage.close();
+            }
         });
         closeBtn.setGraphic(Utilities.getImage("/pictures/close.png"));
 
