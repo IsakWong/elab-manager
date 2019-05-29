@@ -9,6 +9,9 @@ import elab.application.BaseViewController;
 import elab.application.BaseFunctionContentController;
 import elab.application.BaseModulePageController;
 import elab.application.ElabManagerApplication;
+import elab.database.DatabaseOperations;
+import elab.database.Session;
+import elab.serialization.beans.log.Log;
 import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.module.Function;
 import elab.serialization.module.Module;
@@ -46,6 +49,40 @@ public class MainWindowController extends BaseViewController {
     private double y1;
     private double x_stage;
     private double y_stage;
+
+    Session<Boolean> closeLogSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            Log log = new Log();
+            log.setInformation(logInformation);
+            log.setOperatingNumber(userInputField.getText());
+            log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+            log.setIP(Utilities.getIP());
+            log.setVersion(ElabManagerApplication.properties.getProperty("VERSION"));
+            log.setTerm(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation().getTerm());
+            log.setID(null);
+            log.setOperatedNumber(null);
+            log.setHardScore(null);
+            log.setSoftScore(null);
+            log.setPaperScore(null);
+            sessionResult.result = DatabaseOperations.getInstance().writeLog(log);
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+            ElabManagerApplication.primaryStage.close();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            ElabManagerApplication.primaryStage.close();
+        }
+
+        @Override
+        public void onBusy() {
+
+        }
+    };
 
     private void loadModuleFunctionFxmlAtIndex(Module module , int index)
     {

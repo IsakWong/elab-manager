@@ -1,4 +1,4 @@
-package elab.serialization.beans;
+package elab.serialization.beans.rota;
 
 import org.apache.ibatis.type.Alias;
 

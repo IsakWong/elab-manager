@@ -2,10 +2,9 @@ package elab.business.module_function_controllers.register_module_function_contr
 
 import com.jfoenix.controls.JFXButton;
 import elab.application.BaseFunctionContentController;
-import elab.application.BaseViewController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
-import elab.serialization.beans.Rota;
+import elab.serialization.beans.rota.Rota;
 import elab.util.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -26,7 +24,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;

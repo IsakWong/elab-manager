@@ -24,7 +24,7 @@
             </Label>
             <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../../../style/css/controls_style.css">
                <content>
-                  <VBox fx:id="container" />
+                  <VBox />
                </content>
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" />

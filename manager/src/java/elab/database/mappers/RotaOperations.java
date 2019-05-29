@@ -1,6 +1,6 @@
 package elab.database.mappers;
 
-import elab.serialization.beans.Rota;
+import elab.serialization.beans.rota.Rota;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

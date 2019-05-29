@@ -15,8 +15,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -430,5 +429,39 @@ public class Utilities {
         } finally {
             return ip;
         }
+    }
+
+    /**
+     * 将Java对象序列化为String
+     * @param obj
+     * @return
+     * @throws IOException
+     */
+
+    public static String serialize(Object obj) throws IOException{
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        objectOutputStream.writeObject(obj);
+        String s = byteArrayOutputStream.toString("ISO-8859-1");
+        objectOutputStream.close();
+        byteArrayOutputStream.close();
+        return s;
+    }
+
+    /**
+     * 将String反序列化为Java对象
+     * @param s
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+
+    public static Object serializeToObject(String s) throws IOException, ClassNotFoundException{
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(s.getBytes("ISO-8859-1"));
+        ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+        Object object = objectInputStream.readObject();
+        objectInputStream.close();
+        byteArrayInputStream.close();
+        return object;
     }
 }

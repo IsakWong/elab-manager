@@ -2,7 +2,8 @@ package elab.database;
 
 import elab.database.mappers.RotaOperations;
 import elab.database.mappers.TableOperations;
-import elab.serialization.beans.Rota;
+import elab.serialization.beans.free_time.FreeTime;
+import elab.serialization.beans.rota.Rota;
 import elab.serialization.beans.log.Log;
 import elab.serialization.beans.member.LoginMessage;
 import elab.serialization.beans.member.Member;
@@ -185,6 +186,15 @@ public class DatabaseOperations {
         }
     }
 
+    public FreeTime selectFreeTime(String number) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            return session.selectOne("member.selectFreeTime", number);
+        } finally {
+            session.close();
+        }
+    }
+
     public Boolean insertMember(Member member) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
@@ -292,6 +302,17 @@ public class DatabaseOperations {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.setDuty", name);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean updateFreeTime(String freeTime) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.updateFreeTime", freeTime);
             session.commit();
             return true;
         } finally {
