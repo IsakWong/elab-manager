@@ -53,9 +53,21 @@
         from member
         where 学号 = #{id}
     </select>
+    <select id="selectFreeTime" parameterType="freeTime" resultType="freeTime">
+        select
+            信息 as "freeTime",
+            备注 as "remarks",
+            修改日期 as "modificationDate"
+        from 空闲时间统计
+        where 学号 = #{number} and 学期 = #{term}
+    </select>
     <insert id="insertMember" parameterType="member">
         insert into member (学号,USERNAME,姓名,性别,院系,组别,电话,职务,年级,座右铭,密码,主讲,助课,照片,照片格式)
         values (#{number},#{userName},#{name},#{sex},#{college},#{group},#{tel},#{duty},#{grade},#{motto},#{password},#{teachingAmount},#{assistAmount},#{photo},#{photoFormat})
+    </insert>
+    <insert id="insertFreeTime" parameterType="freeTime">
+        insert into 空闲时间统计 (学号,姓名,信息,学期,备注,修改日期)
+        values (#{number},#{name},#{freeTime},#{term},#{remarks},#{modificationDate})
     </insert>
     <update id="updateMember" parameterType="loginMessage">
         update member set
@@ -92,5 +104,13 @@
             软件理论 = #{softTheory},
             硬件周次 = #{hardWeeks},
             软件周次 = #{softWeeks}
+    </update>
+    <update id="updateFreeTime" parameterType="freeTime">
+        update 空闲时间统计 set
+            信息 = #{freeTime},
+            学期 = #{term},
+            备注 = #{remarks},
+            修改日期 = #{modificationDate}
+        where 学号 = #{number} and 学期 = #{term}
     </update>
 </mapper>

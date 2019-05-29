@@ -54,8 +54,11 @@ public class MainWindowController extends BaseViewController {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
             Log log = new Log();
-            log.setInformation(logInformation);
-            log.setOperatingNumber(userInputField.getText());
+            if(ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_DUTY").equals("班委"))
+                log.setInformation("管理员退出");
+            else
+                log.setInformation("科中成员退出");
+            log.setOperatingNumber(ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER"));
             log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
             log.setIP(Utilities.getIP());
             log.setVersion(ElabManagerApplication.properties.getProperty("VERSION"));
@@ -70,12 +73,14 @@ public class MainWindowController extends BaseViewController {
 
         @Override
         public void onSuccess(Boolean param) {
-            ElabManagerApplication.primaryStage.close();
+            Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
+            stage.close();
         }
 
         @Override
         public void onError(String errorMessage) {
-            ElabManagerApplication.primaryStage.close();
+            Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
+            stage.close();
         }
 
         @Override
@@ -153,7 +158,6 @@ public class MainWindowController extends BaseViewController {
                             long endtime = System.nanoTime();
                             float costTime = (endtime - begintime) / 1000000;
                             System.out.println(func.FunctionName + " 显示完毕 ，加载时间为：" + costTime + " 毫秒");
-
                         }
                     }
                 }
@@ -175,8 +179,7 @@ public class MainWindowController extends BaseViewController {
     {
         mainMenuCloseBtn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
-                Stage stage = (Stage) mainMenuCloseBtn.getScene().getWindow();
-                stage.close();
+                closeLogSession.send();
             }
         });
         mainMenuCloseBtn.setGraphic(Utilities.getImage("/pictures/close.png"));

@@ -8,6 +8,7 @@ import elab.application.ElabManagerApplication;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.free_time.FreeTime;
+import elab.serialization.beans.member.LoginMessage;
 import elab.util.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,28 +32,25 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     @FXML
     private TextArea questionBoard;
 
-    private String freeTime;
-
     String[] DayString = {" ","周一","周二","周三","周四","周五","周六","周日"};
     String[] WeekString = {"所有周","第一周","第二周","第三周","第四周","第五周","第六周","第七周","第八周","第九周","第十周","第十一周","第十二周","第十三周","第十四周"};
 
     JFXCheckBox[][][] checkBoxes;
 
-    Session<FreeTime> getFreeTimeSession = new Session<FreeTime>() {
+    Session<Boolean> addFreeTimeSession = new Session<Boolean>() {
         @Override
-        public void onPostFetchResult(SessionResult<FreeTime> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectFreeTime(ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER"));
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            LoginMessage loginMessage = ElabManagerApplication.currentCertification;
+            FreeTime freeTime = new FreeTime();
+            freeTime.setNumber(loginMessage.getNumber());
+            freeTime.setName(loginMessage.getName());
+            freeTime.setTerm(Utilities.getTerm());
+            DatabaseOperations.getInstance().insertFreeTime(freeTime);
         }
 
         @Override
-        public void onSuccess(FreeTime param) {
-            if(param == null) {
-                checkBoxes = new JFXCheckBox[17][8][3];
-                initControls();
-            }
-            else {
+        public void onSuccess(Boolean param) {
 
-            }
         }
 
         @Override
@@ -66,10 +64,42 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
         }
     };
 
+    Session<FreeTime> getFreeTimeSession = new Session<FreeTime>() {
+        @Override
+        public void onPostFetchResult(SessionResult<FreeTime> sessionResult) {
+            FreeTime freeTime = new FreeTime();
+            freeTime.setNumber(ElabManagerApplication.currentCertification.getNumber());
+            freeTime.setTerm(Utilities.getTerm());
+            sessionResult.result = DatabaseOperations.getInstance().selectFreeTime(freeTime);
+        }
+
+        @Override
+        public void onSuccess(FreeTime param) {
+            checkBoxes = (JFXCheckBox[][][]) Utilities.serializeToObject(param.getFreeTime());
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            addFreeTimeSession.send();
+            checkBoxes = new JFXCheckBox[17][8][3];
+            initControls();
+        }
+
+        @Override
+        public void onBusy() {
+
+        }
+    };
+
     Session<Boolean> updateFreeTimeSession = new Session<Boolean>() {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
-            popupMessage("正在保存信息", 1500);
+            save.setDisable(true);
+            FreeTime freeTime = new FreeTime();
+            freeTime.setNumber(ElabManagerApplication.currentCertification.getNumber());
+            freeTime.setFreeTime(Utilities.serialize(checkBoxes));
+            freeTime.setRemarks(questionBoard.getText());
+            freeTime.setTerm(Utilities.getTerm());
             sessionResult.result = DatabaseOperations.getInstance().updateFreeTime(freeTime);
             if(sessionResult.result == null)
                 sessionResult.errorMessage = "保存信息失败";
@@ -77,6 +107,7 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
 
         @Override
         public void onSuccess(Boolean param) {
+            save.setDisable(false);
             popupMessage("保存信息成功", 1500);
         }
 

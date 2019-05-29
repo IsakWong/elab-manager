@@ -276,11 +276,6 @@ public class LoginWindowController extends BaseViewController {
 
         closeBtn.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
-                if(duty.equals("班委"))
-                    logInformation = "管理员退出";
-                else
-                    logInformation = "科中成员退出";
-                writeLogSession.send();
                 ElabManagerApplication.primaryStage.close();
             }
         });

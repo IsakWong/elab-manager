@@ -1,19 +1,22 @@
 package elab.serialization.beans.free_time;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("freeTime")
 public class FreeTime {
 
-    private String number;
+    private int number;
     private String name;
     private String freeTime;
     private String term;
     private String remarks;
     private String modificationDate;
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

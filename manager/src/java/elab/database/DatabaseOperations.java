@@ -186,10 +186,10 @@ public class DatabaseOperations {
         }
     }
 
-    public FreeTime selectFreeTime(String number) {
+    public FreeTime selectFreeTime(FreeTime freeTime) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
-            return session.selectOne("member.selectFreeTime", number);
+            return session.selectOne("member.selectFreeTime", freeTime);
         } finally {
             session.close();
         }
@@ -221,6 +221,17 @@ public class DatabaseOperations {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.insert("student.writeLog", log);
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean insertFreeTime(FreeTime freeTime) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.insert("student.insertFreeTime", freeTime);
             session.commit();
             return true;
         } finally {
@@ -309,7 +320,7 @@ public class DatabaseOperations {
         }
     }
 
-    public Boolean updateFreeTime(String freeTime) {
+    public Boolean updateFreeTime(FreeTime freeTime) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
             session.update("member.updateFreeTime", freeTime);

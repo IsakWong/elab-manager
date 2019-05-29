@@ -13,6 +13,7 @@
         <typeAlias alias="log" type="elab.serialization.beans.log.Log"/>
         <typeAlias alias="newPerson" type="elab.serialization.beans.new_person.NewPerson"/>
         <typeAlias alias="loader" type="elab.serialization.beans.loader.Loader"/>
+        <typeAlias alias="freeTime" type="elab.serialization.beans.free_time.FreeTime"/>
     </typeAliases>
     <environments default="student">
         <environment id="student">
