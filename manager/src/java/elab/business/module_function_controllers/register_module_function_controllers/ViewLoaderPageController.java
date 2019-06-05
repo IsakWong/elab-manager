@@ -60,36 +60,13 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
 
         @Override
         public void onSuccess(List param) {
-            ObservableList loaders = FXCollections.observableArrayList();
+            ObservableList<Loader> loaders = FXCollections.observableArrayList();
             loaders.addAll(param);
             tableView.setItems(loaders);
+            for(int i = 0; i < param.size(); ++i)
+                if(!nameList.contains(loaders.get(i).getName()) && loaders.get(i).getLogout().equals("0"))
+                    nameList.add(loaders.get(i).getName());
             finishLoading();
-        }
-
-        @Override
-        public void onError(String errorMessage) {
-            popupMessage(errorMessage, 1500);
-        }
-
-        @Override
-        public void onBusy() {
-            popupMessage("正在获取登录信息", 1500);
-        }
-    };
-
-    Session<List<Loader>> queryNameListSession = new Session<List<Loader>>() {
-        @Override
-        public void onPostFetchResult(SessionResult<List<Loader>> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectLoader(Utilities.getSystemDate());
-            if(sessionResult.result == null)
-                sessionResult.errorMessage = "获取信息失败";
-        }
-
-        @Override
-        public void onSuccess(List<Loader> param) {
-            for(Loader loader : param)
-                if(!nameList.contains(loader.getName()) && loader.getLogout() == null)
-                    nameList.add(loader.getName());
         }
 
         @Override
@@ -106,8 +83,6 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
     @Override
     public void initializeController() {
 
-        queryLoaderSession.send();
-        queryNameListSession.send();
         isInit = true;
 
         number.setCellValueFactory(new PropertyValueFactory<String, Loader>("number"));
@@ -128,5 +103,7 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
                 queryLoaderSession.send();
             }
         });
+
+        queryLoaderSession.send();
     }
 }
