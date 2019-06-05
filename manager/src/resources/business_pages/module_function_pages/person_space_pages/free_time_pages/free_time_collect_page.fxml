@@ -9,58 +9,65 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="817.0" spacing="4.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.person_space_controllers.FreeTimeCollectPageController">
+<HBox fx:id="pageContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" spacing="8.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elab.business.module_function_controllers.person_space_controllers.FreeTimeCollectPageController">
    <children>
-      <VBox maxHeight="1.7976931348623157E308" prefWidth="789.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0">
          <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="空闲时间选择" />
-            <Label minHeight="-Infinity" prefHeight="58.0" prefWidth="232.0" text="选中的时间即为空闲时间，最左的选项可选择一行相对应的选项，最上的选项可选择一列相对应的选项。" wrapText="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="8.0" left="10.0" top="8.0" />
-               </VBox.margin>
-            </Label>
-            <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../../../style/css/controls_style.css">
-               <content>
-                  <VBox fx:id="container" />
-               </content>
-               <VBox.margin>
-                  <Insets bottom="8.0" left="8.0" right="8.0" />
-               </VBox.margin>
-            </ScrollPane>
-         </children>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
-      </VBox>
-      <VBox prefHeight="161.0" prefWidth="789.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="留言版" />
-            <HBox alignment="CENTER_LEFT" prefWidth="761.0">
+            <VBox maxHeight="1.7976931348623157E308" prefWidth="789.0" spacing="16.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
                <children>
-                  <TextArea fx:id="questionBoard" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="97.0" prefWidth="619.0" promptText="时间不确定或有其他问题，可在此留言">
-                     <HBox.margin>
-                        <Insets right="25.0" />
-                     </HBox.margin>
-                  </TextArea>
-                  <JFXButton fx:id="save" prefHeight="35.0" prefWidth="92.0" styleClass="raised-button" text="保存" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="空闲时间选择" />
+                  <Label minHeight="-Infinity" prefHeight="58.0" prefWidth="232.0" text="选中的时间即为空闲时间，最左的选项可选择一行相对应的选项，最上的选项可选择一列相对应的选项。" wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../../../style/css/controls_style.css">
+                     <content>
+                        <VBox fx:id="container" />
+                     </content>
+                     <VBox.margin>
+                        <Insets left="8.0" right="8.0" />
+                     </VBox.margin>
+                  </ScrollPane>
                </children>
                <VBox.margin>
-                  <Insets left="10.0" right="10.0" top="17.0" />
+                  <Insets />
                </VBox.margin>
-            </HBox>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="161.0" prefWidth="789.0" styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="tip-label" text="留言版" />
+                  <HBox alignment="CENTER_LEFT" prefWidth="761.0">
+                     <children>
+                        <TextArea fx:id="questionBoard" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="50.0" prefHeight="97.0" promptText="时间不确定或有其他问题，可在此留言">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                        </TextArea>
+                        <JFXButton fx:id="save" prefHeight="35.0" prefWidth="92.0" styleClass="raised-button" text="保存" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="17.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="8.0" />
+               </padding>
+            </VBox>
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="8.0" />
-         </padding>
       </VBox>
    </children>
    <padding>
       <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
    </padding>
-</VBox>
+</HBox>

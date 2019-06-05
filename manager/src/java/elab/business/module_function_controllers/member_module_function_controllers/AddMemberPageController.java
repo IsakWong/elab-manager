@@ -1,8 +1,10 @@
 package elab.business.module_function_controllers.member_module_function_controllers;
 
 import com.jfoenix.controls.*;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
+import elab.database.Session;
 import elab.face_recognition.FaceRecognitionTool;
 import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
@@ -67,6 +69,32 @@ public class AddMemberPageController extends BaseFunctionContentController {
     private Paint unFocusColor;
     private byte[] photoData = null;
     private String[] photoName = null;
+
+    private Member member;
+
+    Session<Boolean> insertMemberSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().insertMember(member);
+            if(sessionResult.result == null)
+                sessionResult.errorMessage = "新增成员失败";
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+            popupMessage("新增成员成功", 1500);
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 1500);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在更新信息", 1500);
+        }
+    };
 
     private void loadPhoto() {
         try {
@@ -264,8 +292,9 @@ public class AddMemberPageController extends BaseFunctionContentController {
                     newMember.setCollege(collegeChooseBox.getValue());
                     newMember.setGroup(groupChooseBox.getValue());
                     newMember.setTel(telInputField.getText());
-                    DatabaseOperations.getInstance().insertMember(newMember);
-                    Utilities.popMessage("新增成员成功!", container);
+                    newMember.setGrade(Utilities.getGrade(newMember.getNumber()));
+                    member = newMember;
+                    insertMemberSession.send();
                     cleanMessage();
                 }
             }

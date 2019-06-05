@@ -1,5 +1,6 @@
 package elab.database;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import elab.database.mappers.RotaOperations;
 import elab.database.mappers.TableOperations;
 import elab.serialization.beans.free_time.FreeTime;
@@ -16,6 +17,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import javax.swing.text.html.ListView;
 import java.io.Reader;
 import java.util.List;
 
@@ -186,6 +188,15 @@ public class DatabaseOperations {
         }
     }
 
+    public List selectAllFreeTime(String term) {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            return session.selectList("student.selectAllFreeTime", term);
+        } finally {
+            session.close();
+        }
+    }
+
     public FreeTime selectFreeTime(FreeTime freeTime) {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
@@ -247,6 +258,17 @@ public class DatabaseOperations {
             RotaOperations rotaOperations = session.getMapper(RotaOperations.class);
             rotaOperations.createRota("duty");
             rotaOperations.insertRota(rotas, "duty");
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean updateGrade() {
+        SqlSession session = studentSqlSessionFactory.openSession();
+        try {
+            session.update("member.updateGrade");
             session.commit();
             return true;
         } finally {
@@ -347,16 +369,6 @@ public class DatabaseOperations {
         try {
             for(NewPerson newPerson : newPeople)
                 session.delete("recruitNew.deleteNewPerson", newPerson.getNumber());
-            session.commit();
-            return true;
-        } finally {
-            session.close();
-        }
-    }
-
-    public Boolean deleteMember(){
-        SqlSession session = studentSqlSessionFactory.openSession();
-        try {
             session.commit();
             return true;
         } finally {

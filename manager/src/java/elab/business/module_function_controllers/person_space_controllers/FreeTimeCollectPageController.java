@@ -9,11 +9,15 @@ import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.free_time.FreeTime;
 import elab.serialization.beans.member.LoginMessage;
+import elab.serialization.beans.member.Member;
 import elab.util.Utilities;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
@@ -26,16 +30,87 @@ import java.util.List;
 public class FreeTimeCollectPageController extends BaseFunctionContentController {
 
     @FXML
+    private HBox pageContainer;
+    @FXML
     private VBox container;
     @FXML
     private JFXButton save;
     @FXML
     private TextArea questionBoard;
 
+    private ListView finishedListView;
+    private ListView unfinishedListView;
+
     String[] DayString = {" ","周一","周二","周三","周四","周五","周六","周日"};
     String[] WeekString = {"所有周","第一周","第二周","第三周","第四周","第五周","第六周","第七周","第八周","第九周","第十周","第十一周","第十二周","第十三周","第十四周"};
 
     JFXCheckBox[][][] checkBoxes;
+
+    Session<List> getAllMemberSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectInSchoolMembers();
+            if(sessionResult.result == null)
+                sessionResult.errorMessage = "获取所有在校成员失败";
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<Member> members = FXCollections.observableArrayList();
+            members.addAll(param);
+            ObservableList<String> finishedList = finishedListView.getItems();
+            for(int i = 0; i < finishedList.size(); ++i) {
+                String[] information = finishedList.get(i).split(" ");
+                for(int j = 0; j < members.size(); ++j)
+                    if(members.get(j).getNumber().equals(information[0]))
+                        members.remove(j);
+            }
+            ObservableList<String> unfinishedList = FXCollections.observableArrayList();
+            for(int i = 0; i < members.size(); ++i)
+                unfinishedList.add(members.get(i).getNumber() + " " + members.get(i).getName());
+            unfinishedListView.setItems(unfinishedList);
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 1500);
+        }
+
+        @Override
+        public void onBusy() {
+
+        }
+    };
+
+    Session<List> getAllFreeTimeSession = new Session<List>() {
+        @Override
+        public void onPostFetchResult(SessionResult<List> sessionResult) {
+            sessionResult.result = DatabaseOperations.getInstance().selectAllFreeTime(Utilities.getTerm());
+            if(sessionResult.result == null)
+                sessionResult.errorMessage = "";
+        }
+
+        @Override
+        public void onSuccess(List param) {
+            ObservableList<FreeTime> allFreeTime = FXCollections.observableArrayList();
+            allFreeTime.addAll(param);
+            ObservableList<String> finishedList = FXCollections.observableArrayList();
+            for(int i = 0; i < allFreeTime.size(); ++i)
+                finishedList.add(allFreeTime.get(i).getNumber() + " " + allFreeTime.get(i).getName());
+            finishedListView.setItems(finishedList);
+            getAllMemberSession.send();
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            getAllMemberSession.send();
+        }
+
+        @Override
+        public void onBusy() {
+
+        }
+    };
 
     Session<Boolean> addFreeTimeSession = new Session<Boolean>() {
         @Override
@@ -141,6 +216,21 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
         }
     };
 
+    private void addAdminControls() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/module_function_pages/person_space_pages/free_time_pages/view_free_time_list.fxml"));
+            Node node = loader.load();
+            VBox vBox = (VBox) node.lookup("#listViewContainer");
+            finishedListView = (ListView) node.lookup("#finishedListView");
+            unfinishedListView = (ListView) node.lookup("#unfinishedListView");
+            pageContainer.getChildren().add(vBox);
+            getAllFreeTimeSession.send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initCheckBoxSelected(String freeTimeString) {
         String[] selectedInformation = freeTimeString.split(",");
         int number = 1;
@@ -228,6 +318,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     }
 
     private void initControls () {
+
+        if(ElabManagerApplication.currentCertification.getDuty().equals("班委"))
+            addAdminControls();
 
         for (int i = 0; i < WeekString.length; ++i) {
             loadWeekCheckBoxGroup(container, i);

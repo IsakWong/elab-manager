@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="listViewContainer" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="8.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="已填写" />
+            <ListView fx:id="finishedListView" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="250.0" />
+         </children>
+      </VBox>
+      <VBox styleClass="card-view" stylesheets="@../../../../style/css/controls_style.css">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" styleClass="tip-label" text="未填写" />
+            <ListView fx:id="unfinishedListView" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="250.0" />
+         </children>
+      </VBox>
+   </children>
+</VBox>

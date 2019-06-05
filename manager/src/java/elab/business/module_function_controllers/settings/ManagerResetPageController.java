@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import elab.application.BaseFunctionContentController;
 import elab.database.DatabaseOperations;
 import elab.database.Session;
@@ -41,7 +42,36 @@ public class ManagerResetPageController extends BaseFunctionContentController {
 
     private Paint unfocusedColor;
 
-    private JFXTextField datePickerEditer;
+    private JFXTextField datePickerEditor;
+
+    Session<Boolean> updateGradeSession = new Session<Boolean>() {
+        @Override
+        public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
+            if(Utilities.getTerm().endsWith("秋")) {
+                sessionResult.result = DatabaseOperations.getInstance().updateGrade();
+                if (sessionResult.result == null)
+                    sessionResult.errorMessage = "更新所有成员年级信息失败";
+            } else {
+                sessionResult.result = true;
+            }
+
+        }
+
+        @Override
+        public void onSuccess(Boolean param) {
+            popupMessage("信息更新成功", 1500);
+        }
+
+        @Override
+        public void onError(String errorMessage) {
+            popupMessage(errorMessage, 1500);
+        }
+
+        @Override
+        public void onBusy() {
+            popupMessage("正在更新信息", 1500);
+        }
+    };
 
     Session<Boolean> setMessageSession = new Session<Boolean>() {
         @Override
@@ -61,7 +91,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
 
         @Override
         public void onSuccess(Boolean param) {
-            popupMessage("信息更新成功", 1500);
+            updateGradeSession.send();
         }
 
         @Override
@@ -103,7 +133,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
     @Override
     public void initializeController() {
 
-        datePickerEditer = (JFXTextField)termStartDatePicker.getEditor();
+        datePickerEditor = (JFXTextField)termStartDatePicker.getEditor();
 
         unfocusedColor = Color.valueOf("000000");
 
@@ -132,7 +162,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             if(event.getButton() == MouseButton.PRIMARY) {
                 Boolean isAllMessageFinished = true;
                 if(termStartDatePicker.getValue() == null) {
-                    datePickerEditer.setUnFocusColor(Color.RED);
+                    datePickerEditor.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
                 if(hardStartBox.getValue() == null) {
@@ -160,16 +190,14 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             }
         });
 
-        JFXTextField editor = (JFXTextField) termStartDatePicker.getEditor();
-
         termStartDatePicker.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY)
-                datePickerEditer.setUnFocusColor(unfocusedColor);
+                datePickerEditor.setUnFocusColor(unfocusedColor);
         });
 
-        datePickerEditer.setOnMouseClicked(event -> {
+        datePickerEditor.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY)
-                datePickerEditer.setUnFocusColor(unfocusedColor);
+                datePickerEditor.setUnFocusColor(unfocusedColor);
         });
 
         hardStartBox.setOnMouseClicked(event -> {

@@ -69,6 +69,13 @@
         insert into 空闲时间统计 (学号,姓名,信息,学期,备注,修改日期)
         values (#{number},#{name},#{freeTime},#{term},#{remarks},#{modificationDate})
     </insert>
+    <update id="updateGrade">
+        update member set 年级 = "往届" where 年级 = "大四";
+        update member set 年级 = "大四" where 年级 = "大三";
+        update member set 年级 = "大三" where 年级 = "大二";
+        update member set 年级 = "大二" where 年级 = "大一";
+        update member set 年级 = "大一" where 年级 = "预科"
+    </update>
     <update id="updateMember" parameterType="loginMessage">
         update member set
             学号 = #{number},

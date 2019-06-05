@@ -72,17 +72,23 @@
     </select>
     <select id="selectAllLogs" parameterType="String" resultType="log">
         select
-        ID as "ID",
-        操作时间 as "time",
-        操作人IP as "IP",
-        硬件成绩 as "hardScore",
-        软件成绩 as "softScore",
-        试卷成绩 as "paperScore",
-        登录信息 as "information",
-        版本号 as "version",
+            ID as "ID",
+            操作时间 as "time",
+            操作人IP as "IP",
+            硬件成绩 as "hardScore",
+            软件成绩 as "softScore",
+            试卷成绩 as "paperScore",
+            登录信息 as "information",
+            版本号 as "version",
         concat("\t", 操作人学号) as "operatingNumber",
         concat("\t", 被修改人学号) as "operatedNumber"
         from Log where 学期 = #{id}
+    </select>
+    <select id="selectAllFreeTime" parameterType="String" resultType="freeTime">
+        select
+            学号 as "number",
+            姓名 as "name"
+        from 空闲时间统计 where 学期 = #{id}
     </select>
     <insert id="insertFreeTime" parameterType="freeTime">
         insert into 空闲时间统计 (ID,学号,姓名,信息,学期,备注,修改日期)

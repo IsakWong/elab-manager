@@ -474,4 +474,44 @@ public class Utilities {
         }
         return object;
     }
+
+    /**
+     * 根据学号计算年级
+     * @param number
+     * @return
+     */
+
+    public static String getGrade(String number) {
+        String grade = null;
+        char[] enrollmentYearChars = number.toCharArray();
+        String enrollmentYearString = String.valueOf(enrollmentYearChars[0]) + String.valueOf(enrollmentYearChars[1]) + String.valueOf(enrollmentYearChars[2]) + String.valueOf(enrollmentYearChars[3]);
+        int enrollmentYear = Integer.parseInt(enrollmentYearString);
+        if(enrollmentYearChars[4] == '0' && enrollmentYearChars[5] == '0')
+            ++enrollmentYear;
+        char[] termChars = getTerm().toCharArray();
+        String termYearString = String.valueOf(termChars[0]) + String.valueOf(termChars[1]) + String.valueOf(termChars[2]) + String.valueOf(termChars[3]);
+        int termYear = Integer.parseInt(termYearString);
+        if(getTerm().endsWith("春"))
+            --termYear;
+        switch (termYear - enrollmentYear) {
+            case -1:
+                grade = "预科";
+                break;
+            case 0:
+                grade = "大一";
+                break;
+            case 1:
+                grade = "大二";
+                break;
+            case 2:
+                grade = "大三";
+                break;
+            case 3:
+                grade = "大四";
+                break;
+            default:
+                break;
+        }
+        return grade;
+    }
 }
