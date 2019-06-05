@@ -45,12 +45,15 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             freeTime.setNumber(loginMessage.getNumber());
             freeTime.setName(loginMessage.getName());
             freeTime.setTerm(Utilities.getTerm());
-            DatabaseOperations.getInstance().insertFreeTime(freeTime);
+            freeTime.setModificationDate(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+            sessionResult.result = DatabaseOperations.getInstance().insertFreeTime(freeTime);
         }
 
         @Override
         public void onSuccess(Boolean param) {
-
+            checkBoxes = new JFXCheckBox[17][8][3];
+            initControls();
+            finishLoading();
         }
 
         @Override
@@ -71,18 +74,22 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             freeTime.setNumber(ElabManagerApplication.currentCertification.getNumber());
             freeTime.setTerm(Utilities.getTerm());
             sessionResult.result = DatabaseOperations.getInstance().selectFreeTime(freeTime);
+            if(sessionResult.result == null)
+                sessionResult.errorMessage = "";    //如果不将errorMessage初始化是不会调用onError方法的
         }
 
         @Override
         public void onSuccess(FreeTime param) {
-            checkBoxes = (JFXCheckBox[][][]) Utilities.serializeToObject(param.getFreeTime());
+            checkBoxes = new JFXCheckBox[17][8][3];
+            initControls();
+            initCheckBoxSelected(param.getFreeTime());
+            questionBoard.setText(param.getRemarks());
+            finishLoading();
         }
 
         @Override
         public void onError(String errorMessage) {
             addFreeTimeSession.send();
-            checkBoxes = new JFXCheckBox[17][8][3];
-            initControls();
         }
 
         @Override
@@ -97,9 +104,21 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             save.setDisable(true);
             FreeTime freeTime = new FreeTime();
             freeTime.setNumber(ElabManagerApplication.currentCertification.getNumber());
-            freeTime.setFreeTime(Utilities.serialize(checkBoxes));
+            String freeTimeString = "";
+            for (int i = 0; i < WeekString.length; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    for (int k = 0; k < 3; ++k) {
+                        if(checkBoxes[i][j][k].isSelected())
+                            freeTimeString += ",true";
+                        else
+                            freeTimeString += ",false";
+                    }
+                }
+            }
+            freeTime.setFreeTime(freeTimeString);
             freeTime.setRemarks(questionBoard.getText());
             freeTime.setTerm(Utilities.getTerm());
+            freeTime.setModificationDate(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
             sessionResult.result = DatabaseOperations.getInstance().updateFreeTime(freeTime);
             if(sessionResult.result == null)
                 sessionResult.errorMessage = "保存信息失败";
@@ -121,6 +140,20 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             popupMessage("正在保存信息", 1500);
         }
     };
+
+    private void initCheckBoxSelected(String freeTimeString) {
+        String[] selectedInformation = freeTimeString.split(",");
+        int number = 1;
+        for (int i = 0; i < WeekString.length; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                for (int k = 0; k < 3; ++k) {
+                    if(selectedInformation[number].equals("true"))
+                        checkBoxes[i][j][k].setSelected(true);
+                    ++number;
+                }
+            }
+        }
+    }
 
     private void loadDayCheckBoxGroup(HBox WeekRow,int WeekIndex, int DayIndex) {
         try {
@@ -273,8 +306,6 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
                         checkBoxes[i][j][t].setSelected(checkBoxes[0][0][t].isSelected());
             });
         }
-
-        finishLoading();
     }
 
     @Override

@@ -5,12 +5,22 @@ import org.apache.ibatis.type.Alias;
 @Alias("freeTime")
 public class FreeTime {
 
+    private int ID;
     private int number;
     private String name;
     private String freeTime;
     private String term;
     private String remarks;
     private String modificationDate;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
 
     public int getNumber() {
         return number;

@@ -48,69 +48,12 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
 
     private ObservableList<String> nameList = FXCollections.observableArrayList();
     private ObservableList<String> teachingList = FXCollections.observableArrayList();
+    private ObservableList<String> assistChooseList = FXCollections.observableArrayList();
     private ObservableList<String> assistList = FXCollections.observableArrayList();
-
-    private void addTeachingListViewItem(String item) {
-        if (teachingList.size() == 0) {
-            if (!assistList.isEmpty()) {
-                for (int i = 0; i < assistList.size(); ++i) {
-                    if (assistList.get(i).equals(item)) {
-                        Utilities.popMessage("此同学已在助教列表中", container);
-                        break;
-                    }
-                    else if (i == assistList.size() - 1) {
-                        teachingList.add(item);
-                    }
-                }
-            }
-            else {
-                teachingList.add(item);
-            }
-        }
-        else Utilities.popMessage("主讲只能有一位", container);
-    }
-
-    private void addAssistListViewItem(String item) {
-        if(!teachingList.isEmpty()) {
-            if (teachingList.get(0).equals(item)) {
-                Utilities.popMessage("此同学已被选为主讲", container);
-            }
-            else if (assistList.size() == 0) {
-                assistList.add(item);
-            }
-            else {
-                for (int i = 0; i < assistList.size(); ++i) {
-                    if (assistList.get(i).equals(item)) {
-                        Utilities.popMessage("此同学已在助教列表中", container);
-                        break;
-                    } else if (i == assistList.size() - 1) {
-                        assistList.add(item);
-                        assistListView.refresh();
-                        break;
-                    }
-                }
-            }
-        }
-        else if (assistList.size() == 0) {
-            assistList.add(item);
-        }
-        else {
-            for (int i = 0; i < assistList.size(); ++i) {
-                if (assistList.get(i).equals(item)) {
-                    Utilities.popMessage("此同学已在助教列表中", container);
-                    break;
-                } else if (i == assistList.size() - 1) {
-                    assistList.add(item);
-                    assistListView.refresh();
-                    break;
-                }
-            }
-        }
-    }
 
     @Override
     public void initializeController() {
-        ObservableList<Member> members = FXCollections.<Member>observableArrayList();
+        ObservableList<Member> members = FXCollections.observableArrayList();
         ObservableOnSubscribe<Boolean> ob = new ObservableOnSubscribe<Boolean>() {
 
             @Override
@@ -136,6 +79,7 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                                    }
                                    finishLoading();
                                    primaryComboBox.setItems(nameList);
+                                   secondaryComboBox.setItems(nameList);
                                    primaryComboBox.showingProperty();
                                }
 
@@ -152,7 +96,7 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
         primaryInputField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (primaryInputField.getText().equals("")) {
+                if(primaryInputField.getText().equals("")) {
                     primaryComboBox.setItems(nameList);
                 } else {
                     if(teachingList.size() != 0) teachingList.clear();
@@ -160,8 +104,13 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                         if (Utilities.getPinyinString(nameList.get(i)).startsWith(primaryInputField.getText())
                                 || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(primaryInputField.getText())
                                 || nameList.get(i).startsWith(primaryInputField.getText())
-                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(primaryInputField.getText()))
+                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(primaryInputField.getText())) {
                             teachingList.add(nameList.get(i));
+                            if(assistList.size() != 0)
+                                for(int j = 0; j < assistList.size(); j++)
+                                    if(teachingList.contains(assistList.get(j)))
+                                        teachingList.remove(assistList.get(j));
+                        }
                     primaryComboBox.setItems(teachingList);
                 }
             }
@@ -171,23 +120,59 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if(secondaryInputField.getText().equals("")) {
-
+                    if(primaryComboBox.getValue() == null)
+                        secondaryComboBox.setItems(nameList);
+                    else {
+                        for(int i = 0; i < nameList.size(); ++i)
+                            assistChooseList.add(nameList.get(i));
+                        if(assistChooseList.contains(primaryComboBox.getValue()))
+                            assistChooseList.remove(primaryComboBox.getValue());
+                    }
                 } else {
-                    if(assistList.size() != 0) assistList.clear();
+                    if(assistChooseList.size() != 0) assistChooseList.clear();
                     for (int i = 0; i < nameList.size(); ++i)
                         if (Utilities.getPinyinString(nameList.get(i)).startsWith(secondaryInputField.getText())
                                 || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(secondaryInputField.getText())
                                 || nameList.get(i).startsWith(secondaryInputField.getText())
-                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(secondaryInputField.getText()))
-                            assistList.add(nameList.get(i));
-                    secondaryComboBox.setItems(assistList);
+                                || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(secondaryInputField.getText())) {
+                            assistChooseList.add(nameList.get(i));
+                            if(primaryComboBox.getValue() != null)
+                                if(assistChooseList.contains(primaryComboBox.getValue()))
+                                    assistChooseList.remove(primaryComboBox.getValue());
+                            else if(assistList.size() != 0)
+                                for(int j = 0; j < assistList.size(); ++j)
+                                    if(assistChooseList.contains(assistList.get(j)))
+                                        assistChooseList.remove(assistList.get(j));
+                        }
+                    secondaryComboBox.setItems(assistChooseList);
                 }
+            }
+        });
+
+        primaryComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(assistChooseList.contains(newValue))
+                assistChooseList.remove(newValue);
+        });
+
+        secondaryComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(teachingList.contains(newValue))
+                teachingList.remove(newValue);
+            //if(assistChooseList.contains(newValue))
+            //    assistChooseList.remove(newValue);
+            assistList.add((String)newValue);
+            assistListView.setItems(assistList);
+        });
+
+        assistListView.setOnMouseClicked(event -> {
+            if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                String selectedItem = assistListView.getSelectionModel().getSelectedItem();
+                assistList.remove(selectedItem);
             }
         });
 
         saveBtn.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY) {
-                System.out.println(teachingList + "/n" + assistList + "/n" + questionInputArea.getText());
+                System.out.println(primaryComboBox.getValue() + "/n" + assistList + "/n" + questionInputArea.getText());
             }
         });
     }

@@ -47,7 +47,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <Label layoutX="26.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="elab-text-title" text="助教">
+            <Label layoutX="26.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="elab-text-title" text="助教(双击除去)">
                <font>
                   <Font size="14.0" />
                </font>

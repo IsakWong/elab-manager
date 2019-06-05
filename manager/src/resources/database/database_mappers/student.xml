@@ -84,6 +84,10 @@
         concat("\t", 被修改人学号) as "operatedNumber"
         from Log where 学期 = #{id}
     </select>
+    <insert id="insertFreeTime" parameterType="freeTime">
+        insert into 空闲时间统计 (ID,学号,姓名,信息,学期,备注,修改日期)
+        values(#{ID},#{number},#{name},#{freeTime},#{term},#{remarks},#{modificationDate})
+    </insert>
     <insert id="writeLog" parameterType="log">
         insert into Log (ID,操作人学号,操作时间,操作人IP,被修改人学号,硬件成绩,软件成绩,试卷成绩,登录信息,版本号,学期)
         values(#{ID},#{operatingNumber},#{time},#{IP},#{operatedNumber},#{hardScore},#{softScore},#{paperScore},#{information},#{version},#{term})
