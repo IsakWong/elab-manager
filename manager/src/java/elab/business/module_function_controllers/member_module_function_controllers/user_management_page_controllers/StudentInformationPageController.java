@@ -5,6 +5,7 @@ import elab.database.DatabaseOperations;
 import elab.database.Session;
 import elab.serialization.beans.member.Member;
 import elab.serialization.beans.student.Student;
+import elab.util.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,7 +41,7 @@ public class StudentInformationPageController extends BaseFunctionContentControl
     @Override
     public void initializeController() {
 
-        List<Student> student = DatabaseOperations.getInstance().selectAllStudents();
+        List<Student> student = DatabaseOperations.getInstance().selectAllStudents(Utilities.getTerm() + "_计算机安装与调试技术");
         ObservableList<Student> students = FXCollections.observableArrayList();
         students.addAll(student);
         tableView.setItems(students);

@@ -2,6 +2,8 @@ package elab.database;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import elab.database.mappers.RotaOperations;
+import elab.database.mappers.SelectExistTable;
+import elab.database.mappers.SelectOperations;
 import elab.database.mappers.TableOperations;
 import elab.serialization.beans.free_time.FreeTime;
 import elab.serialization.beans.rota.Rota;
@@ -12,6 +14,7 @@ import elab.serialization.beans.new_person.NewPerson;
 import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
 import elab.serialization.beans.student.Student;
 import javafx.collections.ObservableList;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,12 +23,14 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import javax.swing.text.html.ListView;
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseOperations {
 
     private static SqlSessionFactory studentSqlSessionFactory = null;
     private static SqlSessionFactory classSqlSessionFactory = null;
     private static SqlSessionFactory recruitNewSqlSessionFactory = null;
+    private static SqlSessionFactory informationSchemaFactory = null;
 
     private static DatabaseOperations instance = null;
 
@@ -43,6 +48,8 @@ public class DatabaseOperations {
             classSqlSessionFactory = new SqlSessionFactoryBuilder().build(classReader, "class");
             Reader elabRecruitNew = Resources.getResourceAsReader("database/mybatis-config.xml");
             recruitNewSqlSessionFactory = new SqlSessionFactoryBuilder().build(elabRecruitNew, "recruitNew");
+            Reader informationSchemaReader = Resources.getResourceAsReader("database/mybatis-config.xml");
+            informationSchemaFactory = new SqlSessionFactoryBuilder().build(informationSchemaReader, "informationSchema");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -133,16 +140,6 @@ public class DatabaseOperations {
         }
     }
 
-    public List selectAllStudents() {
-        SqlSession session = classSqlSessionFactory.openSession();
-        try {
-            return session.selectList("student.selectAllStudents");
-        } finally {
-            session.close();
-        }
-    }
-
-
     public SchoolOpeningInformation selectSchoolOpeningDateInformation() {
         SqlSession session = studentSqlSessionFactory.openSession();
         try {
@@ -203,6 +200,39 @@ public class DatabaseOperations {
             return session.selectOne("member.selectFreeTime", freeTime);
         } finally {
             session.close();
+        }
+    }
+
+    public List selectAllStudents(String tableName) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        SqlSession session1 = informationSchemaFactory.openSession();
+        SelectExistTable selectExistTable = session1.getMapper(SelectExistTable.class);
+        try {
+            Integer count =selectExistTable.checkTableExistsWithSchema("class", tableName);
+            if(count != 0) {
+                SelectOperations selectOperations = session.getMapper(SelectOperations.class);
+                return selectOperations.selectAllStudents(tableName);
+            } else {
+                return null;
+            }
+
+            /* 使用show tables检查表是否存在
+
+            Map<String, String> list = selectExistTable.checkTableExistsWithShow(tableName);
+            if(!list.isEmpty()) {
+                SelectOperations selectOperations = session.getMapper(SelectOperations.class);
+                return selectOperations.selectAllStudents(tableName);
+            } else {
+                return null;
+            }
+
+            */
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+            session1.close();
         }
     }
 

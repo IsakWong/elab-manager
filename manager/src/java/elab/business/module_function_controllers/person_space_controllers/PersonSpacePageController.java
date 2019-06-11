@@ -32,10 +32,7 @@ public class PersonSpacePageController extends BaseFunctionContentController {
 
     @Override
     public void initializeController() {
-        for(int i = 0 ; i < 50 ; i++)
-        {
-            onlineList.getItems().add(new Label("Item " + i));
-        }
+
         IsDataInitialized = true;
     }
 }

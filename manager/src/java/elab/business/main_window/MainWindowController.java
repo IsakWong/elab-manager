@@ -201,7 +201,7 @@ public class MainWindowController extends BaseViewController {
 
             Gson gson = new Gson();
             String moduleJson;
-            String duty = ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_DUTY");
+            String duty = ElabManagerApplication.currentCertification.getDuty();
             if(duty.equals("班委"))
                 moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/admin_modules.json"));
             else

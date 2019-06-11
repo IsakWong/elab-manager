@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
     private Student student;
 
-    private ObservableList<Student> students = FXCollections.<Student>observableArrayList();
+    private ObservableList<Student> students = FXCollections.observableArrayList();
 
     Session<Boolean> writeLogSession = new Session<Boolean>() {
         @Override
@@ -100,9 +101,9 @@ public class EnterScorePageController extends BaseFunctionContentController {
     Session<List> queryStudentSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents();
+            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents("2018秋" + "_计算机安装与调试技术");
             if(sessionResult.result == null)
-                sessionResult.errorMessage = "无法获取该日期上课的学生";
+                sessionResult.errorMessage = "";
         }
 
         @Override
@@ -116,7 +117,9 @@ public class EnterScorePageController extends BaseFunctionContentController {
 
         @Override
         public void onError(String errorMessage) {
-            popupMessage(errorMessage,1500);
+            finishLoading();
+            Object[] options ={"确定"};
+            JOptionPane.showOptionDialog(null, "本学期上课学生信息未导入，请联系管理员", "注意", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
         }
 
         @Override
@@ -166,7 +169,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
             paperScore.setCellValueFactory(new PropertyValueFactory<Student, Integer>("paperScore"));
             tel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
 
-            resultTable.setPlaceholder(new Label("当天无上课同学"));
+            resultTable.setPlaceholder(new Label("无上课同学"));
 
             /**
              * TableView行选中事件监听

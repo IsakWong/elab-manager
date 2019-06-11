@@ -178,7 +178,6 @@ public class LoginWindowController extends BaseViewController {
     public void writeUserInformationToDisk() {
         ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER", user);
         ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_PASSWORD", md5Password);
-        ElabManagerApplication.properties.setProperty("LAST_LOG_IN_USER_DUTY", duty);
     }
 
     public void showMainWindow() {

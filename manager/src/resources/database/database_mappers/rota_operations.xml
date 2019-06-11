@@ -5,12 +5,12 @@
 <mapper namespace="elab.database.mappers.RotaOperations">
     <update id="createRota" parameterType="String">
         CREATE TABLE ${rotaName} (
-            学号 varchar(255) DEFAULT NULL,
-            姓名 varchar(255) DEFAULT NULL,
-            组别 varchar(255) DEFAULT NULL,
-            时段 varchar(255) DEFAULT NULL,
-            单双周 varchar(255) DEFAULT NULL,
-            星期 varchar(255) DEFAULT NULL);
+            学号 varchar(10) DEFAULT NULL,
+            姓名 varchar(10) DEFAULT NULL,
+            组别 varchar(8) DEFAULT NULL,
+            时段 varchar(6) DEFAULT NULL,
+            单双周 varchar(6) DEFAULT NULL,
+            星期 varchar(2) DEFAULT NULL);
         ALTER TABLE ${rotaName} CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
     </update>
     <insert id="insertRota" parameterType="java.util.List">
