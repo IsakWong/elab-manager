@@ -41,6 +41,8 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     private ListView finishedListView;
     private ListView unfinishedListView;
 
+    private Boolean isInfoExist = false;
+
     String[] DayString = {" ","周一","周二","周三","周四","周五","周六","周日"};
     String[] WeekString = {"所有周","第一周","第二周","第三周","第四周","第五周","第六周","第七周","第八周","第九周","第十周","第十一周","第十二周","第十三周","第十四周"};
 
@@ -126,14 +128,11 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
 
         @Override
         public void onSuccess(Boolean param) {
-            checkBoxes = new JFXCheckBox[17][8][3];
-            initControls();
-            finishLoading();
+            updateFreeTimeSession.send();
         }
 
         @Override
         public void onError(String errorMessage) {
-
         }
 
         @Override
@@ -159,12 +158,15 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             initControls();
             initCheckBoxSelected(param.getFreeTime());
             questionBoard.setText(param.getRemarks());
+            isInfoExist = true;
             finishLoading();
         }
 
         @Override
         public void onError(String errorMessage) {
-            addFreeTimeSession.send();
+            checkBoxes = new JFXCheckBox[17][8][3];
+            initControls();
+            finishLoading();
         }
 
         @Override
@@ -405,7 +407,10 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     public void initializeController() {
         save.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
-                updateFreeTimeSession.send();
+                if(!isInfoExist)
+                    addFreeTimeSession.send();
+                else
+                    updateFreeTimeSession.send();
             }
         });
 
