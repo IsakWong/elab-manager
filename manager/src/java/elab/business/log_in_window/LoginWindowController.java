@@ -27,6 +27,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class LoginWindowController extends BaseViewController {
 
     @FXML
@@ -165,8 +170,13 @@ public class LoginWindowController extends BaseViewController {
                 if (autoLoginProperty.equals("true")) {
                     autoLogin.setSelected(true);
                     if (user != null && md5Password != null) {
-                        Utilities.popMessage("正在登陆中", container);
-                        loginSession.send();
+                        if(isConnect()) {
+                            Utilities.popMessage("正在登陆中", container);
+                            loginSession.send();
+                        } else {
+                            Object[] options ={"确定"};
+                            JOptionPane.showOptionDialog(null, "检测到本地网络未连接，请检查网络状况！", "注意", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+                        }
                     }
                 }
             }
@@ -206,6 +216,38 @@ public class LoginWindowController extends BaseViewController {
             exp.printStackTrace();
         }
 
+    }
+
+    public Boolean isConnect() {
+        boolean connect = false;
+        Runtime runtime = Runtime.getRuntime();
+        Process process;
+        try {
+            process = runtime.exec("ping " + "www.baidu.com");
+            InputStream is = process.getInputStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            String line ;
+            StringBuffer sb = new StringBuffer();
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            System.out.println("返回值为:"+sb);
+            is.close();
+            isr.close();
+            br.close();
+
+            if (null != sb && !sb.toString().equals("")) {
+                if (sb.toString().indexOf("TTL") > 0) {
+                    connect = true;
+                } else {
+                    connect = false;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connect;
     }
 
     @Override
@@ -267,8 +309,13 @@ public class LoginWindowController extends BaseViewController {
                         user = userInputField.getText();
                     if(isPwdChanged)
                         md5Password = Utilities.encrypt(pwdInputField.getText());
-                    Utilities.popMessage("正在登陆中", container);
-                    loginSession.send();
+                    if(isConnect()) {
+                        Utilities.popMessage("正在登陆中", container);
+                        loginSession.send();
+                    } else {
+                    Object[] options ={"确定"};
+                    JOptionPane.showOptionDialog(null, "检测到本地网络未连接，请检查网络状况！", "注意", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+                }
                 }
             }
         });

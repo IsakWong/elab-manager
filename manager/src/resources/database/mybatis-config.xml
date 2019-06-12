@@ -61,5 +61,6 @@
         <mapper resource="database/database_mappers/table_operations.xml"/>
         <mapper resource="database/database_mappers/select_operations.xml"/>
         <mapper resource="database/database_mappers/select_exist_table.xml"/>
+        <mapper resource="database/database_mappers/student_name_list_operations.xml"/>
     </mappers>
 </configuration>

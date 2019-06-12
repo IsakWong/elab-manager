@@ -21,13 +21,13 @@
         <result column="照片格式" property="photoFormat"/>
     </resultMap>
     <select id="selectMemberByName" parameterType="string" resultMap="memberResultMap">
-        select * from member where 姓名 = #{id}
+        select * from member where 姓名 like #{id} '%'
     </select>
     <select id="selectMemberByNumber" parameterType="string" resultMap="memberResultMap">
-        select * from member where 学号 = #{id}
+        select * from member where 学号 like #{id} '%'
     </select>
     <select id="selectMemberByCollege" parameterType="string" resultMap="memberResultMap">
-        select * from member where 院系 = #{id}
+        select * from member where 院系 like #{id} '%'
     </select>
     <select id="selectAllMembers" resultMap="memberResultMap">
         select * from member

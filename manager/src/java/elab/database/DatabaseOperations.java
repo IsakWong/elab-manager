@@ -1,10 +1,7 @@
 package elab.database;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
-import elab.database.mappers.RotaOperations;
-import elab.database.mappers.SelectExistTable;
-import elab.database.mappers.SelectOperations;
-import elab.database.mappers.TableOperations;
+import elab.database.mappers.*;
 import elab.serialization.beans.free_time.FreeTime;
 import elab.serialization.beans.rota.Rota;
 import elab.serialization.beans.log.Log;
@@ -13,6 +10,7 @@ import elab.serialization.beans.member.Member;
 import elab.serialization.beans.new_person.NewPerson;
 import elab.serialization.beans.school_opening_information.SchoolOpeningInformation;
 import elab.serialization.beans.student.Student;
+import elab.util.Utilities;
 import javafx.collections.ObservableList;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.ibatis.io.Resources;
@@ -288,6 +286,19 @@ public class DatabaseOperations {
             RotaOperations rotaOperations = session.getMapper(RotaOperations.class);
             rotaOperations.createRota("duty");
             rotaOperations.insertRota(rotas, "duty");
+            session.commit();
+            return true;
+        } finally {
+            session.close();
+        }
+    }
+
+    public Boolean leadingInStudentNameList(List<Student> students) {
+        SqlSession session = classSqlSessionFactory.openSession();
+        try {
+            StudentNameListOperations studentNameListOperations = session.getMapper(StudentNameListOperations.class);
+            studentNameListOperations.createStudentNameList(Utilities.getTerm() + "_计算机安装与调试技术");
+            studentNameListOperations.insertStudentNameList(students, Utilities.getTerm() + "_计算机安装与调试技术");
             session.commit();
             return true;
         } finally {

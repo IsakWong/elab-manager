@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseButton;
 
+import javax.swing.*;
 import java.util.List;
 
 public class UserManagementPageController extends BaseFunctionContentController {
@@ -111,6 +112,9 @@ public class UserManagementPageController extends BaseFunctionContentController 
 
                         @Override
                         public void onError(Throwable throwable) {
+                            Object[] options ={"确定"};
+                            JOptionPane.showOptionDialog(null, "本学期上课学生信息未导入，请联系管理员", "注意", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+                            finishLoading();
                         }
 
                         @Override

@@ -43,9 +43,14 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <JFXButton fx:id="saveBtn" mnemonicParsing="false" styleClass="raised-button" text="保存全部信息">
+                  <JFXButton fx:id="nameListBtn" mnemonicParsing="false" prefHeight="29.0" prefWidth="160.0" styleClass="raised-button" text="导入上课学生名单">
                      <HBox.margin>
                         <Insets right="40.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="saveBtn" mnemonicParsing="false" styleClass="raised-button" text="保存全部信息">
+                     <HBox.margin>
+                        <Insets right="30.0" />
                      </HBox.margin>
                   </JFXButton>
                </children>

@@ -3,7 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="elab.database.mappers.SelectOperations">
-    <select id="selectTable" resultType="java.util.List">
-        select * from #{tableName}
+    <resultMap id="studentResultMap" type="student">
+        <result column="学号" property="number"/>
+        <result column="姓名" property="name"/>
+        <result column="院系" property="college"/>
+        <result column="理论课" property="theoryClass"/>
+        <result column="硬件时间" property="hardTime"/>
+        <result column="软件时间" property="softTime"/>
+        <result column="硬件成绩" property="hardScore"/>
+        <result column="软件成绩" property="softScore"/>
+        <result column="试卷成绩" property="paperScore"/>
+        <result column="邮箱" property="email"/>
+        <result column="联系电话" property="tel"/>
+        <result column="密码" property="pwd"/>
+        <result column="补课" property="makeUpLessons"/>
+        <result column="选课时间" property="courseSelectionTime"/>
+        <result column="备注" property="remark"/>
+    </resultMap>
+    <select id="selectAllStudents" resultMap="studentResultMap">
+        select * from ${tableName}
     </select>
 </mapper>

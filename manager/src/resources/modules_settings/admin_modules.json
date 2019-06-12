@@ -5,10 +5,6 @@
     "functions":
     [
       {
-        "function_name": "主页",
-        "function_fxml": "/business_pages/module_function_pages/person_space_pages/person_space_page.fxml"
-      },
-      {
         "function_name": "个人信息管理",
         "function_fxml": "/business_pages/module_function_pages/person_space_pages/personal_information_page.fxml"
       },

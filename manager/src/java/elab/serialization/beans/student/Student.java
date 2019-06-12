@@ -111,9 +111,31 @@ public class Student {
         return remark;
     }
 
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     @Override
     public String toString() {
         return number + " " + name + " " + college + " " + theoryClass + " " + hardTime + " " + softTime + " " + hardScore + " " + softScore + " " + paperScore + " " + email + " " + tel + " " + pwd + " " + makeUpLessons + " " + courseSelectionTime + " " + remark;
+    }
+
+    public Student(String number, String name, String college, int theoryClass, int hardTime, int softTime, int hardScore, int softScore, int paperScore, String email, String tel, String pwd, String makeUpLessons, String courseSelectionTime, String remark) {
+        this.number = number;
+        this.name = name;
+        this.college = college;
+        this.theoryClass = theoryClass;
+        this.hardTime = hardTime;
+        this.softTime = softTime;
+        this.hardScore = hardScore;
+        this.softScore = softScore;
+        this.paperScore = paperScore;
+        this.email = email;
+        this.tel = tel;
+        this.pwd = pwd;
+        this.makeUpLessons = makeUpLessons;
+        this.courseSelectionTime = courseSelectionTime;
+        this.remark = remark;
     }
 
     public Student() {

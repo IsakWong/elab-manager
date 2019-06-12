@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="elab.database.mappers.StudentNameListOperations">
+    <update id="createStudentNameList" parameterType="String">
+        CREATE TABLE ${studentNameListName} (
+            学号 varchar(50) NOT NULL,
+            姓名 varchar(20) DEFAULT NULL,
+            院系 varchar(20) DEFAULT NULL,
+            理论课 smallint(6) DEFAULT NULL,
+            硬件时间 smallint(6) DEFAULT NULL,
+            软件时间 smallint(6) DEFAULT NULL,
+            硬件成绩 double DEFAULT NULL,
+            软件成绩 double DEFAULT NULL,
+            试卷成绩 double DEFAULT NULL,
+            邮箱 varchar(50) DEFAULT NULL,
+            联系电话 varchar(11) DEFAULT NULL,
+            密码 varchar(32) DEFAULT NULL,
+            补课 tinyint(4) DEFAULT NULL,
+            选课时间 datetime DEFAULT NULL,
+            备注 varchar(10) DEFAULT NULL);
+        ALTER TABLE ${studentNameListName} CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+    </update>
+    <insert id="insertStudentNameList" parameterType="java.util.List">
+        insert into ${tableName} (学号,姓名,院系,邮箱,联系电话,密码,选课时间,备注)
+        values
+        <foreach collection="students" separator="," item="student">
+            (#{student.number},#{student.name},#{student.college},#{student.email},#{student.tel},#{student.pwd},#{student.courseSelectionTime},#{student.remark})
+        </foreach>
+    </insert>
+</mapper>

@@ -101,7 +101,7 @@ public class EnterScorePageController extends BaseFunctionContentController {
     Session<List> queryStudentSession = new Session<List>() {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
-            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents("2018秋" + "_计算机安装与调试技术");
+            sessionResult.result = DatabaseOperations.getInstance().selectAllStudents(Utilities.getTerm() + "_计算机安装与调试技术");
             if(sessionResult.result == null)
                 sessionResult.errorMessage = "";
         }

@@ -40,13 +40,13 @@
         <result column="学期" property="term"/>
     </resultMap>
     <select id="selectStudentByName" parameterType="string" resultMap="studentResultMap">
-        select * from 2018秋_计算机安装与调试技术 where 姓名 = #{id}
+        select * from 2018秋_计算机安装与调试技术 where 姓名 like #{id} '%'
     </select>
     <select id="selectStudentByNumber" parameterType="string" resultMap="studentResultMap">
-        select * from 2018秋_计算机安装与调试技术 where 学号 = #{id}
+        select * from 2018秋_计算机安装与调试技术 where 学号 like #{id} '%'
     </select>
     <select id="selectStudentByCollege" parameterType="string" resultMap="studentResultMap">
-        select * from 2018秋_计算机安装与调试技术 where 院系 = #{id}
+        select * from 2018秋_计算机安装与调试技术 where 院系 like #{id} '%'
     </select>
     <select id="selectSchoolOpeningDate" resultType="schoolOpen">
         select
