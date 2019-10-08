@@ -52,8 +52,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectInSchoolMembers();
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "获取所有在校成员失败";
+            }
         }
 
         @Override
@@ -61,15 +62,18 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             ObservableList<Member> members = FXCollections.observableArrayList();
             members.addAll(param);
             ObservableList<String> finishedList = finishedListView.getItems();
-            for(int i = 0; i < finishedList.size(); ++i) {
+            for (int i = 0; i < finishedList.size(); ++i) {
                 String[] information = finishedList.get(i).split(" ");
-                for(int j = 0; j < members.size(); ++j)
-                    if(members.get(j).getNumber().equals(information[0]))
+                for (int j = 0; j < members.size(); ++j) {
+                    if (members.get(j).getNumber().equals(information[0])) {
                         members.remove(j);
+                    }
+                }
             }
             ObservableList<String> unfinishedList = FXCollections.observableArrayList();
-            for(int i = 0; i < members.size(); ++i)
+            for (int i = 0; i < members.size(); ++i) {
                 unfinishedList.add(members.get(i).getNumber() + " " + members.get(i).getName());
+            }
             unfinishedListView.setItems(unfinishedList);
         }
 
@@ -88,8 +92,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectAllFreeTime(Utilities.getTerm());
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "";
+            }
         }
 
         @Override
@@ -97,8 +102,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             ObservableList<FreeTime> allFreeTime = FXCollections.observableArrayList();
             allFreeTime.addAll(param);
             ObservableList<String> finishedList = FXCollections.observableArrayList();
-            for(int i = 0; i < allFreeTime.size(); ++i)
+            for (int i = 0; i < allFreeTime.size(); ++i) {
                 finishedList.add(allFreeTime.get(i).getNumber() + " " + allFreeTime.get(i).getName());
+            }
             finishedListView.setItems(finishedList);
             getAllMemberSession.send();
         }
@@ -148,8 +154,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             freeTime.setNumber(ElabManagerApplication.currentCertification.getNumber());
             freeTime.setTerm(Utilities.getTerm());
             sessionResult.result = DatabaseOperations.getInstance().selectFreeTime(freeTime);
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "";    //如果不将errorMessage初始化是不会调用onError方法的
+            }
         }
 
         @Override
@@ -185,10 +192,11 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             for (int i = 0; i < WeekString.length; ++i) {
                 for (int j = 0; j < 8; ++j) {
                     for (int k = 0; k < 3; ++k) {
-                        if(checkBoxes[i][j][k].isSelected())
+                        if (checkBoxes[i][j][k].isSelected()) {
                             freeTimeString += ",true";
-                        else
+                        } else {
                             freeTimeString += ",false";
+                        }
                     }
                 }
             }
@@ -197,8 +205,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
             freeTime.setTerm(Utilities.getTerm());
             freeTime.setModificationDate(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
             sessionResult.result = DatabaseOperations.getInstance().updateFreeTime(freeTime);
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "保存信息失败";
+            }
         }
 
         @Override
@@ -239,8 +248,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
         for (int i = 0; i < WeekString.length; ++i) {
             for (int j = 0; j < 8; ++j) {
                 for (int k = 0; k < 3; ++k) {
-                    if(selectedInformation[number].equals("true"))
+                    if (selectedInformation[number].equals("true")) {
                         checkBoxes[i][j][k].setSelected(true);
+                    }
                     ++number;
                 }
             }
@@ -321,8 +331,9 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
 
     private void initControls () {
 
-        if(ElabManagerApplication.currentCertification.getDuty().equals("班委"))
+        if (ElabManagerApplication.currentCertification.getDuty().equals("班委")) {
             addAdminControls();
+        }
 
         for (int i = 0; i < WeekString.length; ++i) {
             loadWeekCheckBoxGroup(container, i);
@@ -396,9 +407,11 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
         for (int k = 0; k < 3; ++k) {
             final int t = k;
             checkBoxes[0][0][k].setOnAction(event -> {
-                for (int i = 0; i < WeekString.length; ++i)
-                    for (int j = 0; j < 8; ++j)
+                for (int i = 0; i < WeekString.length; ++i) {
+                    for (int j = 0; j < 8; ++j) {
                         checkBoxes[i][j][t].setSelected(checkBoxes[0][0][t].isSelected());
+                    }
+                }
             });
         }
     }
@@ -407,10 +420,11 @@ public class FreeTimeCollectPageController extends BaseFunctionContentController
     public void initializeController() {
         save.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
-                if(!isInfoExist)
+                if (!isInfoExist) {
                     addFreeTimeSession.send();
-                else
+                } else {
                     updateFreeTimeSession.send();
+                }
             }
         });
 

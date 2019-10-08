@@ -82,13 +82,22 @@ public class ViewLogPageController extends BaseFunctionContentController {
 
         @Override
         public void onSuccess(List param) {
-            if(isInit)
+            if (isInit) {
                 Utilities.popMessage("正在查询信息", container);
+            }
             ObservableList<Log> chooseLogs = FXCollections.observableArrayList();
-            if(!(datePicker.getValue() == null)) Utilities.filter(param, datePicker.getValue().toString(), 2);
-            if(!operatingNumberField.getText().equals("")) Utilities.filter(param, 1, "\t" + operatingNumberField.getText());
-            if(!operatedNumberField.getText().equals("")) Utilities.filter(param, 5, "\t" + operatedNumberField.getText());
-            if(!informationComboBox.getValue().equals("所有信息")) Utilities.filter(param, informationComboBox.getValue(), 9);
+            if (!(datePicker.getValue() == null)) {
+                Utilities.filter(param, datePicker.getValue().toString(), 2);
+            }
+            if (!operatingNumberField.getText().equals("")) {
+                Utilities.filter(param, 1, "\t" + operatingNumberField.getText());
+            }
+            if (!operatedNumberField.getText().equals("")) {
+                Utilities.filter(param, 5, "\t" + operatedNumberField.getText());
+            }
+            if (!informationComboBox.getValue().equals("所有信息")) {
+                Utilities.filter(param, informationComboBox.getValue(), 9);
+            }
             chooseLogs.addAll(param);
             tableView.setItems(chooseLogs);
             tableView.refresh();
@@ -109,8 +118,9 @@ public class ViewLogPageController extends BaseFunctionContentController {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectAllLogs(Utilities.getTerm());
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage="无法获取Log信息";
+            }
         }
 
         @Override
@@ -152,7 +162,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
         informationComboBox.setValue("所有信息");
 
         returnBtn.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 ObservableList<Log> logs = FXCollections.observableArrayList();
                 logs.addAll(logList);
                 datePicker.setValue(LocalDate.now());
@@ -165,7 +175,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
         });
 
         selectBtn.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 selectLogSession.send();
             }
         });
@@ -181,7 +191,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
 
             @Override
             public String toString(LocalDate date) {
-                if(date != null) {
+                if (date != null) {
                     return  dateFormatter.format(date);
                 } else {
                     return "";
@@ -190,7 +200,7 @@ public class ViewLogPageController extends BaseFunctionContentController {
 
             @Override
             public LocalDate fromString(String string) {
-                if(string != null && !string.isEmpty()) {
+                if (string != null && !string.isEmpty()) {
                     return LocalDate.parse(string, dateFormatter);
                 } else {
                     return null;

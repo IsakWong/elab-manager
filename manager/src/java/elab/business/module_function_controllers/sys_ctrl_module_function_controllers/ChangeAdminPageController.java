@@ -47,11 +47,12 @@ public class ChangeAdminPageController extends BaseFunctionContentController {
         public void onSuccess(List param) {
             ObservableList<Member> members = FXCollections.<Member>observableArrayList();
             members.addAll(param);
-            for(int i = 0; i < members.size(); ++i) {
-                if(members.get(i).getDuty() == null)
+            for (int i = 0; i < members.size(); ++i) {
+                if (members.get(i).getDuty() == null) {
                     chooseList.add(members.get(i).getName());
-                else
+                } else {
                     adminList.add(members.get(i).getName());
+                }
             }
             finishLoading();
         }
@@ -143,13 +144,16 @@ public class ChangeAdminPageController extends BaseFunctionContentController {
                     chooseListView.setItems(chooseList);
                     chooseListView.refresh();
                 } else {
-                    if(selectList.size() != 0) selectList.remove(0, selectList.size());
-                    for(int i = 0; i < chooseList.size(); ++i) {
-                        if(Utilities.getPinyinString(chooseList.get(i)).startsWith(selectField.getText())
+                    if (selectList.size() != 0) {
+                        selectList.remove(0, selectList.size());
+                    }
+                    for (int i = 0; i < chooseList.size(); ++i) {
+                        if (Utilities.getPinyinString(chooseList.get(i)).startsWith(selectField.getText())
                                 || Utilities.getFirstLettersLo(chooseList.get(i)).startsWith(selectField.getText())
                                 || chooseList.get(i).startsWith(selectField.getText())
-                                || Utilities.getFirstLettersUp(chooseList.get(i)).startsWith(selectField.getText()))
+                                || Utilities.getFirstLettersUp(chooseList.get(i)).startsWith(selectField.getText())) {
                             selectList.add(chooseList.get(i));
+                        }
                         chooseListView.setItems(selectList);
                         chooseListView.refresh();
                     }

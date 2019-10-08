@@ -112,7 +112,7 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
 
     public void setMessage() {
         try {
-            if(loginMessage.getPhoto() != null) {
+            if (loginMessage.getPhoto() != null) {
                 File photo = new File("src/resources/pictures/photo." + loginMessage.getPhotoFormat());
                 FileOutputStream fos = new FileOutputStream(photo);
                 fos.write(loginMessage.getPhoto());
@@ -131,10 +131,11 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
             telInputField.setText(loginMessage.getTel());
             collegeChooseBox.setValue(loginMessage.getCollege());
             groupChooseBox.setValue(loginMessage.getGroup());
-            if (loginMessage.getSex().equals("男"))
+            if (loginMessage.getSex().equals("男")) {
                 sexChoose_man.setSelected(true);
-            else
+            } else {
                 sexChoose_woman.setSelected(true);
+            }
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -195,14 +196,14 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
         setMessage();
 
         pwdInputField.focusedProperty().addListener(event -> {
-            if(!pwdInputField.isFocused()) {
-                if(pwdInputField.getText().equals("")) {
+            if (!pwdInputField.isFocused()) {
+                if (pwdInputField.getText().equals("")) {
                     pwdInputField.setUnFocusColor(Color.RED);
                     Utilities.popMessage("密码不能为空", container);
                     pwdOK.setVisible(false);
                 }
-                else if(!twicePwdInputField.getText().equals("")) {
-                    if(!twicePwdInputField.getText().equals(pwdInputField.getText())) {
+                else if (!twicePwdInputField.getText().equals("")) {
+                    if (!twicePwdInputField.getText().equals(pwdInputField.getText())) {
                         twicePwdInputField.setUnFocusColor(Color.RED);
                         pwdOK.setVisible(true);
                         twicePwdOK.setVisible(false);
@@ -224,19 +225,19 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
         });
 
         twicePwdInputField.focusedProperty().addListener(event -> {
-            if(!twicePwdInputField.isFocused()) {
-                if(pwdInputField.getText().equals("")) {
+            if (!twicePwdInputField.isFocused()) {
+                if (pwdInputField.getText().equals("")) {
                     pwdInputField.setUnFocusColor(Color.RED);
                     Utilities.popMessage("密码不能为空", container);
                     pwdOK.setVisible(false);
                     twicePwdOK.setVisible(false);
                 }
-                else if(twicePwdInputField.getText().equals("")) {
+                else if (twicePwdInputField.getText().equals("")) {
                     twicePwdInputField.setUnFocusColor(Color.RED);
                     twicePwdOK.setVisible(false);
                     Utilities.popMessage("请再次输入密码", container);
                 }
-                else if(twicePwdInputField.getText().equals(pwdInputField.getText())) {
+                else if (twicePwdInputField.getText().equals(pwdInputField.getText())) {
                     pwdOK.setVisible(true);
                     twicePwdOK.setVisible(true);
                 }
@@ -299,12 +300,13 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
                     loginMessage.setTel(telInputField.getText());
                     loginMessage.setCollege(collegeChooseBox.getValue());
                     loginMessage.setGroup(groupChooseBox.getValue());
-                    if(sexChoose_man.isSelected())
+                    if (sexChoose_man.isSelected()) {
                         loginMessage.setSex("男");
-                    else
+                    } else {
                         loginMessage.setSex("女");
+                    }
                     loginMessage.setPassword(Utilities.encrypt(pwdInputField.getText()));
-                    if(photoData != null) {
+                    if (photoData != null) {
                         loginMessage.setPhoto(photoData);
                         loginMessage.setPhotoFormat(photoName[1]);
                     }
@@ -315,7 +317,7 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
         });
 
         returnButton.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 setMessage();
                 numberInputField.setUnFocusColor(unFocusColor);
                 userInputField.setUnFocusColor(unFocusColor);
@@ -330,19 +332,20 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
         });
 
         PwdReturnButton.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 cleanPwd();
+            }
         });
 
         photoView.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 photoPane.setStyle("-fx-border-color: #000000");
-                if(photoView.getImage() == null) {
+                if (photoView.getImage() == null) {
                     loadPhoto();
                 } else {
                     Object[] options = {"确定", "取消"};
                     int m = JOptionPane.showOptionDialog(null, "新照片将覆盖已有照片，是否继续？", "Attention",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-                    if(m == 0) {
+                    if (m == 0) {
                         loadPhoto();
                     }
                 }
@@ -350,7 +353,7 @@ public class PersonalInformationPageController extends BaseFunctionContentContro
         });
 
         open.setOnMousePressed(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 pwdInputField.setVisible(false);
                 pwdTextField.setVisible(true);
                 pwdTextField.setText(pwdInputField.getText());

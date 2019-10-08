@@ -72,9 +72,9 @@ public class LoginWindowController extends BaseViewController {
         public void onPostFetchResult(SessionResult<LoginMessage> sessionResult) {
             setControlDisable(true);
             sessionResult.result = DatabaseOperations.getInstance().selectLoginMessage(user);
-            if (sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "无此学号用户";
-            else if (md5Password.equals(sessionResult.result.getPassword())) {
+            } else if (md5Password.equals(sessionResult.result.getPassword())) {
 
             } else {
                 sessionResult.result = null;
@@ -87,10 +87,11 @@ public class LoginWindowController extends BaseViewController {
             //保存登陆凭证
             param.setValid(true);
             ElabManagerApplication.currentCertification = param;
-            if(param.getDuty() == null)
+            if(param.getDuty() == null) {
                 duty = "同学";
-            else
+            } else {
                 duty = "班委";
+            }
             writeUserInformationToDisk();
             showMainWindow();
             loginSession.IsSending = false;
@@ -191,13 +192,15 @@ public class LoginWindowController extends BaseViewController {
     }
 
     public void showMainWindow() {
-        if( !ElabManagerApplication.currentCertification.isValid())
+        if( !ElabManagerApplication.currentCertification.isValid()) {
             return;
+        }
         try {
-            if(duty.equals("班委"))
+            if(duty.equals("班委")) {
                 logInformation = "管理员登录";
-            else
+            } else {
                 logInformation = "科中成员登陆";
+            }
             writeLogSession.send();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/business_pages/main_window.fxml"));
             Parent root = loader.load();
@@ -215,7 +218,6 @@ public class LoginWindowController extends BaseViewController {
         } catch (Exception exp) {
             exp.printStackTrace();
         }
-
     }
 
     public Boolean isConnect() {
@@ -237,7 +239,7 @@ public class LoginWindowController extends BaseViewController {
             isr.close();
             br.close();
 
-            if (null != sb && !sb.toString().equals("")) {
+            if (sb != null && !sb.toString().equals("")) {
                 if (sb.toString().indexOf("TTL") > 0) {
                     connect = true;
                 } else {
@@ -277,8 +279,9 @@ public class LoginWindowController extends BaseViewController {
         });
 
         userInputField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER)
+            if (event.getCode() == KeyCode.ENTER) {
                 pwdInputField.requestFocus();
+            }
         });
 
         pwdInputField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -287,13 +290,15 @@ public class LoginWindowController extends BaseViewController {
 
         pwdInputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
                     Utilities.popMessage("用户名和密码不能为空", container);
-                else {
-                    if(isUserChanged)
+                } else {
+                    if(isUserChanged) {
                         user = userInputField.getText();
-                    if(isPwdChanged)
+                    }
+                    if(isPwdChanged) {
                         md5Password = Utilities.encrypt(pwdInputField.getText());
+                    }
                     Utilities.popMessage("正在登陆中", container);
                     loginSession.send();
                 }
@@ -302,13 +307,15 @@ public class LoginWindowController extends BaseViewController {
 
         logButton.setOnMouseClicked(event -> {
             if(event.getButton() == MouseButton.PRIMARY) {
-                if (userInputField.getText().equals("") || pwdInputField.getText().equals(""))
+                if (userInputField.getText().equals("") || pwdInputField.getText().equals("")) {
                     Utilities.popMessage("用户名和密码不能为空", container);
-                else {
-                    if(isUserChanged)
+                } else {
+                    if(isUserChanged) {
                         user = userInputField.getText();
-                    if(isPwdChanged)
+                    }
+                    if(isPwdChanged) {
                         md5Password = Utilities.encrypt(pwdInputField.getText());
+                    }
                     if(isConnect()) {
                         Utilities.popMessage("正在登陆中", container);
                         loginSession.send();

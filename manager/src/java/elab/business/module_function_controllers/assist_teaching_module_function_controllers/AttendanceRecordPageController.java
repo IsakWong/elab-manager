@@ -91,65 +91,83 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                 );
 
         primaryInputField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(teachingList.size() != 0) teachingList.clear();
-            if(primaryInputField.getText().equals("")) {
+            if (teachingList.size() != 0) {
+                teachingList.clear();
+            }
+            if (primaryInputField.getText().equals("")) {
                 teachingList.addAll(nameList);
             } else {
-                for (int i = 0; i < nameList.size(); ++i)
+                for (int i = 0; i < nameList.size(); ++i) {
                     if (Utilities.getPinyinString(nameList.get(i)).startsWith(primaryInputField.getText())
                             || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(primaryInputField.getText())
                             || nameList.get(i).startsWith(primaryInputField.getText())
                             || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(primaryInputField.getText())) {
                         teachingList.add(nameList.get(i));
-                        if(assistList.size() != 0)
+                        if (assistList.size() != 0) {
                             teachingList.removeAll(assistList);
+                        }
                     }
+                }
             }
         });
 
         secondaryInputField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (assistChooseList.size() != 0) assistChooseList.clear();
-            if(secondaryInputField.getText().equals("")) {
+            if (assistChooseList.size() != 0) {
+                assistChooseList.clear();
+            }
+            if (secondaryInputField.getText().equals("")) {
                 assistChooseList.addAll(nameList);
-                if(primaryComboBox.getValue() != null && assistChooseList.contains(primaryComboBox.getValue()))
-                        assistChooseList.remove(primaryComboBox.getValue());
+                if (primaryComboBox.getValue() != null && assistChooseList.contains(primaryComboBox.getValue())) {
+                    assistChooseList.remove(primaryComboBox.getValue());
+                }
             } else {
-                for (int i = 0; i < nameList.size(); ++i)
-                    if (Utilities.getPinyinString(nameList.get(i)).startsWith(secondaryInputField.getText())
-                            || Utilities.getFirstLettersLo(nameList.get(i)).startsWith(secondaryInputField.getText())
-                            || nameList.get(i).startsWith(secondaryInputField.getText())
-                            || Utilities.getFirstLettersUp(nameList.get(i)).startsWith(secondaryInputField.getText())) {
-                        assistChooseList.add(nameList.get(i));
-                        if(primaryComboBox.getValue() != null)
-                            if(assistChooseList.contains(primaryComboBox.getValue()))
+                for (String aNameList : nameList) {
+                    if (Utilities.getPinyinString(aNameList).startsWith(secondaryInputField.getText())
+                            || Utilities.getFirstLettersLo(aNameList).startsWith(secondaryInputField.getText())
+                            || aNameList.startsWith(secondaryInputField.getText())
+                            || Utilities.getFirstLettersUp(aNameList).startsWith(secondaryInputField.getText())) {
+                        assistChooseList.add(aNameList);
+                        if (primaryComboBox.getValue() != null) {
+                            if (assistChooseList.contains(primaryComboBox.getValue())) {
                                 assistChooseList.remove(primaryComboBox.getValue());
-                        if(assistList.size() != 0)
+                            }
+                        }
+                        if (assistList.size() != 0) {
                             assistChooseList.removeAll(assistList);
+                        }
                     }
+                }
             }
         });
 
         primaryComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null) {
-                if (assistChooseList.contains(newValue))
+                if (assistChooseList.contains(newValue)) {
                     assistChooseList.remove(newValue);
-                if(oldValue != null)
-                    if(!assistChooseList.contains(oldValue))
+                }
+                if (oldValue != null) {
+                    if (!assistChooseList.contains(oldValue)) {
                         assistChooseList.add((String)oldValue);
+                    }
+                }
             }
-            if(oldValue != null && !assistChooseList.contains(oldValue))
+            if (oldValue != null && !assistChooseList.contains(oldValue)) {
                 assistChooseList.add((String) oldValue);
+            }
         });
 
         secondaryComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null) {
-                if (teachingList.contains(newValue))
+                if (teachingList.contains(newValue)) {
                     teachingList.remove(newValue);
-                if(!assistList.contains(newValue))
+                }
+                if (!assistList.contains(newValue)) {
                     assistList.add((String) newValue);
+                }
             }
-            if(oldValue != null && !teachingList.contains(oldValue))
+            if (oldValue != null && !teachingList.contains(oldValue)) {
                 teachingList.add((String) oldValue);
+            }
         });
 
         assistListView.setOnMouseClicked(event -> {
@@ -157,16 +175,18 @@ public class AttendanceRecordPageController extends BaseFunctionContentControlle
                 String selectedItem = assistListView.getSelectionModel().getSelectedItem();
                 if(selectedItem != null) {
                     assistList.remove(selectedItem);
-                    if(Utilities.getPinyinString(selectedItem).startsWith(secondaryInputField.getText())
+                    if (Utilities.getPinyinString(selectedItem).startsWith(secondaryInputField.getText())
                             || Utilities.getFirstLettersLo(selectedItem).startsWith(secondaryInputField.getText())
                             || selectedItem.startsWith(secondaryInputField.getText())
-                            || Utilities.getFirstLettersUp(selectedItem).startsWith(secondaryInputField.getText()))
+                            || Utilities.getFirstLettersUp(selectedItem).startsWith(secondaryInputField.getText())) {
                         assistChooseList.add(selectedItem);
-                    if(Utilities.getPinyinString(selectedItem).startsWith(primaryInputField.getText())
+                    }
+                    if (Utilities.getPinyinString(selectedItem).startsWith(primaryInputField.getText())
                             || Utilities.getFirstLettersLo(selectedItem).startsWith(primaryInputField.getText())
                             || selectedItem.startsWith(primaryInputField.getText())
-                            || Utilities.getFirstLettersUp(selectedItem).startsWith(primaryInputField.getText()))
+                            || Utilities.getFirstLettersUp(selectedItem).startsWith(primaryInputField.getText())) {
                         teachingList.add(selectedItem);
+                    }
                 }
             }
         });

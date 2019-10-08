@@ -54,10 +54,11 @@ public class MainWindowController extends BaseViewController {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
             Log log = new Log();
-            if(ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_DUTY").equals("班委"))
+            if (ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER_DUTY").equals("班委")) {
                 log.setInformation("管理员退出");
-            else
+            } else {
                 log.setInformation("科中成员退出");
+            }
             log.setOperatingNumber(ElabManagerApplication.properties.getProperty("LAST_LOG_IN_USER"));
             log.setTime(Utilities.getSystemDate("yyyy-MM-dd HH:mm:ss"));
             log.setIP(Utilities.getIP());
@@ -94,8 +95,9 @@ public class MainWindowController extends BaseViewController {
         Module selectModule = module;
         BaseModulePageController moduleController = selectModule.Controller;
         try {
-            if(index >= selectModule.Functions.length)
+            if (index >= selectModule.Functions.length) {
                 return;
+            }
             Function func = selectModule.Functions[index];
             if (!func.IsFxmlInitialized) {
 
@@ -173,8 +175,8 @@ public class MainWindowController extends BaseViewController {
                 y_stage = stage.getY();
             }
         });
-
     }
+
     private void initToolbar()
     {
         mainMenuCloseBtn.setOnMouseClicked(event -> {
@@ -192,6 +194,8 @@ public class MainWindowController extends BaseViewController {
         });
         mainMenuMinBtn.setGraphic(Utilities.getImage("/pictures/min.png"));
     }
+
+    @Override
     public void initializeController() {
 
 
@@ -202,10 +206,11 @@ public class MainWindowController extends BaseViewController {
             Gson gson = new Gson();
             String moduleJson;
             String duty = ElabManagerApplication.currentCertification.getDuty();
-            if(duty.equals("班委"))
+            if (duty.equals("班委")) {
                 moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/admin_modules.json"));
-            else
+            } else {
                 moduleJson = Utilities.loadStringFromStream(getClass().getResourceAsStream("/modules_settings/user_modules.json"));
+            }
             Type typeList = new TypeToken<ArrayList<Module>>() {}.getType();
 
             moduleList = gson.fromJson(moduleJson, typeList);

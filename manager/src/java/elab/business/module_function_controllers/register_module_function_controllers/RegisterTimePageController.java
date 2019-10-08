@@ -46,8 +46,9 @@ public class RegisterTimePageController extends BaseFunctionContentController {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectLoader(Utilities.getSystemDate() + " 00:00:00");
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "获取信息失败";
+            }
         }
 
         @Override
@@ -72,17 +73,18 @@ public class RegisterTimePageController extends BaseFunctionContentController {
 
     private ObservableList<Loader> getTotalTimeList(ObservableList<Loader> loaders) {
         ObservableList<Loader> list = FXCollections.observableArrayList();
-        for(Loader loader : loaders) {
+        for (Loader loader : loaders) {
             Boolean isGet = false;
-            for(Loader loader1 : list) {
-                if(loader1.getName().equals(loader.getName())) {
+            for (Loader loader1 : list) {
+                if (loader1.getName().equals(loader.getName())) {
                     loader1.setTotalTime(Integer.toString(Integer.parseInt(loader1.getTotalTime()) + Integer.parseInt(loader.getTotalTime())));
                     isGet = true;
                     break;
                 }
             }
-            if(!isGet)
+            if (!isGet) {
                 list.add(loader);
+            }
         }
         return list;
     }
@@ -91,15 +93,17 @@ public class RegisterTimePageController extends BaseFunctionContentController {
         ObservableList<Loader> list = FXCollections.observableArrayList();
         switch (operation) {
             case 1:
-                for(Loader loader : loaders) {
-                    if(loader.getGroup().equals("电子组"))
+                for (Loader loader : loaders) {
+                    if (loader.getGroup().equals("电子组")) {
                         list.add(loader);
+                    }
                 }
                 break;
             case 2:
-                for(Loader loader : loaders) {
-                    if (loader.getGroup().equals("软件组"))
+                for (Loader loader : loaders) {
+                    if (loader.getGroup().equals("软件组")) {
                         list.add(loader);
+                    }
                 }
                 break;
             default:
@@ -133,17 +137,25 @@ public class RegisterTimePageController extends BaseFunctionContentController {
         selectField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(all.isSelected()) all.setSelected(false);
-                if(hard.isSelected()) hard.setSelected(false);
-                if(soft.isSelected()) soft.setSelected(false);
-                if(totalList.size() > 0) {
+                if (all.isSelected()) {
+                    all.setSelected(false);
+                }
+                if (hard.isSelected()) {
+                    hard.setSelected(false);
+                }
+                if (soft.isSelected()) {
+                    soft.setSelected(false);
+                }
+                if (totalList.size() > 0) {
                     ObservableList<Loader> list = FXCollections.observableArrayList();
-                    for (int i = 0; i < totalList.size(); ++i)
-                        if (Utilities.getPinyinString(totalList.get(i).getName()).startsWith(selectField.getText())
-                                || Utilities.getFirstLettersLo(totalList.get(i).getName()).startsWith(selectField.getText())
-                                || totalList.get(i).getName().startsWith(selectField.getText())
-                                || Utilities.getFirstLettersUp(totalList.get(i).getName()).startsWith(selectField.getText()))
-                            list.add(totalList.get(i));
+                    for (Loader aTotalList : totalList) {
+                        if (Utilities.getPinyinString(aTotalList.getName()).startsWith(selectField.getText())
+                                || Utilities.getFirstLettersLo(aTotalList.getName()).startsWith(selectField.getText())
+                                || aTotalList.getName().startsWith(selectField.getText())
+                                || Utilities.getFirstLettersUp(aTotalList.getName()).startsWith(selectField.getText())) {
+                            list.add(aTotalList);
+                        }
+                    }
                     tableView.setItems(list);
                 }
             }

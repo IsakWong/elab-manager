@@ -33,8 +33,9 @@ public class BaseModulePageController extends BaseViewController {
         return CurrentFunction;
     }
     public void setCurrentFunction(Function func) {
-        if(func == CurrentFunction)
+        if (func == CurrentFunction) {
             return;
+        }
         for (Function f : loadedFuncs) {
             if(f != func) {
                 f.FxmlRoot.setVisible(false);
@@ -48,9 +49,9 @@ public class BaseModulePageController extends BaseViewController {
         CurrentFunction = func;
     }
     public void addFunctionContent(Function func) {
-        if(func == null)
+        if (func == null) {
             return;
-        else {
+        } else {
             loadedFuncs.add(func);
             container.getChildren().add(func.FxmlRoot);
         }
@@ -80,8 +81,9 @@ public class BaseModulePageController extends BaseViewController {
     }
 
     public void finishLoading() {
-        if(dialog != null)
+        if (dialog != null) {
             dialog.close();
+        }
     }
 
     @Override

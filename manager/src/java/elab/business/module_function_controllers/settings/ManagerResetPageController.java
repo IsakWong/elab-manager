@@ -66,10 +66,11 @@ public class ManagerResetPageController extends BaseFunctionContentController {
     Session<Boolean> updateGradeSession = new Session<Boolean>() {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
-            if(Utilities.getTerm().endsWith("秋")) {
+            if (Utilities.getTerm().endsWith("秋")) {
                 sessionResult.result = DatabaseOperations.getInstance().updateGrade();
-                if (sessionResult.result == null)
+                if (sessionResult.result == null) {
                     sessionResult.errorMessage = "更新所有成员年级信息失败";
+                }
             } else {
                 sessionResult.result = true;
             }
@@ -104,8 +105,9 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             schoolOpeningInformation.setTerm(Utilities.getTerm());
             sessionResult.result = DatabaseOperations.getInstance().setSchoolOpeningDateInformation(schoolOpeningInformation);
             Utilities.setSchoolOpeningInformation(DatabaseOperations.getInstance().selectSchoolOpeningDateInformation());
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "信息更新失败";
+            }
         }
 
         @Override
@@ -126,11 +128,11 @@ public class ManagerResetPageController extends BaseFunctionContentController {
 
     public String getCellValue(Cell cell){
         String cellValue = "";
-        if(cell == null){
+        if (cell == null){
             return cellValue;
         }
         //把数字当成String来读，避免出现1读成1.0的情况
-        if(cell.getCellType() == CellType.NUMERIC){
+        if (cell.getCellType() == CellType.NUMERIC){
             cell.setCellType(CellType.STRING);
         }
         //判断数据的类型
@@ -170,13 +172,15 @@ public class ManagerResetPageController extends BaseFunctionContentController {
             String[] hardWeeks = schoolOpeningInformation.getHardWeeks().split("~");
             hardStartBox.setValue(hardWeeks[0]);
             hardEndBox.setValue(hardWeeks[1]);
-            for(int startWeek = Integer.parseInt(hardWeeks[0]) + 1; startWeek < 17; ++startWeek)
+            for (int startWeek = Integer.parseInt(hardWeeks[0]) + 1; startWeek < 17; ++startWeek) {
                 hardEndBox.getItems().add(Integer.toString(startWeek));
+            }
             String[] softWeeks = schoolOpeningInformation.getSoftWeeks().split("~");
             softStartBox.setValue(softWeeks[0]);
             softEndBox.setValue(softWeeks[1]);
-            for(int startWeek = Integer.parseInt(softWeeks[0]) + 1; startWeek < 17; ++startWeek)
+            for (int startWeek = Integer.parseInt(softWeeks[0]) + 1; startWeek < 17; ++startWeek) {
                 softEndBox.getItems().add(Integer.toString(startWeek));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -189,7 +193,7 @@ public class ManagerResetPageController extends BaseFunctionContentController {
 
         unfocusedColor = Color.valueOf("000000");
 
-        for(int i = 1; i < 17; ++i) {
+        for (int i = 1; i < 17; ++i) {
             hardStartBox.getItems().add(Integer.toString(i));
             softStartBox.getItems().add(Integer.toString(i));
         }
@@ -197,48 +201,53 @@ public class ManagerResetPageController extends BaseFunctionContentController {
         initInformation();
 
         hardStartBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(!hardEndBox.getItems().isEmpty())
+            if (!hardEndBox.getItems().isEmpty()) {
                 hardEndBox.getItems().clear();
-            for(int startWeek = Integer.parseInt(newValue) + 1; startWeek < 17; ++startWeek)
+            }
+            for (int startWeek = Integer.parseInt(newValue) + 1; startWeek < 17; ++startWeek) {
                 hardEndBox.getItems().add(Integer.toString(startWeek));
+            }
         });
 
         softStartBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(!softEndBox.getItems().isEmpty())
+            if (!softEndBox.getItems().isEmpty()) {
                 softEndBox.getItems().clear();
-            for(int startWeek = Integer.parseInt(newValue) + 1; startWeek < 17; ++startWeek)
+            }
+            for (int startWeek = Integer.parseInt(newValue) + 1; startWeek < 17; ++startWeek) {
                 softEndBox.getItems().add(Integer.toString(startWeek));
+            }
         });
 
         saveBtn.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 Boolean isAllMessageFinished = true;
-                if(termStartDatePicker.getValue() == null) {
+                if (termStartDatePicker.getValue() == null) {
                     datePickerEditor.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
-                if(hardStartBox.getValue() == null) {
+                if (hardStartBox.getValue() == null) {
                     hardStartBox.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
-                if(hardEndBox.getValue() == null) {
+                if (hardEndBox.getValue() == null) {
                     hardEndBox.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
-                if(softStartBox.getValue() == null) {
+                if (softStartBox.getValue() == null) {
                     softStartBox.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
-                if(softEndBox.getValue() == null) {
+                if (softEndBox.getValue() == null) {
                     softEndBox.setUnFocusColor(Color.RED);
                     isAllMessageFinished = false;
                 }
-                if(isAllMessageFinished) {
+                if (isAllMessageFinished) {
                     Utilities.popMessage("正在更新信息", container);
                     setMessageSession.send();
                 }
-                else
+                else {
                     popupMessage("请检查所有信息!", 1500);
+                }
             }
         });
 
@@ -434,33 +443,39 @@ public class ManagerResetPageController extends BaseFunctionContentController {
         });
 
         termStartDatePicker.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 datePickerEditor.setUnFocusColor(unfocusedColor);
+            }
         });
 
         datePickerEditor.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 datePickerEditor.setUnFocusColor(unfocusedColor);
+            }
         });
 
         hardStartBox.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 hardStartBox.setUnFocusColor(unfocusedColor);
+            }
         });
 
         hardEndBox.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 hardEndBox.setUnFocusColor(unfocusedColor);
+            }
         });
 
         softStartBox.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 softStartBox.setUnFocusColor(unfocusedColor);
+            }
         });
 
         softEndBox.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY)
+            if (event.getButton() == MouseButton.PRIMARY) {
                 softEndBox.setUnFocusColor(unfocusedColor);
+            }
         });
 
         finishLoading();

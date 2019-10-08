@@ -45,7 +45,7 @@
                <children>
                   <Label text="院系：">
                      <HBox.margin>
-                        <Insets left="126.0" />
+                        <Insets left="96.0" />
                      </HBox.margin>
                   </Label>
                   <JFXComboBox fx:id="college" minHeight="-Infinity" prefHeight="30.0" prefWidth="230.0" stylesheets="@../../../../style/css/controls_style.css">
@@ -58,7 +58,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="returnBtn" prefHeight="35.0" prefWidth="105.0" styleClass="raised-button" text="信息清除">
+                  <JFXButton fx:id="returnBtn" prefHeight="35.0" prefWidth="76.0" styleClass="raised-button" text="重置">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

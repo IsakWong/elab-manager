@@ -87,7 +87,7 @@ public class RotaPageController extends BaseFunctionContentController {
     public void chooseFileIn(){
         Object[] options = {"确定", "取消"};
         int m = JOptionPane.showOptionDialog(null, "新表单将覆盖已有表单，是否继续？", "Attention",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        if(m == 0) {
+        if (m == 0) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("选择文件");
             fileChooser.setInitialDirectory(
@@ -131,7 +131,7 @@ public class RotaPageController extends BaseFunctionContentController {
                             int lastCellNumb = firstRow.getLastCellNum();
                             ArrayList<Integer> sequence = new ArrayList<>();
                             ArrayList<Integer> cellSequence = new ArrayList<>();
-                            for (int cellNum = firstCellNumb; cellNum < lastCellNumb; ++cellNum)
+                            for (int cellNum = firstCellNumb; cellNum < lastCellNumb; ++cellNum) {
                                 switch (getCellValue(firstRow.getCell(cellNum))) {
                                     case "学号":
                                         sequence.add(0);
@@ -160,6 +160,7 @@ public class RotaPageController extends BaseFunctionContentController {
                                     default:
                                         break;
                                 }
+                            }
                             int lastRowNum = sheet.getLastRowNum();
                             for (int rowNum = firstRowNum + 1; rowNum <= lastRowNum; ++rowNum) {
                                 Row row = sheet.getRow(rowNum);
@@ -168,8 +169,9 @@ public class RotaPageController extends BaseFunctionContentController {
                                 }
                                 String[] cells = new String[row.getLastCellNum()];
                                 //循环当前行的每一小格
-                                for (int i = 0; i < 6; ++i)
+                                for (int i = 0; i < 6; ++i) {
                                     cells[i] = getCellValue(row.getCell(cellSequence.get(i)));
+                                }
                                 Rota rotaRow = new Rota();
                                 for(int i = 0; i < sequence.size(); ++i) {
                                     switch (sequence.get(i)) {
@@ -220,8 +222,9 @@ public class RotaPageController extends BaseFunctionContentController {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectRota();
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage="无法获取值班表";
+            }
         }
 
         @Override
@@ -255,7 +258,7 @@ public class RotaPageController extends BaseFunctionContentController {
         day.setCellValueFactory(new PropertyValueFactory<String, Rota>("day"));
 
         rotaFileIn.setOnMouseClicked(event -> {
-            if(event.getButton() == MouseButton.PRIMARY) {
+            if (event.getButton() == MouseButton.PRIMARY) {
                 chooseFileIn();
             }
         });

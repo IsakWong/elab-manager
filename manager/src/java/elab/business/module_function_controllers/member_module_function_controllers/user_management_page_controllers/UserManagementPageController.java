@@ -127,66 +127,84 @@ public class UserManagementPageController extends BaseFunctionContentController 
              */
 
             searchBtn.setOnMouseClicked(event -> {
-                if(event.getButton() == MouseButton.PRIMARY) {
-                    if(!name.getText().equals("")) {
-                        if(member.isSelected()) {
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    if (!name.getText().equals("")) {
+                        if (member.isSelected()) {
                             List result = DatabaseOperations.getInstance().selectMemberByName(name.getText());
-                            if(!number.getText().equals("")) {
+                            if (!number.getText().equals("")) {
                                 result = Utilities.filter(result, number.getText(), 0);
-                                if(!college.getValue().equals("")) {
+                                if (!college.getValue().equals("")) {
                                     result = Utilities.filter(result, college.getValue().toString(), 4);
                                     searchResultPageController.showMemberResult(result);
                                 }
-                                else searchResultPageController.showMemberResult(result);
+                                else {
+                                    searchResultPageController.showMemberResult(result);
+                                }
                             }
-                            else if(!college.getValue().equals("")) {
+                            else if (!college.getValue().equals("")) {
                                 result = Utilities.filter(result, college.getValue().toString(), 4);
                                 searchResultPageController.showMemberResult(result);
                             }
-                            else searchResultPageController.showMemberResult(result);
+                            else {
+                                searchResultPageController.showMemberResult(result);
+                            }
                         }
                         else {
                             List result = DatabaseOperations.getInstance().selectStudentByName(name.getText());
-                            if(!number.getText().equals("")) {
+                            if (!number.getText().equals("")) {
                                 result = Utilities.filter(result, number.getText(), 0);
-                                if(!college.getValue().equals("")) {
+                                if (!college.getValue().equals("")) {
                                     result = Utilities.filter(result, college.getValue().toString(), 2);
                                     searchResultPageController.showStudentResult(result);
                                 }
-                                else searchResultPageController.showStudentResult(result);
+                                else {
+                                    searchResultPageController.showStudentResult(result);
+                                }
                             }
-                            else if(!college.getValue().equals("")) {
+                            else if (!college.getValue().equals("")) {
                                 result = Utilities.filter(result, college.getValue().toString(), 2);
                                 searchResultPageController.showStudentResult(result);
                             }
-                            else searchResultPageController.showStudentResult(result);
+                            else {
+                                searchResultPageController.showStudentResult(result);
+                            }
                         }
                     }
-                    else if(!number.getText().equals("")) {
-                        if(member.isSelected()) {
+                    else if (!number.getText().equals("")) {
+                        if (member.isSelected()) {
                             List result = DatabaseOperations.getInstance().selectMemberByNumber(number.getText());
-                            if(!college.getValue().equals("")) {
+                            if (!college.getValue().equals("")) {
                                 result = Utilities.filter(result, college.getValue().toString(), 4);
                                 searchResultPageController.showMemberResult(result);
                             }
-                            else searchResultPageController.showMemberResult(result);
+                            else {
+                                searchResultPageController.showMemberResult(result);
+                            }
                         }
                         else {
                             List result = DatabaseOperations.getInstance().selectStudentByNumber(number.getText());
-                            if(!college.getValue().equals("")) {
+                            if (!college.getValue().equals("")) {
                                 result = Utilities.filter(result, college.getValue().toString(), 2);
                                 searchResultPageController.showStudentResult(result);
                             }
-                            else searchResultPageController.showStudentResult(result);
+                            else {
+                                searchResultPageController.showStudentResult(result);
+                            }
                         }
                     }
-                    else if(!college.getValue().equals("")) {
-                        if(member.isSelected()) searchResultPageController.showMemberResult(DatabaseOperations.getInstance().selectMemberByCollege(college.getValue().toString()));
-                        else searchResultPageController.showStudentResult(DatabaseOperations.getInstance().selectStudentByCollege(college.getValue().toString()));
+                    else if (!college.getValue().equals("")) {
+                        if (member.isSelected()) {
+                            searchResultPageController.showMemberResult(DatabaseOperations.getInstance().selectMemberByCollege(college.getValue().toString()));
+                        } else {
+                            searchResultPageController.showStudentResult(DatabaseOperations.getInstance().selectStudentByCollege(college.getValue().toString()));
+                        }
                     }
                     else {
-                        if(member.isSelected()) searchResultPageController.showMemberResult();
-                        else searchResultPageController.showStudentResult();
+                        if (member.isSelected()) {
+                            searchResultPageController.showMemberResult();
+                        } else {
+                            searchResultPageController.showStudentResult();
+                        }
                     }
                     tabPane.getSelectionModel().select(searchResult);
                 }

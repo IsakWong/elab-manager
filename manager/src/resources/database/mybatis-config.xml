@@ -20,7 +20,7 @@
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://yespace.xyz:3306/student?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
+                <property name="url" value="jdbc:mysql://q.yespace.xyz:3306/student?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="elabtemp"/>
                 <property name="password" value="elab123456"/>
             </dataSource>
@@ -38,7 +38,7 @@
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://yespace.xyz:3306/ElabRecruitNew?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
+                <property name="url" value="jdbc:mysql://q.yespace.xyz:3306/ElabRecruitNew?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="elabtemp"/>
                 <property name="password" value="elab123456"/>
             </dataSource>
@@ -47,7 +47,7 @@
             <transactionManager type="jdbc"/>
             <dataSource type="pooled">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://yespace.xyz:3306/information_schema?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
+                <property name="url" value="jdbc:mysql://q.yespace.xyz:3306/information_schema?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="elabtemp"/>
                 <property name="password" value="elab123456"/>
             </dataSource>

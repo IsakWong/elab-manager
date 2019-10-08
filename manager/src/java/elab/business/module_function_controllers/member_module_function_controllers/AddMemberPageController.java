@@ -76,8 +76,9 @@ public class AddMemberPageController extends BaseFunctionContentController {
         @Override
         public void onPostFetchResult(SessionResult<Boolean> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().insertMember(member);
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "新增成员失败";
+            }
         }
 
         @Override
@@ -284,10 +285,11 @@ public class AddMemberPageController extends BaseFunctionContentController {
                     newMember.setNumber(numberInputField.getText());
                     newMember.setUserName(userInputField.getText());
                     newMember.setName(nameInputField.getText());
-                    if(sexChoose_man.isSelected())
+                    if (sexChoose_man.isSelected()) {
                         newMember.setSex("男");
-                    else
+                    } else {
                         newMember.setSex("女");
+                    }
                     newMember.setPassword(Utilities.encrypt(pwdInputField.getText()));
                     newMember.setCollege(collegeChooseBox.getValue());
                     newMember.setGroup(groupChooseBox.getValue());

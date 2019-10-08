@@ -17,13 +17,16 @@ public class ManagerSettingsPageController extends BaseFunctionContentController
     private String autoLogin = ElabManagerApplication.properties.getProperty("AUTO_LOG_IN");
     private String rememberPwd = ElabManagerApplication.properties.getProperty("REMEMBER_PASSWORD");
 
+    @Override
     public void initializeController() {
 
-        if(autoLogin.equals("true"))
+        if (autoLogin.equals("true")) {
             autoLoginBox.setSelected(true);
+        }
 
-        if(rememberPwd.equals("true"))
+        if (rememberPwd.equals("true")) {
             rememberPwdBox.setSelected(true);
+        }
 
         autoLoginBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override

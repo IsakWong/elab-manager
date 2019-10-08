@@ -33,13 +33,17 @@ public class SearchResultPageController extends BaseFunctionContentController {
     private ObservableList<Student> students = FXCollections.<Student>observableArrayList();
 
     public void showResult(List student) {
-        if(students != null) students.remove(0, students.size());
+        if (students != null) {
+            students.remove(0, students.size());
+        }
         students.addAll(student);
         tableView.setItems(students);
     }
 
     public void showResult() {
-        if(students != null) students.remove(0, students.size());
+        if (students != null) {
+            students.remove(0, students.size());
+        }
         tableView.setItems(students);
     }
 

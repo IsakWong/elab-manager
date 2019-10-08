@@ -55,8 +55,9 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectLoader(sessionDate + " 00:00:00");
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "";
+            }
         }
 
         @Override
@@ -64,9 +65,11 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
             ObservableList<Loader> loaders = FXCollections.observableArrayList();
             loaders.addAll(param);
             tableView.setItems(loaders);
-            for(int i = 0; i < param.size(); ++i)
-                if(!nameList.contains(loaders.get(i).getName()) && loaders.get(i).getLogout().equals("0"))
+            for (int i = 0; i < param.size(); ++i) {
+                if (!nameList.contains(loaders.get(i).getName()) && loaders.get(i).getLogout().equals("0")) {
                     nameList.add(loaders.get(i).getName());
+                }
+            }
             arrivalLabel.setText(getArrivalPerson(loaders));
             leaveLabel.setText(getLeavePerson(loaders));
         }
@@ -85,8 +88,9 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
         @Override
         public void onPostFetchResult(SessionResult<List> sessionResult) {
             sessionResult.result = DatabaseOperations.getInstance().selectLoader(sessionDate + " 00:00:00");
-            if(sessionResult.result == null)
+            if (sessionResult.result == null) {
                 sessionResult.errorMessage = "获取信息失败";
+            }
         }
 
         @Override
@@ -94,9 +98,11 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
             ObservableList<Loader> loaders = FXCollections.observableArrayList();
             loaders.addAll(param);
             tableView.setItems(loaders);
-            for(int i = 0; i < param.size(); ++i)
-                if(!nameList.contains(loaders.get(i).getName()) && loaders.get(i).getLogout().equals("0"))
+            for (int i = 0; i < param.size(); ++i) {
+                if (!nameList.contains(loaders.get(i).getName()) && loaders.get(i).getLogout().equals("0")) {
                     nameList.add(loaders.get(i).getName());
+                }
+            }
             arrivalLabel.setText(getArrivalPerson(loaders));
             leaveLabel.setText(getLeavePerson(loaders));
             Timer timer = new Timer();
@@ -112,8 +118,9 @@ public class ViewLoaderPageController extends BaseFunctionContentController {
 
         @Override
         public void onBusy() {
-            if(isInit)
+            if (isInit) {
                 popupMessage("正在获取登录信息", 1500);
+            }
         }
     };
 
