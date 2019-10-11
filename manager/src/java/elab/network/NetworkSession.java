@@ -9,6 +9,7 @@ import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
 import java.util.Hashtable;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class NetworkSession {
 
@@ -18,8 +19,9 @@ public class NetworkSession {
         String FACTORY = "com.sun.jndi.ldap.LdapCtxFactory";
         String adminName = "ELAB\\yx";
         String adminPwd = "awd153";
-        LdapContext ctx = null;
-        Hashtable env = null;
+        String ELABDC = "DC=elab,DC=dlut,DC=edu,DC=cn";
+        LdapContext ctx;
+        Hashtable env;
         Control[] connCtls = null;
 
         try {
@@ -30,25 +32,23 @@ public class NetworkSession {
             env.put(Context.SECURITY_PRINCIPAL, adminName);
             env.put(Context.SECURITY_CREDENTIALS, adminPwd);
 
-            ctx = new InitialLdapContext(env, connCtls);
             // 域节点
-            String searchBase = "OU=ELAB,DC=elab,DC=dlut,DC=edu,DC=cn";
+            ctx = new InitialLdapContext(env, connCtls);
+
+            Scanner in = new Scanner(System.in);
+            String searchBase = in.next();
+            searchBase = "OU=" + searchBase + "," + ELABDC;
             // LDAP搜索过滤器类
             String searchFilter = "objectClass=User";
             // 搜索控制器
-            SearchControls searchCtls = new SearchControls(); // Create the
-            // search
-            // controls
+            SearchControls searchCtls = new SearchControls();
             // 创建搜索控制器
-            searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE); // Specify
-            // the
-            // search
-            // scope
+            searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
             // 设置搜索范围
             // searchCtls.setSearchScope(SearchControls.OBJECT_SCOPE); //
             // Specify the search scope 设置搜索范围
-//   String returnedAtts[] = { "memberOf", "distinguishedName",
-//     "Pwd-Last-Set", "User-Password", "cn" };// 定制返回属性
+            //   String returnedAtts[] = { "memberOf", "distinguishedName",
+            //     "Pwd-Last-Set", "User-Password", "cn" };// 定制返回属性
             String returnedAtts[] = { "company" };// 定制返回属性
 
             // String returnedAtts[] = { "url", "whenChanged", "employeeID",
@@ -61,7 +61,7 @@ public class NetworkSession {
             NamingEnumeration answer = ctx.search(searchBase, searchFilter,
                     searchCtls);// Search for objects using the filter
             // 初始化搜索结果数为0
-            int totalResults = 0;// Specify the attributes to return
+            int totalResults = 0;
             int rows = 0;
             while (answer.hasMoreElements()) {// 遍历结果集
                 SearchResult sr = (SearchResult) answer.next();// 得到符合搜索条件的DN
@@ -72,6 +72,7 @@ public class NetworkSession {
                 System.out.println(dn);
                 String match = dn.split("CN=")[1].split(",")[0];//返回格式一般是CN=ptyh,OU=专卖
                 System.out.println(match);
+                ++totalResults;
                /* if(userName.equals(match)){
                     Attributes Attrs = sr.getAttributes();// 得到符合条件的属性集
                     if (Attrs != null) {
